@@ -6,7 +6,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <iostream>
 #include <vector>
 #include "Map.h"
 #include "PlayerHandler.h"
@@ -16,7 +15,6 @@
 * Represents the state of the game. Will generate NPCs and Map. Will determine
 * win/lose conditions of the game
 */
-
 class Game {
 public:
   /**

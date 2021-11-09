@@ -11,6 +11,10 @@
 
 #include "Room.h"
 
+/**
+* Represents a door that is between two rooms. It will have the two rooms
+* which it is connected to, which players can use to switch room
+*/
 class Door {
  public:
   /**

@@ -13,7 +13,6 @@
 * Describes all objects in the game, some can be picked up and all can be
 * interacted with.
 */
-
 class Object : NamedThing {
 public:
 
