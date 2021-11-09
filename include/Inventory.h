@@ -14,6 +14,16 @@
 class Inventory : public ObjectContainer {
  public:
   /**
+  * Default constructor.
+  */
+  Inventory();
+
+  /**
+  * Destructor.
+  */
+  virtual ~Inventory() = 0;
+
+  /**
   * Unlocks the spacesuit for the player, allowing them to survive in a vacuum.
   */
   void giveSpaceSuit();

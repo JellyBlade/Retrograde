@@ -12,6 +12,27 @@
 class ObjectContainer {
  public:
   /**
+  * Default constructor.
+  */
+  ObjectContainer();
+
+  /**
+  * Destructor.
+  */
+  virtual ~ObjectContainer() = 0;
+
+  /**
+  * Returns an int for the number of objects held in this container.
+  * @return the size of this container.
+  */
+  int size();
+
+  /**
+  * Removes all objects in this container.
+  */
+  void clear();
+
+  /**
   * Adds the given Object to this container.
   * @param object the Object to add.
   */
