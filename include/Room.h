@@ -53,6 +53,7 @@ class Room : public NamedThing {
   * Replaces the door at the given direction with the given door.
   */
   void changeDoor(Door* HelperFunctions::Direction);
+
  private:
   double roomOxygen;
   ObjectContainer* roomObjects;

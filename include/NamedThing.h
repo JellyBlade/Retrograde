@@ -37,6 +37,7 @@ class NamedThing {
   * @param newDescription the description to change to.
   */
   void setDescription(string newDescription);
+
  private:
   string name;
   string description;
