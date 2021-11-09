@@ -32,8 +32,8 @@ coverage:
    script:
       - make coverage
    artifacts:
-     paths:
-        - coverage
+      paths:
+         - coverage
       expire_in: 14 days
 
 memoryLeaks:
