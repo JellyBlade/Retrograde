@@ -1,3 +1,8 @@
+/**
+* @author Tyrell M, Tyler H, Landon C, Truman L
+* @date 2021-11
+*/
+
 #ifndef NAMED_THING_H
 #define NAMED_THING_H
 

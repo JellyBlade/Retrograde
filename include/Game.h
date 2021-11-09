@@ -1,11 +1,10 @@
-
 /**
 * @author Tyrell M, Tyler H, Landon C, Truman L
 * @date 2021-11
 */
 
-#ifndef GAME_H_INCLUDED
-#define GAME_H_INCLUDED
+#ifndef GAME_H
+#define GAME_H
 
 #include <iostream>
 #include <vector>
@@ -13,10 +12,15 @@
 #include "PlayerHandler.h"
 #include "NPC.h"
 
+/**
+* Represents the state of the game. Will generate NPCs and Map. Will determine
+* win/lose conditions of the game
+*/
+
 class Game {
 public:
   /**
-  * Constructor for the game.
+  * Default constructor for the game.
   */
   Game();
 
@@ -25,7 +29,6 @@ public:
   */
   ~Game();
 
-  //TODO: Maybe this function throws an exception if the vector is size 0.
   /**
   * Returns the npcs in the game.
   * @return vector<NPC> npcs that are in the game
