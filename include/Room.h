@@ -10,7 +10,7 @@
 #include "ObjectContainer.h"
 
 class Room : public NamedThing {
-public:
+ public:
   /**
   * Default constructor
   */
@@ -53,8 +53,7 @@ public:
   * Replaces the door at the given direction with the given door.
   */
   void changeDoor(Door* HelperFunctions::Direction);
-  
-private:
+ private:
   double roomOxygen;
   ObjectContainer* roomObjects;
   vector<Door*> doors;

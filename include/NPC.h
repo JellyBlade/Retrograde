@@ -4,7 +4,7 @@
 #include "Room.h"
 
 class NPC : public NamedThing {
-public:
+ public:
   /**
   * Displays dialogue from text based on NPC name.
   */
@@ -31,7 +31,7 @@ public:
   * Moves the NPC to the given room.
   * @param room the room to move to.
   */
-  void move(Room* room);
+  void moveNPC(Room* room);
 
   /**
   * Reduces the oxygen in the current room.
@@ -39,7 +39,7 @@ public:
   */
   void useOxygen();
 
-private:
+ private:
   Room* currentRoom;
 }
 

@@ -38,7 +38,7 @@ class ObjectContainer {
   */
   void addObject(Object* object);
 
-  // TODO: Should this throw something if the object doesn't exist/is null?
+  // TODO(hipt2720): Should this throw something if the object doesn't exist/is null?
   /**
   * Removes the given Object to this container. Does nothing if the objects
   * is not in the container.

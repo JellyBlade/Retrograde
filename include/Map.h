@@ -8,7 +8,7 @@
 #include "Door.h"
 
 class Map {
-public:
+ public:
   /**
   * Returns the Room matching the given name.
   * @return the Room with the same name given, or a nullptr.
@@ -45,7 +45,7 @@ public:
   */
   void calculateMapOxygen();
 
-private:
+ private:
   vector<Room*> rooms;
   vector<Door*> doors;
   double mapOxygen;

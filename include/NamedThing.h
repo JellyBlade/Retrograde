@@ -8,7 +8,7 @@
 * as rooms, NPCs, and all objects.
 */
 class NamedThing {
-public:
+ public:
   /**
   * Constructor
   */
@@ -37,8 +37,7 @@ public:
   * @param newDescription the description to change to.
   */
   void setDescription(string newDescription);
-  
-private:
+ private:
   string name;
   string description;
 }

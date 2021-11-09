@@ -38,6 +38,6 @@ namespace HelperFunctions {
   * @return a string corresponding to the given Direction.
   */
   string directionToString(Direction d);
-}
+} // namespace HelperFunctions
 
 #endif // HELPER_FUNCTIONS_H

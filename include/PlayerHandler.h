@@ -2,6 +2,7 @@
 #define PLAYER_HANDLER_H
 
 #include <iostream>
+#include <vector>
 
 #include "Player.h"
 #include "NPC.h"
@@ -37,7 +38,7 @@ class PlayerHandler {
   * Moves the player between rooms using the door in the given direction.
   * @param direction the cardinal direction to go.
   */
-  void move(HelperFunctions::Direction direction);
+  void movePlayer(HelperFunctions::Direction direction);
 
   /**
   * Picks up the given object from the room, adding it the player's inventory.
