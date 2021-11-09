@@ -18,8 +18,12 @@ public:
 
   /**
   * Constructor, sets the name and desciption of the object.
+  * @param n string that the name will be set to. Default value is "Object".
+  * @param d string that the description will be set to.
+  * Default value is "This object does nothing".
+  * @param h bool that holdable will be set to.  Default value is true.
   */
-  Object(string n = "Object", string d = "Does nothing", bool h = true);
+  Object(string n = "Object", string d = "This object does nothing", bool h = true);
 
   /**
   * Returns the object's holdable value.
@@ -29,7 +33,7 @@ public:
 
   /**
   * sets the object's holdable value
-  * @param bool ob the value the object's holdable value will be set to
+  * @param ob bool the value of the object's holdable value will be set to
   */
   void setHoldable(bool ob);
 

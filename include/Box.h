@@ -9,7 +9,10 @@
 #include "Object.h"
 #include "ObjectContainer.h"
 
-Class Box : Object {
+/**
+* Represents an object that has objects inside them
+*/
+class Box : Object {
 public:
   /**
   * Displays objects inside the container, asks user which one to take

@@ -9,7 +9,11 @@
 #include "Object.h"
 #include <string>
 
-Class Log : Object {
+/**
+* Represents embodies a type of object that is centered around the plot
+* of the game. This will read a text file and output it to the screen
+*/
+class Log : Object {
 public:
   /**
   * Reads the .txt file at bookPath and outputs to the screen
