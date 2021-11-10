@@ -36,7 +36,6 @@ TEST(TestObject, setHoldableTest) {
   EXPECT_EQ(o1->isHoldable(), false);
 
   delete o1;
-  delete o2;
 }
 
 TEST(TestObject, interactDefaultTest) {
@@ -45,5 +44,4 @@ TEST(TestObject, interactDefaultTest) {
   EXPECT_NO_THROW(o1->interact());
 
   delete o1;
-  delete o2;
 }
