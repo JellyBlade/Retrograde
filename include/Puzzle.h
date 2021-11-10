@@ -13,7 +13,6 @@
 */
 class Puzzle : Object {
  public:
-
   /**
   * Default constructor sets solved to false.
   */

@@ -12,7 +12,7 @@
 * Represents the oxygenTank object in the game.
 */
 class OxygenTank : Object {
-public:
+ public:
   /**
   * Refills the oxygen spaceSuits oxygen tank
   */

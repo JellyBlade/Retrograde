@@ -14,8 +14,7 @@
 * Represent the passwordLock puzzle, requires a string password to unlock
 */
 class PassworkLock : Puzzle {
-public:
-
+ public:
   /**
   * Constructor, sets the name, desciption and password of the object.
   * @param n string that the name will be set to. Default value is "Object".
@@ -32,9 +31,8 @@ public:
   */
   void interact();
 
-private:
+ private:
   string password;
-
 };
 
 #endif
