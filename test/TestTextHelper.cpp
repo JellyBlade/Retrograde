@@ -25,7 +25,7 @@ TEST(TestTextHelper, tolowerTest) {
 TEST(TestTextHelper, toupperTest) {
   std::string s = "Test";
   EXPECT_NE(s, "TEST");
-  EXPECT_EQ(TextHelper::tolower(s), "TEST");
+  EXPECT_EQ(TextHelper::toupper(s), "TEST");
 }
 
 TEST(TestTextHelper, trimTest) {

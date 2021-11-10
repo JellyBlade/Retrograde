@@ -39,7 +39,7 @@ std::string TextHelper::toupper(std::string s) {
 std::string TextHelper::trim(std::string s) {
   if (s.size() <= 0 ) { return ""; }
   s.erase(0, s.find_first_not_of(" \t\r\n"));
-  s.erase(s.find_last_not_of(" \t\r\n"), s.size() - 1);
+  s.erase(s.find_last_not_of(" \t\r\n") + 1, s.size() - 1);
   return s;
 }
 
