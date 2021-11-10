@@ -25,11 +25,8 @@ TEST(TestObjectContainer, addRemoveTest) {
 
   ob->removeObject(o1);
   EXPECT_EQ(ob->size(), 1);
-  ob->removeObject(o2);
-  EXPECT_EQ(ob->size(), 0);
 
   delete o1;
-  delete o2;
   delete ob;
 }
 

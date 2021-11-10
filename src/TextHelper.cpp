@@ -12,10 +12,12 @@
 
 void TextHelper::readFile(std::string textPath) {
   // TODO(hipt2720): Implement.
+  return;
 }
 
 void TextHelper::commandProcessor(std::string command) {
   // TODO(hipt2720): Implement.
+  return;
 }
 
 std::string TextHelper::tolower(std::string s) {
