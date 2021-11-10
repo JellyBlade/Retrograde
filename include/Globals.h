@@ -19,14 +19,14 @@ namespace Globals {
   * @param s the string to convert.
   * @return a Direction corresponding to the given string.
   */
-  Direction stringToDirection(string s);
+  Direction stringToDirection(std::string s);
 
   /**
   * Converts a Direction into a string.
   * @param d the Direction to convert.
   * @return a string corresponding to the given Direction.
   */
-  string directionToString(Direction d);
+  std::string directionToString(Direction d);
 } // namespace Globals
 
 #endif // GLOBALS_H

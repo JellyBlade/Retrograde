@@ -23,8 +23,8 @@ class ItemLock : public Puzzle {
   * @param h bool that holdable will be set to.  Default value is true.
   * @param p string that the password will be set to. Default value is "1234".
   */
-  ItemLock(string n = "Object", string d = "This object does nothing",
-  bool h = false, string m = "");
+  ItemLock(std::string n = "Object", std::string d = "This object does nothing",
+  bool h = false, std::string m = "");
 
   /**
   * Checks if the player has the item in their inventory
@@ -32,7 +32,7 @@ class ItemLock : public Puzzle {
   void interact();
 
  private:
-  string matchingName;
+  std::string matchingName;
 };
 
 #endif

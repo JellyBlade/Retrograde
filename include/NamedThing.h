@@ -7,7 +7,6 @@
 #define NAMED_THING_H
 
 #include <string>
-using namespace std;
 
 /**
 * Provides implementation for things that have names and descriptions, such
@@ -18,35 +17,35 @@ class NamedThing {
   /**
   * Constructor
   */
-  NamedThing(string n = "Thing", string d = "Does nothing");
+  NamedThing(std::string n = "Thing", std::string d = "Does nothing");
 
   /**
   * Returns this thing's name.
   * @return a string containing this thing's name.
   */
-  string getName();
+  std::string getName();
 
   /**
   * Changes this thing's name to the given string.
   * @param newName the name to change to.
   */
-  void setName(string newName);
+  void setName(std::string newName);
 
   /**
   * Returns this thing's description.
   * @return a string describing this thing.
   */
-  string getDescription();
+  std::string getDescription();
 
   /**
   * Changes this thing's description to the given string.
   * @param newDescription the description to change to.
   */
-  void setDescription(string newDescription);
+  void setDescription(std::string newDescription);
 
  private:
-  string name;
-  string description;
+  std::string name;
+  std::string description;
 };
 
 #endif // NAMED_THING_H

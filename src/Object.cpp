@@ -6,9 +6,8 @@
 #include <iostream>
 #include <string>
 #include "Object.h"
-using namespace std;
 
-Object::Object(string n, string d, bool h) : holdable{h} {
+Object::Object(std::string n, std::string d, bool h) : holdable{h} {
   this->setName(n);
   this->setDescription(d);
 }
@@ -22,5 +21,5 @@ void Object::setHoldable(bool ob) {
 }
 
 void Object::interact() {
-  cout << "This object does nothing." << endl;
+  std::cout << "This object does nothing." << std::endl;
 }

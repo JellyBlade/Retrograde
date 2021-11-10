@@ -7,22 +7,20 @@
 #include <string>
 #include "NamedThing.h"
 
-using namespace std;
+NamedThing::NamedThing(std::string n, std::string d) : name{n}, description{d} {}
 
-NamedThing::NamedThing(string n, string d) : name{n}, description{d} {}
-
-string NamedThing::getName() {
+std::string NamedThing::getName() {
   return name;
 }
 
-void NamedThing::setName(string newName) {
+void NamedThing::setName(std::string newName) {
   name = newName;
 }
 
-string NamedThing::getDescription() {
+std::string NamedThing::getDescription() {
   return description;
 }
 
-void NamedThing::setDescription(string newDescription) {
+void NamedThing::setDescription(std::string newDescription) {
   description = newDescription;
 }

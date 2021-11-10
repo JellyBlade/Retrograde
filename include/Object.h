@@ -8,7 +8,6 @@
 
 #include <string>
 #include "NamedThing.h"
-using namespace std;
 
 /**
 * Describes all objects in the game, some can be picked up and all can be
@@ -23,7 +22,8 @@ class Object : public NamedThing {
   * Default value is "This object does nothing".
   * @param h bool that holdable will be set to.  Default value is true.
   */
-  Object(string n = "Thing", string d = "Does nothing", bool h = false);
+  Object(std::string n = "Thing", std::string d = "Does nothing",
+  bool h = false);
 
   /**
   * Returns the object's holdable value.

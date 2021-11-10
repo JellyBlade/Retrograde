@@ -50,13 +50,13 @@ class ObjectContainer {
   * Calls isObjectInContainer(string).
   * @return the Object if found, or a nullptr.
   */
-  Object* getObject(string objectName);
+  Object* getObject(std::string objectName);
 
   /**
   * Returns a vector containing all of the objects in this container.
   * @return a vector<Object*> of this container's contents.
   */
-  vector<Object*> getObjects();
+  std::vector<Object*> getObjects();
 
   /**
   * Checks if the given object is in this container.
@@ -72,10 +72,10 @@ class ObjectContainer {
   * @return true if an object with the same name is in the container,
   * false otherwise.
   */
-  bool isObjectInContainer(string objectName);
+  bool isObjectInContainer(std::string objectName);
 
  private:
-  vector<Object*> objects;
+  std::vector<Object*> objects;
 };
 
 #endif // OBJECT_CONTAINER_H

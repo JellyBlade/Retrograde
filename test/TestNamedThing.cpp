@@ -7,7 +7,6 @@
 #include <string>
 #include "NamedThing.h"
 #include "gtest/gtest.h"
-using namespace std;
 
 TEST(TestNamedThing, ConstructorTest) {
   NamedThing* n1 = new NamedThing("Object", "Loves to hug");
@@ -28,8 +27,8 @@ TEST(TestNamedThing, ConstructorTest) {
 
 TEST(TestNamedThing, settersTest) {
   NamedThing* n1 = new NamedThing("Object", "Loves to hug");
-  string s = "Map";
-  string d = "This astronomical map is loaded with wondering creatures.";
+  std::string s = "Map";
+  std::string d = "This astronomical map is loaded with wondering creatures.";
 
   EXPECT_EQ(n1->getName(), "Object");
   EXPECT_EQ(n1->getDescription(), "Loves to hug");

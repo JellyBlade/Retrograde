@@ -61,7 +61,7 @@ class Door {
   * Blocks the door for the given reason.
   * @param blockedReason the reason the door is blocked.
   */
-  void blockDoor(string blockedReason);
+  void blockDoor(std::string blockedReason);
 
   /**
   * Unblocks the door, allowing for travel between the room pair.
@@ -77,7 +77,7 @@ class Door {
 
  private:
   bool blocked;
-  string blockedReason;
+  std::string blockedReason;
   pair<Room*, Room*> rooms;
 }
 

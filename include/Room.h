@@ -24,7 +24,7 @@ class Room : public NamedThing {
   /**
   * Constructor
   */
-  Room(string name, string description);
+  Room(std::string name, std::string description);
 
   /**
   * Returns this room's ObjectContainer containing all of its contents.

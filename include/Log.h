@@ -21,7 +21,7 @@ class Log : public Object {
   void interact();
 
  private:
-  string textPath;
+  std::string textPath;
 };
 
 #endif

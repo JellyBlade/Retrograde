@@ -9,13 +9,13 @@
 #include "ObjectContainer.h"
 #include "TextHelper.h"
 
-ObjectContainer::~ObjectContainer(){
+ObjectContainer::~ObjectContainer() {
   for (Object* o : objects) {
     delete o;
   }
 }
 
-int ObjectContainer::size(){
+int ObjectContainer::size() {
   return objects.size();
 }
 
@@ -47,7 +47,7 @@ void ObjectContainer::removeObject(Object* object) {
 }
 
 // TODO(hipt2720): Make this trim whitespace/tolower everything.
-Object* ObjectContainer::getObject(string objectName) {
+Object* ObjectContainer::getObject(std::string objectName) {
   for (int i = 0; i < objects.size(); i++) {
     if (TextHelper::tolower(TextHelper::trimAll(objects.at(i)->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(objectName)))
@@ -56,7 +56,7 @@ Object* ObjectContainer::getObject(string objectName) {
   return nullptr;
 }
 
-vector<Object*> ObjectContainer::getObjects() {
+std::vector<Object*> ObjectContainer::getObjects() {
   return objects;
 }
 
@@ -67,7 +67,7 @@ bool ObjectContainer::isObjectInContainer(Object* object) {
   return false;
 }
 
-bool ObjectContainer::isObjectInContainer(string objectName) {
+bool ObjectContainer::isObjectInContainer(std::string objectName) {
   for (int i = 0; i < objects.size(); i++) {
     if (TextHelper::tolower(TextHelper::trimAll(objects.at(i)->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(objectName)))

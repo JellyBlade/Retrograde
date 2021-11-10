@@ -7,7 +7,6 @@
 #include <string>
 #include "Object.h"
 #include "gtest/gtest.h"
-using namespace std;
 
 TEST(TestObject, ConstructorTest) {
   Object* o1 = new Object("Object", "Loves to hug", true);

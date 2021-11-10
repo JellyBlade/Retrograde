@@ -24,7 +24,7 @@ class AirLock : public Puzzle {
   * @param o double value that the oxygenTarget will be set to.
   * Default value is 0.0.
   */
-  AirLock(string n = "Object", string d = "This object does nothing",
+  AirLock(std::string n = "Object", std::string d = "This object does nothing",
   bool h = false, double o = 0.0);
 
   /**
