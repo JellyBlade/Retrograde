@@ -1,3 +1,8 @@
+/**
+* @author Tyrell M, Tyler H, Landon C, Truman L
+* @date 2021-11
+*/
+
 #ifndef PLAYER_HANDLER_H
 #define PLAYER_HANDLER_H
 

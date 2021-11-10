@@ -1,3 +1,8 @@
+/**
+* @author Tyrell M, Tyler H, Landon C, Truman L
+* @date 2021-11
+*/
+
 #ifndef DOOR_H
 #define DOOR_H
 
@@ -6,6 +11,10 @@
 
 #include "Room.h"
 
+/**
+* Represents a door that is between two rooms. It will have the two rooms
+* which it is connected to, which players can use to switch room
+*/
 class Door {
  public:
   /**
