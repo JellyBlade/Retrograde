@@ -30,12 +30,12 @@ TEST(TestNamedThing, DefaultConstructorTest) {
 TEST(TestNamedThing, settersTest) {
   NamedThing* n1 = new NamedThing("Object", "Loves to hug");
   string s = "Map";
-  string d = "This astronomical map is loaded with wondering creatures."
+  string d = "This astronomical map is loaded with wondering creatures.";
 
   EXPECT_EQ(n1->getName(), "Object");
   EXPECT_EQ(n1->getDescription(), "Loves to hug");
-  n1->setName(s)
-  n1->setDescription(d)
+  n1->setName(s);
+  n1->setDescription(d);
   EXPECT_EQ(n1->getName(), "Map");
   EXPECT_EQ(n1->getDescription(),
   "This astronomical map is loaded with wondering creatures.");
