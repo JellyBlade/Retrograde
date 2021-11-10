@@ -11,7 +11,7 @@
 
 #include "Door.h"
 #include "NamedThing.h"
-#include "HelperFunctions.h"
+#include "Globals.h"
 #include "ObjectContainer.h"
 
 class Room : public NamedThing {
@@ -57,7 +57,7 @@ class Room : public NamedThing {
   /**
   * Replaces the door at the given direction with the given door.
   */
-  void changeDoor(Door* HelperFunctions::Direction);
+  void changeDoor(Door* door, Globals::Direction);
 
  private:
   double roomOxygen;
