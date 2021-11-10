@@ -14,13 +14,13 @@
 * of the game. This will read a text file and output it to the screen
 */
 class Log : Object {
-public:
+ public:
   /**
   * Reads the .txt file at bookPath and outputs to the screen
   */
   void interact();
 
-private:
+ private:
   string textPath;
 };
 

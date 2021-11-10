@@ -12,7 +12,7 @@
 * Interface for the different puzzles.
 */
 class Puzzle : Object {
-public:
+ public:
 
   /**
   * Default constructor sets solved to false.
@@ -30,7 +30,7 @@ public:
   */
   void setSolved();
 
-private:
+ private:
   bool solved;
 };
 

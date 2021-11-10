@@ -13,7 +13,7 @@
 * A box that will show it's object to the user if the puzzle has been solved.
 */
 class LockedBox : Object {
-public:
+ public:
   /**
   * Destructor.
   */
@@ -23,8 +23,8 @@ public:
   * Checks puzzle::isSolved() before displaying objects.
   */
   void interact();
-  
-private:
+
+ private:
   Puzzle* puzzle;
 };
 

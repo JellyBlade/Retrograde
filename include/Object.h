@@ -14,8 +14,7 @@
 * interacted with.
 */
 class Object : NamedThing {
-public:
-
+ public:
   /**
   * Constructor, sets the name and desciption of the object.
   * @param n string that the name will be set to. Default value is "Object".
@@ -43,7 +42,7 @@ public:
   */
   virtual void interact();
 
-private:
+ private:
   bool holdable;
 };
 

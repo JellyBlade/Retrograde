@@ -14,7 +14,7 @@
 * solve the puzzle.
 */
 class AirLock : Puzzle {
-public:
+ public:
   /**
   * Constructor, sets the name, desciption and password of the object.
   * @param n string that the name will be set to. Default value is "Object".
@@ -32,9 +32,8 @@ public:
   */
   void interact();
 
-private:
+ private:
   double oxygenTarget;
-
 };
 
 #endif

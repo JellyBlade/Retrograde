@@ -14,7 +14,7 @@
 * be solved
 */
 class ItemLock : Puzzle {
-public:
+ public:
   /**
   * Constructor, sets the name, desciption and matchingName of the object.
   * @param n string that the name will be set to. Default value is "Object".
@@ -30,10 +30,9 @@ public:
   * Checks if the player has the item in their inventory
   */
   void interact();
-  
-private:
-  string matchingName;
 
+ private:
+  string matchingName;
 };
 
 #endif

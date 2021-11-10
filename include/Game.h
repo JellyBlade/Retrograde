@@ -16,7 +16,7 @@
 * win/lose conditions of the game
 */
 class Game {
-public:
+ public:
   /**
   * Default constructor for the game.
   */
@@ -64,11 +64,10 @@ public:
   */
   void generateNPCs();
 
-private:
+ private:
   vector<NPC*> npcs;
   Map* map;
   PlayerHandler* player;
-
 };
 
 #endif
