@@ -13,7 +13,7 @@
 /**
 * Represent the passwordLock puzzle, requires a string password to unlock
 */
-class PassworkLock : Puzzle {
+class PassworkLock : public Puzzle {
  public:
   /**
   * Constructor, sets the name, desciption and password of the object.

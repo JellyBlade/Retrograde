@@ -11,7 +11,7 @@
 /**
 * Interface for the different puzzles.
 */
-class Puzzle : Object {
+class Puzzle : public Object {
  public:
   /**
   * Default constructor sets solved to false.

@@ -14,7 +14,7 @@ using namespace std;
 * Describes all objects in the game, some can be picked up and all can be
 * interacted with.
 */
-class Object : NamedThing {
+class Object : public NamedThing {
  public:
   /**
   * Constructor, sets the name and desciption of the object.

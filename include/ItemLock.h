@@ -13,7 +13,7 @@
 * Represents the puzzle that requires a certain object to in the inventory to
 * be solved
 */
-class ItemLock : Puzzle {
+class ItemLock : public Puzzle {
  public:
   /**
   * Constructor, sets the name, desciption and matchingName of the object.

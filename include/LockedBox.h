@@ -12,7 +12,7 @@
 /**
 * A box that will show it's object to the user if the puzzle has been solved.
 */
-class LockedBox : Object {
+class LockedBox : public Object {
  public:
   /**
   * Destructor.

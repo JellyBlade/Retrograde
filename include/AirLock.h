@@ -13,7 +13,7 @@
 * Represents the airlock puzzle, must have a certain amount of oxygen to
 * solve the puzzle.
 */
-class AirLock : Puzzle {
+class AirLock : public Puzzle {
  public:
   /**
   * Constructor, sets the name, desciption and password of the object.
