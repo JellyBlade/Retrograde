@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include "ObjectContainer.h"
+#include "TextHelper.h"
 
 ObjectContainer::~ObjectContainer(){
   for (Object* o : objects) {
@@ -48,7 +49,8 @@ void ObjectContainer::removeObject(Object* object) {
 // TODO(hipt2720): Make this trim whitespace/tolower everything.
 Object* ObjectContainer::getObject(string objectName) {
   for (int i = 0; i < objects.size(); i++) {
-    if (objects.at(i)->getName() == objectName)
+    if (TextHelper::tolower(TextHelper::trimAll(objects.at(i)->getName())) ==
+    TextHelper::tolower(TextHelper::trimAll(objectName)))
       return objects.at(i);
   }
   return nullptr;
@@ -67,7 +69,8 @@ bool ObjectContainer::isObjectInContainer(Object* object) {
 
 bool ObjectContainer::isObjectInContainer(string objectName) {
   for (int i = 0; i < objects.size(); i++) {
-    if (objects.at(i)->getName() == objectName)
+    if (TextHelper::tolower(TextHelper::trimAll(objects.at(i)->getName())) ==
+    TextHelper::tolower(TextHelper::trimAll(objectName)))
       return true;
   }
   return false;
