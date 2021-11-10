@@ -70,4 +70,7 @@ TEST(TestObjectContainer, getTest) {
   EXPECT_EQ(ob->getObject("AngryTest"), nullptr);
   EXPECT_EQ(ob->getObject(""), nullptr);
   EXPECT_EQ(ob->getObject("#*IK#*fjasd"), nullptr);
+
+  delete ob;
+  delete o2;
 }
