@@ -23,7 +23,8 @@ public:
   * Default value is "This object does nothing".
   * @param h bool that holdable will be set to.  Default value is true.
   */
-  Object(string n = "Object", string d = "This object does nothing", bool h = true);
+  Object(string n = "Object", string d = "This object does nothing",
+  bool h = false);
 
   /**
   * Returns the object's holdable value.
