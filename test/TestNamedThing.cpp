@@ -7,10 +7,9 @@
 #include <string>
 #include "NamedThing.h"
 #include "gtest/gtest.h"
-
 using namespace std;
 
-TEST(TestNamedThing, DefaultConstructorTest) {
+TEST(TestNamedThing, ConstructorTest) {
   NamedThing* n1 = new NamedThing("Object", "Loves to hug");
   NamedThing* n2 = new NamedThing();
 

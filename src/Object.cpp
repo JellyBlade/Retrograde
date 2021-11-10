@@ -6,7 +6,6 @@
 #include <iostream>
 #include <string>
 #include "Object.h"
-
 using namespace std;
 
 Object::Object(string n, string d, bool h) : holdable{h} {
