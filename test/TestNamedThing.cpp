@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include "NamedThing.h"
+#include "gtest/gtest.h"
 
 using namespace std;
 
