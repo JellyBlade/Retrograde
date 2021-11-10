@@ -23,7 +23,7 @@ class Object : NamedThing {
   * Default value is "This object does nothing".
   * @param h bool that holdable will be set to.  Default value is true.
   */
-  Object(string n, string d, bool h = false);
+  Object(string n = "Thing", string d = "Does nothing", bool h = false);
 
   /**
   * Returns the object's holdable value.

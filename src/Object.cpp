@@ -9,8 +9,8 @@
 using namespace std;
 
 Object::Object(string n, string d, bool h) : holdable{h} {
-  setName(n);
-  setDescription(d);
+  this->setName(n);
+  this->setDescription(d);
 }
 
 bool Object::isHoldable() {
