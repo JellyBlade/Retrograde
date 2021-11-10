@@ -22,7 +22,7 @@ TEST(TestObject, ConstructorTest) {
   EXPECT_EQ(o2->getName().size(), 5);
   EXPECT_EQ(o2->getDescription(), "Does nothing");
   EXPECT_EQ(o2->getDescription().size(), 12);
-  EXPECT_EQ(o1->isHoldable(), false);
+  EXPECT_EQ(o2->isHoldable(), false);
 
   delete o1;
   delete o2;
