@@ -7,7 +7,8 @@
 #include <string>
 #include "NamedThing.h"
 
-NamedThing::NamedThing(std::string n, std::string d) : name{n}, description{d} {}
+NamedThing::NamedThing(std::string n, std::string d) : name{n}, description{d}
+{}
 
 std::string NamedThing::getName() {
   return name;
