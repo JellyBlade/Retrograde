@@ -3,12 +3,10 @@
 * @date 2021-11
 */
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include "ObjectContainer.h"
-using namespace std;
 
 ObjectContainer::~ObjectContainer(){
   for (Object* o : objects) {
@@ -43,14 +41,11 @@ void ObjectContainer::removeObject(Object* object) {
   if(object == nullptr)
     throw invalid_parameter_error("Null pointer passed");
   */
-  vector<Object*>::iterator it = find(objects.begin(), objects.end(), object);
-  if (it != objects.end()) {
-    delete (*it);
-    swap((*it), objects.back());
-    objects.pop_back();
-  }
+  objects.erase(std::remove(objects.begin(), objects.end(),
+   object), objects.end());
 }
 
+// TODO(hipt2720): Make this trim whitespace/tolower everything.
 Object* ObjectContainer::getObject(string objectName) {
   for (int i = 0; i < objects.size(); i++) {
     if (objects.at(i)->getName() == objectName)
@@ -64,11 +59,10 @@ vector<Object*> ObjectContainer::getObjects() {
 }
 
 bool ObjectContainer::isObjectInContainer(Object* object) {
-  vector<Object*>::iterator it = find(objects.begin(), objects.end(), object);
-  if (it != objects.end())
+  if (std::find(objects.begin(), objects.end(), object) != objects.end()) {
     return true;
-  else
-    return false;
+  }
+  return false;
 }
 
 bool ObjectContainer::isObjectInContainer(string objectName) {
