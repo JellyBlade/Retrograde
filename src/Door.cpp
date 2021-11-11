@@ -14,8 +14,6 @@ Door::Door() {
 }
 
 Door::Door(Room* first, Room* second) {
-  blocked = true;
-  blockedReason = "This is a wall.";
   rooms.first = first;
   rooms.second = second;
 }
@@ -30,14 +28,14 @@ std::pair<Room*, Room*> Door::getRooms() {
 }
 
 Room* Door::getOtherRoom(Room* room) {
-  return rooms.second;
+  if (!isConnectedTo(room)) { return nullptr; }
+  if (room == rooms.first) {
+    return rooms.second;
+  }
+  return rooms.first;
 }
 
 bool Door::isConnectedTo(Room* room) {
-  /*
-  TODO(Mart2720): This probably wont work becuase ==operator isnt overloaded
-  will have to fix later if this doesnt work
-  */
   if (rooms.first == room || rooms.second == room)
     return true;
   else
@@ -63,16 +61,21 @@ void Door::unblockDoor() {
 }
 
 void Door::propagateOxygen() {
-  //TODO(mart2720): After the Room class has been implmented.
-  /*if(!blocked) {
-    double temp = rooms.first->getRoomOxygen() +
-    rooms.second->getRoomOxygen() / 2;
-    if(rooms.first->getRoomOxygen() == 0 ||
-    rooms.second->getRoomOxygen() == 0) {
-      rooms.first->setRoomOxygen(temp * 0.95);
-      rooms.first->setRoomOxygen(temp * 0.95);
-    }
-    rooms.first->setRoomOxygen(temp);
-    rooms.first->setRoomOxygen(temp);
-  }*/ //THese comments can be removed after the Room has been implemented.
+  // if (!blocked) {
+  //   double firOxy = rooms.first->getRoomOxygen();
+  //   double secOxy = rooms.second->getRoomOxygen();
+  //   if (firOxy == 0 && secOxy == 0) { return; }
+  //
+  //   double avg = (firOxy + secOxy) / 2;
+  //   if (avg <= 0.01) { avg = 0; }
+  //
+  //   if (firOxy == 0) {
+  //     rooms.second->setRoomOxygen(avg);
+  //   } else if (secOxy == 0) {
+  //     rooms.first->setRoomOxygen(avg);
+  //   } else {
+  //     rooms.first->setRoomOxygen(avg);
+  //     rooms.second->setRoomOxygen(avg);
+  //   }
+  // }
 }

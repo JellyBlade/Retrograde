@@ -10,7 +10,7 @@
 #include <utility>
 #include "Room.h"
 
-// Forward declaration
+// Forward declaration (required to prevent issues with circular include)
 class Room;
 
 /**
