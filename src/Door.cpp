@@ -64,4 +64,15 @@ void Door::unblockDoor() {
 
 void Door::propagateOxygen() {
   //TODO(mart2720): After the Room class has been implmented.
+  /*if(!blocked) {
+    double temp = rooms.first->getRoomOxygen() +
+    rooms.second->getRoomOxygen() / 2;
+    if(rooms.first->getRoomOxygen() == 0 ||
+    rooms.second->getRoomOxygen() == 0) {
+      rooms.first->setRoomOxygen(temp * 0.95);
+      rooms.first->setRoomOxygen(temp * 0.95);
+    }
+    rooms.first->setRoomOxygen(temp);
+    rooms.first->setRoomOxygen(temp);
+  }*/ //THese comments can be removed after the Room has been implemented.
 }
