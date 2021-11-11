@@ -14,6 +14,9 @@
 #include "Globals.h"
 #include "ObjectContainer.h"
 
+// Forward declaration (required to prevent issues with circular include)
+class Door;
+
 class Room : public NamedThing {
  public:
   /**
@@ -47,12 +50,12 @@ class Room : public NamedThing {
   * Returns this room's doors.
   * @return a vector of four doors for each cardinal direction.
   */
-  vector<Door*> getDoors();
+  std::vector<Door*> getDoors();
 
   /**
   * Replaces this room's doors with the given vector.
   */
-  void setDoors(vector<Door*> doors);
+  void setDoors(std::vector<Door*> doors);
 
   /**
   * Replaces the door at the given direction with the given door.
@@ -62,7 +65,7 @@ class Room : public NamedThing {
  private:
   double roomOxygen;
   ObjectContainer* roomObjects;
-  vector<Door*> doors;
+  std::vector<Door*> doors;
 };
 
 #endif // ROOM_H

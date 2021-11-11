@@ -29,16 +29,16 @@ std::pair<Room*, Room*> Door::getRooms() {
   return rooms;
 }
 
-Room* getOtherRoom(Room* room) {
+Room* Door::getOtherRoom(Room* room) {
   return rooms.second;
 }
 
-bool isConnectedTo(Room* room) {
+bool Door::isConnectedTo(Room* room) {
   /*
   TODO(Mart2720): This probably wont work becuase ==operator isnt overloaded
   will have to fix later if this doesnt work
   */
-  if (rooms->first == room || rooms->second == room)
+  if (rooms.first == room || rooms.second == room)
     return true;
   else
     return false;

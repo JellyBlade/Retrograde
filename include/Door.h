@@ -10,6 +10,9 @@
 #include <utility>
 #include "Room.h"
 
+// Forward declaration
+class Room;
+
 /**
 * Represents a door that is between two rooms. It will have the two rooms
 * which it is connected to, which players can use to switch room
