@@ -63,6 +63,6 @@ class Room : public NamedThing {
   double roomOxygen;
   ObjectContainer* roomObjects;
   vector<Door*> doors;
-}
+};
 
 #endif // ROOM_H

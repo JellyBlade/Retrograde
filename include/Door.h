@@ -8,7 +8,6 @@
 
 #include <string>
 #include <utility>
-
 #include "Room.h"
 
 /**
@@ -28,10 +27,15 @@ class Door {
   Door(Room* first, Room* second);
 
   /**
+  * Destructor
+  */
+  ~Door();
+
+  /**
   * Returns a pair of rooms for which this door connects.
   * @return the rooms this door connects.
   */
-  pair<Room*, Room*> getRooms();
+  std::pair<Room*, Room*> getRooms();
 
   /**
   * Returns the room opposing the given Room in the pair.
@@ -55,7 +59,7 @@ class Door {
   * Returns the reason the door is blocked.
   * @return a string for why the door is blocked.
   */
-  string getBlockedReason();
+  std::string getBlockedReason();
 
   /**
   * Blocks the door for the given reason.
@@ -78,7 +82,7 @@ class Door {
  private:
   bool blocked;
   std::string blockedReason;
-  pair<Room*, Room*> rooms;
-}
+  std::pair<Room*, Room*> rooms;
+};
 
 #endif // DOOR_H
