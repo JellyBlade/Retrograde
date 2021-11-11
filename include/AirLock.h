@@ -13,7 +13,7 @@
 * Represents the airlock puzzle, must have a certain amount of oxygen to
 * solve the puzzle.
 */
-class AirLock : Puzzle {
+class AirLock : public Puzzle {
  public:
   /**
   * Constructor, sets the name, desciption and password of the object.
@@ -24,7 +24,7 @@ class AirLock : Puzzle {
   * @param o double value that the oxygenTarget will be set to.
   * Default value is 0.0.
   */
-  AirLock(string n = "Object", string d = "This object does nothing",
+  AirLock(std::string n = "Object", std::string d = "This object does nothing",
   bool h = false, double o = 0.0);
 
   /**

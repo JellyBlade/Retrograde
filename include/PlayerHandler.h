@@ -11,7 +11,8 @@
 
 #include "Player.h"
 #include "NPC.h"
-#include "HelperFunctions.h"
+#include "TextHelper.h"
+#include "Globals.h"
 
 /**
 * Handles user interaction for the game.
@@ -43,7 +44,7 @@ class PlayerHandler {
   * Moves the player between rooms using the door in the given direction.
   * @param direction the cardinal direction to go.
   */
-  void movePlayer(HelperFunctions::Direction direction);
+  void movePlayer(Globals::Direction direction);
 
   /**
   * Picks up the given object from the room, adding it the player's inventory.

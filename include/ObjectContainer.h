@@ -8,7 +8,6 @@
 
 #include <vector>
 #include <string>
-
 #include "Object.h"
 
 /**
@@ -17,14 +16,9 @@
 class ObjectContainer {
  public:
   /**
-  * Default constructor.
-  */
-  ObjectContainer();
-
-  /**
   * Destructor.
   */
-  virtual ~ObjectContainer() = 0;
+  virtual ~ObjectContainer();
 
   /**
   * Returns an int for the number of objects held in this container.
@@ -51,22 +45,18 @@ class ObjectContainer {
   */
   void removeObject(Object* object);
 
-  // NOTE: Is this function even useful? It requires the object itself to
-  // get it, so it's pretty useless.
-  Object* getObject(Object* object);
-
   /**
   * Returns the Object in the container with the same name.
   * Calls isObjectInContainer(string).
   * @return the Object if found, or a nullptr.
   */
-  Object* getObject(string objectName);
+  Object* getObject(std::string objectName);
 
   /**
   * Returns a vector containing all of the objects in this container.
   * @return a vector<Object*> of this container's contents.
   */
-  vector<Object*> getObjects();
+  std::vector<Object*> getObjects();
 
   /**
   * Checks if the given object is in this container.
@@ -82,10 +72,10 @@ class ObjectContainer {
   * @return true if an object with the same name is in the container,
   * false otherwise.
   */
-  bool isObjectInContainer(string objectName);
+  bool isObjectInContainer(std::string objectName);
 
  private:
-  Vector<Object*> objects;
-}
+  std::vector<Object*> objects;
+};
 
 #endif // OBJECT_CONTAINER_H

@@ -12,7 +12,7 @@
 /**
 * Represents an object that has objects inside them
 */
-class Box : Object {
+class Box : public Object {
  public:
   /**
   * Displays objects inside the container, asks user which one to take

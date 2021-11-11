@@ -18,7 +18,7 @@ class Map {
   * Returns the Room matching the given name.
   * @return the Room with the same name given, or a nullptr.
   */
-  Room* getRoom(string name);
+  Room* getRoom(std::string name);
 
   /**
   * Returns all rooms in the game's environment.

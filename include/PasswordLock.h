@@ -13,7 +13,7 @@
 /**
 * Represent the passwordLock puzzle, requires a string password to unlock
 */
-class PassworkLock : Puzzle {
+class PassworkLock : public Puzzle {
  public:
   /**
   * Constructor, sets the name, desciption and password of the object.
@@ -23,8 +23,9 @@ class PassworkLock : Puzzle {
   * @param h bool that holdable will be set to.  Default value is true.
   * @param p string that the password will be set to. Default value is "1234".
   */
-  PasswordLock(string n = "Object", string d = "This object does nothing",
-  bool h = false, string p = "1234");
+  PasswordLock(std::string n = "Object",
+  std::string d = "This object does nothing", bool h = false,
+  std::tring p = "1234");
 
   /**
   * Prompt the password input to solve
@@ -32,7 +33,7 @@ class PassworkLock : Puzzle {
   void interact();
 
  private:
-  string password;
+  std::string password;
 };
 
 #endif

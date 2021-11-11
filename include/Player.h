@@ -62,7 +62,7 @@ class Player {
   * Changes the player's name
   * @param name the string to set the player's name to.
   */
-  void setPlayerName(string name);
+  void setPlayerName(std::string name);
 
   /**
   * Reduces the oxygen of the player's current room, or (if unlocked) from
@@ -73,7 +73,7 @@ class Player {
  private:
   Room* currentRoom;
   Inventory inventory;
-  string playerName;
+  std::string playerName;
 };
 
 #endif // PLAYER_H

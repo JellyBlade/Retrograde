@@ -13,7 +13,7 @@
 * Represents the puzzle that requires a certain object to in the inventory to
 * be solved
 */
-class ItemLock : Puzzle {
+class ItemLock : public Puzzle {
  public:
   /**
   * Constructor, sets the name, desciption and matchingName of the object.
@@ -23,8 +23,8 @@ class ItemLock : Puzzle {
   * @param h bool that holdable will be set to.  Default value is true.
   * @param p string that the password will be set to. Default value is "1234".
   */
-  ItemLock(string n = "Object", string d = "This object does nothing",
-  bool h = false, string m = "");
+  ItemLock(std::string n = "Object", std::string d = "This object does nothing",
+  bool h = false, std::string m = "");
 
   /**
   * Checks if the player has the item in their inventory
@@ -32,7 +32,7 @@ class ItemLock : Puzzle {
   void interact();
 
  private:
-  string matchingName;
+  std::string matchingName;
 };
 
 #endif

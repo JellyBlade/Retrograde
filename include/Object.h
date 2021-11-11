@@ -13,7 +13,7 @@
 * Describes all objects in the game, some can be picked up and all can be
 * interacted with.
 */
-class Object : NamedThing {
+class Object : public NamedThing {
  public:
   /**
   * Constructor, sets the name and desciption of the object.
@@ -22,7 +22,7 @@ class Object : NamedThing {
   * Default value is "This object does nothing".
   * @param h bool that holdable will be set to.  Default value is true.
   */
-  Object(string n = "Object", string d = "This object does nothing",
+  Object(std::string n = "Thing", std::string d = "Does nothing",
   bool h = false);
 
   /**
