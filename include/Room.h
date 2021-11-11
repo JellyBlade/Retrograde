@@ -8,7 +8,7 @@
 
 #include <string>
 #include <vector>
-
+#include <map>
 #include "Door.h"
 #include "NamedThing.h"
 #include "Globals.h"
@@ -19,15 +19,16 @@ class Door;
 
 class Room : public NamedThing {
  public:
-  /**
-  * Default constructor
-  */
-  Room();
 
   /**
   * Constructor
   */
-  Room(std::string name, std::string description);
+  Room(std::string name = "Room", std::string description = "Empty room");
+
+  /**
+  * Destructor
+  */
+  ~Room();
 
   /**
   * Returns this room's ObjectContainer containing all of its contents.
@@ -48,24 +49,24 @@ class Room : public NamedThing {
 
   /**
   * Returns this room's doors.
-  * @return a vector of four doors for each cardinal direction.
+  * @return a map of four doors for each cardinal direction.
   */
-  std::vector<Door*> getDoors();
+  std::map<Globals::Direction, Door*> getDoors();
 
   /**
-  * Replaces this room's doors with the given vector.
+  * Replaces this room's doors with the given map.
   */
-  void setDoors(std::vector<Door*> doors);
+  void setDoors(std::map<Globals::Direction, Door*> d);
 
   /**
   * Replaces the door at the given direction with the given door.
   */
-  void changeDoor(Door* door, Globals::Direction);
+  void changeDoor(Door* door, Globals::Direction direction);
 
  private:
   double roomOxygen;
   ObjectContainer* roomObjects;
-  std::vector<Door*> doors;
+  std::map <Globals::Direction, Door*> doors;
 };
 
 #endif // ROOM_H

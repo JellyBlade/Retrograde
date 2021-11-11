@@ -8,8 +8,8 @@
 #include "Object.h"
 
 Object::Object(std::string n, std::string d, bool h) : holdable{h} {
-  this->setName(n);
-  this->setDescription(d);
+  setName(n);
+  setDescription(d);
 }
 
 bool Object::isHoldable() {
