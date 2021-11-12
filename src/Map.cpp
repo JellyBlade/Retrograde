@@ -11,6 +11,8 @@
 #include "TextHelper.h"
 
 Room* Map::getRoom(std::string n) {
+  if(rooms.size() == 0)
+    return nullptr;
   for(Room* r : rooms) {
     if (TextHelper::tolower(TextHelper::trimAll(r->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(n)))
