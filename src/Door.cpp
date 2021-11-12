@@ -13,10 +13,7 @@ Door::Door(Room* first, Room* second) : blocked{false}, blockedReason{""} {
   rooms.second = second;
 }
 
-Door::~Door() {
-  rooms.first = nullptr;
-  rooms.second = nullptr;
-}
+Door::~Door() {}
 
 std::pair<Room*, Room*> Door::getRooms() {
   return rooms;
