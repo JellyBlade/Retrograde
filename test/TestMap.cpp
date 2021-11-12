@@ -20,7 +20,7 @@ TEST(TestMap, getRoomTest) {
   std::cout << "Past the getRoom statement" << std::endl;
 
   std::cout << "The size of the rooms vector before" << m->getRooms().size() << std::endl;
-  m->getRooms().push_back(r);
+  m->addRoom(r);
   std::cout << "The size of the rooms vector " << m->getRooms().size() << std::endl;
   std::cout << "Past the pushback statement" << std::endl;
   std::cout << m->getRoom("Room") << std::endl;

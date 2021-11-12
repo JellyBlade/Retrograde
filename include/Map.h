@@ -33,6 +33,12 @@ class Map {
   std::vector<Door*> getDoors();
 
   /**
+  * Adds a room onto the rooms vector
+  * @param r Room* to be added to rooms
+  */
+  void addRoom(Room* r);
+
+  /**
   * Returns the map's average oxygen level.
   * @return double representing the mean of every room's oxygen.
   */

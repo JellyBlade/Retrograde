@@ -63,3 +63,7 @@ void Map::calculateMapOxygen() {
   temp /= rooms.size();
   mapOxygen = temp;
 }
+
+void Map::addRoom(Room* r) {
+  rooms.push_back(r);
+}
