@@ -30,7 +30,7 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(r2->getName(), "Boiler Room");
   EXPECT_EQ(r2->getName().size(), 11);
   EXPECT_EQ(r2->getDescription(), "Casually boiling stuff");
-  EXPECT_EQ(r2->getDescription().size(), 23);
+  EXPECT_EQ(r2->getDescription().size(), 22);
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::NORTH])), typeid(Door));
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::EAST])), typeid(Door));
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::SOUTH])), typeid(Door));
