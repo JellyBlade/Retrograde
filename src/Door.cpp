@@ -18,10 +18,7 @@ Door::Door(Room* first, Room* second) {
   rooms.second = second;
 }
 
-Door::~Door() {
-  delete rooms.first;
-  delete rooms.second;
-}
+Door::~Door() {}
 
 std::pair<Room*, Room*> Door::getRooms() {
   return rooms;
