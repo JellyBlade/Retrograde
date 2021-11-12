@@ -14,7 +14,7 @@
 // no elements in the vectors?
 Room* Map::getRoom(std::string n) {
   std::cout << "Does it even get here?" << std::endl;
-  if(rooms.size() == 0) {
+  if(this->rooms.size() == 0) {
     std::cout << "Return nullptr" << std::endl;
     return nullptr;
   }
