@@ -75,11 +75,8 @@ TEST(TestRoom, setterGetterTest) {
   std::cout << "Past r1" << std::endl;
   delete r2;
   std::cout << "Past r2" << std::endl;
-  delete o1;
-  std::cout << "Past o1" << std::endl;
   delete d1;
   std::cout << "Past d1" << std::endl;
-  temp.clear();
 }
 
 TEST(TestRoom, changeDoorTest) {
