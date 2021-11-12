@@ -61,7 +61,7 @@ TEST(TestRoom, setterGetterTest) {
 
   r1->changeDoor(d1, Globals::Direction::NORTH);
   EXPECT_EQ(r1->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
-  "This is a wall.");
+  "");
   d1->blockDoor("There is PH -7 acid behind this door");
   std::cout << "before assigning d1 to NORTH" << std::endl;
   temp[Globals::Direction::NORTH] = d1;
