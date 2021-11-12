@@ -48,8 +48,7 @@ TEST(TestRoom, changeDoorTest) {
   Door* d1 = new Door(r1, r2);
 
   d1->blockDoor("There is PH -7 acid behind this door");
-  EXPECT_EQ(r2->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
-"This is a wall.");
+  EXPECT_EQ(r2->getDoor(Globals::Direction::NORTH), nullptr);
   r2->changeDoor(d1, Globals::Direction::NORTH);
   EXPECT_EQ(r2->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
 "There is PH -7 acid behind this door");
