@@ -15,12 +15,13 @@
 Room* Map::getRoom(std::string n) {
   if(rooms.size() == 0)
     return nullptr;
-  for(Room* r : rooms) {
+  std::cout << "Right before the for loop" << std::endl;
+  for(int i = 0; i < rooms.size(); i++) {
     std::cout << "in the for loop" << std::endl;
-    if (TextHelper::tolower(TextHelper::trimAll(r->getName())) ==
+    if (TextHelper::tolower(TextHelper::trimAll(rooms.at(i)->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(n)))
-    std::cout << "before return r" << std::endl;
-      return r;
+    std::cout << "before return rooms.at(i)" << std::endl;
+      return rooms.at(i);
   }
   return nullptr;
 }
