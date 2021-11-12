@@ -15,6 +15,7 @@
 Room::Room(std::string n, std::string d) : roomOxygen{100} {
   setName(n);
   setDescription(d);
+
   doors[Globals::Direction::NORTH] = new Door();
   doors[Globals::Direction::EAST] = new Door();
   doors[Globals::Direction::SOUTH] = new Door();
@@ -25,7 +26,7 @@ Room::~Room() {
   delete roomObjects;
   std::map <Globals::Direction, Door*>::iterator it;
   for(it = doors.begin(); it != doors.end(); ++it) {
-    delete (*it).second;
+    //delete (*it).second;
   }
 }
 
