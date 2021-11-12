@@ -18,9 +18,11 @@ TEST(TestDoor, constructorTest) {
 
   std::cout << "After constructors" << std::endl;
   delete d1;
+  delete d2;
+  std::cout << "After deleting doors" << std::endl;
   delete r1;
   delete r2;
-  delete d2;
+  std::cout << "After deleting rooms" << std::endl;
   std::cout << "We made it woohoo!" << std::endl;
 }
 
