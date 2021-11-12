@@ -24,13 +24,13 @@ class Map {
   * Returns all rooms in the game's environment.
   * @return a vector of all rooms.
   */
-  vector<Room*> getRooms();
+  std::vector<Room*> getRooms();
 
   /**
   * Returns all doors in the game's environment.
   * @return a vector of all doors.
   */
-  vector<Door*> getDoors();
+  std::vector<Door*> getDoors();
 
   /**
   * Returns the map's average oxygen level.
@@ -51,9 +51,9 @@ class Map {
   void calculateMapOxygen();
 
  private:
-  vector<Room*> rooms;
-  vector<Door*> doors;
+  std::vector<Room*> rooms;
+  std::vector<Door*> doors;
   double mapOxygen;
-}
+};
 
 #endif // MAP_H
