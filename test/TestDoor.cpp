@@ -122,4 +122,8 @@ TEST(TestDoor, propagateOxygenTest) {
   d1->propagateOxygen();
   EXPECT_EQ(r1->getRoomOxygen(), 0);
   EXPECT_EQ(r2->getRoomOxygen(), 0);
+
+  delete r1;
+  delete r2;
+  delete d1;
 }
