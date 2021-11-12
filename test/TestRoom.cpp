@@ -22,19 +22,19 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(r1->getName().size(), 4);
   EXPECT_EQ(r1->getDescription(), "Empty room");
   EXPECT_EQ(r1->getDescription().size(), 10);
-  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::NORTH]), Door);
-  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::EAST]), Door);
-  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::SOUTH]), Door);
-  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::WEST]), Door);
+  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::NORTH]), typeid(Door));
+  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::EAST]), typeid(Door));
+  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::SOUTH]), typeid(Door));
+  EXPECT_EQ(typeid(r1->getDoors()[Globals::Direction::WEST]), typeid(Door));
 
   EXPECT_EQ(r2->getName(), "Boiler Room");
   EXPECT_EQ(r2->getName().size(), 11);
   EXPECT_EQ(r2->getDescription(), "Casually boiling stuff");
   EXPECT_EQ(r2->getDescription().size(), 23);
-  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::NORTH]), Door);
-  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::EAST]), Door);
-  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::SOUTH]), Door);
-  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::WEST]), Door);
+  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::NORTH]), typeid(Door));
+  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::EAST]), typeid(Door));
+  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::SOUTH]), typeid(Door));
+  EXPECT_EQ(typeid(r2->getDoors()[Globals::Direction::WEST]), typeid(Door));
 
   delete r1;
   delete r2;
@@ -45,11 +45,11 @@ TEST(TestRoom, changeDoorTest) {
   Room* r2 = new Room("Boiler Room", "Casually boiling stuff");
   Door* d1 = new Door(r1, r2);
 
-  d1->blockDoor("There is PH -7 acid behind this door")
-  EXPECT_EQ(r2->getDoors()[Globals::Direction::NORTH].getBlockedReason(),
-"This is a wall.")
+  d1->blockDoor("There is PH -7 acid behind this door");
+  EXPECT_EQ(r2->getDoors()[Globals::Direction::NORTH]->getBlockedReason(),
+"This is a wall.");
   r2->changeDoor(d1, Globals::Direction::NORTH);
-  EXPECT_EQ(r2->getDoors()[Globals::Direction::NORTH].getBlockedReason(),
+  EXPECT_EQ(r2->getDoors()[Globals::Direction::NORTH]->getBlockedReason(),
 "There is PH -7 acid behind this door");
 
   delete r1;
