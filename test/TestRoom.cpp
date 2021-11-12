@@ -17,15 +17,11 @@
 TEST(TestRoom, constructorTest) {
   Room* r1 = new Room();
   Room* r2 = new Room("Boiler Room", "Casually boiling stuff");
-  std::cout << "After creation of room" << std::endl;
-
 
   EXPECT_EQ(r1->getName(), "Room");
   EXPECT_EQ(r1->getName().size(), 4);
   EXPECT_EQ(r1->getDescription(), "Empty room");
   EXPECT_EQ(r1->getDescription().size(), 10);
-  std::cout << "Before typeid stuff" << std::endl;
-
   EXPECT_EQ(typeid(*(r1->getDoors()[Globals::Direction::NORTH])), typeid(Door));
   EXPECT_EQ(typeid(*(r1->getDoors()[Globals::Direction::EAST])), typeid(Door));
   EXPECT_EQ(typeid(*(r1->getDoors()[Globals::Direction::SOUTH])), typeid(Door));
@@ -42,10 +38,8 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::WEST])), typeid(Door));
   EXPECT_EQ(r2->getRoomOxygen(), 100);
 
-  std::cout << "This may be where the seg fault is" << std::endl;
   delete r1;
   delete r2;
-  std::cout << "It made it through the function" << std::endl;
 }
 
 TEST(TestRoom, changeDoorTest) {
