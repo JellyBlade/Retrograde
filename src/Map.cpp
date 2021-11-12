@@ -22,9 +22,10 @@ Room* Map::getRoom(std::string n) {
   for(int i = 0; i < rooms.size(); i++) {
     std::cout << "in the for loop" << std::endl;
     if (TextHelper::tolower(TextHelper::trimAll(rooms.at(i)->getName())) ==
-    TextHelper::tolower(TextHelper::trimAll(n)))
+    TextHelper::tolower(TextHelper::trimAll(n))) {
     std::cout << "before return rooms.at(i)" << std::endl;
       return rooms.at(i);
+    }
   }
   std::cout << "Returns the last nullptr" << std::endl;
   return nullptr;
@@ -66,4 +67,8 @@ void Map::calculateMapOxygen() {
 
 void Map::addRoom(Room* r) {
   rooms.push_back(r);
+}
+
+void Map::addDoor(Door* d) {
+  doors.push_back(d);
 }
