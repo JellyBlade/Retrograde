@@ -19,7 +19,7 @@ TEST(TestMap, getRoomTest) {
   EXPECT_EQ(m->getRoom("Room"), nullptr);
   std::cout << "Past the getRoom statement" << std::endl;
   m->getRooms().push_back(r);
-
+  std::cout << "The size of the rooms vector " << m->getRooms().size() << std::endl;
   std::cout << "Past the pushback statement" << std::endl;
   std::cout << m->getRoom("Room") << std::endl;
   std::cout << "Past the weird test" << std::endl;
