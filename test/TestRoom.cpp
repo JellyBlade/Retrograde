@@ -26,6 +26,7 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(typeid(*(r1->getDoors()[Globals::Direction::EAST])), typeid(Door));
   EXPECT_EQ(typeid(*(r1->getDoors()[Globals::Direction::SOUTH])), typeid(Door));
   EXPECT_EQ(typeid(*(r1->getDoors()[Globals::Direction::WEST])), typeid(Door));
+  EXPECT_EQ(r1->getRoomOxygen(), 100);
 
   EXPECT_EQ(r2->getName(), "Boiler Room");
   EXPECT_EQ(r2->getName().size(), 11);
@@ -35,9 +36,12 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::EAST])), typeid(Door));
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::SOUTH])), typeid(Door));
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::WEST])), typeid(Door));
+  EXPECT_EQ(r2->getRoomOxygen(), 100);
 
+  std::cout << "This may be where the seg fault is" << endl;
   delete r1;
   delete r2;
+  std::cout << "It made it through the function" << endl;
 }
 
 TEST(TestRoom, changeDoorTest) {
