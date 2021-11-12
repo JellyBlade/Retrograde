@@ -15,7 +15,7 @@
 Room::Room(std::string n, std::string d) : roomOxygen{100} {
   setName(n);
   setDescription(d);
-
+  roomObjects = new ObjectContainer();
   doors[Globals::Direction::NORTH] = new Door();
   doors[Globals::Direction::EAST] = new Door();
   doors[Globals::Direction::SOUTH] = new Door();
