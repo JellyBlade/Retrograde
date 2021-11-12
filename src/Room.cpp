@@ -20,7 +20,6 @@ Room::Room(std::string n, std::string d) : roomOxygen{1.0} {
 
 Room::~Room() {
   delete roomObjects;
-  doors.clear();
 }
 
 ObjectContainer* Room::getRoomObjects() {

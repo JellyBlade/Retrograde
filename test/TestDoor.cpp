@@ -9,15 +9,13 @@
 #include "gtest/gtest.h"
 
 TEST(TestDoor, constructorTest) {
-  Door* d1 = new Door();
   Room* r1 = new Room();
   Room* r2 = new Room();
-  Door* d2 = new Door(r1, r2);
+  Door* d1 = new Door(r1, r2);
 
-  delete d1;
   delete r1;
   delete r2;
-  delete d2;
+  delete d1;
 }
 
 TEST(TestDoor, getRoomsTest) {
@@ -61,11 +59,9 @@ TEST(TestDoor, roomConnectionsTest) {
 }
 
 TEST(TestDoor, blockedTest) {
-  Door* door = new Door();
-  EXPECT_TRUE(door->isDoorBlocked());
-  EXPECT_NE(door->getBlockedReason(), "");
-
-  door->unblockDoor();
+  Room* r1 = new Room();
+  Room* r2 = new Room();
+  Door* door = new Door(r1, r2);
   EXPECT_FALSE(door->isDoorBlocked());
   EXPECT_EQ(door->getBlockedReason(), "");
 
@@ -74,6 +70,8 @@ TEST(TestDoor, blockedTest) {
   EXPECT_EQ(door->getBlockedReason(), "Paul spilled his drink on the console.");
 
   delete door;
+  delete r1;
+  delete r2;
 }
 
 TEST(TestDoor, propagateOxygenTest) {
