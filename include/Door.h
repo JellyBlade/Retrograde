@@ -42,7 +42,10 @@ class Door {
 
   /**
   * Returns the room opposing the given Room in the pair.
+  * Will return a nullptr if the given room is not in the pair.
   * @param room one part of the pair.
+  * @return the other room in the pair, or a nullptr if the given room isn't
+  * part of the pair.
   */
   Room* getOtherRoom(Room* room);
 

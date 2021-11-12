@@ -61,21 +61,21 @@ void Door::unblockDoor() {
 }
 
 void Door::propagateOxygen() {
-  // if (!blocked) {
-  //   double firOxy = rooms.first->getRoomOxygen();
-  //   double secOxy = rooms.second->getRoomOxygen();
-  //   if (firOxy == 0 && secOxy == 0) { return; }
-  //
-  //   double avg = (firOxy + secOxy) / 2;
-  //   if (avg <= 0.01) { avg = 0; }
-  //
-  //   if (firOxy == 0) {
-  //     rooms.second->setRoomOxygen(avg);
-  //   } else if (secOxy == 0) {
-  //     rooms.first->setRoomOxygen(avg);
-  //   } else {
-  //     rooms.first->setRoomOxygen(avg);
-  //     rooms.second->setRoomOxygen(avg);
-  //   }
-  // }
+  if (!blocked) {
+    double firOxy = rooms.first->getRoomOxygen();
+    double secOxy = rooms.second->getRoomOxygen();
+    if (firOxy == 0 && secOxy == 0) { return; }
+
+    double avg = (firOxy + secOxy) / 2;
+    if (avg <= 0.01) { avg = 0; }
+
+    if (firOxy == 0) {
+      rooms.second->setRoomOxygen(avg);
+    } else if (secOxy == 0) {
+      rooms.first->setRoomOxygen(avg);
+    } else {
+      rooms.first->setRoomOxygen(avg);
+      rooms.second->setRoomOxygen(avg);
+    }
+  }
 }
