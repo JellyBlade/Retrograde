@@ -19,7 +19,6 @@ class Door;
 
 class Room : public NamedThing {
  public:
-
   /**
   * Constructor
   */

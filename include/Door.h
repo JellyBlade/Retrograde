@@ -19,7 +19,6 @@ class Room;
 */
 class Door {
  public:
-
   /**
   * Constructor
   */
