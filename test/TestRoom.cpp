@@ -48,14 +48,18 @@ TEST(TestRoom, setterGetterTest) {
   Object* o1 = new Object();
   Door* d1 = new Door(r1, r2);
   std::map<Globals::Direction, Door*> temp;
+  std::cout << "Past Objects" << std::endl;
 
   EXPECT_EQ(r1->getRoomObjects()->size(), 0);
   r1->getRoomObjects()->addObject(o1);
   EXPECT_EQ(r1->getRoomObjects()->size(), 1);
+  std::cout << "Past Room Objects" << std::endl;
 
   EXPECT_EQ(r1->getRoomOxygen(), 1.0);
   r1->setRoomOxygen(0.45);
   EXPECT_EQ(r1->getRoomOxygen(), 0.45);
+  std::cout << "Past room oxygen tests" << std::endl;
+
 
   EXPECT_EQ(r1->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
   "This is a wall.");
@@ -64,9 +68,15 @@ TEST(TestRoom, setterGetterTest) {
   r1->setDoors(temp);
   EXPECT_EQ(r1->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
   "There is PH -7 acid behind this door");
+  std::cout << "Past last tests" << std::endl;
 
   delete r1;
+  std::cout << "Past r1" << std::endl;
+  delete r2;
+  std::cout << "Past r2" << std::endl;
   delete o1;
+  std::cout << "Past o1" << std::endl;
+  delete d1;
 }
 
 TEST(TestRoom, changeDoorTest) {
