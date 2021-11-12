@@ -16,12 +16,12 @@ TEST(TestDoor, constructorTest) {
   Room* r2 = new Room();
   Door* d2 = new Door(r1, r2);
 
-  std::cout << "After constructors" << std::endl
+  std::cout << "After constructors" << std::endl;
   delete d1;
   delete r1;
   delete r2;
   delete d2;
-  std::cout << "We made it woohoo!" << std::endl
+  std::cout << "We made it woohoo!" << std::endl;
 }
 
 TEST(TestDoor, getRoomsTest) {
