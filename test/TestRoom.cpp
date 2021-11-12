@@ -78,6 +78,7 @@ TEST(TestRoom, setterGetterTest) {
   delete o1;
   std::cout << "Past o1" << std::endl;
   delete d1;
+  std::cout << "Past d1" << std::endl;
 }
 
 TEST(TestRoom, changeDoorTest) {
@@ -86,8 +87,11 @@ TEST(TestRoom, changeDoorTest) {
   Door* d1 = new Door(r1, r2);
 
   d1->blockDoor("There is PH -7 acid behind this door");
+  std::cout << "before nullptr getDoor" << std::endl;
   EXPECT_EQ(r2->getDoor(Globals::Direction::NORTH), nullptr);
+  std::cout << "before changeDoor" << std::endl;
   r2->changeDoor(d1, Globals::Direction::NORTH);
+  std::cout << "Before getDoor" << std::endl;
   EXPECT_EQ(r2->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
 "There is PH -7 acid behind this door");
 
