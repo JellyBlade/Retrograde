@@ -19,10 +19,6 @@ class Room;
 */
 class Door {
  public:
-  /**
-  * Default constructor. Makes this door function like a wall.
-  */
-  Door();
 
   /**
   * Constructor
