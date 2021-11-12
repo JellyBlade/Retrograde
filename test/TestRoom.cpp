@@ -38,10 +38,10 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(typeid(*(r2->getDoors()[Globals::Direction::WEST])), typeid(Door));
   EXPECT_EQ(r2->getRoomOxygen(), 100);
 
-  std::cout << "This may be where the seg fault is" << endl;
+  std::cout << "This may be where the seg fault is" << std::endl;
   delete r1;
   delete r2;
-  std::cout << "It made it through the function" << endl;
+  std::cout << "It made it through the function" << std::endl;
 }
 
 TEST(TestRoom, changeDoorTest) {
