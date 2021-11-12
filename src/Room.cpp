@@ -44,6 +44,6 @@ void Room::setDoors(std::map<Globals::Direction, Door*> d) {
 }
 
 void Room::changeDoor(Door* door, Globals::Direction direction) {
-  delete doors[direction];
+  if (doors.count(direction) == 1) { delete doors[direction]; }
   doors[direction] = door;
 }
