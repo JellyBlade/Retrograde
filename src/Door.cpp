@@ -8,15 +8,8 @@
 #include <utility>
 #include "Door.h"
 
-Door::Door() {
-  blocked = true;
-  blockedReason = "This is a wall.";
-}
-
-Door::Door(Room* first, Room* second) {
-  rooms.first = first;
-  rooms.second = second;
-}
+Door::Door(Room* first, Room* second) : rooms.first{first},
+rooms.second{second}, blocked{false}, blockedReason{""} {}
 
 Door::~Door() {}
 

@@ -6,7 +6,6 @@
 #include <vector>
 #include <string>
 #include <map>
-#include <typeinfo>
 #include "Room.h"
 #include "Door.h"
 #include "NamedThing.h"
