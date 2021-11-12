@@ -16,14 +16,11 @@ Room::Room(std::string n, std::string d) : roomOxygen{1.0} {
   setName(n);
   setDescription(d);
   roomObjects = new ObjectContainer();
-  doors[Globals::Direction::NORTH] = Door();
-  doors[Globals::Direction::EAST] = Door();
-  doors[Globals::Direction::SOUTH] = Door();
-  doors[Globals::Direction::WEST] = Door();
 }
 
 Room::~Room() {
   delete roomObjects;
+  doors.clear();
 }
 
 ObjectContainer* Room::getRoomObjects() {
@@ -38,8 +35,8 @@ void Room::setRoomOxygen(double oxygen) {
   roomOxygen = oxygen;
 }
 
-std::map<Globals::Direction, Door*> Room::getDoors() {
-  return doors;
+Door* Room::getDoor(Globals::Direction direction) {
+  return doors.count(direction) == 1 ? doors[direction] : nullptr;
 }
 
 void Room::setDoors(std::map<Globals::Direction, Door*> d) {

@@ -48,10 +48,12 @@ class Room : public NamedThing {
   void setRoomOxygen(double oxygen);
 
   /**
-  * Returns this room's doors.
-  * @return a map of four doors for each cardinal direction.
+  * Returns the this room's door in the given direction.
+  * Will return a nullptr if there is no door in that direction (it is a wall).
+  * @param direction the cardinal direction to get a door from.
+  * @return a door, or a nullptr if there isn't a door.
   */
-  std::map<Globals::Direction, Door*> getDoors();
+  Door* getDoor(Globals::Direction direction);
 
   /**
   * Replaces this room's doors with the given map.
