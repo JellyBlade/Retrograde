@@ -60,7 +60,7 @@ TEST(TestRoom, setterGetterTest) {
   EXPECT_EQ(r1->getRoomOxygen(), 0.45);
   std::cout << "Past room oxygen tests" << std::endl;
 
-
+  r1->changeDoor(d1, Globals::Direction::NORTH);
   EXPECT_EQ(r1->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
   "This is a wall.");
   d1->blockDoor("There is PH -7 acid behind this door");
