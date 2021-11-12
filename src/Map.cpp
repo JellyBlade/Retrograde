@@ -10,6 +10,8 @@
 #include "Map.h"
 #include "TextHelper.h"
 
+//TODO: Should this funciton and setAllRoomOxygen throw exceptions if there are
+// no elements in the vectors?
 Room* Map::getRoom(std::string n) {
   if(rooms.size() == 0)
     return nullptr;
@@ -34,6 +36,10 @@ double Map::getMapOxygen() {
 }
 
 void Map::setAllRoomOxygen(double oxygen) {
+  /*
+  if(rooms.size() == 0)
+    throw exception
+  */
   for(Room* r : rooms) {
     r->setRoomOxygen(oxygen);
   }

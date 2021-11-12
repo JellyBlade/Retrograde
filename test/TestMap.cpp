@@ -17,7 +17,9 @@ TEST(TestMap, getRoomTest) {
   std::cout << "Past the construction" << std::endl;
 
   EXPECT_EQ(m->getRoom("Room"), nullptr);
+  std::cout << "Past the getRoom statement" << std::endl;
   m->getRooms().push_back(r);
+  std::cout << "Past the pushback statement" << std::endl;
   EXPECT_EQ(m->getRoom("Room")->getName(), "Room");
 
   std::cout << "Past the first tests" << std::endl;
