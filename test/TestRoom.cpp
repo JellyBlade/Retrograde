@@ -67,7 +67,6 @@ TEST(TestRoom, setterGetterTest) {
   delete r1;
   delete r2;
   delete d1;
-  delete o1;
 }
 
 TEST(TestRoom, changeDoorTest) {
