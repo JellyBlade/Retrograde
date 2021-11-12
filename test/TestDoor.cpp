@@ -9,15 +9,19 @@
 #include "gtest/gtest.h"
 
 TEST(TestDoor, constructorTest) {
+  std::cout << "Before door constructor stuff" << std::endl;
   Door* d1 = new Door();
+  std::cout << "Before room constructor stuff" << std::endl;
   Room* r1 = new Room();
   Room* r2 = new Room();
   Door* d2 = new Door(r1, r2);
 
+  std::cout << "After constructors" << std::endl
   delete d1;
   delete r1;
   delete r2;
   delete d2;
+  std::cout << "We made it woohoo!" << std::endl
 }
 
 TEST(TestDoor, getRoomsTest) {
