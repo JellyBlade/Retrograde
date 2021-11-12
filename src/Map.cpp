@@ -13,8 +13,11 @@
 //TODO: Should this funciton and setAllRoomOxygen throw exceptions if there are
 // no elements in the vectors?
 Room* Map::getRoom(std::string n) {
-  if(rooms.size() == 0)
+  std::cout << "Does it even get here?" << std::endl;
+  if(rooms.size() == 0) {
+    std::cout << "Return nullptr" << std::endl;
     return nullptr;
+  }
   std::cout << "Right before the for loop" << std::endl;
   for(int i = 0; i < rooms.size(); i++) {
     std::cout << "in the for loop" << std::endl;
@@ -23,6 +26,7 @@ Room* Map::getRoom(std::string n) {
     std::cout << "before return rooms.at(i)" << std::endl;
       return rooms.at(i);
   }
+  std::cout << "Returns the last nullptr" << std::endl;
   return nullptr;
 }
 
