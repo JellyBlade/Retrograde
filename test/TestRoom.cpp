@@ -47,18 +47,18 @@ TEST(TestRoom, setterGetterTest) {
   Room* r2 = new Room("Boiler Room", "Casually boiling stuff");
   Object* o1 = new Object();
   Door* d1 = new Door(r1, r2);
-  map<Globals::Direction, Door*> temp;
+  std::map<Globals::Direction, Door*> temp;
 
-  EXPECT_EQ(r1->getRoomObjects->size(), 0);
-  r1->getRoomObjects->addObject(o1);
-  EXPECT_EQ(r1->getRoomObjects->size(), 1);
+  EXPECT_EQ(r1->getRoomObjects()->size(), 0);
+  r1->getRoomObjects()->addObject(o1);
+  EXPECT_EQ(r1->getRoomObjects()->size(), 1);
 
   EXPECT_EQ(r1->getRoomOxygen(), 1.0);
   r1->setRoomOxygen(0.45);
   EXPECT_EQ(r1->getRoomOxygen(), 0.45);
 
   EXPECT_EQ(r1->getDoor(Globals::Direction::NORTH)->getBlockedReason(),
-  "This is a wall.")
+  "This is a wall.");
   d1->blockDoor("There is PH -7 acid behind this door");
   temp[Globals::Direction::NORTH] = d1;
   r1->setDoors(temp);
