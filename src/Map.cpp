@@ -13,8 +13,10 @@
 //TODO: Should this funciton and setAllRoomOxygen throw exceptions if there are
 // no elements in the vectors?
 Room* Map::getRoom(std::string n) {
+  /*This may need to happen if we include the exceptions being thrown
   if (this->rooms.size() < 1)
-    return nullptr;
+    throw exception;
+  */
   for (int i = 0; i < rooms.size(); i++) {
     if (TextHelper::tolower(TextHelper::trimAll(rooms.at(i)->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(n))) {
