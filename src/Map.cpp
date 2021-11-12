@@ -16,8 +16,10 @@ Room* Map::getRoom(std::string n) {
   if(rooms.size() == 0)
     return nullptr;
   for(Room* r : rooms) {
+    std::cout << "in the for loop" << std::endl;
     if (TextHelper::tolower(TextHelper::trimAll(r->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(n)))
+    std::cout << "before return r" << std::endl;
       return r;
   }
   return nullptr;
