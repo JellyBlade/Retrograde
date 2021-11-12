@@ -12,7 +12,7 @@
 #include "Globals.h"
 #include "ObjectContainer.h"
 
-Room::Room(std::string n, std::string d) : roomOxygen{100} {
+Room::Room(std::string n, std::string d) : roomOxygen{1.0} {
   setName(n);
   setDescription(d);
   roomObjects = new ObjectContainer();
