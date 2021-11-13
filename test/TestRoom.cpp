@@ -58,6 +58,17 @@ TEST(TestRoom, setterGetterTest) {
   r1->setRoomOxygen(0.45);
   EXPECT_EQ(r1->getRoomOxygen(), 0.45);
 
+  r1->setRoomOxygen(-0.1);
+  EXPECT_EQ(r1->getRoomOxygen(), 0);
+  r1->setRoomOxygen(1.01);
+  EXPECT_EQ(r1->getRoomOxygen(), 1.0);
+
+  r1->setRoomOxygen(-INT_MAX);
+  EXPECT_EQ(r1->getRoomOxygen(), 0);
+  r1->setRoomOxygen(INT_MAX);
+  EXPECT_EQ(r1->getRoomOxygen(), 1.0);
+
+
   r1->changeDoor(d1, Globals::Direction::NORTH);
   EXPECT_EQ(r1->getDoor(Globals::Direction::NORTH)->getBlockedReason(), "");
   d1->blockDoor("There is PH -7 acid behind this door");
