@@ -59,17 +59,17 @@ TEST(TestMap, calculateMapOxygenTest) {
   m->calculateMapOxygen();
   EXPECT_EQ(m->getMapOxygen(), 0.75);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.5);
+  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0.5);
 
   r2->setRoomOxygen(-0.1);
   EXPECT_EQ(m->getMapOxygen(), 0.75);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.5);
+  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0.5);
 
   r2->setRoomOxygen(100.01);
   EXPECT_EQ(m->getMapOxygen(), 0.75);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.5);
+  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0.5);
 
   delete m;
   delete r1;
