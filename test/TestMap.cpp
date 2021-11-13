@@ -62,11 +62,13 @@ TEST(TestMap, calculateMapOxygenTest) {
   EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0.5);
 
   r2->setRoomOxygen(-0.1);
+  m->calculateMapOxygen();
   EXPECT_EQ(m->getMapOxygen(), 0.5);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
   EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0);
 
   r2->setRoomOxygen(100.01);
+  m->calculateMapOxygen();
   EXPECT_EQ(m->getMapOxygen(), 1.0);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
   EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 1.0);
