@@ -36,8 +36,10 @@ void Room::setRoomOxygen(double oxygen) {
     roomOxygen = 0;
   else if (oxygen >= 1.0)
     roomOxygen = 1.0;
-  else
-    roomOxygen = oxygen;
+  else {
+    // fix floating-point issues by rounding to 3 decimal places.
+    roomOxygen = std::round(oxygen * 1000) / 1000;
+  }
 }
 
 Door* Room::getDoor(Globals::Direction direction) {

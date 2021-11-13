@@ -32,7 +32,7 @@ double Inventory::getOxygen() {
 void Inventory::setOxygen(double o) {
   if (o < 0) { oxygen = 0; }
   if (o > 1) { oxygen = 1; }
-  oxygen = o;
+  oxygen = std::round(o * 1000) / 1000;
 }
 
 void Inventory::addObject(Object* object) {

@@ -55,8 +55,7 @@ TEST(TestPlayer, roomTest) {
   Room* r1 = new Room("Blank Room", "It's completely empty.");
   Room* r2 = new Room("Testing Room", "It's a room for testing stuff. Cool.");
 
-  EXPECT_EQ(p->getCurrentRoom(), nullptr);
-  // TODO(hipt2720): Test exceptions when passing a null room.
+  // TODO(hipt2720): Test exceptions when passing or getting null room.
 
   p->setCurrentRoom(r1);
   EXPECT_NE(p->getCurrentRoom(), nullptr);
@@ -83,37 +82,38 @@ TEST(TestPlayer, oxygenTest) {
 
   p->setCurrentRoom(r1);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0.95, 0.01);
+  EXPECT_NEAR(r1->getRoomOxygen(), 0.95, 0.001);
 
   r1->setRoomOxygen(0.05);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0, 0.01);
+  EXPECT_NEAR(r1->getRoomOxygen(), 0, 0.001);
 
   r1->setRoomOxygen(0);
   EXPECT_FALSE(p->useOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0, 0.01);
+  EXPECT_NEAR(r1->getRoomOxygen(), 0, 0.001);
 
   p->getInventory()->giveSpaceSuit();
   EXPECT_EQ(p->getInventory()->getOxygen(), 1);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 0.95, 0.01);
+  EXPECT_NEAR(p->getInventory()->getOxygen(), 0.95, 0.001);
 
   p->getInventory()->setOxygen(0.05);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 0, 0.01);
+  EXPECT_NEAR(p->getInventory()->getOxygen(), 0, 0.001);
 
   p->getInventory()->setOxygen(0);
   EXPECT_FALSE(p->useOxygen());
 
+  p->setCurrentRoom(r2);
   d1->propagateOxygen();
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.5, 0.01);
+  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.5, 0.001);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.45, 0.01);
+  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.45, 0.001);
 
   d1->propagateOxygen();
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.475, 0.01);
+  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.475, 0.001);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.425, 0.01);
+  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.425, 0.001);
 
   delete p;
   delete d1;
