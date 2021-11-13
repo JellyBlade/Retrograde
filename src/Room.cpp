@@ -32,7 +32,11 @@ double Room::getRoomOxygen() {
 
 void Room::setRoomOxygen(double oxygen) {
   //TODO(mart2720): Throw exception if oxygen is out of range?
-  if (oxygen >= 0 && oxygen <= 1.0)
+  if (oxygen >= 0)
+    roomOxygen = 0;
+  else if (oxygen <= 1.0)
+    roomOxygen = 1.0;
+  else
     roomOxygen = oxygen;
 }
 
