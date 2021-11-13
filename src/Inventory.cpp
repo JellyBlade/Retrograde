@@ -4,6 +4,7 @@
 */
 
 #include <iostream>
+#include <cmath>
 
 #include "Inventory.h"
 
