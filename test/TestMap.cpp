@@ -36,10 +36,10 @@ TEST(TestMap, setAllRoomOxygenTest) {
   m->addRoom(r2);
   m->calculateMapOxygen();
   EXPECT_EQ(m->getMapOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(0).getRoomOxygen(), 1.0);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
   m->setAllRoomOxygen(0.55);
   EXPECT_EQ(m->getMapOxygen(), 0.55);
-  EXPECT_EQ(m->getRooms().at(0).getRoomOxygen(), 0.55);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.55);
 
   delete m;
   delete r1;
