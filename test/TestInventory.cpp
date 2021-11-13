@@ -43,4 +43,7 @@ TEST(TestInventory, addObjectTest) {
 
   i->addObject(o2);
   EXPECT_EQ(i->size(), 1);
+
+  delete i;
+  delete o2;
 }
