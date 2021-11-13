@@ -25,7 +25,7 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(r1->getDoor(Globals::Direction::EAST), nullptr);
   EXPECT_EQ(r1->getDoor(Globals::Direction::SOUTH), nullptr);
   EXPECT_EQ(r1->getDoor(Globals::Direction::WEST), nullptr);
-  EXPECT_EQ(r1->getRoomOxygen(), 1);
+  EXPECT_EQ(r1->getRoomOxygen(), 10000);
 
   EXPECT_EQ(r2->getName(), "Boiler Room");
   EXPECT_EQ(r2->getName().size(), 11);
@@ -35,7 +35,7 @@ TEST(TestRoom, constructorTest) {
   EXPECT_EQ(r2->getDoor(Globals::Direction::EAST), nullptr);
   EXPECT_EQ(r2->getDoor(Globals::Direction::SOUTH), nullptr);
   EXPECT_EQ(r2->getDoor(Globals::Direction::WEST), nullptr);
-  EXPECT_EQ(r2->getRoomOxygen(), 1);
+  EXPECT_EQ(r2->getRoomOxygen(), 10000);
 
   delete r1;
   delete r2;

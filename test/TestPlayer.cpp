@@ -41,7 +41,7 @@ TEST(TestPlayer, spaceSuitTest) {
   p->getInventory()->giveSpaceSuit();
 
   EXPECT_TRUE(p->hasSpaceSuit());
-  EXPECT_EQ(p->getInventory()->getOxygen(), 1);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 10000);
 
   p->getInventory()->setOxygen(5000);
 
@@ -111,9 +111,9 @@ TEST(TestPlayer, oxygenTest) {
   EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 4500);
 
   d1->propagateOxygen();
-  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 4750);
+  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 2250);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 4250);
+  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 1750);
 
   delete p;
   delete d1;
