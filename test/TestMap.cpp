@@ -27,6 +27,8 @@ TEST(TestMap, getRoomTest) {
   delete r;
 }
 
+//TODO(mart2720): Exceptions could maybe thrown in the next two sets of tests
+
 TEST(TestMap, setAllRoomOxygenTest) {
   Map* m = new Map();
   Room* r1 = new Room();
@@ -40,6 +42,34 @@ TEST(TestMap, setAllRoomOxygenTest) {
   m->setAllRoomOxygen(0.55);
   EXPECT_EQ(m->getMapOxygen(), 0.55);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.55);
+
+  delete m;
+  delete r1;
+  delete r2;
+}
+
+TEST(TestMap, calculateMapOxygenTest) {
+  Map* m = new Map();
+  Room* r1 = new Room();
+  Room* r2 = new Room();
+
+  r2->setRoomOxygen(0.5);
+  m->addRoom(r1);
+  m->addRoom(r2);
+  m->calculateMapOxygen();
+  EXPECT_EQ(m->getMapOxygen(), 0.75);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.5);
+
+  r2->setRoomOxygen(-0.1);
+  EXPECT_EQ(m->getMapOxygen(), 0.75);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.5);
+
+  r2->setRoomOxygen(100.01);
+  EXPECT_EQ(m->getMapOxygen(), 0.75);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.5);
 
   delete m;
   delete r1;
