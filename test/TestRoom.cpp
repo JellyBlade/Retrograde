@@ -63,9 +63,9 @@ TEST(TestRoom, setterGetterTest) {
   r1->setRoomOxygen(1.01);
   EXPECT_EQ(r1->getRoomOxygen(), 1.0);
 
-  r1->setRoomOxygen(-INT_MAX);
+  r1->setRoomOxygen(-10000000000);
   EXPECT_EQ(r1->getRoomOxygen(), 0);
-  r1->setRoomOxygen(INT_MAX);
+  r1->setRoomOxygen(10000000000);
   EXPECT_EQ(r1->getRoomOxygen(), 1.0);
 
 
