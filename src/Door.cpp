@@ -59,7 +59,7 @@ void Door::propagateOxygen() {
     double secOxy = rooms.second->getRoomOxygen();
     if (firOxy == 0 && secOxy == 0) { return; }
 
-    double avg = std::round((firOxy + secOxy) / 2) * 1000) / 1000;
+    double avg = std::round(((firOxy + secOxy) / 2) * 1000) / 1000;
     if (avg <= 0.01) { avg = 0; }
 
     if (firOxy == 0) {
