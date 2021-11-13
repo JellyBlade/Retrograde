@@ -37,7 +37,7 @@ void Inventory::setOxygen(int o) {
 
 void Inventory::addObject(Object* object) {
   if (!object->isHoldable()) {
-    std::cout << "You cannot pick that up.";
+    std::cout << "You cannot pick that up." << std::endl;
     return;
   }
   ObjectContainer::addObject(object);

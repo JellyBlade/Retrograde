@@ -84,7 +84,7 @@ TEST(TestPlayer, oxygenTest) {
   EXPECT_TRUE(p->useOxygen());
   EXPECT_EQ(r1->getRoomOxygen(), 9500);
 
-  r1->setRoomOxygen(0.05);
+  r1->setRoomOxygen(500);
   EXPECT_TRUE(p->useOxygen());
   EXPECT_EQ(r1->getRoomOxygen(), 0);
 
