@@ -48,13 +48,13 @@ class Map {
   * Returns the map's average oxygen level.
   * @return double representing the mean of every room's oxygen.
   */
-  double getMapOxygen();
+  int getMapOxygen();
 
   /**
   * Sets every room in the environment's oxygen value to the given double.
   * Also sets mapOxygen to the same.
   */
-  void setAllRoomOxygen(double oxygen);
+  void setAllRoomOxygen(int oxygen);
 
   // TODO(hipt2720): This function could likely handle room oxygen propagation.
   /**
@@ -65,7 +65,7 @@ class Map {
  private:
   std::vector<Room*> rooms;
   std::vector<Door*> doors;
-  double mapOxygen;
+  int mapOxygen;
 };
 
 #endif // MAP_H

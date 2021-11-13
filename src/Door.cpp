@@ -6,7 +6,6 @@
 #include <vector>
 #include <string>
 #include <utility>
-#include <cmath>
 #include "Door.h"
 
 Door::Door(Room* first, Room* second) : blocked{false}, blockedReason{""} {
@@ -55,12 +54,12 @@ void Door::unblockDoor() {
 
 void Door::propagateOxygen() {
   if (!blocked) {
-    double firOxy = rooms.first->getRoomOxygen();
-    double secOxy = rooms.second->getRoomOxygen();
+    int firOxy = rooms.first->getRoomOxygen();
+    int secOxy = rooms.second->getRoomOxygen();
     if (firOxy == 0 && secOxy == 0) { return; }
 
-    double avg = std::round(((firOxy + secOxy) / 2) * 1000) / 1000;
-    if (avg <= 0.01) { avg = 0; }
+    int avg = (firOxy + secOxy) / 2;
+    if (avg <= 100) { avg = 0; }
 
     if (firOxy == 0) {
       rooms.second->setRoomOxygen(avg);

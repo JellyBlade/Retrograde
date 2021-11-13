@@ -54,19 +54,19 @@ TEST(TestRoom, setterGetterTest) {
   r1->getRoomObjects()->addObject(o1);
   EXPECT_EQ(r1->getRoomObjects()->size(), 1);
 
-  EXPECT_EQ(r1->getRoomOxygen(), 1.0);
-  r1->setRoomOxygen(0.45);
-  EXPECT_EQ(r1->getRoomOxygen(), 0.45);
+  EXPECT_EQ(r1->getRoomOxygen(), 10000);
+  r1->setRoomOxygen(4500);
+  EXPECT_EQ(r1->getRoomOxygen(), 4500);
 
-  r1->setRoomOxygen(-0.1);
+  r1->setRoomOxygen(-1);
   EXPECT_EQ(r1->getRoomOxygen(), 0);
-  r1->setRoomOxygen(1.01);
-  EXPECT_EQ(r1->getRoomOxygen(), 1.0);
+  r1->setRoomOxygen(10001);
+  EXPECT_EQ(r1->getRoomOxygen(), 10000);
 
-  r1->setRoomOxygen(-10000000000);
+  r1->setRoomOxygen(-1000000);
   EXPECT_EQ(r1->getRoomOxygen(), 0);
-  r1->setRoomOxygen(10000000000);
-  EXPECT_EQ(r1->getRoomOxygen(), 1.0);
+  r1->setRoomOxygen(1000000);
+  EXPECT_EQ(r1->getRoomOxygen(), 10000);
 
 
   r1->changeDoor(d1, Globals::Direction::NORTH);

@@ -30,6 +30,15 @@ namespace TextHelper {
   void commandProcessor(std::string command);
 
   /**
+  * Turns the given integer into a fake percentage with two decimals of
+  * precision by adding a decimal place two places from the last digit.
+  * (10000 -> 100.00, 5500 -> 55.00)
+  * @param i int to turn into a fake percentage.
+  * @return a fake percentage version of the input integer.
+  */
+  std::string makePercent(int i);
+
+  /**
   * Replaces all characters in the string with their lowercase counterparts.
   * @param s the string to turn into lowercase
   * @return a lowercase version of the input string.

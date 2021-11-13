@@ -80,32 +80,34 @@ TEST(TestDoor, propagateOxygenTest) {
   Door* d1 = new Door(r1, r2);
 
   // Blocked door
-  r1->setRoomOxygen(0.5);
+  r1->setRoomOxygen(5000);
   d1->blockDoor("test");
   d1->propagateOxygen();
-  EXPECT_NEAR(r1->getRoomOxygen(), 0.5, 0.01);
-  EXPECT_NEAR(r2->getRoomOxygen(), 1.0, 0.01);
+  EXPECT_EQ(r1->getRoomOxygen(), 5000);
+  EXPECT_EQ(r2->getRoomOxygen(), 10000);
 
   // Unblocked
   d1->unblockDoor();
   d1->propagateOxygen();
   EXPECT_EQ(r1->getRoomOxygen(), r2->getRoomOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0.75, 0.01);
-  EXPECT_NEAR(r2->getRoomOxygen(), 0.75, 0.01);
+  EXPECT_EQ(r1->getRoomOxygen(), 7500);
+  EXPECT_EQ(r2->getRoomOxygen(), 7500);
+
   d1->propagateOxygen();
-  EXPECT_NEAR(r1->getRoomOxygen(), 0.75, 0.01);
-  EXPECT_NEAR(r2->getRoomOxygen(), 0.75, 0.01);
-  r1->setRoomOxygen(0.5);
+  EXPECT_EQ(r1->getRoomOxygen(), 7500);
+  EXPECT_EQ(r2->getRoomOxygen(), 7500);
+
+  r1->setRoomOxygen(5000);
   d1->propagateOxygen();
-  EXPECT_NEAR(r1->getRoomOxygen(), 0.625, 0.01);
-  EXPECT_NEAR(r2->getRoomOxygen(), 0.625, 0.01);
+  EXPECT_EQ(r1->getRoomOxygen(), 6250);
+  EXPECT_EQ(r2->getRoomOxygen(), 6250);
 
   // One room is vacuum
   r1->setRoomOxygen(0);
-  r2->setRoomOxygen(1);
+  r2->setRoomOxygen(10000);
   d1->propagateOxygen();
   EXPECT_EQ(r1->getRoomOxygen(), 0);
-  EXPECT_NEAR(r2->getRoomOxygen(), 0.5, 0.01);
+  EXPECT_EQ(r2->getRoomOxygen(), 5000);
 
   // Both rooms are vacuum.
   r1->setRoomOxygen(0);
@@ -116,7 +118,7 @@ TEST(TestDoor, propagateOxygenTest) {
 
   // Round down to vacuum
   r1->setRoomOxygen(0);
-  r2->setRoomOxygen(0.015);
+  r2->setRoomOxygen(150);
   d1->propagateOxygen();
   EXPECT_EQ(r1->getRoomOxygen(), 0);
   EXPECT_EQ(r2->getRoomOxygen(), 0);

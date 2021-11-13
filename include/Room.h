@@ -39,12 +39,12 @@ class Room : public NamedThing {
   * Returns the amount of oxygen remaining in this room.
   * @return a double for the oxygen level.
   */
-  double getRoomOxygen();
+  int getRoomOxygen();
 
   /**
   * Sets the room's oxygen level to the given double.
   */
-  void setRoomOxygen(double oxygen);
+  void setRoomOxygen(int oxygen);
 
   /**
   * Returns the this room's door in the given direction.
@@ -65,7 +65,7 @@ class Room : public NamedThing {
   void changeDoor(Door* door, Globals::Direction direction);
 
  private:
-  double roomOxygen;
+  int roomOxygen;
   ObjectContainer* roomObjects;
   std::map <Globals::Direction, Door*> doors;
 };

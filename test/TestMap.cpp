@@ -37,11 +37,11 @@ TEST(TestMap, setAllRoomOxygenTest) {
   m->addRoom(r1);
   m->addRoom(r2);
   m->calculateMapOxygen();
-  EXPECT_EQ(m->getMapOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
-  m->setAllRoomOxygen(0.55);
-  EXPECT_EQ(m->getMapOxygen(), 0.55);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 0.55);
+  EXPECT_EQ(m->getMapOxygen(), 10000);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 10000);
+  m->setAllRoomOxygen(5500);
+  EXPECT_EQ(m->getMapOxygen(), 5500);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 5500);
 
   delete m;
   delete r1;
@@ -53,25 +53,25 @@ TEST(TestMap, calculateMapOxygenTest) {
   Room* r1 = new Room();
   Room* r2 = new Room();
 
-  r2->setRoomOxygen(0.5);
+  r2->setRoomOxygen(5000);
   m->addRoom(r1);
   m->addRoom(r2);
   m->calculateMapOxygen();
-  EXPECT_EQ(m->getMapOxygen(), 0.75);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0.5);
+  EXPECT_EQ(m->getMapOxygen(), 7500);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 10000);
+  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 5000);
 
-  r2->setRoomOxygen(-0.1);
+  r2->setRoomOxygen(-1);
   m->calculateMapOxygen();
-  EXPECT_EQ(m->getMapOxygen(), 0.5);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
+  EXPECT_EQ(m->getMapOxygen(), 5000);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 10000);
   EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 0);
 
-  r2->setRoomOxygen(100.01);
+  r2->setRoomOxygen(10001);
   m->calculateMapOxygen();
-  EXPECT_EQ(m->getMapOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 1.0);
-  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 1.0);
+  EXPECT_EQ(m->getMapOxygen(), 10000);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 10000);
+  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 10000);
 
   delete m;
   delete r1;

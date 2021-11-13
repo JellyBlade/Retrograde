@@ -16,6 +16,29 @@ TEST(TestTextHelper, commandProcessorTest) {
   TextHelper::commandProcessor("WIP");
 }
 
+TEST(TestTextHelper, makePercentTest) {
+  int i = 10000;
+  EXPECT_EQ(TextHelper::makePercent(i), "100.00%");
+
+  i = 5000;
+  EXPECT_EQ(TextHelper::makePercent(i), "50.00%");
+
+  i = 500;
+  EXPECT_EQ(TextHelper::makePercent(i), "5.00%");
+
+  i = 50;
+  EXPECT_EQ(TextHelper::makePercent(i), "0.50%");
+
+  i = 5;
+  EXPECT_EQ(TextHelper::makePercent(i), "0.05%");
+
+  i = 4839;
+  EXPECT_EQ(TextHelper::makePercent(i), "48.39%");
+
+  i = 4839;
+  EXPECT_EQ(TextHelper::makePercent(i / 2), "24.19%");
+}
+
 TEST(TestTextHelper, tolowerTest) {
   std::string s = "Test";
   EXPECT_NE(s, "test");

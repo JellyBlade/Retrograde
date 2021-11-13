@@ -44,13 +44,13 @@ bool Player::useOxygen() {
   // if (currentRoom == NULL) { throw exception; }
   // TODO(hipt2720): Make this use a constant/difficulty value or something.
   if (hasSpaceSuit() && currentRoom->getRoomOxygen() == 0) {
-    if (inventory->getOxygen() < 0.05) {
+    if (inventory->getOxygen() < 500) {
       return false;
     }
-    inventory->setOxygen(inventory->getOxygen() - 0.05);
+    inventory->setOxygen(inventory->getOxygen() - 500);
     return true;
   }
   if (currentRoom->getRoomOxygen() == 0) { return false; }
-  currentRoom->setRoomOxygen(currentRoom->getRoomOxygen() - 0.05);
+  currentRoom->setRoomOxygen(currentRoom->getRoomOxygen() - 500);
   return true;
 }

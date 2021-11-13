@@ -31,11 +31,11 @@ std::vector<Door*> Map::getDoors() {
   return doors;
 }
 
-double Map::getMapOxygen() {
+int Map::getMapOxygen() {
   return mapOxygen;
 }
 
-void Map::setAllRoomOxygen(double oxygen) {
+void Map::setAllRoomOxygen(int oxygen) {
   // if(rooms.size() == 0) { throw exception; }
   for (Room* r : rooms) {
     r->setRoomOxygen(oxygen);
@@ -46,7 +46,7 @@ void Map::setAllRoomOxygen(double oxygen) {
 void Map::calculateMapOxygen() {
   // if (room.size() == 0) { throw exception; }
   // if (doors.size() == 0) { throw exception; }
-  double temp = 0;
+  int temp = 0;
   for (Door* d : doors) {
     d->propagateOxygen();
   }

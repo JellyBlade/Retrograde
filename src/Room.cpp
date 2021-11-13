@@ -14,7 +14,7 @@
 #include "Globals.h"
 #include "ObjectContainer.h"
 
-Room::Room(std::string n, std::string d) : roomOxygen{1.0} {
+Room::Room(std::string n, std::string d) : roomOxygen{10000} {
   setName(n);
   setDescription(d);
   roomObjects = new ObjectContainer();
@@ -28,20 +28,18 @@ ObjectContainer* Room::getRoomObjects() {
   return roomObjects;
 }
 
-double Room::getRoomOxygen() {
+int Room::getRoomOxygen() {
   return roomOxygen;
 }
 
-void Room::setRoomOxygen(double oxygen) {
+void Room::setRoomOxygen(int oxygen) {
   //TODO(mart2720): Throw exception if oxygen is out of range?
   if (oxygen <= 0)
     roomOxygen = 0;
-  else if (oxygen >= 1.0)
-    roomOxygen = 1.0;
-  else {
-    // fix floating-point issues by rounding to 3 decimal places.
-    roomOxygen = std::round(oxygen * 1000) / 1000;
-  }
+  else if (oxygen >= 10000)
+    roomOxygen = 10000;
+  else
+    roomOxygen = oxygen;
 }
 
 Door* Room::getDoor(Globals::Direction direction) {

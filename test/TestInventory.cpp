@@ -23,10 +23,10 @@ TEST(TestInventory, spaceSuitTest) {
 
   i->giveSpaceSuit();
   EXPECT_TRUE(i->hasSpaceSuit());
-  EXPECT_EQ(i->getOxygen(), 1);
+  EXPECT_EQ(i->getOxygen(), 10000);
 
-  i->setOxygen(0.5);
-  EXPECT_EQ(i->getOxygen(), 0.5);
+  i->setOxygen(5000);
+  EXPECT_EQ(i->getOxygen(), 5000);
 
   delete i;
 }
@@ -34,7 +34,7 @@ TEST(TestInventory, spaceSuitTest) {
 TEST(TestInventory, addObjectTest) {
   Inventory* i = new Inventory();
   Object* o1 = new Object("Small key", "It's small and key-ish", true);
-  Object* o2 = new Object("Literally a planet", "How is this in a room?", false);
+  Object* o2 = new Object("Literally a planet", "How is this in here?", false);
 
   EXPECT_EQ(i->size(), 0);
 

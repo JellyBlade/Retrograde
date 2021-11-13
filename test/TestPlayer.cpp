@@ -36,16 +36,16 @@ TEST(TestPlayer, spaceSuitTest) {
   Player* p = new Player();
 
   EXPECT_FALSE(p->hasSpaceSuit());
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 0, 0.01);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 0);
 
   p->getInventory()->giveSpaceSuit();
 
   EXPECT_TRUE(p->hasSpaceSuit());
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 1, 0.01);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 1);
 
-  p->getInventory()->setOxygen(0.5);
+  p->getInventory()->setOxygen(5000);
 
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 0.5, 0.01);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 5000);
 
   delete p;
 }
@@ -82,38 +82,38 @@ TEST(TestPlayer, oxygenTest) {
 
   p->setCurrentRoom(r1);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0.95, 0.001);
+  EXPECT_EQ(r1->getRoomOxygen(), 9500);
 
   r1->setRoomOxygen(0.05);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0, 0.001);
+  EXPECT_EQ(r1->getRoomOxygen(), 0);
 
   r1->setRoomOxygen(0);
   EXPECT_FALSE(p->useOxygen());
-  EXPECT_NEAR(r1->getRoomOxygen(), 0, 0.001);
+  EXPECT_EQ(r1->getRoomOxygen(), 0);
 
   p->getInventory()->giveSpaceSuit();
-  EXPECT_EQ(p->getInventory()->getOxygen(), 1);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 10000);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 0.95, 0.001);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 9500);
 
-  p->getInventory()->setOxygen(0.05);
+  p->getInventory()->setOxygen(500);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getInventory()->getOxygen(), 0, 0.001);
+  EXPECT_EQ(p->getInventory()->getOxygen(), 0);
 
   p->getInventory()->setOxygen(0);
   EXPECT_FALSE(p->useOxygen());
 
   p->setCurrentRoom(r2);
   d1->propagateOxygen();
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.5, 0.001);
+  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 5000);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.45, 0.001);
+  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 4500);
 
   d1->propagateOxygen();
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.475, 0.001);
+  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 4750);
   EXPECT_TRUE(p->useOxygen());
-  EXPECT_NEAR(p->getCurrentRoom()->getRoomOxygen(), 0.425, 0.001);
+  EXPECT_EQ(p->getCurrentRoom()->getRoomOxygen(), 4250);
 
   delete p;
   delete d1;

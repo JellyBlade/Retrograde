@@ -20,6 +20,18 @@ void TextHelper::commandProcessor(std::string command) {
   return;
 }
 
+std::string TextHelper::makePercent(int i) {
+  std::string s = std::to_string(i);
+  if (i < 100) {
+    s.insert(s.begin(), '0');
+  }
+  if (i < 10) {
+    s.insert(s.begin(), '0');
+  }
+  s.insert(s.end() - 2, '.');
+  return s + "%";
+}
+
 std::string TextHelper::tolower(std::string s) {
   if (s.size() <= 0 ) { return ""; }
   for (auto& c : s) {

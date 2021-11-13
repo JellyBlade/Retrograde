@@ -4,7 +4,6 @@
 */
 
 #include <iostream>
-#include <cmath>
 
 #include "Inventory.h"
 
@@ -19,21 +18,21 @@ Inventory::~Inventory() {
 
 void Inventory::giveSpaceSuit() {
   spaceSuitAcquired = true;
-  oxygen = 1;
+  oxygen = 10000;
 }
 
 bool Inventory::hasSpaceSuit() {
   return spaceSuitAcquired;
 }
 
-double Inventory::getOxygen() {
+int Inventory::getOxygen() {
   return oxygen;
 }
 
-void Inventory::setOxygen(double o) {
+void Inventory::setOxygen(int o) {
   if (o < 0) { oxygen = 0; }
-  if (o > 1) { oxygen = 1; }
-  oxygen = std::round(o * 1000) / 1000;
+  if (o > 10000) { oxygen = 10000; }
+  oxygen = o;
 }
 
 void Inventory::addObject(Object* object) {
