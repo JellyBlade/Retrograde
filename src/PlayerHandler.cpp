@@ -109,7 +109,6 @@ bool PlayerHandler::pickUp(std::string pickUp) {
   // here so that we don't need to do this inventory size hack.
   Object* object = room->getRoomObjects()->getObject(pickUp);
   int size = player->getInventory()->size();
-  
   player->getInventory()->addObject(object);
   if (player->getInventory()->size() > size) {
       room->getRoomObjects()->removeObject(object);
