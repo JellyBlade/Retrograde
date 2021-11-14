@@ -3,6 +3,8 @@
 * @date 2021-11
 */
 
+#include <vector>
+
 #include "Game.h"
 #include "Room.h"
 #include "Door.h"
