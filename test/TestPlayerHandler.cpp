@@ -49,8 +49,8 @@ TEST(TestPlayerHandler, movePlayerTest) {
 
 TEST(TestPlayerHandler, examineTest) {
   Room* r1 = new Room("Boiler room", "It is swelteringly hot and humid.");
-  Object* o1 = new Object("Crescent Wrench", "Good for tightening bolts.");
-  Object* o2 = new Object("Box of boilery stuff", "All sorts of things in it.");
+  Object* o1 = new Object("Crescent Wrench", "For tightening bolts.");
+  Object* o2 = new Object("Box of Boilery Stuff", "All sorts of things in it.");
   Object* o3 = new Object("Apple", "It has a bite taken out of it. Gross!");
   PlayerHandler* ph = new PlayerHandler();
 
@@ -67,7 +67,7 @@ TEST(TestPlayerHandler, examineTest) {
 
 TEST(TestPlayerHandler, pickUpTest) {
   Room* r1 = new Room("Boiler room", "It is swelteringly hot and humid.");
-  Object* o1 = new Object("Crescent Wrench", "Good for tightening bolts.");
+  Object* o1 = new Object("Crescent Wrench", "For tightening bolts.", true);
   PlayerHandler* ph = new PlayerHandler();
 
   ph->getPlayer()->setCurrentRoom(r1);

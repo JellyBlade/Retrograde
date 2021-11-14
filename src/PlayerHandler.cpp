@@ -78,8 +78,8 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
 
   // Door is blocked.
   if (currentRoom->getDoor(direction)->isDoorBlocked()) {
-    cout << "You cannot go that way. ";
-    cout << currentRoom->getDoor(direction)->getBlockedReason();
+    cout << "You cannot go that way: ";
+    cout << currentRoom->getDoor(direction)->getBlockedReason() << endl;
     return false;
   }
 
@@ -90,7 +90,7 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
 
 void PlayerHandler::examine() {
   Room* currentRoom = player->getCurrentRoom();
-  cout << "You are in the " << currentRoom->getName() << ".";
+  cout << "You are in the " << currentRoom->getName() << "." << endl;
   cout << currentRoom->getDescription() << endl;
 
   cout << "Looking around the room, you see";
