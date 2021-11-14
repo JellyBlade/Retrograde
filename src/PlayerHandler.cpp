@@ -61,6 +61,8 @@ void PlayerHandler::input() {
       if (drop(param)) {
         turnEnded = true;
       }
+    } else {
+      cout << "You can't do that here." << endl;
     }
   }
 }
