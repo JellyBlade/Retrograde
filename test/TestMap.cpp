@@ -73,6 +73,10 @@ TEST(TestMap, calculateMapOxygenTest) {
   Map* m = new Map();
   Room* r1 = new Room();
   Room* r2 = new Room();
+  Room* r3 = new Room();
+  Door* d1 = new Door(r1, r2);
+  Door* d2 = new Door(r2, r3);
+  Door* d3 = new Door(r1, r3);
 
   r2->setRoomOxygen(5000);
   m->addRoom(r1);
@@ -93,6 +97,17 @@ TEST(TestMap, calculateMapOxygenTest) {
   EXPECT_EQ(m->getMapOxygen(), 10000);
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 10000);
   EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 10000);
+
+  m->addRoom(r3);
+  m->addDoor(d1);
+  m->addDoor(d2);
+  m->addDoor(d3);
+  r3->setRoomOxygen(0);
+  m->calculateMapOxygen();
+  EXPECT_EQ(m->getMapOxygen(), 3333);
+  EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 5000);
+  EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 5000);
+  EXPECT_EQ(m->getRooms().at(2)->getRoomOxygen(), 0);
 
   delete m;
 }
