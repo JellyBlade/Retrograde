@@ -24,7 +24,30 @@ TEST(TestMap, getRoomTest) {
   EXPECT_EQ(m->getRoom("Room"), nullptr);
 
   delete m;
-  delete r;
+}
+
+TEST(TestMap, getDoorsTest) {
+  Map* m = new Map();
+  Room* r1 = new Room();
+  Room* r2 = new Room();
+  Room* r3 = new Room();
+  Door* d1 = new Door(r1, r2);
+  Door* d2 = new Door(r1, r3);
+  Door* d3 = new Door(r2, r3);
+
+  m->addRoom(r1);
+  m->addRoom(r2);
+  m->addRoom(r3);
+
+  m->addDoor(d1);
+  m->addDoor(d2);
+  m->addDoor(d3);
+
+  EXPECT_EQ(m->getDoors().size(), 3);
+  EXPECT_EQ(m->getDoors()[0], d1);
+  EXPECT_EQ(m->getDoors()[2], d3);
+
+  delete m;
 }
 
 //TODO(mart2720): Exceptions could maybe thrown in the next two sets of tests
@@ -44,8 +67,6 @@ TEST(TestMap, setAllRoomOxygenTest) {
   EXPECT_EQ(m->getRooms().at(0)->getRoomOxygen(), 5500);
 
   delete m;
-  delete r1;
-  delete r2;
 }
 
 TEST(TestMap, calculateMapOxygenTest) {
@@ -74,6 +95,4 @@ TEST(TestMap, calculateMapOxygenTest) {
   EXPECT_EQ(m->getRooms().at(1)->getRoomOxygen(), 10000);
 
   delete m;
-  delete r1;
-  delete r2;
 }

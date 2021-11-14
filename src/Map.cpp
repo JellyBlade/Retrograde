@@ -10,6 +10,17 @@
 #include "Map.h"
 #include "TextHelper.h"
 
+Map::~Map() {
+  for (Room* r : rooms) {
+    delete r;
+  }
+  for (Door* d : doors) {
+    delete d;
+  }
+  rooms.clear();
+  doors.clear();
+}
+
 //TODO(mart2720): Should this funciton and setAllRoomOxygen throw
 // exceptions if there are no elements in the vectors?
 Room* Map::getRoom(std::string n) {

@@ -109,6 +109,12 @@ TEST(TestDoor, propagateOxygenTest) {
   EXPECT_EQ(r1->getRoomOxygen(), 0);
   EXPECT_EQ(r2->getRoomOxygen(), 5000);
 
+  r1->setRoomOxygen(5000);
+  r2->setRoomOxygen(0);
+  d1->propagateOxygen();
+  EXPECT_EQ(r1->getRoomOxygen(), 2500);
+  EXPECT_EQ(r2->getRoomOxygen(), 0);
+
   // Both rooms are vacuum.
   r1->setRoomOxygen(0);
   r2->setRoomOxygen(0);

@@ -15,6 +15,11 @@
 class Map {
  public:
   /**
+  * Destructor. Deletes all rooms and doors in the game environment.
+  */
+  ~Map();
+
+  /**
   * Returns the Room matching the given name.
   * @return the Room with the same name given, or a nullptr.
   */
