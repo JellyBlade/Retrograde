@@ -7,6 +7,8 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <vector>
+
 #include "TextHelper.h"
 
 

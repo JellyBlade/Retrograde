@@ -4,6 +4,8 @@
 */
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include "PlayerHandler.h"
 #include "TextHelper.h"

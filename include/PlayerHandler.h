@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include "Player.h"
 #include "NPC.h"
