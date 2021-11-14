@@ -107,9 +107,15 @@ bool PlayerHandler::pickUp(std::string pickUp) {
   }
   // TODO(hipt2720): Refactor Inventory::addObject(), move the isHoldable check
   // here so that we don't need to do this inventory size hack.
+  Object* object = room->getRoomObjects()->getObject(pickUp);
   int size = player->getInventory()->size();
-  player->getInventory()->addObject(room->getRoomObjects()->getObject(pickUp));
-  return player->getInventory()->size() > size ? true : false;
+  
+  player->getInventory()->addObject(object);
+  if (player->getInventory()->size() > size) {
+      room->getRoomObjects()->removeObject(object);
+      return true;
+  }
+  return false;
 }
 
 bool PlayerHandler::drop(std::string drop) {
