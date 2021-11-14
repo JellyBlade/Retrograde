@@ -31,12 +31,7 @@ class Game {
   * Returns the npcs in the game.
   * @return vector<NPC> npcs that are in the game
   */
-  vector<NPC*> getNPC();
-
-  /**
-  * Calls each door to propogateOxygen().
-  */
-  void oxygenCalc();
+  std::vector<NPC*> getNPCs();
 
   /**
   * Prompt the user for actions they want to perform.
@@ -65,7 +60,7 @@ class Game {
   void generateNPCs();
 
  private:
-  vector<NPC*> npcs;
+  std::vector<NPC*> npcs;
   Map* map;
   PlayerHandler* player;
 };

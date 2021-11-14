@@ -1,8 +1,8 @@
-
-//Dummy file to please the makefile
-
-#include <iostream>
+#include "Game.h"
 
 int main() {
-  return 0;
+  Game* game = new Game();
+  game->generateMap();
+  game->playerTurn();
+  delete game;
 }

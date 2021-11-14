@@ -60,6 +60,7 @@ std::string TextHelper::listObjects(std::vector<Object*> objects) {
 
 bool TextHelper::startsWithVowel(std::string s) {
   char c = tolower(trim(s))[0];
+  if (!isalpha(c)) { c = tolower(trim(s))[1]; }
   return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
