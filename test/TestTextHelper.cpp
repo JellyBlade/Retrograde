@@ -4,6 +4,7 @@
 */
 
 #include <string>
+#include <vector>
 
 #include "TextHelper.h"
 #include "gtest/gtest.h"

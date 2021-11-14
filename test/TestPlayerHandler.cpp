@@ -113,5 +113,5 @@ TEST(TestPlayerHandler, dropTest) {
 
 TEST(TestPlayerHandler, getNPCsInCurrentRoomTest) {
   PlayerHandler* ph = new PlayerHandler();
-  ph->getNPCsInCurrentRoom();
+  EXPECT_EQ(ph->getNPCsInCurrentRoom().size(), 0);
 }
