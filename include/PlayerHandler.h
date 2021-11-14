@@ -43,20 +43,27 @@ class PlayerHandler {
   /**
   * Moves the player between rooms using the door in the given direction.
   * @param direction the cardinal direction to go.
+  * @return true if the player has successfully been moved, false otherwise.
   */
-  void movePlayer(Globals::Direction direction);
+  bool movePlayer(Globals::Direction direction);
+
+  /**
+  * Outputs the room's name and description to the screen, and lists off
+  * the objects in the room.
+  */
+  void examine();
 
   /**
   * Picks up the given object from the room, adding it the player's inventory.
-  * @param pickUp the object to pick up.
+  * @param pickUp the name of the object to pick up.
   */
-  void pickUp(Object* pickUp);
+  bool pickUp(std::string pickUp);
 
   /**
   * Drops the given object from the player's inventory into the room.
-  * @param drop the object to drop.
+  * @param drop the name of the object to drop.
   */
-  void drop(Object* drop);
+  bool drop(std::string drop);
 
   // TODO(hipt2720): Should this function be moved somewhere else?
   /**
@@ -64,7 +71,7 @@ class PlayerHandler {
   * @return a vector containing all of the NPCs in the player's current room.
   * May be empty.
   */
-  vector<NPC*> getNPCsInCurrentRoom();
+  std::vector<NPC*> getNPCsInCurrentRoom();
 
  private:
   Player* player;

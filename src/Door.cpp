@@ -21,10 +21,7 @@ std::pair<Room*, Room*> Door::getRooms() {
 
 Room* Door::getOtherRoom(Room* room) {
   if (!isConnectedTo(room)) { return nullptr; }
-  if (room == rooms.first) {
-    return rooms.second;
-  }
-  return rooms.first;
+  return room == rooms.first ? rooms.second : rooms.first;
 }
 
 bool Door::isConnectedTo(Room* room) {

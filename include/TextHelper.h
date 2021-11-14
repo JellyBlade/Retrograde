@@ -8,6 +8,9 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+
+#include "Object.h"
 
 /**
 * Provides functions for handling file reading, command strings, and modifying
@@ -37,6 +40,21 @@ namespace TextHelper {
   * @return a fake percentage version of the input integer.
   */
   std::string makePercent(int i);
+
+  /**
+  * Formats all of the object names in the list into a cohesive sentence.
+  * @param objects the objects to list off.
+  * @return a drop-in sentence that lists off all of the objects given, ending
+  * with appropriate punctuation and grammar.
+  */
+  std::string listObjects(std::vector<Object*> objects);
+
+  /**
+  * Determines if the string starts with a vowel.
+  * @param s the string to check.
+  * @return true if the string starts with a vowel, false otherwise.
+  */
+  bool startsWithVowel(std::string s);
 
   /**
   * Replaces all characters in the string with their lowercase counterparts.

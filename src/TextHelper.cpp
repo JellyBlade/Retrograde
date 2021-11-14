@@ -32,6 +32,35 @@ std::string TextHelper::makePercent(int i) {
   return s + "%";
 }
 
+std::string TextHelper::listObjects(std::vector<Object*> objects) {
+  std::string s = "";
+  switch (objects.size()) {
+    case 0:
+      s = " it is empty.";
+      return s;
+    case 1:
+      s = startsWithVowel(objects[0]->getName()) ? " an " : " a ";
+      s += objects[0]->getName() + ".";
+      return s;
+    default:
+      for (Object* o : objects) {
+        if (o == objects.back()) {
+          s += startsWithVowel(o->getName()) ? " and an " : " and a ";
+          s += o->getName() + ".";
+          continue;
+        }
+        s += startsWithVowel(o->getName()) ? " an " : " a ";
+        s += o->getName() + ",";
+      }
+      return s;
+  }
+}
+
+bool TextHelper::startsWithVowel(std::string s) {
+  char c = tolower(trim(s))[0];
+  return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
 std::string TextHelper::tolower(std::string s) {
   if (s.size() <= 0 ) { return ""; }
   for (auto& c : s) {

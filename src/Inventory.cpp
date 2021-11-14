@@ -41,4 +41,5 @@ void Inventory::addObject(Object* object) {
     return;
   }
   ObjectContainer::addObject(object);
+  std::cout << object->getName() << " has been added to your inventory.";
 }
