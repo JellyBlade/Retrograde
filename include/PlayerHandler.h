@@ -55,14 +55,29 @@ class PlayerHandler {
   void examine();
 
   /**
+  * Looks at the given object in the room, giving a description of it.
+  * @param look the name of the object to look at.
+  * @return true if the object was successfully looked at, false otherwise.
+  */
+  bool look(std::string look);
+
+  /**
+  * Displays all of the item's in the player's inventory in a bullet-point list.
+  *
+  */
+  void showInventory();
+
+  /**
   * Picks up the given object from the room, adding it the player's inventory.
   * @param pickUp the name of the object to pick up.
+  * @return true if the item was successfully picked up, false otherwise.
   */
   bool pickUp(std::string pickUp);
 
   /**
   * Drops the given object from the player's inventory into the room.
   * @param drop the name of the object to drop.
+  * @return true if the item was successfully dropped, false otherwise.
   */
   bool drop(std::string drop);
 

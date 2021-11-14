@@ -68,7 +68,7 @@ void Game::generateMap() {
   Door* d1 = new Door(r1, r2);
   Door* d2 = new Door(r2, r3);
   Object* o1 = new Object("Orb of Light",
-  "It's radiance is blinding.", true);
+  "Its radiance is blinding.", true);
   Object* o2 = new Object("Orb of Dark",
   "It is seemingly devouring all nearby light.", true);
   Object* o3 = new Object("Statue of Light",
@@ -85,14 +85,15 @@ void Game::generateMap() {
   "It has the logo of some company, but the name is in a language that is "
   "undecipherable.", true);
   Object* o8 = new Object("Apple", "It has a bite taken out of it. Eww!", true);
-  Object* o9 = new Object("'Master Gear'", "This is clearly a cog.", true);
-  Object* o10 = new Object("'Apprentice Cog'", "This is clearly a flywheel.",
+  Object* o9 = new Object("Master Gear", "This is clearly a cog.", true);
+  Object* o10 = new Object("Apprentice Cog", "This is clearly a flywheel.",
    true);
-  Object* o11 = new Object("'Journeyman Flywheel'", "This is clearly a gear.",
+  Object* o11 = new Object("Journeyman Flywheel", "This is clearly a gear.",
    true);
-  Object* o12 = new Object("'Architects' Illustrated' Issue #218",
-  "There is a bipedal creature on the front, although it looks nothing like a"
-  " human.", true);
+  Object* o12 = new Object("Magazine",
+  "It's a copy of Architects' Illustrated, Issue #218."
+  " There is a bipedal creature on the front, although it looks nothing like a"
+  " human, and is dressed in some sort of engineer's attire.", true);
   Object* o13 = new Object("Suspicious Box", "It is highly suspect.");
   player->getPlayer()->setCurrentRoom(r1);
   r1->changeDoor(d1, Globals::Direction::NORTH);

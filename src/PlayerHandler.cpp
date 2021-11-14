@@ -31,7 +31,6 @@ void PlayerHandler::input() {
   std::string action, param;
   bool turnEnded = false;
   while (!turnEnded) {
-    cout << "What would you like to do?" << endl;
     cout << "> ";
     cin >> action;
     std::getline(std::cin, param);
@@ -55,6 +54,10 @@ void PlayerHandler::input() {
       }
     } else if (action == "examine") {
       examine();
+    } else if (action == "look") {
+      look(param);
+    } else if (action == "bag") {
+      showInventory();
     } else if (action == "help") {
       cout << "No help for you!" << endl;
     } else if (action == "drop") {
@@ -97,6 +100,28 @@ void PlayerHandler::examine() {
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());
   cout << endl;
   // List NPCs here
+}
+
+void PlayerHandler::showInventory() {
+  cout << "You look into your bag and find:" << endl;
+  for (Object* o : player->getInventory()->getObjects()) {
+    cout << " - " << o->getName() << endl;
+  }
+}
+
+bool PlayerHandler::look(std::string look) {
+  Room* currentRoom = player->getCurrentRoom();
+  if (!currentRoom->getRoomObjects()->isObjectInContainer(look)) {
+    cout << "You can't find that here." << endl;
+    return false;
+  }
+  Object* object = currentRoom->getRoomObjects()->getObject(look);
+  if (object->getDescription().back() == '.') {
+    cout << object->getDescription() << endl;
+    return true;
+  }
+  cout << object->getDescription() << "." << endl;
+  return true;
 }
 
 bool PlayerHandler::pickUp(std::string pickUp) {
