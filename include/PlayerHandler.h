@@ -50,16 +50,16 @@ class PlayerHandler {
 
   /**
   * Outputs the room's name and description to the screen, and lists off
-  * the objects in the room.
+  * the objects in the room, and possible directions to travel.
   */
-  void examine();
+  void look();
 
   /**
-  * Looks at the given object in the room, giving a description of it.
-  * @param look the name of the object to look at.
-  * @return true if the object was successfully looked at, false otherwise.
+  * Examines the given object in the room, giving a description of it.
+  * @param examine the name of the object to examine.
+  * @return true if the object was successfully examined, false otherwise.
   */
-  bool look(std::string look);
+  bool examine(std::string examine);
 
   /**
   * Displays all of the item's in the player's inventory in a bullet-point list.

@@ -47,7 +47,7 @@ TEST(TestPlayerHandler, movePlayerTest) {
   delete ph;
 }
 
-TEST(TestPlayerHandler, examineTest) {
+TEST(TestPlayerHandler, lookExamineTest) {
   Room* r1 = new Room("Boiler room", "It is swelteringly hot and humid.");
   Object* o1 = new Object("Crescent Wrench", "For tightening bolts.");
   Object* o2 = new Object("Box of Boilery Stuff", "All sorts of things in it.");
@@ -59,7 +59,14 @@ TEST(TestPlayerHandler, examineTest) {
   r1->getRoomObjects()->addObject(o3);
 
   ph->getPlayer()->setCurrentRoom(r1);
-  ph->examine();
+  ph->look();
+  ph->exame("crescent wrench");
+  ph->examine("box of boilery stuff");
+  ph->examine("    apple  ");
+  std::cout << "---Following examinations should fail---" << std::endl;
+  ph->examine(" a p p l e ");
+  ph->examine("box   of   boilery    stuff");
+  ph->examine("Croissant Wrench");
 
   delete r1;
   delete ph;

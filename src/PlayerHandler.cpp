@@ -52,10 +52,10 @@ void PlayerHandler::input() {
       } catch (std::exception e) {
         cout << "You cannot move that way." << endl;
       }
-    } else if (action == "examine") {
-      examine();
     } else if (action == "look") {
-      look(param);
+      look();
+    } else if (action == "examine") {
+      examine(param);
     } else if (action == "bag") {
       showInventory();
     } else if (action == "help") {
@@ -88,10 +88,12 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
 
   Room* newRoom = currentRoom->getDoor(direction)->getOtherRoom(currentRoom);
   player->setCurrentRoom(newRoom);
+  cout << "You move " << Globals::directionToString(direction) << ", entering ";
+  cout << "into the " << newRoom->getName() << "." << endl;
   return true;
 }
 
-void PlayerHandler::examine() {
+void PlayerHandler::look() {
   Room* currentRoom = player->getCurrentRoom();
   cout << "You are in the " << currentRoom->getName() << "." << endl;
   cout << currentRoom->getDescription() << endl;
@@ -109,13 +111,13 @@ void PlayerHandler::showInventory() {
   }
 }
 
-bool PlayerHandler::look(std::string look) {
+bool PlayerHandler::examine(std::string examine) {
   Room* currentRoom = player->getCurrentRoom();
-  if (!currentRoom->getRoomObjects()->isObjectInContainer(look)) {
+  if (!currentRoom->getRoomObjects()->isObjectInContainer(examine)) {
     cout << "You can't find that here." << endl;
     return false;
   }
-  Object* object = currentRoom->getRoomObjects()->getObject(look);
+  Object* object = currentRoom->getRoomObjects()->getObject(examine);
   if (object->getDescription().back() == '.') {
     cout << object->getDescription() << endl;
     return true;
