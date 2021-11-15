@@ -25,7 +25,7 @@ class AirLock : public Puzzle {
   * Default value is 0.0.
   */
   AirLock(std::string n = "Object", std::string d = "This object does nothing",
-  bool h = false, double o = 0.0);
+  bool h = false, int o = 0);
 
   /**
   * Check if the roomOxygen >= oxygenTarget
@@ -33,7 +33,7 @@ class AirLock : public Puzzle {
   void interact();
 
  private:
-  double oxygenTarget;
+  int oxygenTarget;
 };
 
 #endif

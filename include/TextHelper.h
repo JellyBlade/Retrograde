@@ -8,6 +8,9 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
+
+#include "Object.h"
 
 /**
 * Provides functions for handling file reading, command strings, and modifying
@@ -28,6 +31,30 @@ namespace TextHelper {
   * @param command the script command to parse and execute.
   */
   void commandProcessor(std::string command);
+
+  /**
+  * Turns the given integer into a fake percentage with two decimals of
+  * precision by adding a decimal place two places from the last digit.
+  * (10000 -> 100.00, 5500 -> 55.00)
+  * @param i int to turn into a fake percentage.
+  * @return a fake percentage version of the input integer.
+  */
+  std::string makePercent(int i);
+
+  /**
+  * Formats all of the object names in the list into a cohesive sentence.
+  * @param objects the objects to list off.
+  * @return a drop-in sentence that lists off all of the objects given, ending
+  * with appropriate punctuation and grammar.
+  */
+  std::string listObjects(std::vector<Object*> objects);
+
+  /**
+  * Determines if the string starts with a vowel.
+  * @param s the string to check.
+  * @return true if the string starts with a vowel, false otherwise.
+  */
+  bool startsWithVowel(std::string s);
 
   /**
   * Replaces all characters in the string with their lowercase counterparts.

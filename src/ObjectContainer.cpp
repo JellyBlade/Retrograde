@@ -10,9 +10,7 @@
 #include "TextHelper.h"
 
 ObjectContainer::~ObjectContainer() {
-  for (Object* o : objects) {
-    delete o;
-  }
+  this->clear();
 }
 
 int ObjectContainer::size() {

@@ -8,8 +8,10 @@
 
 #include <string>
 #include <utility>
-
 #include "Room.h"
+
+// Forward declaration (required to prevent issues with circular include)
+class Room;
 
 /**
 * Represents a door that is between two rooms. It will have the two rooms
@@ -18,24 +20,27 @@
 class Door {
  public:
   /**
-  * Default constructor. Makes this door function like a wall.
-  */
-  Door();
-
-  /**
   * Constructor
   */
   Door(Room* first, Room* second);
 
   /**
+  * Destructor
+  */
+  ~Door();
+
+  /**
   * Returns a pair of rooms for which this door connects.
   * @return the rooms this door connects.
   */
-  pair<Room*, Room*> getRooms();
+  std::pair<Room*, Room*> getRooms();
 
   /**
   * Returns the room opposing the given Room in the pair.
+  * Will return a nullptr if the given room is not in the pair.
   * @param room one part of the pair.
+  * @return the other room in the pair, or a nullptr if the given room isn't
+  * part of the pair.
   */
   Room* getOtherRoom(Room* room);
 
@@ -55,7 +60,7 @@ class Door {
   * Returns the reason the door is blocked.
   * @return a string for why the door is blocked.
   */
-  string getBlockedReason();
+  std::string getBlockedReason();
 
   /**
   * Blocks the door for the given reason.
@@ -78,7 +83,7 @@ class Door {
  private:
   bool blocked;
   std::string blockedReason;
-  pair<Room*, Room*> rooms;
-}
+  std::pair<Room*, Room*> rooms;
+};
 
 #endif // DOOR_H

@@ -26,10 +26,11 @@ class Inventory : public ObjectContainer {
   /**
   * Destructor.
   */
-  virtual ~Inventory() = 0;
+  ~Inventory();
 
   /**
-  * Unlocks the spacesuit for the player, allowing them to survive in a vacuum.
+  * Unlocks the spacesuit for the player, allowing for survival in a vacuum.
+  * Fills oxygen.
   */
   void giveSpaceSuit();
 
@@ -43,13 +44,13 @@ class Inventory : public ObjectContainer {
   * Returns the oxygen level of the spacesuit's internal oxygen tank, 0.00-1.00
   * @return a double showing the current oxygen level of the spacesuit.
   */
-  double getOxygen();
+  int getOxygen();
 
   /**
   * Sets the spacesuit's internal oxygen tank to the specified value.
   * @param oxygen the value to set the tank's oxygen level to.
   */
-  void setOxygen(double oxygen);
+  void setOxygen(int o);
 
   /**
   * Adds the given object to the inventory, if object->isHoldable() is true.
@@ -59,7 +60,7 @@ class Inventory : public ObjectContainer {
 
  private:
   bool spaceSuitAcquired;
-  double oxygen;
-}
+  int oxygen;
+};
 
 #endif // INVENTORY_H

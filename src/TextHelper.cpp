@@ -7,6 +7,8 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <vector>
+
 #include "TextHelper.h"
 
 
@@ -18,6 +20,48 @@ void TextHelper::readFile(std::string textPath) {
 void TextHelper::commandProcessor(std::string command) {
   // TODO(hipt2720): Implement.
   return;
+}
+
+std::string TextHelper::makePercent(int i) {
+  std::string s = std::to_string(i);
+  if (i < 100) {
+    s.insert(s.begin(), '0');
+  }
+  if (i < 10) {
+    s.insert(s.begin(), '0');
+  }
+  s.insert(s.end() - 2, '.');
+  return s + "%";
+}
+
+std::string TextHelper::listObjects(std::vector<Object*> objects) {
+  std::string s = "";
+  switch (objects.size()) {
+    case 0:
+      s = " it is empty.";
+      return s;
+    case 1:
+      s = startsWithVowel(objects[0]->getName()) ? " an " : " a ";
+      s += objects[0]->getName() + ".";
+      return s;
+    default:
+      for (Object* o : objects) {
+        if (o == objects.back()) {
+          s += startsWithVowel(o->getName()) ? " and an " : " and a ";
+          s += o->getName() + ".";
+          continue;
+        }
+        s += startsWithVowel(o->getName()) ? " an " : " a ";
+        s += o->getName() + ",";
+      }
+      return s;
+  }
+}
+
+bool TextHelper::startsWithVowel(std::string s) {
+  char c = tolower(trim(s))[0];
+  if (!isalpha(c)) { c = tolower(trim(s))[1]; }
+  return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
 std::string TextHelper::tolower(std::string s) {

@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 #include "Player.h"
 #include "NPC.h"
@@ -43,20 +44,42 @@ class PlayerHandler {
   /**
   * Moves the player between rooms using the door in the given direction.
   * @param direction the cardinal direction to go.
+  * @return true if the player has successfully been moved, false otherwise.
   */
-  void movePlayer(Globals::Direction direction);
+  bool movePlayer(Globals::Direction direction);
+
+  /**
+  * Outputs the room's name and description to the screen, and lists off
+  * the objects in the room.
+  */
+  void examine();
+
+  /**
+  * Looks at the given object in the room, giving a description of it.
+  * @param look the name of the object to look at.
+  * @return true if the object was successfully looked at, false otherwise.
+  */
+  bool look(std::string look);
+
+  /**
+  * Displays all of the item's in the player's inventory in a bullet-point list.
+  *
+  */
+  void showInventory();
 
   /**
   * Picks up the given object from the room, adding it the player's inventory.
-  * @param pickUp the object to pick up.
+  * @param pickUp the name of the object to pick up.
+  * @return true if the item was successfully picked up, false otherwise.
   */
-  void pickUp(Object* pickUp);
+  bool pickUp(std::string pickUp);
 
   /**
   * Drops the given object from the player's inventory into the room.
-  * @param drop the object to drop.
+  * @param drop the name of the object to drop.
+  * @return true if the item was successfully dropped, false otherwise.
   */
-  void drop(Object* drop);
+  bool drop(std::string drop);
 
   // TODO(hipt2720): Should this function be moved somewhere else?
   /**
@@ -64,7 +87,7 @@ class PlayerHandler {
   * @return a vector containing all of the NPCs in the player's current room.
   * May be empty.
   */
-  vector<NPC*> getNPCsInCurrentRoom();
+  std::vector<NPC*> getNPCsInCurrentRoom();
 
  private:
   Player* player;

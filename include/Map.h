@@ -15,6 +15,11 @@
 class Map {
  public:
   /**
+  * Destructor. Deletes all rooms and doors in the game environment.
+  */
+  ~Map();
+
+  /**
   * Returns the Room matching the given name.
   * @return the Room with the same name given, or a nullptr.
   */
@@ -24,25 +29,37 @@ class Map {
   * Returns all rooms in the game's environment.
   * @return a vector of all rooms.
   */
-  vector<Room*> getRooms();
+  std::vector<Room*> getRooms();
 
   /**
   * Returns all doors in the game's environment.
   * @return a vector of all doors.
   */
-  vector<Door*> getDoors();
+  std::vector<Door*> getDoors();
+
+  /**
+  * Adds a room onto the rooms vector
+  * @param r Room* to be added to rooms
+  */
+  void addRoom(Room* r);
+
+  /**
+  * Adds a Door onto the doors vector
+  * @param d Door* to be added to doors
+  */
+  void addDoor(Door* d);
 
   /**
   * Returns the map's average oxygen level.
   * @return double representing the mean of every room's oxygen.
   */
-  double getMapOxygen();
+  int getMapOxygen();
 
   /**
   * Sets every room in the environment's oxygen value to the given double.
   * Also sets mapOxygen to the same.
   */
-  void setAllRoomOxygen(double oxygen);
+  void setAllRoomOxygen(int oxygen);
 
   // TODO(hipt2720): This function could likely handle room oxygen propagation.
   /**
@@ -51,9 +68,9 @@ class Map {
   void calculateMapOxygen();
 
  private:
-  vector<Room*> rooms;
-  vector<Door*> doors;
-  double mapOxygen;
-}
+  std::vector<Room*> rooms;
+  std::vector<Door*> doors;
+  int mapOxygen;
+};
 
 #endif // MAP_H

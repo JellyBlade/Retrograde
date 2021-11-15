@@ -8,23 +8,26 @@
 
 #include <string>
 #include <vector>
-
+#include <map>
 #include "Door.h"
 #include "NamedThing.h"
 #include "Globals.h"
 #include "ObjectContainer.h"
 
+// Forward declaration (required to prevent issues with circular include)
+class Door;
+
 class Room : public NamedThing {
  public:
   /**
-  * Default constructor
-  */
-  Room();
-
-  /**
   * Constructor
   */
-  Room(std::string name, std::string description);
+  Room(std::string name = "Room", std::string description = "Empty room");
+
+  /**
+  * Destructor
+  */
+  ~Room();
 
   /**
   * Returns this room's ObjectContainer containing all of its contents.
@@ -36,33 +39,35 @@ class Room : public NamedThing {
   * Returns the amount of oxygen remaining in this room.
   * @return a double for the oxygen level.
   */
-  double getRoomOxygen();
+  int getRoomOxygen();
 
   /**
   * Sets the room's oxygen level to the given double.
   */
-  void setRoomOxygen(double oxygen);
+  void setRoomOxygen(int oxygen);
 
   /**
-  * Returns this room's doors.
-  * @return a vector of four doors for each cardinal direction.
+  * Returns the this room's door in the given direction.
+  * Will return a nullptr if there is no door in that direction (it is a wall).
+  * @param direction the cardinal direction to get a door from.
+  * @return a door, or a nullptr if there isn't a door.
   */
-  vector<Door*> getDoors();
+  Door* getDoor(Globals::Direction direction);
 
   /**
-  * Replaces this room's doors with the given vector.
+  * Replaces this room's doors with the given map.
   */
-  void setDoors(vector<Door*> doors);
+  void setDoors(std::map<Globals::Direction, Door*> d);
 
   /**
   * Replaces the door at the given direction with the given door.
   */
-  void changeDoor(Door* door, Globals::Direction);
+  void changeDoor(Door* door, Globals::Direction direction);
 
  private:
-  double roomOxygen;
+  int roomOxygen;
   ObjectContainer* roomObjects;
-  vector<Door*> doors;
-}
+  std::map <Globals::Direction, Door*> doors;
+};
 
 #endif // ROOM_H

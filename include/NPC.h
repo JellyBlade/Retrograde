@@ -46,6 +46,6 @@ class NPC : public NamedThing {
 
  private:
   Room* currentRoom;
-}
+};
 
 #endif // NPC_H

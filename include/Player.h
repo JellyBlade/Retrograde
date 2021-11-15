@@ -18,14 +18,14 @@
 class Player {
  public:
   /**
-  * Default constructor.
+  * Default constructor, creates a new inventory.
   */
-  Player() {}
+  Player();
 
   /**
   * Destructor.
   */
-  virtual ~Player() = 0;
+  virtual ~Player();
 
   /**
   * Returns the player's current room.
@@ -43,7 +43,7 @@ class Player {
   * Gets the player's name.
   * @return a string of the player's name.
   */
-  string getPlayerName();
+  std::string getPlayerName();
 
   /**
   * Checks if the player has unlocked the spacesuit. Used for survival in a
@@ -67,12 +67,14 @@ class Player {
   /**
   * Reduces the oxygen of the player's current room, or (if unlocked) from
   * their spacesuit's oxygen level if the room has none.
+  * @return true if the player has used oxygen successfully, or false if there
+  * wasn't enough oxygen to breathe, and the player should be killed.
   */
-  void useOxygen();
+  bool useOxygen();
 
  private:
   Room* currentRoom;
-  Inventory inventory;
+  Inventory* inventory;
   std::string playerName;
 };
 
