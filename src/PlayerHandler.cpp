@@ -101,6 +101,7 @@ void PlayerHandler::look() {
   cout << "Looking around the room, you see";
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());
   cout << endl;
+  cout << TextHelper::listDoors(currentRoom) << endl;
   // List NPCs here
 }
 

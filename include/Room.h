@@ -55,6 +55,12 @@ class Room : public NamedThing {
   Door* getDoor(Globals::Direction direction);
 
   /**
+  * Returns all of this room's doors.
+  * @return a map of the this room's doors mapped to the cardinal directions.
+  */
+  std::map<Globals::Direction, Door*> getDoors();
+
+  /**
   * Replaces this room's doors with the given map.
   */
   void setDoors(std::map<Globals::Direction, Door*> d);

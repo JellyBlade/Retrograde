@@ -46,6 +46,10 @@ Door* Room::getDoor(Globals::Direction direction) {
   return doors.count(direction) == 1 ? doors[direction] : nullptr;
 }
 
+std::map<Globals::Direction, Door*> Room::getDoors() {
+  return doors;
+}
+
 void Room::setDoors(std::map<Globals::Direction, Door*> d) {
   doors = d;
 }
