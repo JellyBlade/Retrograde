@@ -52,6 +52,8 @@ void PlayerHandler::input() {
       } catch (std::exception e) {
         cout << "You cannot move that way." << endl;
       }
+    } else if (action == "status") {
+      status();
     } else if (action == "look") {
       look();
     } else if (action == "examine") {
@@ -103,6 +105,17 @@ void PlayerHandler::look() {
   cout << endl;
   cout << TextHelper::listDoors(currentRoom) << endl;
   // List NPCs here
+}
+
+void PlayerHandler::status() {
+  Room* currentRoom = player->getCurrentRoom();
+  cout << "Spacesuit: " << (player->hasSpaceSuit() ? "ONLINE" : "NOT FOUND");
+  cout << endl;
+  cout << "Spacesuit Oxygen: ";
+  cout << TextHelper::makePercent(player->getInventory()->getOxygen());
+  cout << endl;
+  cout << currentRoom->getName() << " Oxygen: ";
+  cout << TextHelper::makePercent(currentRoom->getRoomOxygen()) << endl;
 }
 
 void PlayerHandler::showInventory() {

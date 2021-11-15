@@ -55,6 +55,11 @@ class PlayerHandler {
   void look();
 
   /**
+  * Outputs spacesuit and room oxygen levels to the screen.
+  */
+  void status();
+
+  /**
   * Examines the given object in the room, giving a description of it.
   * @param examine the name of the object to examine.
   * @return true if the object was successfully examined, false otherwise.
