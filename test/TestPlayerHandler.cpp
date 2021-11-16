@@ -60,7 +60,7 @@ TEST(TestPlayerHandler, lookExamineTest) {
 
   ph->getPlayer()->setCurrentRoom(r1);
   ph->look();
-  ph->exame("crescent wrench");
+  ph->examine("crescent wrench");
   ph->examine("box of boilery stuff");
   ph->examine("    apple  ");
   std::cout << "---Following examinations should fail---" << std::endl;
