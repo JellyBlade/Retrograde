@@ -71,9 +71,9 @@ TEST(TestTextHelper, listObjectsTest) {
 }
 TEST(TestTextHelper, listDoorTest) {
   Room* rN = new Room();
-  Room* rE = new Rooms();
-  Room* rW = new Rooms();
-  Room* rS = new Rooms();
+  Room* rE = new Room();
+  Room* rW = new Room();
+  Room* rS = new Room();
   Room* r1 = new Room();
   Room* r2 = new Room();
   Door* d = new Door(r1, r2);
