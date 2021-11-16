@@ -75,11 +75,11 @@ TEST(TestTextHelper, listDoorTest) {
   Room* r2 = new Room();
   Door* d = new Door(r1, r2);
 
-  r->changeDoor(d, Globals::diretion::NORTH);
+  r->changeDoor(d, Globals::Direction::NORTH);
   EXPECT_EQ(TextHelper::listDoors(r), "There is a door to the north.");
   r->getDoors().clear();
 
-  r->changeDoor(d, Globals::diretion::EAST);
+  r->changeDoor(d, Globals::Direction::EAST);
   EXPECT_EQ(TextHelper::listDoors(r), "There is a door to the east.");
   r->getDoors().clear();
 
