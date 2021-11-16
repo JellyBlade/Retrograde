@@ -70,20 +70,51 @@ TEST(TestTextHelper, listObjectsTest) {
   delete o4;
 }
 TEST(TestTextHelper, listDoorTest) {
-  Room* r = new Room();
+  Room* rN = new Room();
+  Room* rE = new Rooms();
+  Room* rW = new Rooms();
+  Room* rS = new Rooms();
   Room* r1 = new Room();
   Room* r2 = new Room();
   Door* d = new Door(r1, r2);
 
-  r->changeDoor(d, Globals::Direction::NORTH);
-  EXPECT_EQ(TextHelper::listDoors(r), "There is a door to the north.");
-  r->getDoors().clear();
+  rN->changeDoor(d, Globals::Direction::NORTH);
+  EXPECT_EQ(TextHelper::listDoors(rN), "There is a door to the north.");
+  rE->changeDoor(d, Globals::Direction::EAST);
+  EXPECT_EQ(TextHelper::listDoors(rE), "There is a door to the east.");
+  rW->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rW), "There is a door to the west.");
+  rS->changeDoor(d, Globals::Direction::SOUTH);
+  EXPECT_EQ(TextHelper::listDoors(rS), "There is a door to the south.");
 
-  r->changeDoor(d, Globals::Direction::EAST);
-  EXPECT_EQ(TextHelper::listDoors(r), "There is a door to the east.");
-  r->getDoors().clear();
+  rN->changeDoor(d, Globals::Direction::EAST);
+  EXPECT_EQ(TextHelper::listDoors(rN),
+  "There are doors to the north, and east.");
 
-  delete r;
+  rE->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rE),
+  "There is a door to the east, and west.");
+
+  rW->changeDoor(d, Globals::Direction::SOUTH);
+  EXPECT_EQ(TextHelper::listDoors(rS),
+  "There is a door to the west, and south.");
+
+  rS->changeDoor(d, Globals::Direction::NORTH);
+  EXPECT_EQ(TextHelper::listDoors(rS),
+  "There is a door to the north, and south.");
+
+  rN->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rN),
+  "There are doors to the north, east, and west.");
+
+  rN->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rN),
+  "There are doors to the north, east, west, and south.");
+
+  delete rN;
+  delete rE;
+  delete rW;
+  delete rS;
   delete r1;
   delete r2;
   delete d;
