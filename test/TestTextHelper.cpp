@@ -78,6 +78,8 @@ TEST(TestTextHelper, listDoorTest) {
   Room* r2 = new Room();
   Door* d = new Door(r1, r2);
 
+  EXPECT_EQ(TextHelper::listDoors(rN), "There are no doors.");
+
   rN->changeDoor(d, Globals::Direction::NORTH);
   EXPECT_EQ(TextHelper::listDoors(rN), "There is a door to the north.");
   rE->changeDoor(d, Globals::Direction::EAST);
@@ -96,7 +98,7 @@ TEST(TestTextHelper, listDoorTest) {
   "There are doors to the east, and west.");
 
   rW->changeDoor(d, Globals::Direction::SOUTH);
-  EXPECT_EQ(TextHelper::listDoors(rS),
+  EXPECT_EQ(TextHelper::listDoors(rW),
   "There are doors to the west, and south.");
 
   rS->changeDoor(d, Globals::Direction::NORTH);
@@ -107,7 +109,7 @@ TEST(TestTextHelper, listDoorTest) {
   EXPECT_EQ(TextHelper::listDoors(rN),
   "There are doors to the north, east, and west.");
 
-  rN->changeDoor(d, Globals::Direction::WEST);
+  rN->changeDoor(d, Globals::Direction::SOUTH);
   EXPECT_EQ(TextHelper::listDoors(rN),
   "There are doors to the north, east, west, and south.");
 
