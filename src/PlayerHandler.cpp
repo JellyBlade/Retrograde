@@ -127,16 +127,19 @@ void PlayerHandler::showInventory() {
 
 bool PlayerHandler::examine(std::string examine) {
   Room* currentRoom = player->getCurrentRoom();
-  if (!currentRoom->getRoomObjects()->isObjectInContainer(examine)) {
+  Object* object;
+  if (!currentRoom->getRoomObjects()->isObjectInContainer(examine)
+      && !player->getInventory()->isObjectInContainer(examine)) {
     cout << "You can't find that here." << endl;
     return false;
   }
-  Object* object = currentRoom->getRoomObjects()->getObject(examine);
-  if (object->getDescription().back() == '.') {
-    cout << object->getDescription() << endl;
-    return true;
+
+  if (currentRoom->getRoomObjects()->isObjectInContainer(examine)) {
+    object = currentRoom->getRoomObjects()->getObject(examine);
+  } else {
+    object = player->getInventory()->getObject(examine);
   }
-  cout << object->getDescription() << "." << endl;
+  cout << object->getDescription() << endl;
   return true;
 }
 
