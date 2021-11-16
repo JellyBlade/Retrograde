@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <cctype>
 #include <vector>
+#include <map>
 
 #include "TextHelper.h"
 #include "Globals.h"

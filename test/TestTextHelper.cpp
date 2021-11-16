@@ -69,6 +69,25 @@ TEST(TestTextHelper, listObjectsTest) {
   delete o3;
   delete o4;
 }
+TEST(TestTextHelper, listDoorTest) {
+  Room* r = new Room();
+  Room* r1 = new Room();
+  Room* r2 = new Room();
+  Door* d = new Door(r1, r2);
+
+  r->changeDoor(d, Globals::diretion::NORTH);
+  EXPECT_EQ(TextHelper::listDoors(r), "There is a door to the north.");
+  r->getDoors().clear();
+
+  r->changeDoor(d, Globals::diretion::EAST);
+  EXPECT_EQ(TextHelper::listDoors(r), "There is a door to the east.");
+  r->getDoors().clear();
+
+  delete r;
+  delete r1;
+  delete r2;
+  delete d;
+}
 
 TEST(TestTextHelper, startsWithVowelTest) {
   EXPECT_TRUE(TextHelper::startsWithVowel("iguana"));
