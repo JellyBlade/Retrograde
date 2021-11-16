@@ -10,6 +10,7 @@
 #include "PlayerHandler.h"
 #include "TextHelper.h"
 #include "Room.h"
+#include "Door.h"
 
 using std::cout;
 using std::cin;
@@ -45,7 +46,7 @@ void PlayerHandler::input() {
     } else if (action == "move") {
       try {
         turnEnded = movePlayer(Globals::stringToDirection(param));
-      } catch (std::exception e) {
+      } catch ( ... ) {
         cout << "You cannot move that way." << endl;
       }
     } else if (action == "status") {
@@ -53,7 +54,11 @@ void PlayerHandler::input() {
     } else if (action == "look") {
       look();
     } else if (action == "examine") {
-      examine(param);
+      try {
+        examine(Globals::stringToDirection(param));
+      } catch ( ... ) {
+        examine(param);
+      }
     } else if (action == "bag") {
       showInventory();
     } else if (action == "help") {
@@ -135,6 +140,24 @@ bool PlayerHandler::examine(std::string examine) {
   }
   cout << object->getDescription() << endl;
   return true;
+}
+
+bool PlayerHandler::examine(Globals::Direction direction) {
+  Room* currentRoom = player->getCurrentRoom();
+  Door* exDoor = currentRoom->getDoor(direction);
+  if (exDoor != nullptr) {
+    cout << "Looking " << Globals::directionToString(direction);
+    cout << ", you see a door that leads to the ";
+    cout << exDoor->getOtherRoom(currentRoom)->getName() << endl;
+    if (exDoor->isDoorBlocked()) {
+      cout << "It is currently blocked: " << exDoor->getBlockedReason();
+      cout << endl;
+    }
+    return true;
+  }
+  cout << "Looking " << Globals::directionToString(direction);
+  cout << ", you see a wall, with no way through." << endl;;
+  return false;
 }
 
 bool PlayerHandler::pickUp(std::string pickUp) {

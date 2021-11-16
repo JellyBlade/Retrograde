@@ -67,6 +67,12 @@ class PlayerHandler {
   bool examine(std::string examine);
 
   /**
+  * Examines the given direction, displaying the blocked status of the Door
+  * and which room is in that direction, if possible.
+  */
+  bool examine(Globals::Direction direction);
+
+  /**
   * Displays all of the item's in the player's inventory in a bullet-point list.
   *
   */
