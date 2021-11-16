@@ -99,7 +99,7 @@ TEST(TestTextHelper, listDoorTest) {
 
   rW->changeDoor(d, Globals::Direction::SOUTH);
   EXPECT_EQ(TextHelper::listDoors(rW),
-  "There are doors to the west, and south.");
+  "There are doors to the south, and west.");
 
   rS->changeDoor(d, Globals::Direction::NORTH);
   EXPECT_EQ(TextHelper::listDoors(rS),
@@ -111,7 +111,7 @@ TEST(TestTextHelper, listDoorTest) {
 
   rN->changeDoor(d, Globals::Direction::SOUTH);
   EXPECT_EQ(TextHelper::listDoors(rN),
-  "There are doors to the north, east, west, and south.");
+  "There are doors to the north, east, south, and west.");
 
   delete rN;
   delete rE;
