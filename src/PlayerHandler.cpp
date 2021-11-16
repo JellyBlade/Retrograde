@@ -41,14 +41,10 @@ void PlayerHandler::input() {
     // TODO(hipt2720): Replace these string comps with a cast to an enum of
     // options in the future.
     if (action == "pickup") {
-      if (pickUp(param)) {
-        turnEnded = true;
-      }
+      turnEnded = pickUp(param);
     } else if (action == "move") {
       try {
-        if (movePlayer(Globals::stringToDirection(param))) {
-          turnEnded = true;
-        }
+        turnEnded = movePlayer(Globals::stringToDirection(param));
       } catch (std::exception e) {
         cout << "You cannot move that way." << endl;
       }
@@ -63,9 +59,7 @@ void PlayerHandler::input() {
     } else if (action == "help") {
       cout << "No help for you!" << endl;
     } else if (action == "drop") {
-      if (drop(param)) {
-        turnEnded = true;
-      }
+      turnEnded = drop(param);
     } else {
       cout << "You can't do that here." << endl;
     }
