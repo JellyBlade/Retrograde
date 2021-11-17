@@ -41,7 +41,8 @@ class PlayerHandler {
   * Returns true if the action performed is expected to use up oxygen supply.
   * @param input istream to use for player-input. Use std::cin for player input,
   * or an ifstream for automated testing.
-  * @return true if the action performed consumes oxygen, false otherwise.
+  * @return true if the action performed consumed oxygen and was successful.
+  * Will return false if the action was invalid.
   */
   bool input(std::istream& input);
 

@@ -128,15 +128,15 @@ TEST(TestPlayerHandler, inputTest) {
   r1->getRoomObjects()->addObject(o3);
   ph->getPlayer()->setCurrentRoom(r1);
 
-  std::ifstream file("text/inputTest_pickup.txt");
+  std::ifstream file("test/text/inputTest_pickup.txt");
 
   EXPECT_EQ(r1->getRoomObjects()->size(), 3);
-  ph->input(file);
+  EXPECT_TRUE(ph->input(file));
   EXPECT_EQ(r1->getRoomObjects()->size(), 2);
-  ph->input(file);
+  EXPECT_TRUE(ph->input(file));
   EXPECT_EQ(r1->getRoomObjects()->size(), 1);
-  ph->input(file);
-  ph->input(file);
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
   EXPECT_EQ(r1->getRoomObjects()->size(), 1);
 
   delete ph;
