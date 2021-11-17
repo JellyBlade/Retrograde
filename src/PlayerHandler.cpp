@@ -11,6 +11,7 @@
 #include "TextHelper.h"
 #include "Room.h"
 #include "Door.h"
+#include "NPC.h"
 
 using std::cout;
 using std::cin;
