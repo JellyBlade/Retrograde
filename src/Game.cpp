@@ -154,3 +154,11 @@ void Game::generateNPCs() {
   std::cout << "Generating NPCs..." << std::endl;
   std::cout << "Alright they're totally there ;)" << std::endl;
 }
+
+Map* Game::getMap() {
+  return map;
+}
+
+PlayerHandler* Game::getPlayerHandler() {
+  return player;
+}

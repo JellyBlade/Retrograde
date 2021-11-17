@@ -59,6 +59,18 @@ class Game {
   */
   void generateNPCs();
 
+  /**
+  * Returns a pointer to the game environment.
+  * @return the Map for the game, containing all rooms and doors.
+  */
+  Map* getMap();
+
+  /**
+  * Returns a pointer to the PlayerHandler class.
+  * @return the PlayerHandler for the game, which handles the Player class.
+  */
+  PlayerHandler* getPlayerHandler();
+
  private:
   std::vector<NPC*> npcs;
   Map* map;
