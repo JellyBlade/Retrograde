@@ -38,8 +38,12 @@ class PlayerHandler {
 
   /**
   * Prompts user for what to do, converting the input into player actions.
+  * Returns true if the action performed is expected to use up oxygen supply.
+  * @param input istream to use for player-input. Use std::cin for player input,
+  * or an ifstream for automated testing.
+  * @return true if the action performed consumes oxygen, false otherwise.
   */
-  void input(std::istream& input);
+  bool input(std::istream& input);
 
   /**
   * Moves the player between rooms using the door in the given direction.

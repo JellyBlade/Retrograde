@@ -28,46 +28,50 @@ Player* PlayerHandler::getPlayer() {
   return player;
 }
 
-void PlayerHandler::input(std::istream& input) {
+bool PlayerHandler::input(std::istream& input) {
   std::string action, param;
-  bool turnEnded = false;
-  while (!turnEnded) {
-    cout << "> ";
-    input >> action;
-    std::getline(input, param);
+  cout << "> ";
+  input >> action;
+  std::getline(input, param);
 
-    action = TextHelper::tolower(TextHelper::trimAll(action));
-    param = TextHelper::tolower(TextHelper::trimAll(param));
+  action = TextHelper::tolower(TextHelper::trimAll(action));
+  param = TextHelper::tolower(TextHelper::trimAll(param));
 
-    // TODO(hipt2720): Replace these string comps with a cast to an enum of
-    // options in the future.
-    if (action == "pickup") {
-      turnEnded = pickUp(param);
-    } else if (action == "move") {
-      try {
-        turnEnded = movePlayer(Globals::stringToDirection(param));
-      } catch ( ... ) {
-        cout << "You cannot move that way." << endl;
-      }
-    } else if (action == "status") {
-      status();
-    } else if (action == "look") {
-      look();
-    } else if (action == "examine") {
-      try {
-        examine(Globals::stringToDirection(param));
-      } catch ( ... ) {
-        examine(param);
-      }
-    } else if (action == "bag") {
-      showInventory();
-    } else if (action == "help") {
-      TextHelper::readFile("text/help.txt");
-    } else if (action == "drop") {
-      turnEnded = drop(param);
-    } else {
-      cout << "You can't do that here." << endl;
+  // TODO(hipt2720): Replace these string comps with a cast to an enum of
+  // options in the future.
+  if (action == "pickup") {
+    return pickUp(param);
+  } else if (action == "move") {
+    try {
+      return movePlayer(Globals::stringToDirection(param));
+    } catch ( ... ) {
+      cout << "You cannot move that way." << endl;
     }
+  } else if (action == "status") {
+    status();
+    return false;
+  } else if (action == "look") {
+    look();
+    return false;
+  } else if (action == "examine") {
+    try {
+      examine(Globals::stringToDirection(param));
+      return false;
+    } catch ( ... ) {
+      examine(param);
+      return false;
+    }
+  } else if (action == "bag") {
+    showInventory();
+    return false;
+  } else if (action == "help") {
+    TextHelper::readFile("text/help.txt");
+    return false;
+  } else if (action == "drop") {
+    return drop(param);
+  } else {
+    cout << "You cannot do that here." << endl;
+    return false;
   }
 }
 
@@ -135,7 +139,7 @@ bool PlayerHandler::examine(std::string examine) {
   Object* object;
   if (!currentRoom->getRoomObjects()->isObjectInContainer(examine)
       && !player->getInventory()->isObjectInContainer(examine)) {
-    cout << "You can't find that here." << endl;
+    cout << "You cannot find that here." << endl;
     return false;
   }
 
@@ -169,7 +173,7 @@ bool PlayerHandler::examine(Globals::Direction direction) {
 bool PlayerHandler::pickUp(std::string pickUp) {
   Room* room = player->getCurrentRoom();
   if (!room->getRoomObjects()->isObjectInContainer(pickUp)) {
-    cout << "You can't find that here." << endl;
+    cout << "You cannot find that here." << endl;
     return false;
   }
   // TODO(hipt2720): Refactor Inventory::addObject(), move the isHoldable check

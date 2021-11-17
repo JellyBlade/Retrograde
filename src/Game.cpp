@@ -32,7 +32,7 @@ void Game::playerTurn() {
   || map->getRooms()[2]->getRoomObjects()
   ->isObjectInContainer("activatedgrayorb")) {
     // Do player actions
-    player->input(std::cin);
+    if (!player->input(std::cin)) { continue; }
     player->getPlayer()->useOxygen();
     map->calculateMapOxygen();
 
