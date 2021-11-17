@@ -33,8 +33,15 @@ void Game::playerTurn() {
   ->isObjectInContainer("activatedgrayorb")) {
     // Do player actions
     if (!player->input(std::cin)) { continue; }
-    player->getPlayer()->useOxygen();
+    if(!player->getPlayer()->useOxygen()) {
+      playerLose();
+      return;
+    }
     map->calculateMapOxygen();
+    if (map->getMapOxygen() == 0) {
+      playerLose();
+      return;
+    }
 
     // Check to see if gray orb can be activated
     if (map->getRooms()[0]->getRoomObjects()->isObjectInContainer("orbofdark")

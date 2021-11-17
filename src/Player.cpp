@@ -50,6 +50,8 @@ bool Player::useOxygen() {
     inventory->setOxygen(inventory->getOxygen() - 500);
     return true;
   }
+  if (currentRoom->getRoomOxygen() < 500) { return false; }
+  //TODO(mart2720): Might have to change this.
   if (currentRoom->getRoomOxygen() == 0) { return false; }
   currentRoom->setRoomOxygen(currentRoom->getRoomOxygen() - 500);
   return true;
