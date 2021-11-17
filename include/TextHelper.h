@@ -51,7 +51,8 @@ namespace TextHelper {
   std::string listObjects(std::vector<Object*> objects);
 
   /**
-  * Formats all of the room's doors into a cohesive sentence.
+  * Formats all of the room's doors into a cohesive sentence, listing doors
+  * going clockwise from north.
   * @param room the room to list doors for.
   * @return a drop-in sentence that lists off all of the doors in the room,
   * ending with appropriate punctuation and grammar.
