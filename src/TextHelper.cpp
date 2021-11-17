@@ -25,7 +25,7 @@ void TextHelper::readFile(std::string textPath) {
   }
 }
 
-void TextHelper::commandProcessor(std::string command) {
+bool TextHelper::commandProcessor(std::string command) {
   // TODO(hipt2720): Implement.
   return;
 }

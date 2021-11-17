@@ -31,7 +31,7 @@ namespace TextHelper {
   * from a dialogue file.
   * @param command the script command to parse and execute.
   */
-  void commandProcessor(std::string command);
+  bool commandProcessor(std::string command);
 
   /**
   * Turns the given integer into a fake percentage with two decimals of
