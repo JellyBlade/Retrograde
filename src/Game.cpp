@@ -33,7 +33,7 @@ void Game::playerTurn() {
   ->isObjectInContainer("activatedgrayorb")) {
     // Do player actions
     if (!player->input(std::cin)) { continue; }
-    if(!player->getPlayer()->useOxygen()) {
+    if (!player->getPlayer()->useOxygen()) {
       playerLose();
       return;
     }
