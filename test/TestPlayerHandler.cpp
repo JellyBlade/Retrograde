@@ -181,8 +181,6 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   file.close();
 
-  EXPECT_NE(ph->getPlayer()->getCurrentRoom()->getRoomOxygen(), 10000);
-
   delete ph;
   delete r1;
   delete r2;
