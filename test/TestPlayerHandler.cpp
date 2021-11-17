@@ -3,19 +3,13 @@
 * @date 2021-11
 */
 
+#include <fstream>
+
 #include "PlayerHandler.h"
 #include "Room.h"
 #include "Door.h"
 #include "Globals.h"
 #include "gtest/gtest.h"
-
-TEST(TestPlayerHandler, DISABLED_inputTest) {
-  PlayerHandler* ph = new PlayerHandler();
-
-  ph->input();
-
-  delete ph;
-}
 
 TEST(TestPlayerHandler, movePlayerTest) {
   Room* r1 = new Room("Boiler room", "Hot and steamy!");
@@ -116,4 +110,37 @@ TEST(TestPlayerHandler, dropTest) {
 
   delete ph;
   delete r1;
+}
+
+TEST(TestPlayerHandler, inputTest) {
+  Room* r1 = new Room("Boiler room", "Hot and steamy!");
+  Room* r2 = new Room("Illegal Whitespace", "It's nothing but white.");
+  Door* d1 = new Door(r1, r2);
+  Object* o1 = new Object("Apple", "It's an apple.", true);
+  Object* o2 = new Object("Orange", "It's an orange.", true);
+  Object* o3 = new Object("Neutron Star", "Why is this here?", false);
+  PlayerHandler* ph = new PlayerHandler();
+
+  r1->changeDoor(d1, Globals::Direction::NORTH);
+  r2->changeDoor(d1, Globals::Direction::SOUTH);
+  r1->addObject(o1);
+  r1->addObject(o2);
+  r1->addObject(o3);
+  ph->getPlayer()->setCurrentRoom(r1);
+
+  std::ifstream file("text/inputTest_pickup.txt");
+
+  EXPECT_EQ(r1->getRoomObjects().size(), 3);
+  ph->input(file);
+  EXPECT_EQ(r1->getRoomObjects().size(), 2);
+  ph->input(file);
+  EXPECT_EQ(r1->getRoomObjects().size(), 1);
+  ph->input(file);
+  ph->input(file);
+  EXPECT_EQ(r1->getRoomObjects().size(), 1);
+
+  delete ph;
+  delete r1;
+  delete r2;
+  delete d1;
 }
