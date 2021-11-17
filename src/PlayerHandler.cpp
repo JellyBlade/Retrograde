@@ -28,13 +28,13 @@ Player* PlayerHandler::getPlayer() {
   return player;
 }
 
-void PlayerHandler::input() {
+void PlayerHandler::input(std::istream& input) {
   std::string action, param;
   bool turnEnded = false;
   while (!turnEnded) {
     cout << "> ";
-    cin >> action;
-    std::getline(std::cin, param);
+    input >> action;
+    std::getline(input, param);
 
     action = TextHelper::tolower(TextHelper::trimAll(action));
     param = TextHelper::tolower(TextHelper::trimAll(param));
@@ -118,8 +118,14 @@ void PlayerHandler::status() {
 }
 
 void PlayerHandler::showInventory() {
-  cout << "You look into your bag and find:" << endl;
-  for (Object* o : player->getInventory()->getObjects()) {
+  std::vector<Object*> objects = player->getInventory()->getObjects();
+  cout << "You look into your bag and find";
+  if (objects.size() == 0) {
+    cout << " nothing." << endl;
+    return;
+  }
+  cout << ":" << endl;
+  for (Object* o : objects) {
     cout << " - " << o->getName() << endl;
   }
 }

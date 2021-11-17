@@ -39,7 +39,7 @@ class PlayerHandler {
   /**
   * Prompts user for what to do, converting the input into player actions.
   */
-  void input();
+  void input(std::istream& input);
 
   /**
   * Moves the player between rooms using the door in the given direction.
