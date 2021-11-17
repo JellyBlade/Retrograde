@@ -171,11 +171,17 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
+  d1->blockDoor("Closed for testing purposes.");
+  EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   file.close();
 
   file.open("test/text/inputTest_misc.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  // drop apple for bag coverage.
+  ph->drop("apple");
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
@@ -185,4 +191,12 @@ TEST(TestPlayerHandler, inputTest) {
   delete r1;
   delete r2;
   delete d1;
+}
+
+TEST(TestPlayerHandler, getNPCsInCurrentRoomTest) {
+  PlayerHandler* ph = new PlayerHandler();
+
+  EXPECT_EQ(ph->getNPCsInCurrentRoom().size(), 0);
+
+  delete ph;
 }

@@ -1,5 +1,6 @@
 examine apple
 examine orange
 examine north
+examine north
 examine south
 examine sadfjasdlk

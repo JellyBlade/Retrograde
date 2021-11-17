@@ -203,5 +203,7 @@ bool PlayerHandler::drop(std::string drop) {
 }
 
 std::vector<NPC*> getNPCsInCurrentRoom() {
+  std::vector<NPC*> vector;
   // TODO(hipt2720): This requires NPCs and Game to be implemented first.
+  return vector;
 }
