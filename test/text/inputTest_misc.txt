@@ -1,0 +1,4 @@
+look
+bag
+help
+status

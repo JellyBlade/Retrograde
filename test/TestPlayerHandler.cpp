@@ -57,9 +57,7 @@ TEST(TestPlayerHandler, lookExamineTest) {
   ph->examine("crescent wrench");
   ph->examine("box of boilery stuff");
   ph->examine("    apple  ");
-  std::cout << "---Following examinations should fail---" << std::endl;
-  ph->examine(" a p p l e ");
-  ph->examine("box   of   boilery    stuff");
+  std::cout << "Next one should be 'You cannot find that here.'" << std::endl;
   ph->examine("Croissant Wrench");
 
   delete r1;
@@ -129,7 +127,6 @@ TEST(TestPlayerHandler, inputTest) {
   ph->getPlayer()->setCurrentRoom(r1);
 
   std::ifstream file("test/text/inputTest_pickup.txt");
-
   EXPECT_EQ(r1->getRoomObjects()->size(), 3);
   EXPECT_TRUE(ph->input(file));
   EXPECT_EQ(r1->getRoomObjects()->size(), 2);
@@ -138,6 +135,53 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_EQ(r1->getRoomObjects()->size(), 1);
+  file.close();
+
+  file.open("test/text/inputTest_drop.txt");
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_EQ(r1->getRoomObjects()->size(), 2);
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_EQ(r1->getRoomObjects()->size(), 3);
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  file.close();
+
+  file.open("test/text/inputTest_move.txt");
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), r2);
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), r1);
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), r2);
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), r1);
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), r1);
+  file.close();
+
+  // Add apple back to inventory for bag/examine testing
+  ph->pickUp("apple");
+
+  file.open("test/text/inputTest_examine.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  file.close();
+
+  file.open("test/text/inputTest_misc.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  file.close();
+
+  EXPECT_NE(ph->getPlayer()->getCurrentRoom()->getRoomOxygen(), 10000);
 
   delete ph;
   delete r1;

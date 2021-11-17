@@ -1,0 +1,9 @@
+move n
+move s
+move north
+move south
+move east
+move west
+move south
+move asdfjlkas
+asdfkjadsf a sdflasd dasfl;k
