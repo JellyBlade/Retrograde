@@ -46,6 +46,7 @@ bool PlayerHandler::input(std::istream& input) {
       return movePlayer(Globals::stringToDirection(param));
     } catch ( ... ) {
       cout << "You cannot move that way." << endl;
+      return false;
     }
   } else if (action == "status") {
     status();
