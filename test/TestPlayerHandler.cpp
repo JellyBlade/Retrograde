@@ -123,21 +123,21 @@ TEST(TestPlayerHandler, inputTest) {
 
   r1->changeDoor(d1, Globals::Direction::NORTH);
   r2->changeDoor(d1, Globals::Direction::SOUTH);
-  r1->addObject(o1);
-  r1->addObject(o2);
-  r1->addObject(o3);
+  r1->getRoomObjects()->addObject(o1);
+  r1->getRoomObjects()->addObject(o2);
+  r1->getRoomObjects()->addObject(o3);
   ph->getPlayer()->setCurrentRoom(r1);
 
   std::ifstream file("text/inputTest_pickup.txt");
 
-  EXPECT_EQ(r1->getRoomObjects().size(), 3);
+  EXPECT_EQ(r1->getRoomObjects()->size(), 3);
   ph->input(file);
-  EXPECT_EQ(r1->getRoomObjects().size(), 2);
+  EXPECT_EQ(r1->getRoomObjects()->size(), 2);
   ph->input(file);
-  EXPECT_EQ(r1->getRoomObjects().size(), 1);
+  EXPECT_EQ(r1->getRoomObjects()->size(), 1);
   ph->input(file);
   ph->input(file);
-  EXPECT_EQ(r1->getRoomObjects().size(), 1);
+  EXPECT_EQ(r1->getRoomObjects()->size(), 1);
 
   delete ph;
   delete r1;
