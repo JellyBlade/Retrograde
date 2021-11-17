@@ -62,7 +62,7 @@ void PlayerHandler::input() {
     } else if (action == "bag") {
       showInventory();
     } else if (action == "help") {
-      cout << "No help for you!" << endl;
+      TextHelper::readFile("text/help.txt");
     } else if (action == "drop") {
       turnEnded = drop(param);
     } else {

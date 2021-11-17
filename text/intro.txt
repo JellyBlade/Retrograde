@@ -1,0 +1,22 @@
+Welcome to the Retrograde Tech Demo.
+
+The goal of this demo is to test out functionality of room traversal and object
+manipulation.
+
+By examining and picking up/dropping objects, you can get a feel for how
+interaction with this game will look in the final implementation.
+
+For this demo, it is possible to win by moving the "orb of light" and
+"orb of dark" objects found in two of the rooms around (pickup/drop them) in
+order to unlock the "gray orb" found in the Steam Room. Picking up the gray orb,
+once activated, will complete the game.
+
+Some actions (such as picking up/dropping objects, and moving) will consume
+oxygen. After these actions, oxygen will be consumed and each Room will balance
+their oxygen levels with their neighbouring rooms.
+You can see the current oxygen total with 'status'.
+If the average oxygen on the map becomes 0%, you lose.
+
+Use 'help' to get more information about possible actions.
+
+You start in the Pure White Room.

@@ -9,6 +9,7 @@
 #include <cctype>
 #include <vector>
 #include <map>
+#include <fstream>
 
 #include "TextHelper.h"
 #include "Globals.h"
@@ -17,8 +18,11 @@
 
 
 void TextHelper::readFile(std::string textPath) {
-  // TODO(hipt2720): Implement.
-  return;
+  std::string s;
+  std::ifstream file(textPath);
+  while (std::getline(file, s)) {
+    std::cout << s << std::endl;
+  }
 }
 
 void TextHelper::commandProcessor(std::string command) {

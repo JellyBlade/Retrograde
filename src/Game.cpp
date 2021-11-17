@@ -27,6 +27,7 @@ std::vector<NPC*> Game::getNPCs() {
 void Game::playerTurn() {
   // awful win condition, check to see if gray orb/activated gray orbofdark
   // is still in the Steam Room.
+  TextHelper::readFile("text/intro.txt");
   while (map->getRooms()[2]->getRoomObjects()->isObjectInContainer("grayorb")
   || map->getRooms()[2]->getRoomObjects()
   ->isObjectInContainer("activatedgrayorb")) {
@@ -62,7 +63,7 @@ void Game::playerTurn() {
 void Game::playerWin() {
   std::cout << "As you remove the gray orb from the machine, the mechanical"
   " whirring and crashing grows quiet as the device powers down. The walls"
-  " fade away. With a jolt, you awaken on a bed connected to many machines.";
+  " fade away. With a jolt, you awaken on a bed connected to several devices.";
   std::cout << " An alarm blares, and a mechanical voice rings out"
   " over a nearby loudspeaker:";
   std::cout << std::endl << std::endl;
@@ -74,6 +75,16 @@ void Game::playerWin() {
 }
 
 void Game::playerLose() {
+  std::cout << "Your vision fades as your oxygen monitor alarm sounds off."
+  " You slump to the ground and black out."
+  " With a jolt, you awaken on a bed connected to several devices.";
+  std::cout << " An alarm blares, and a mechanical voice rings out"
+  " over a nearby loudspeaker:";
+  std::cout << std::endl << std::endl;
+  std::cout << "TEST NUMBER FOUR-HUNDRED SEVENTY-FIVE FAILED. ";
+  std::cout << std::endl;
+  std::cout << "APPLICANT EXITED SIMULATION SUCCESSFULLY. STANDBY FOR RESET.";
+  std::cout << std::endl;
   std::cout << "Congratulations, you lose! :)" << std::endl;
 }
 

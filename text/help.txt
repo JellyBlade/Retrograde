@@ -1,0 +1,30 @@
+Actions:
+  move <direction>
+    - ex: 'move n' or 'move north' for [n/e/s/w] & [north/east/south/west]
+  pickup <object name>
+    - ex: 'pickup statue of dark'
+    - Picks up the objects and adds it to your inventory if possible.
+    - Some objects cannot be carried.
+  drop <object name>
+    - ex: 'drop cool apple'
+    - Drops the object from your inventory into the room.
+  look
+    - ex: 'look'
+    - Displays information about your surroundings.
+      - What objects are in the room, which directions you can go, what the room
+        looks like, etc.
+  examine <object name>
+    - ex: 'examine cool apple'
+    - Gives you a description of what the object is.
+    - Can be used for objects in your inventory and in the room.
+  examine <direction>
+    - ex: 'examine n' or 'examine north' for [n/e/s/w] & [north/east/south/west]
+    - Gives you the name of the room in that direction.
+    - Will also let you know if that way is blocked and why.
+  bag
+    - ex: 'bag'
+    - Displays the items you are carrying in your inventory.
+  status
+    - ex: 'status'
+    - Displays your spacesuit status, and remaining oxygen in your spacesuit and
+    - the room you're in.
