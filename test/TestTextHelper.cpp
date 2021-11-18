@@ -9,13 +9,13 @@
 #include "TextHelper.h"
 #include "gtest/gtest.h"
 
-TEST(TestTextHelper, readFileTest) {
-  TextHelper::readFile("WIP");
-}
-
-TEST(TestTextHelper, commandProcessorTest) {
-  TextHelper::commandProcessor("WIP");
-}
+// TEST(TestTextHelper, readFileTest) {
+//   TextHelper::readFile("WIP");
+// }
+//
+// TEST(TestTextHelper, commandProcessorTest) {
+//   TextHelper::commandProcessor("WIP");
+// }
 
 TEST(TestTextHelper, makePercentTest) {
   int i = 10000;
