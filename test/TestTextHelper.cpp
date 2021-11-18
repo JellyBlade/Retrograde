@@ -25,7 +25,6 @@ TEST(TestTextHelper, commandProcessorTest) {
   map->addRoom(r2);
   game->getPlayerHandler()->getPlayer()->setCurrentRoom(r1);
   InteractHelper::game = game;
-  std::cout << game->getMap()->getRooms().size();
 
   std::cout << "Quit test" << std::endl;
   std::ifstream input("test/text/commandProcessorTest_quit_input.txt");

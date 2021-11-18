@@ -166,9 +166,9 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         InteractHelper::getPlayerHandler()->getPlayer()->setCurrentRoom(room);
         return false;
       }
-      // Room not found for RGScript move
-      throw std::exception{};
     }
+    // Room not found for RGScript move
+    throw std::exception{};
   } else if (cmd == "movenpc") {
     std::string roomName;
     std::string npcName = params.front();
