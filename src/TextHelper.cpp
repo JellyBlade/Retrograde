@@ -28,7 +28,7 @@ void TextHelper::readFile(std::string textPath, std::istream& input) {
     if (!s.empty() && trim(s)[0] == '/') { continue; }
     if (!s.empty() && trim(s)[0] == ':') {
       try {
-        if (commandProcessor(tolower(trim(s)), file)) {
+        if (commandProcessor(tolower(trim(s)), file, input)) {
           TextHelper::rgScriptFlags.clear();
           file.close();
           return;
@@ -114,6 +114,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
+    return false;
   } else if (cmd == "mc") {
     std::string dialog;
     std::string choice = "";
