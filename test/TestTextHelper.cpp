@@ -39,7 +39,7 @@ TEST(TestTextHelper, commandProcessorTest) {
   TextHelper::readFile(file, input);
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r2);
   file = "test/text/commandProcessorTest_move_dialogWrong.txt";
-  EXPECT_THROW(TextHelper::readFile(file, input), std::exception);
+  TextHelper::readFile(file, input);
   input.close();
 
   // Needs NPC to be implemented.
