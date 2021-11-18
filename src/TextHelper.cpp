@@ -92,7 +92,6 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         }
       } else {
         // Unknown RGScript if criterion.
-        std::cout << criterionType << criterion;
         throw std::exception{};
       }
     }
@@ -148,6 +147,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     return false;
   } else if (cmd == "setflag") {
     if (params.size() <= 1) {
+      std::cout << "Not enough parameters for RGScript setflag";
       // Not enough parameters for RGScript setflag
       throw std::exception{};
     }
@@ -157,6 +157,8 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     for (std::string s : params) {
       flagName += s;
     }
+    flagName = tolower(trimAll(flagName));
+    std::cout << flagName;
     TextHelper::rgScriptFlags[flagName] = flagValue;
     return false;
   } else if (cmd == "move") {
