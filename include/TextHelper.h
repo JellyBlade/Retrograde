@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "Object.h"
+#include "Room.h"
 
 /**
 * Provides functions for handling file reading, command strings, and modifying
@@ -48,6 +49,15 @@ namespace TextHelper {
   * with appropriate punctuation and grammar.
   */
   std::string listObjects(std::vector<Object*> objects);
+
+  /**
+  * Formats all of the room's doors into a cohesive sentence, listing doors
+  * going clockwise from north.
+  * @param room the room to list doors for.
+  * @return a drop-in sentence that lists off all of the doors in the room,
+  * ending with appropriate punctuation and grammar.
+  */
+  std::string listDoors(Room* room);
 
   /**
   * Determines if the string starts with a vowel.

@@ -69,6 +69,58 @@ TEST(TestTextHelper, listObjectsTest) {
   delete o3;
   delete o4;
 }
+TEST(TestTextHelper, listDoorTest) {
+  Room* rN = new Room();
+  Room* rE = new Room();
+  Room* rW = new Room();
+  Room* rS = new Room();
+  Room* r1 = new Room();
+  Room* r2 = new Room();
+  Door* d = new Door(r1, r2);
+
+  EXPECT_EQ(TextHelper::listDoors(rN), "There are no doors.");
+
+  rN->changeDoor(d, Globals::Direction::NORTH);
+  EXPECT_EQ(TextHelper::listDoors(rN), "There is a door to the north.");
+  rE->changeDoor(d, Globals::Direction::EAST);
+  EXPECT_EQ(TextHelper::listDoors(rE), "There is a door to the east.");
+  rW->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rW), "There is a door to the west.");
+  rS->changeDoor(d, Globals::Direction::SOUTH);
+  EXPECT_EQ(TextHelper::listDoors(rS), "There is a door to the south.");
+
+  rN->changeDoor(d, Globals::Direction::EAST);
+  EXPECT_EQ(TextHelper::listDoors(rN),
+  "There are doors to the north, and east.");
+
+  rE->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rE),
+  "There are doors to the east, and west.");
+
+  rW->changeDoor(d, Globals::Direction::SOUTH);
+  EXPECT_EQ(TextHelper::listDoors(rW),
+  "There are doors to the south, and west.");
+
+  rS->changeDoor(d, Globals::Direction::NORTH);
+  EXPECT_EQ(TextHelper::listDoors(rS),
+  "There are doors to the north, and south.");
+
+  rN->changeDoor(d, Globals::Direction::WEST);
+  EXPECT_EQ(TextHelper::listDoors(rN),
+  "There are doors to the north, east, and west.");
+
+  rN->changeDoor(d, Globals::Direction::SOUTH);
+  EXPECT_EQ(TextHelper::listDoors(rN),
+  "There are doors to the north, east, south, and west.");
+
+  delete rN;
+  delete rE;
+  delete rW;
+  delete rS;
+  delete r1;
+  delete r2;
+  delete d;
+}
 
 TEST(TestTextHelper, startsWithVowelTest) {
   EXPECT_TRUE(TextHelper::startsWithVowel("iguana"));

@@ -10,6 +10,8 @@
 #include "PlayerHandler.h"
 #include "TextHelper.h"
 #include "Room.h"
+#include "Door.h"
+#include "NPC.h"
 
 using std::cout;
 using std::cin;
@@ -27,46 +29,51 @@ Player* PlayerHandler::getPlayer() {
   return player;
 }
 
-void PlayerHandler::input() {
+bool PlayerHandler::input(std::istream& input) {
   std::string action, param;
-  bool turnEnded = false;
-  while (!turnEnded) {
-    cout << "> ";
-    cin >> action;
-    std::getline(std::cin, param);
+  cout << "> ";
+  input >> action;
+  std::getline(input, param);
 
-    action = TextHelper::tolower(TextHelper::trimAll(action));
-    param = TextHelper::tolower(TextHelper::trimAll(param));
+  action = TextHelper::tolower(TextHelper::trimAll(action));
+  param = TextHelper::tolower(TextHelper::trimAll(param));
 
-    // TODO(hipt2720): Replace these string comps with a cast to an enum of
-    // options in the future.
-    if (action == "pickup") {
-      if (pickUp(param)) {
-        turnEnded = true;
-      }
-    } else if (action == "move") {
-      try {
-        if (movePlayer(Globals::stringToDirection(param))) {
-          turnEnded = true;
-        }
-      } catch (std::exception e) {
-        cout << "You cannot move that way." << endl;
-      }
-    } else if (action == "examine") {
-      examine();
-    } else if (action == "look") {
-      look(param);
-    } else if (action == "bag") {
-      showInventory();
-    } else if (action == "help") {
-      cout << "No help for you!" << endl;
-    } else if (action == "drop") {
-      if (drop(param)) {
-        turnEnded = true;
-      }
-    } else {
-      cout << "You can't do that here." << endl;
+  // TODO(hipt2720): Replace these string comps with a cast to an enum of
+  // options in the future.
+  if (action == "pickup") {
+    return pickUp(param);
+  } else if (action == "move") {
+    try {
+      return movePlayer(Globals::stringToDirection(param));
+    } catch ( ... ) {
+      cout << "You cannot move that way." << endl;
+      return false;
     }
+  } else if (action == "status") {
+    status();
+    return false;
+  } else if (action == "look") {
+    look();
+    return false;
+  } else if (action == "examine") {
+    try {
+      examine(Globals::stringToDirection(param));
+      return false;
+    } catch ( ... ) {
+      examine(param);
+      return false;
+    }
+  } else if (action == "bag") {
+    showInventory();
+    return false;
+  } else if (action == "help") {
+    TextHelper::readFile("text/help.txt");
+    return false;
+  } else if (action == "drop") {
+    return drop(param);
+  } else {
+    cout << "You cannot do that here." << endl;
+    return false;
   }
 }
 
@@ -88,10 +95,12 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
 
   Room* newRoom = currentRoom->getDoor(direction)->getOtherRoom(currentRoom);
   player->setCurrentRoom(newRoom);
+  cout << "You move " << Globals::directionToString(direction) << ", entering ";
+  cout << "into the " << newRoom->getName() << "." << endl;
   return true;
 }
 
-void PlayerHandler::examine() {
+void PlayerHandler::look() {
   Room* currentRoom = player->getCurrentRoom();
   cout << "You are in the " << currentRoom->getName() << "." << endl;
   cout << currentRoom->getDescription() << endl;
@@ -99,35 +108,74 @@ void PlayerHandler::examine() {
   cout << "Looking around the room, you see";
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());
   cout << endl;
+  cout << TextHelper::listDoors(currentRoom) << endl;
   // List NPCs here
 }
 
+void PlayerHandler::status() {
+  Room* currentRoom = player->getCurrentRoom();
+  cout << "Spacesuit: " << (player->hasSpaceSuit() ? "ONLINE" : "NOT FOUND");
+  cout << endl;
+  cout << "Spacesuit Oxygen: ";
+  cout << TextHelper::makePercent(player->getInventory()->getOxygen());
+  cout << endl;
+  cout << currentRoom->getName() << " Oxygen: ";
+  cout << TextHelper::makePercent(currentRoom->getRoomOxygen()) << endl;
+}
+
 void PlayerHandler::showInventory() {
-  cout << "You look into your bag and find:" << endl;
-  for (Object* o : player->getInventory()->getObjects()) {
+  std::vector<Object*> objects = player->getInventory()->getObjects();
+  cout << "You look into your bag and find";
+  if (objects.size() == 0) {
+    cout << " nothing." << endl;
+    return;
+  }
+  cout << ":" << endl;
+  for (Object* o : objects) {
     cout << " - " << o->getName() << endl;
   }
 }
 
-bool PlayerHandler::look(std::string look) {
+bool PlayerHandler::examine(std::string examine) {
   Room* currentRoom = player->getCurrentRoom();
-  if (!currentRoom->getRoomObjects()->isObjectInContainer(look)) {
-    cout << "You can't find that here." << endl;
+  Object* object;
+  if (!currentRoom->getRoomObjects()->isObjectInContainer(examine)
+      && !player->getInventory()->isObjectInContainer(examine)) {
+    cout << "You cannot find that here." << endl;
     return false;
   }
-  Object* object = currentRoom->getRoomObjects()->getObject(look);
-  if (object->getDescription().back() == '.') {
-    cout << object->getDescription() << endl;
+
+  if (currentRoom->getRoomObjects()->isObjectInContainer(examine)) {
+    object = currentRoom->getRoomObjects()->getObject(examine);
+  } else {
+    object = player->getInventory()->getObject(examine);
+  }
+  cout << object->getDescription() << endl;
+  return true;
+}
+
+bool PlayerHandler::examine(Globals::Direction direction) {
+  Room* currentRoom = player->getCurrentRoom();
+  Door* exDoor = currentRoom->getDoor(direction);
+  if (exDoor != nullptr) {
+    cout << "Looking " << Globals::directionToString(direction);
+    cout << ", you see a door that leads to the ";
+    cout << exDoor->getOtherRoom(currentRoom)->getName() << endl;
+    if (exDoor->isDoorBlocked()) {
+      cout << "It is currently blocked: " << exDoor->getBlockedReason();
+      cout << endl;
+    }
     return true;
   }
-  cout << object->getDescription() << "." << endl;
-  return true;
+  cout << "Looking " << Globals::directionToString(direction);
+  cout << ", you see a wall, with no way through." << endl;;
+  return false;
 }
 
 bool PlayerHandler::pickUp(std::string pickUp) {
   Room* room = player->getCurrentRoom();
   if (!room->getRoomObjects()->isObjectInContainer(pickUp)) {
-    cout << "You can't find that here." << endl;
+    cout << "You cannot find that here." << endl;
     return false;
   }
   // TODO(hipt2720): Refactor Inventory::addObject(), move the isHoldable check
@@ -156,5 +204,7 @@ bool PlayerHandler::drop(std::string drop) {
 }
 
 std::vector<NPC*> getNPCsInCurrentRoom() {
+  std::vector<NPC*> vector;
   // TODO(hipt2720): This requires NPCs and Game to be implemented first.
+  return vector;
 }

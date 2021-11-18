@@ -38,8 +38,13 @@ class PlayerHandler {
 
   /**
   * Prompts user for what to do, converting the input into player actions.
+  * Returns true if the action performed is expected to use up oxygen supply.
+  * @param input istream to use for player-input. Use std::cin for player input,
+  * or an ifstream for automated testing.
+  * @return true if the action performed consumed oxygen and was successful.
+  * Will return false if the action was invalid.
   */
-  void input();
+  bool input(std::istream& input);
 
   /**
   * Moves the player between rooms using the door in the given direction.
@@ -50,16 +55,27 @@ class PlayerHandler {
 
   /**
   * Outputs the room's name and description to the screen, and lists off
-  * the objects in the room.
+  * the objects in the room, and possible directions to travel.
   */
-  void examine();
+  void look();
 
   /**
-  * Looks at the given object in the room, giving a description of it.
-  * @param look the name of the object to look at.
-  * @return true if the object was successfully looked at, false otherwise.
+  * Outputs spacesuit and room oxygen levels to the screen.
   */
-  bool look(std::string look);
+  void status();
+
+  /**
+  * Examines the given object in the room, giving a description of it.
+  * @param examine the name of the object to examine.
+  * @return true if the object was successfully examined, false otherwise.
+  */
+  bool examine(std::string examine);
+
+  /**
+  * Examines the given direction, displaying the blocked status of the Door
+  * and which room is in that direction, if possible.
+  */
+  bool examine(Globals::Direction direction);
 
   /**
   * Displays all of the item's in the player's inventory in a bullet-point list.

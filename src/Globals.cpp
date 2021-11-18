@@ -26,9 +26,7 @@ Direction Globals::stringToDirection(std::string s) {
   auto it = lookup.find(s);
   if (it != lookup.end()) {
     return it->second;
-  }
-  // TODO(hipt2720): throw exception here!
-  // else { throw error }
+  } else { throw std::exception{}; }
 }
 
 std::string Globals::directionToString(Direction d) {

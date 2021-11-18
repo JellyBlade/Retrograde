@@ -8,13 +8,21 @@
 #include <algorithm>
 #include <cctype>
 #include <vector>
+#include <map>
+#include <fstream>
 
 #include "TextHelper.h"
+#include "Globals.h"
+#include "Room.h"
+#include "Door.h"
 
 
 void TextHelper::readFile(std::string textPath) {
-  // TODO(hipt2720): Implement.
-  return;
+  std::string s;
+  std::ifstream file(textPath);
+  while (std::getline(file, s)) {
+    std::cout << s << std::endl;
+  }
 }
 
 void TextHelper::commandProcessor(std::string command) {
@@ -55,6 +63,56 @@ std::string TextHelper::listObjects(std::vector<Object*> objects) {
         s += o->getName() + ",";
       }
       return s;
+  }
+}
+
+std::string TextHelper::listDoors(Room* room) {
+  std::string s = "";
+  std::map<Globals::Direction, Door*> doors = room->getDoors();
+  int size = doors.size();
+  if (size == 0) {
+    s = "There are no doors.";
+    return s;
+  } else if (size == 1) {
+    s = "There is a door to the ";
+    if (doors.count(Globals::Direction::NORTH) == 1) {
+      s += "north.";
+    } else if (doors.count(Globals::Direction::EAST) == 1) {
+      s += "east.";
+    } else if (doors.count(Globals::Direction::SOUTH) == 1) {
+      s += "south.";
+    } else if (doors.count(Globals::Direction::WEST) == 1) {
+      s += "west.";
+    }
+    return s;
+  } else {
+    s = "There are doors to the ";
+    if (doors.count(Globals::Direction::NORTH) == 1) {
+      s += "north, ";
+      size--;
+    }
+    if (doors.count(Globals::Direction::EAST) == 1) {
+      if (--size == 0) {
+        s += "and east.";
+      } else {
+        s += "east, ";
+      }
+    }
+    if (doors.count(Globals::Direction::SOUTH) == 1) {
+      if (--size == 0) {
+        s += "and south.";
+      } else {
+        s += "south, ";
+      }
+    }
+    if (doors.count(Globals::Direction::WEST) == 1) {
+      if (--size == 0) {
+        s += "and west.";
+      } else {
+        s += "west, ";
+      }
+    }
+    return s;
   }
 }
 
