@@ -1,0 +1,15 @@
+:setflag bunnies are cute true
+
+:if flag bunniesarecute
+Bunnies are cute!
+:else
+Bunnies are not cute :(
+:endif
+
+:setflag bunniesarecute false
+
+:if flag bunnies are cute
+Bunnies are cute!
+:else
+Bunnies are not cute :(
+:endif

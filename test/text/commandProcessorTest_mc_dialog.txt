@@ -1,0 +1,47 @@
+Bob: How's it going?
+:mc
+[1] It's going well.
+[2] It's not going well.
+[3] I do not wish to speak with you, heathen.
+:endmcdef
+:1
+Bob: Oh that's good to hear!
+Bob: Recently Irene and I got back together, we're going to move in again.
+:2
+Bob: Oh that's too bad. Hey, did you hear I got back with Irene?
+Bob: Pretty sweet!
+:3
+Bob: ...
+Bob: Alright then, you didn't need to be so mean.
+:endmc
+
+Almanac, Seer of Worlds: What question do you ask of me, lowling?
+:mc
+[1] Why do we exist?
+[2] What are you?
+[3] How's your wednesday night?
+[4] I have no more questions.
+:endmcdef
+:1
+Almanac, Seer of Worlds: Your existence upon this mortal realm was dictated
+by the highest and holiest of our creators, Danny.
+:setflag high order knowledge true
+:back
+:2
+Almanac, Seer of Worlds: I am a multi-dimensional being sent here by Danny, the
+holiest one in order to teach your kind the ways of the truth.
+:if flag high order knowledge
+  I see you are also a believer of the ways of Danny.
+:endif
+:back
+:3
+Almanac, Seer of Worlds: I do not possess the understanding of the concept of
+a "wednesday night" as you humans call it. I am timeless, and thus all of time
+is wednesday night, and also not.
+
+I would not think humans be capable of comprehending this.
+:back
+:4
+Almanac, Seer of Worlds: So be it. I release you, mortal. Go free and share
+these glorious ideas with those of your kind.
+:endmc

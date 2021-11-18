@@ -25,7 +25,7 @@ namespace TextHelper {
   * calling commandProcessor if it encounters a script command to execute.
   * @param textPath to the path of the file to read from.
   */
-  void readFile(std::string textPath);
+  void readFile(std::string textPath, std::istream& input = std::cin);
 
   /**
   * Performs functions based on the inputted command string read

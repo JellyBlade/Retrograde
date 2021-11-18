@@ -21,18 +21,22 @@
 
 std::map<std::string, bool> TextHelper::rgScriptFlags;
 
-void TextHelper::readFile(std::string textPath) {
+void TextHelper::readFile(std::string textPath, std::istream& input) {
   std::string s;
   std::ifstream file(textPath);
   while (std::getline(file, s)) {
     if (!s.empty() && trim(s)[0] == '/') { continue; }
     if (!s.empty() && trim(s)[0] == ':') {
-      if (commandProcessor(tolower(trim(s)), file)) {
-        TextHelper::rgScriptFlags.clear();
-        file.close();
-        return;
+      try {
+        if (commandProcessor(tolower(trim(s)), file)) {
+          TextHelper::rgScriptFlags.clear();
+          file.close();
+          return;
+        }
+        continue;
+      } catch (...) {
+        throw;
       }
-      continue;
     }
     std::cout << s << std::endl;
   }
@@ -117,11 +121,11 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       if (dialog[0] == '/') { continue; }
       if (dialog == ":endmc") {
         return false;
-      } else if (dialog == ":back") {
+      } else if (dialog == ":back" && !skip) {
         file.seekg(topOfMC);
-      } else if (dialog == ":continue") {
+      } else if (dialog == ":continue" && !skip) {
         skip = true;
-        choice == "";
+        choice == ":skip";
       } else if (dialog == ":endmcdef") {
         std::cout << "Select an option." << std::endl << "> ";
         input >> choice;
@@ -131,7 +135,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         skip = false;
       } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice) {
         skip = true;
-      } else if (dialog[0] == ':' && !::isdigit(dialog[1])) {
+      } else if (dialog[0] == ':' && !skip && !::isdigit(dialog[1])) {
         commandProcessor(dialog, file);
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
