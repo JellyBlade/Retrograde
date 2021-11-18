@@ -57,6 +57,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
 
   if (cmd == "if") {
     if (params.size() == 0) {
+      std::cout << "Not enough parameters for RGScript if";
       // Not enough parameters for RGScript if
       throw std::exception{};
     }
@@ -91,6 +92,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
           }
         }
       } else {
+        std::cout << "Unknown RGScript if criterion."
         // Unknown RGScript if criterion.
         throw std::exception{};
       }
@@ -108,7 +110,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         skip = false;
       }
       if (!dialog.empty() && dialog[0] == ':') {
-         commandProcessor(dialog, file);
+         commandProcessor(dialog, file, input);
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
@@ -138,7 +140,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice) {
         skip = true;
       } else if (dialog[0] == ':' && !skip && !::isdigit(dialog[1])) {
-        commandProcessor(dialog, file);
+        commandProcessor(dialog, file, input);
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
@@ -158,7 +160,6 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       flagName += s;
     }
     flagName = tolower(trimAll(flagName));
-    std::cout << flagName;
     TextHelper::rgScriptFlags[flagName] = flagValue;
     return false;
   } else if (cmd == "move") {
