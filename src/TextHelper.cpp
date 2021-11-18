@@ -125,6 +125,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       } else if (dialog == ":endmcdef") {
         std::cout << "Select an option." << std::endl << "> ";
         input >> choice;
+        choice = ":" + choice;
         continue;
       } else if (dialog == choice) {
         skip = false;
