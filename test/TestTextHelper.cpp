@@ -18,13 +18,14 @@ TEST(TestTextHelper, readFileTest) {
 
 TEST(TestTextHelper, commandProcessorTest) {
   Game* game = new Game();
-  InteractHelper::game = game;
   Map* map = game->getMap();
   Room* r1 = new Room("Room A", "This room is made out of the letter A.");
   Room* r2 = new Room("Room B", "This room is made of bees.");
   map->addRoom(r1);
   map->addRoom(r2);
   game->getPlayerHandler()->getPlayer()->setCurrentRoom(r1);
+  InteractHelper::game = game;
+  std::cout << game->getMap()->getRooms().size();
 
   std::cout << "Quit test" << std::endl;
   std::ifstream input("test/text/commandProcessorTest_quit_input.txt");

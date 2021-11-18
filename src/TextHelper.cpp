@@ -197,7 +197,10 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::string response;
     std::cout << "Would you like to continue?" << std::endl << "> ";
     input >> response;
+    std::cout << response;
     response = trim(tolower(response));
+    std::cout << response;
+    std::cout << response[0];
     return response[0] == 'y' ? false : true;
   } else if (cmd == "pause") {
     std::cout << "Press enter to continue...";
