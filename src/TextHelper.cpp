@@ -126,9 +126,11 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         return false;
       } else if (dialog == ":back" && !skip) {
         file.seekg(topOfMC);
+        continue;
       } else if (dialog == ":continue" && !skip) {
         skip = true;
         choice == ":skip";
+        continue;
       } else if (dialog == ":endmcdef") {
         std::cout << "Select an option." << std::endl << "> ";
         input >> choice;
@@ -136,10 +138,13 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         continue;
       } else if (dialog == choice) {
         skip = false;
+        continue;
       } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice) {
         skip = true;
+        continue;
       } else if (dialog[0] == ':' && !skip && !::isdigit(dialog[1])) {
         commandProcessor(dialog, file, input);
+        continue;
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
