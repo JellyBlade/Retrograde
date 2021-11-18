@@ -92,7 +92,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
           }
         }
       } else {
-        std::cout << "Unknown RGScript if criterion."
+        std::cout << "Unknown RGScript if criterion.";
         // Unknown RGScript if criterion.
         throw std::exception{};
       }
