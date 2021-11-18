@@ -8,6 +8,10 @@ Bunnies are cute!
 Bunnies are not cute :(
 :endif
 
+:if flag bunniesarecute
+Bunnies are still cute!
+:endif
+
 Setting flag to false.
 :setflag bunniesarecute false
 
