@@ -26,13 +26,15 @@ TEST(TestTextHelper, commandProcessorTest) {
   map->addRoom(r2);
   game->getPlayerHandler()->getPlayer()->setCurrentRoom(r1);
 
+  std::cout << "Quit test" << std::endl;
   std::ifstream input("test/text/commandProcessorTest_quit_input.txt");
   std::string file = "test/text/commandProcessorTest_quit_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
+  std::cout << "Move test" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r1);
-  input.open("");
+  input.open("test/text/commandProcessorTest_empty_input.txt"");
   file = "test/text/commandProcessorTest_move_dialog.txt";
   TextHelper::readFile(file, input);
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r2);
@@ -52,21 +54,23 @@ TEST(TestTextHelper, commandProcessorTest) {
   // TextHelper::readFile(file, input);
   // input.close();
 
-  input.open("");
+  std::cout << "Setflag test" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt"");
   file = "test/text/commandProcessorTest_setflag_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  input.open("");
+  std::cout << "If test" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_if_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
+  std::cout << "MC test" << std::endl;
   input.open("test/text/commandProcessorTest_mc_input.txt");
   file = "test/text/commandProcessorTest_mc_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
-
 }
 
 TEST(TestTextHelper, makePercentTest) {
