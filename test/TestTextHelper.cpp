@@ -34,7 +34,7 @@ TEST(TestTextHelper, commandProcessorTest) {
 
   std::cout << "Move test" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r1);
-  input.open("test/text/commandProcessorTest_empty_input.txt"");
+  input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_move_dialog.txt";
   TextHelper::readFile(file, input);
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r2);
@@ -55,7 +55,7 @@ TEST(TestTextHelper, commandProcessorTest) {
   // input.close();
 
   std::cout << "Setflag test" << std::endl;
-  input.open("test/text/commandProcessorTest_empty_input.txt"");
+  input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_setflag_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
