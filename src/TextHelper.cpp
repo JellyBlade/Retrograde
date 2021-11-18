@@ -92,13 +92,14 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         }
       } else {
         // Unknown RGScript if criterion.
+        std::cout << criterionType << criterion;
         throw std::exception{};
       }
     }
     skip = !readIf;
     while (std::getline(file, dialog)) {
       dialog = trim(dialog);
-      if (dialog[0] == '/') { continue; }
+      if (!dialog.empty() && dialog[0] == '/') { continue; }
       if (dialog == ":endif") {
         return false;
       }
@@ -107,7 +108,9 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       } else if (!readIf) {
         skip = false;
       }
-      if (dialog[0] == ':') { commandProcessor(dialog, file); }
+      if (!dialog.empty() && dialog[0] == ':') {
+         commandProcessor(dialog, file);
+      }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
   } else if (cmd == "mc") {
@@ -118,7 +121,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
 
     while (std::getline(file, dialog)) {
       dialog = trim(dialog);
-      if (dialog[0] == '/') { continue; }
+      if (!dialog.empty() && dialog[0] == '/') { continue; }
       if (dialog == ":endmc") {
         return false;
       } else if (dialog == ":back" && !skip) {
