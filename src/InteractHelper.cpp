@@ -21,3 +21,7 @@ Map* InteractHelper::getMap() {
 PlayerHandler* InteractHelper::getPlayerHandler() {
   return game->getPlayerHandler();
 }
+
+std::vector<NPC*> InteractHelper::getNPCs() {
+  return game->getNPCs();
+}

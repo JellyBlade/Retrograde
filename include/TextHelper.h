@@ -9,6 +9,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include "Object.h"
 #include "Room.h"
@@ -18,7 +19,7 @@
 * strings.
 */
 namespace TextHelper {
-
+  extern std::map<std::string, bool> rgScriptFlags;
   /**
   * Outputs dialogue from file to screen,
   * calling commandProcessor if it encounters a script command to execute.
@@ -27,11 +28,17 @@ namespace TextHelper {
   void readFile(std::string textPath);
 
   /**
-  * Performs functions based on the inputted command string, usually read
+  * Performs functions based on the inputted command string read
   * from a dialogue file.
   * @param command the script command to parse and execute.
+  * @param file the file currently being read.
+  * @param input the istream to use for user-input.
+  * an fstream is used for automated testing, and std::cin is for user-input.
+  * @return true if the file being read should be closed, false if it should
+  * continue to be read.
   */
-  bool commandProcessor(std::string command);
+  bool commandProcessor(std::string command, std::istream& file,
+    std::istream& input = std::cin);
 
   /**
   * Turns the given integer into a fake percentage with two decimals of
