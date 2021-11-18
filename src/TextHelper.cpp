@@ -11,6 +11,7 @@
 #include <map>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 
 #include "TextHelper.h"
 #include "InteractHelper.h"
@@ -34,8 +35,8 @@ void TextHelper::readFile(std::string textPath, std::istream& input) {
           return;
         }
         continue;
-      } catch (...) {
-        throw;
+      } catch (std::runtime_error& e) {
+        std::cout << e.what() << std::endl;
       }
     }
     std::cout << s << std::endl;
@@ -57,9 +58,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
 
   if (cmd == "if") {
     if (params.size() == 0) {
-      std::cout << "Not enough parameters for RGScript if";
-      // Not enough parameters for RGScript if
-      throw std::exception{};
+      throw std::runtime_error("Not enough parameters for RGScript if");
     }
     std::string dialog;
     bool readIf = false;
@@ -94,7 +93,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       } else {
         std::cout << "Unknown RGScript if criterion.";
         // Unknown RGScript if criterion.
-        throw std::exception{};
+        throw std::runtime_error("Unknown RGScript if criterion: " + criterion);
       }
     }
     skip = !readIf;
@@ -104,10 +103,9 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       if (dialog == ":endif") {
         return false;
       }
-      if (dialog == ":else" && readIf) {
-        skip = true;
-      } else if (!readIf) {
-        skip = false;
+      if (dialog == ":else") {
+        skip = readIf;
+        continue;
       }
       if (!dialog.empty() && dialog[0] == ':') {
          commandProcessor(dialog, file, input);
@@ -152,7 +150,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     if (params.size() <= 1) {
       std::cout << "Not enough parameters for RGScript setflag";
       // Not enough parameters for RGScript setflag
-      throw std::exception{};
+      throw std::runtime_error("Not enough parameters for RGScript setflag");
     }
     std::string flagName;
     bool flagValue = (params.back() == "true" || params.back() == "1");
@@ -175,7 +173,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       }
     }
     // Room not found for RGScript move
-    throw std::exception{};
+    throw std::runtime_error("Room not found for RGScript move.");
   } else if (cmd == "movenpc") {
     std::string roomName;
     std::string npcName = params.front();
@@ -193,11 +191,11 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
           }
         }
         // NPC not found for RGScript movenpc
-        throw std::exception{};
+        throw std::runtime_error("NPC not found for RGScript movenpc");
       }
     }
     // Room not found for RGScript movenpc
-    throw std::exception{};
+    throw std::runtime_error("Room not found for RGScript movenpc");
   } else if (cmd == "quit") {
     return true;
   } else if (cmd == "askquit") {
@@ -212,6 +210,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     return false;
   } else {
     // RGScript command not recognized.
+    std::cout << "RGScript command not recognized.";
     throw std::exception{};
   }
 }
