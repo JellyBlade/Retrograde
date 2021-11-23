@@ -15,7 +15,6 @@
 */
 class Log : public Object {
  public:
-
   /**
   * Constructor
   * @param s string that textPath will be set to

@@ -7,7 +7,7 @@
 #include "gtest/gtest.h"
 
 TEST(TestLog, interactTest) {
-  Log* l = new Log("test/text/Log.txt");
+  Log* l = new Log("test/log.txt");
 
   l->interact();
 

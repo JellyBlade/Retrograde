@@ -12,6 +12,6 @@
 Log::Log(std::string s) : textPath{s} {}
 
 void Log::interact() {
-  std::cout << "This is the filePath" << textPath << std::endl;
+  std::cout << "This is the filePath " << textPath << std::endl;
   TextHelper::readFile(textPath);
 }
