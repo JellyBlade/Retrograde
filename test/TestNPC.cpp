@@ -48,17 +48,17 @@ TEST(TestNPC, useOxygenTest) {
   Room* r1 = new Room();
 
   n->moveNPC(r1);
-  EXPECT_EQ(n->getCurrentRoom->getRoomOxygen(), 10000);
+  EXPECT_EQ(n->getCurrentRoom()->getRoomOxygen(), 10000);
   n->useOxygen();
-  EXPECT_EQ(n->getCurrentRoom->getRoomOxygen(), 9500);
+  EXPECT_EQ(n->getCurrentRoom()->getRoomOxygen(), 9500);
 
-  n->getCurrentRoom->setRoomOxygen(500);
+  n->getCurrentRoom()->setRoomOxygen(500);
   n->useOxygen();
-  EXPECT_EQ(n->getCurrentRoom->getRoomOxygen(), 0);
+  EXPECT_EQ(n->getCurrentRoom()->getRoomOxygen(), 0);
 
-  n->getCurrentRoom->setRoomOxygen(499);
+  n->getCurrentRoom()->setRoomOxygen(499);
   n->useOxygen();
-  EXPECT_EQ(n->getCurrentRoom->getRoomOxygen(), 0);
+  EXPECT_EQ(n->getCurrentRoom()->getRoomOxygen(), 0);
   EXPECT_EQ(n->isAlive(), false);
 
 
