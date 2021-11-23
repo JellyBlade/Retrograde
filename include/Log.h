@@ -15,6 +15,13 @@
 */
 class Log : public Object {
  public:
+
+  /**
+  * Constructor
+  * @param s string that textPath will be set to
+  */
+  Log(std::string s);
+
   /**
   * Reads the .txt file at bookPath and outputs to the screen
   */
