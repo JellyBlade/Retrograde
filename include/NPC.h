@@ -7,9 +7,15 @@
 #define NPC_H
 
 #include "Room.h"
+#include "NamedThing.h"
 
 class NPC : public NamedThing {
  public:
+  /**
+  * default constructor
+  */
+  NPC();
+
   /**
   * Displays dialogue from text based on NPC name.
   */
@@ -46,6 +52,7 @@ class NPC : public NamedThing {
 
  private:
   Room* currentRoom;
+  bool alive;
 };
 
 #endif // NPC_H
