@@ -24,7 +24,7 @@ class PasswordLock : public Puzzle {
   * @param p string that the password will be set to. Default value is "1234".
   */
   PasswordLock(std::string n = "Object",
-  std::string d = "This object does nothing", bool h = false,
+  std::string d = "This object does nothing", bool h = true,
   std::string p = "1234");
 
   /**
