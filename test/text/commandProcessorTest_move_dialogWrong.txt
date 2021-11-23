@@ -1,0 +1,3 @@
+The player is currently in Room B.
+:move room c
+The player should still be in Room B.

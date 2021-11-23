@@ -1,0 +1,10 @@
+This is a test of TextHelper's readfile functionality.
+
+The next line should definitely be visible:
+I AM VISIBLE!
+
+The next two lines should not appear:
+/ I am an RGScript comment.
+// I am also an RGScript comment, but I look more like coding comments.
+
+This line should appear, as this is the conclusion of the test.

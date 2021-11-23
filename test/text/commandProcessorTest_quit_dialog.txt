@@ -1,0 +1,8 @@
+This line shall be visible.
+This one too.
+
+:askquit
+This one will be visible, but not before asking if they want to
+continue reading.
+:quit
+This line won't be visible though.

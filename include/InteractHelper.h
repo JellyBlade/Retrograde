@@ -34,6 +34,12 @@ namespace InteractHelper {
   PlayerHandler* getPlayerHandler();
 
   /**
+  * Returns all of the NPCs in the game.
+  * @return a vector containing all NPCs.
+  */
+  std::vector<NPC*> getNPCs();
+
+  /**
   * Returns a vector of NPCs that are in the given room. May be empty.
   * @param room The room to get the NPCs of.
   * @return every NPC in the given room as a vector.
