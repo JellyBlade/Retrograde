@@ -8,15 +8,18 @@
 NPC::NPC() : alive{true} {}
 
 void NPC::talk() {
-  // implement later
+  if (alive) {
+    // implement later
+  }
 }
 
 void NPC::ask() {
-  // implement later
+  if (alive) {
+    // implement later
+  }
 }
 
 void NPC::stab() {
-  // implement later
   alive = false;
 }
 
@@ -31,7 +34,8 @@ void NPC::moveNPC(Room* room) {
 void NPC::useOxygen() {
   if (currentRoom->getRoomOxygen() < 500) {
     alive = false;
-  } else {
+  }
+  if (alive) {
     currentRoom->setRoomOxygen(currentRoom->getRoomOxygen() - 500);
   }
 }
