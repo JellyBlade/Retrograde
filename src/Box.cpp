@@ -4,6 +4,8 @@
 */
 
 #include <iostream>
+#include <string>
+
 #include "Box.h"
 
 using std::cout;
@@ -12,7 +14,7 @@ using std::endl;
 void Box::interact() {
   std::string item;
   cout << "You look into the box and find";
-  for(int i = 0; i < objects.size(); i++) {
+  for (int i = 0; i < objects.size(); i++) {
     if (objects.size() == 0) {
       cout << " nothing." << endl;
       return;
@@ -28,7 +30,6 @@ void Box::interact() {
   if (objects.isObjectInContainer(item)) {
     objects.removeObject(objects.getObject(item));
     //TODO(mart2720): how do i add it to the specific player's inventory?
-  }
-  else
+  } else
     cout << "Could not find item." << endl;
 }
