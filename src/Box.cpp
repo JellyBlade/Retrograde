@@ -30,6 +30,7 @@ void Box::interact() {
   if (objects.isObjectInContainer(item)) {
     objects.removeObject(objects.getObject(item));
     //TODO(mart2720): how do i add it to the specific player's inventory?
-  } else
+  } else {
     cout << "Could not find item." << endl;
+  }
 }
