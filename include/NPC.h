@@ -50,6 +50,12 @@ class NPC : public NamedThing {
   */
   void useOxygen();
 
+  /**
+  * Returns the alive value
+  * @return alive bool value of the Alive state.
+  */
+  bool isAlive();
+
  private:
   Room* currentRoom;
   bool alive;

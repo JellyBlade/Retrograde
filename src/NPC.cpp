@@ -23,6 +23,10 @@ void NPC::stab() {
   alive = false;
 }
 
+bool NPC::isAlive() {
+  return alive;
+}
+
 Room* NPC::getCurrentRoom() {
   return currentRoom;
 }
@@ -34,6 +38,7 @@ void NPC::moveNPC(Room* room) {
 void NPC::useOxygen() {
   if (currentRoom->getRoomOxygen() < 500) {
     alive = false;
+    currentRoom->setRoomOxygen(0);
   }
   if (alive) {
     currentRoom->setRoomOxygen(currentRoom->getRoomOxygen() - 500);
