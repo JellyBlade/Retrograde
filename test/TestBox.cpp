@@ -17,7 +17,7 @@ TEST(TestBox, constructorTest) {
   ObCon->addObject(o1);
 
   Box* b = new Box(ObCon);
-  std::cout << "ObCOn size is " << ObCon.size() << std::endl;
+  std::cout << "ObCOn size is " << ObCon->size() << std::endl;
 
   EXPECT_EQ(b->getBoxObjects().getObjects().size(), 2);
   EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o));
