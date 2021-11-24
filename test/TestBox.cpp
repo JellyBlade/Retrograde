@@ -20,6 +20,7 @@ TEST(TestBox, constructorTest) {
   ObCon->addObject(o1);
 
   std::cout << "Im assuming seg fault in constructor " << std::endl;
+  std::cout << "This is the address of o " << o << std::endl;
   Box* b = new Box(ObCon);
   std::cout << "ObCOn size is " << ObCon->size() << std::endl;
 
