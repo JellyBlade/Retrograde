@@ -15,6 +15,7 @@ Box::Box(ObjectContainer* object) {
   for (Object* o : object->getObjects()) {
     objects.getObjects().push_back(o);
   }
+  setHoldable(false);
 }
 
 ObjectContainer Box::getBoxObjects() {
