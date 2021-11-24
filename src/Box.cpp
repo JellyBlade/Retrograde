@@ -11,11 +11,13 @@
 using std::cout;
 using std::endl;
 
-Box::Box(ObjectContainer* object) {
+Box::Box(ObjectContainer* ob) {
   std::cout << "Im assuming seg fault is here " << std::endl;
-  for (int i = 0; i < object->size(); i++) {
+  for (int i = 0; i < ob->size(); i++) {
     std::cout << "is it a certain line? " << std::endl;
-    objects->addObject(object->getObjects()[i]);
+    std::cout << "Does the vector have objects in it? Size = " << ob->size() << std::endl;
+    std::cout << "Does the object have an address? " << ob->getObjects()[i] << std::endl;
+    objects->addObject(ob->getObjects()[i]);
   }
   setHoldable(false);
 }
