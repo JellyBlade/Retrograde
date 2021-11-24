@@ -19,12 +19,12 @@ TEST(TestBox, constructorTest) {
   Box* b = new Box(ObCon);
   std::cout << "ObCOn size is " << ObCon->size() << std::endl;
 
-  EXPECT_EQ(b->getBoxObjects().getObjects().size(), 2);
-  EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o));
-  EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o1));
-  EXPECT_FALSE(b->getBoxObjects().isObjectInContainer("You're a Harry Wizard"));
+  EXPECT_EQ(b->getBoxObjects()->getObjects().size(), 2);
+  EXPECT_TRUE(b->getBoxObjects()->isObjectInContainer(o));
+  EXPECT_TRUE(b->getBoxObjects()->isObjectInContainer(o1));
+  EXPECT_FALSE(b->getBoxObjects()->isObjectInContainer("You're a Harry Wizard"));
 
-  delete ObCon;
+  //delete ObCon;
   delete b;
 }
 

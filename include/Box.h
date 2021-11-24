@@ -17,7 +17,8 @@ class Box : public Object {
 
   /**
   * Copy Constructor
-  * @param object ObjectContainer pointer that the objects will be set to
+  * @param object ObjectContainer pointer that the objects Object Container
+  * will be set to
   */
   Box(ObjectContainer* object);
 
@@ -25,7 +26,7 @@ class Box : public Object {
   * Returns the objectContainer of the box
   * @return objects ObjectContainer that the box has
   */
-  ObjectContainer getBoxObjects();
+  ObjectContainer* getBoxObjects();
 
   /**
   * Displays objects inside the container, asks user which one to take
@@ -33,7 +34,7 @@ class Box : public Object {
   void interact();
 
  private:
-  ObjectContainer objects;
+  ObjectContainer* objects;
 };
 
 #endif
