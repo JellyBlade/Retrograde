@@ -13,9 +13,9 @@ using std::endl;
 
 Box::Box(ObjectContainer* object) {
   std::cout << "Im assuming seg fault is here " << std::endl;
-  for (Object* o : object->getObjects()) {
+  for (int i = 0; i < object.size(); i++) {
     std::cout << "is it a certain line? " << std::endl;
-    objects->addObject(*o);
+    objects->addObject(object[i]);
   }
   setHoldable(false);
 }
