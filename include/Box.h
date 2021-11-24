@@ -14,6 +14,19 @@
 */
 class Box : public Object {
  public:
+
+  /**
+  * Copy Constructor
+  * @param object ObjectContainer pointer that the objects will be set to
+  */
+  Box(ObjectContainer* object);
+
+  /**
+  * Returns the objectContainer of the box
+  * @return objects ObjectContainer that the box has
+  */
+  ObjectContainer getBoxObjects();
+
   /**
   * Displays objects inside the container, asks user which one to take
   */

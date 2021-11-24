@@ -11,6 +11,16 @@
 using std::cout;
 using std::endl;
 
+Box::Box(ObjectContainer* object) {
+  for (Object* o : object->getObjects()) {
+    objects.getObjects().push_back(o);
+  }
+}
+
+ObjectContainer Box::getBoxObjects() {
+  return objects;
+}
+
 void Box::interact() {
   std::string item;
   cout << "You look into the box and find";
