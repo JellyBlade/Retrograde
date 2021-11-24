@@ -27,9 +27,8 @@ TEST(TestBox, constructorTest) {
   delete b;
 }
 
-
+/*
 TEST(TestBox, interactTest) {
   Box* b = new Box();
-
-
 }
+*/
