@@ -12,7 +12,9 @@ using std::cout;
 using std::endl;
 
 Box::Box(ObjectContainer* object) {
+  std::cout << "Im assuming seg fault is here " << std::endl;
   for (Object* o : object->getObjects()) {
+    std::cout << "is it a certain line? " << std::endl;
     objects->getObjects().push_back(o);
   }
   setHoldable(false);
