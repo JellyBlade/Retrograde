@@ -12,6 +12,7 @@
 TEST(TestBox, constructorTest) {
   Object* o = new Object();
   Object* o1 = new Object();
+  Object* o2 = new Object("You're a Harry Wizard")
   Box* b = new Box();
   b->addObject(o);
   b->addObject(o1);
@@ -25,6 +26,7 @@ TEST(TestBox, constructorTest) {
   EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o1));
   std::cout << "after is o1 in container " << std::endl;
   EXPECT_FALSE(b->getBoxObjects().isObjectInContainer("You're a Harry Wizard"));
+  EXPECT_FALSE(b->getBoxObjects().isObjectInContainer(o2));
   std::cout << "after is Harry Potter in container " << std::endl;
 
   //delete ObCon;
