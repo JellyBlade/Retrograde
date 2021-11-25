@@ -20,7 +20,7 @@ class Box : public Object {
   * @param object ObjectContainer pointer that the objects Object Container
   * will be set to
   */
-  Box(ObjectContainer* object);
+  Box(/*ObjectContainer* object*/);
 
   /**
   * Returns the objectContainer of the box
