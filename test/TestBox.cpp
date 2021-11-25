@@ -12,7 +12,7 @@
 TEST(TestBox, constructorTest) {
   Object* o = new Object();
   Object* o1 = new Object();
-  Object* o2 = new Object("You're a Harry Wizard")
+  Object* o2 = new Object("You're a Harry Wizard");
   Box* b = new Box();
   b->addObject(o);
   b->addObject(o1);
