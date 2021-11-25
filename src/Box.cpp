@@ -17,7 +17,8 @@ Box::Box(ObjectContainer* ob) {
     std::cout << "is it a certain line? " << std::endl;
     std::cout << "Does the vector have objects in it? Size = " << ob->size() << std::endl;
     std::cout << "Does the object have an address? " << ob->getObjects()[i] << std::endl;
-    //objects->addObject(ob->getObjects()[i]);
+    objects->addObject(ob->getObjects()[i]);
+    std::cout << "We got past the line woohoo " << objects->getObjects().size() << std::endl;
   }
   setHoldable(false);
 }
