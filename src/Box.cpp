@@ -24,6 +24,7 @@ Box::Box(/*ObjectContainer* ob*/) {
 }
 
 void Box::addObject(Object* object) {
+  std::cout << "Does it call this function? " << std::endl;
   objects->addObject(object);
 }
 
