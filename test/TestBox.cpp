@@ -23,7 +23,7 @@ TEST(TestBox, constructorTest) {
   std::cout << "This is the address of o " << o << std::endl;
   Box* b = new Box(/*ObCon*/);
   std::cout << "I officially hate this seg fault with a burning passion" << std::endl;
-  b->getBoxObjects()->addObject(o);
+  b->getBoxObjects().addObject(o);
   b->addObject(o1);
   std::cout << "Box size is " << b->getBoxObjects()->getObjects().size() << std::endl;
   std::cout << "ObCOn size is " << ObCon->size() << std::endl;
