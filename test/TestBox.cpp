@@ -25,13 +25,13 @@ TEST(TestBox, constructorTest) {
   std::cout << "I officially hate this seg fault with a burning passion" << std::endl;
   b->getBoxObjects().addObject(o);
   b->addObject(o1);
-  std::cout << "Box size is " << b->getBoxObjects()->getObjects().size() << std::endl;
+  std::cout << "Box size is " << b->getBoxObjects().getObjects().size() << std::endl;
   std::cout << "ObCOn size is " << ObCon->size() << std::endl;
 
-  EXPECT_EQ(b->getBoxObjects()->getObjects().size(), 2);
-  EXPECT_TRUE(b->getBoxObjects()->isObjectInContainer(o));
-  EXPECT_TRUE(b->getBoxObjects()->isObjectInContainer(o1));
-  EXPECT_FALSE(b->getBoxObjects()->isObjectInContainer("You're a Harry Wizard"));
+  EXPECT_EQ(b->getBoxObjects().getObjects().size(), 2);
+  EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o));
+  EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o1));
+  EXPECT_FALSE(b->getBoxObjects().isObjectInContainer("You're a Harry Wizard"));
 
   //delete ObCon;
   delete b;
