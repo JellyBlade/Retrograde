@@ -25,7 +25,6 @@ TEST(TestBox, constructorTest) {
   std::cout << "after is o in container " << std::endl;
   EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o1));
   std::cout << "after is o1 in container " << std::endl;
-  EXPECT_FALSE(b->getBoxObjects().isObjectInContainer("You're a Harry Wizard"));
   EXPECT_FALSE(b->getBoxObjects().isObjectInContainer(o2));
   std::cout << "after is Harry Potter in container " << std::endl;
 
