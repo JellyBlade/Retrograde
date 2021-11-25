@@ -16,11 +16,9 @@ class Box : public Object {
  public:
 
   /**
-  * Copy Constructor
-  * @param object ObjectContainer pointer that the objects Object Container
-  * will be set to
+  * Default Constructor
   */
-  Box(/*ObjectContainer* object*/);
+  Box();
 
   /**
   * Returns the objectContainer of the box
