@@ -28,8 +28,7 @@ TEST(TestBox, constructorTest) {
   EXPECT_FALSE(b->getBoxObjects().isObjectInContainer(o2));
   std::cout << "after is Harry Potter in container " << std::endl;
 
-  //delete ObCon;
-  //delete b;
+  delete b;
 }
 
 
