@@ -11,7 +11,7 @@
 
 //TODO(mart2720): Seg fault happening on line 18 on Box.cpp, dont have the
 // time to fix it right now
-/*
+
 TEST(TestBox, constructorTest) {
   ObjectContainer* ObCon = new ObjectContainer();
   Object* o = new Object();
@@ -22,6 +22,9 @@ TEST(TestBox, constructorTest) {
   std::cout << "Im assuming seg fault in constructor " << std::endl;
   std::cout << "This is the address of o " << o << std::endl;
   Box* b = new Box(ObCon);
+  b->addObject(o);
+  b->addObject(o1);
+  std::cout << "Box size is " << b->getBoxObjects()->getObjects().size() << std::endl;
   std::cout << "ObCOn size is " << ObCon->size() << std::endl;
 
   EXPECT_EQ(b->getBoxObjects()->getObjects().size(), 2);
@@ -32,7 +35,7 @@ TEST(TestBox, constructorTest) {
   //delete ObCon;
   delete b;
 }
-*/
+
 
 /*
 TEST(TestBox, interactTest) {

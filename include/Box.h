@@ -29,6 +29,12 @@ class Box : public Object {
   ObjectContainer* getBoxObjects();
 
   /**
+  * Adds the given Object to this container.
+  * @param object the Object to add.
+  */
+  void addObject(Object* object);
+
+  /**
   * Displays objects inside the container, asks user which one to take
   */
   void interact();
