@@ -51,13 +51,13 @@ class Box : public Object {
   */
   bool playerInput(std::istream& input);
 
- private:
   /**
   * Lists the objects in the box to the screen in a formatted way, using
   * TextHelper::listObjects.
   */
   void displayBoxObjects();
 
+ private:
   ObjectContainer* objects;
 };
 

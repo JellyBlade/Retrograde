@@ -44,8 +44,8 @@ TEST(TestBox, interactTest) {
   EXPECT_EQ(b->getBoxObjects()->size(), 2);
 
   b->displayBoxObjects();
-  EXPECT_FALSE(b->input(file));
-  EXPECT_TRUE(b->input(file));
+  EXPECT_FALSE(b->playerInput(file));
+  EXPECT_TRUE(b->playerInput(file));
   EXPECT_EQ(b->getBoxObjects()->size(), 1);
   EXPECT_EQ(InteractHelper::getPlayerHandler()->getPlayer()
   ->getInventory()->size(), 1);
