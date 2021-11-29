@@ -13,7 +13,9 @@ TEST(TestBox, constructorTest) {
   Object* o = new Object();
   Object* o1 = new Object();
   Object* o2 = new Object("You're a Harry Wizard");
+  std::cout << "After object instantiations, but before box.";
   Box* b = new Box();
+  std::cout << "after instantiations";
   b->addObject(o);
   b->addObject(o1);
 
