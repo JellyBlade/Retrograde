@@ -10,13 +10,13 @@
 #include "gtest/gtest.h"
 
 TEST(TestBox, constructorTest) {
-  std::cout << "Before everything.";
+  std::cout << "Before everything." << std::endl;
   Object* o = new Object("test", "test", false);
   Object* o1 = new Object("test2", "test2", false);
   Object* o2 = new Object("You're a Harry Wizard", "yer a wezrd hry", false);
-  std::cout << "After object instantiations, but before box.";
+  std::cout << "After object instantiations, but before box." << std::endl;
   Box* b = new Box();
-  std::cout << "after instantiations";
+  std::cout << "after instantiations" << std::endl;
   b->addObject(o);
   b->addObject(o1);
 
