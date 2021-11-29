@@ -10,7 +10,7 @@
 #include "TextHelper.h"
 
 Log::Log(std::string n, std::string d, bool h, std::string s) {
-  setName(s);
+  setName(n);
   setDescription(s);
   setHoldable(h);
   textPath = s;
