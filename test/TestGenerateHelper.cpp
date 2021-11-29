@@ -50,3 +50,13 @@ TEST(TestGenerateHelper, roomGenerationTest) {
   delete r2;
   delete r3;
 }
+
+TEST(TestGenerateHelper, mapGenerationTest) {
+  Map* map = GenerateHelper::generateMap("map1");
+  EXPECT_EQ(map->getRooms().size(), 3);
+  EXPECT_EQ(map->getDoors().size(), 2);
+  EXPECT_NE(map->getRoom("engineering room"), nullptr);
+  EXPECT_EQ(map->getRoom("fake room that doesn't exist"), nullptr);
+
+  delete map;
+}
