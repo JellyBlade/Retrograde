@@ -44,7 +44,7 @@ void Box::interact() {
     // add/remove objects to the player's inventory too.
     InteractHelper::getPlayerHandler()->getPlayer()->getInventory()
       ->addObject(objects->getObject(item));
-    objects->removeObject(objects.getObject(item));
+    objects->removeObject(objects->getObject(item));
 
   } else {
     cout << "Could not find item." << endl;
