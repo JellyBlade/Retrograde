@@ -14,6 +14,7 @@ using std::cout;
 using std::endl;
 
 Box::Box() {
+  objects = new ObjectContainer();
   setHoldable(false);
 }
 
