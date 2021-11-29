@@ -10,6 +10,8 @@
 
 #include "GenerateHelper.h"
 #include "TextHelper.h"
+#include "Globals.h"
+#include "Map.h"
 #include "Door.h"
 #include "Object.h"
 #include "Log.h"
@@ -97,5 +99,83 @@ Map* GenerateHelper::generateMap(std::string mapName) {
   if (!file.is_open()) {
     throw std::runtime_error(mapName + ".json not found!");
   }
+  Map* map = new Map();
   json mapJSON = json::parse(file);
+  for (auto it = mapJSON.begin(); it != mapJSON.end(); ++it) {
+    for (auto r : jsonRooms) {
+      if (TextHelper::tolower(TextHelper::trimAll(it.value()["name"]))
+      == TextHelper::tolower(TextHelper::trimAll(it.value()["name"]))) {
+        Room* origin = map->getRoom(r["name"]);
+        if (origin == nullptr) {
+          origin = generateRoom(r["name"]);
+          map->addRoom(origin);
+        }
+        if (it.value().contains("north")) {
+          Room* dest = map->getRoom(it.value()["north"]["name"]);
+          if (dest == nullptr) {
+            dest = generateRoom(it.value()["north"]["name"]);
+            map->addRoom(dest);
+          }
+          if (!map->doesDoorExistBetween(origin, dest)) {
+            Door* link = new Door(origin, dest);
+            if (it.value()["north"].contains("blocked")) {
+              link->blockDoor(it.value()["north"]["blockedReason"]);
+            }
+            map->addDoor(link);
+            origin->changeDoor(link, Globals::Direction::NORTH);
+            dest->changeDoor(link, Globals::Direction::SOUTH);
+          }
+        }
+        if (it.value().contains("east")) {
+          Room* dest = map->getRoom(it.value()["east"]["name"]);
+          if (dest == nullptr) {
+            dest = generateRoom(it.value()["east"]["name"]);
+            map->addRoom(dest);
+          }
+          if (!map->doesDoorExistBetween(origin, dest)) {
+            Door* link = new Door(origin, dest);
+            if (it.value()["east"].contains("blocked")) {
+              link->blockDoor(it.value()["east"]["blockedReason"]);
+            }
+            map->addDoor(link);
+            origin->changeDoor(link, Globals::Direction::EAST);
+            dest->changeDoor(link, Globals::Direction::WEST);
+          }
+        }
+        if (it.value().contains("south")) {
+          Room* dest = map->getRoom(it.value()["south"]["name"]);
+          if (dest == nullptr) {
+            dest = generateRoom(it.value()["south"]["name"]);
+            map->addRoom(dest);
+          }
+          if (!map->doesDoorExistBetween(origin, dest)) {
+            Door* link = new Door(origin, dest);
+            if (it.value()["south"].contains("blocked")) {
+              link->blockDoor(it.value()["south"]["blockedReason"]);
+            }
+            map->addDoor(link);
+            origin->changeDoor(link, Globals::Direction::SOUTH);
+            dest->changeDoor(link, Globals::Direction::NORTH);
+          }
+        }
+        if (it.value().contains("west")) {
+          Room* dest = map->getRoom(it.value()["west"]["name"]);
+          if (dest == nullptr) {
+            dest = generateRoom(it.value()["west"]["name"]);
+            map->addRoom(dest);
+          }
+          if (!map->doesDoorExistBetween(origin, dest)) {
+            Door* link = new Door(origin, dest);
+            if (it.value()["west"].contains("blocked")) {
+              link->blockDoor(it.value()["west"]["blockedReason"]);
+            }
+            map->addDoor(link);
+            origin->changeDoor(link, Globals::Direction::WEST);
+            dest->changeDoor(link, Globals::Direction::EAST);
+          }
+        }
+      }
+    }
+  }
+  return map;
 }

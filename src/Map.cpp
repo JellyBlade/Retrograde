@@ -34,6 +34,15 @@ Room* Map::getRoom(std::string n) {
   return nullptr;
 }
 
+bool Map::doesDoorExistBetween(Room* r1, Room* r2) {
+  for (Door* d : doors) {
+    if (d->isConnectedTo(r1) && d->isConnectedTo(r2)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 std::vector<Room*> Map::getRooms() {
   return rooms;
 }
