@@ -9,7 +9,6 @@
 #include "Box.h"
 #include "gtest/gtest.h"
 
-/*
 TEST(TestBox, constructorTest) {
   Object* o = new Object();
   Object* o1 = new Object();
@@ -30,11 +29,9 @@ TEST(TestBox, constructorTest) {
   std::cout << "after is Harry Potter in container " << std::endl;
 
   delete b;
-}*/
+  delete o2;
+}
 
-
-/*
 TEST(TestBox, interactTest) {
   Box* b = new Box();
 }
-*/
