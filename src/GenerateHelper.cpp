@@ -25,7 +25,7 @@ std::vector<json> GenerateHelper::jsonObjects;
 std::vector<json> GenerateHelper::jsonRooms;
 
 void GenerateHelper::setup() {
-  std::ifstream file("text/objects.json");
+  std::ifstream file("text/json/objects.json");
   if (!file.is_open()) {
     throw std::runtime_error("objects.json not found!");
   }
@@ -33,7 +33,7 @@ void GenerateHelper::setup() {
   for (auto it = j.begin(); it != j.end(); ++it) {
     jsonObjects.push_back(it.value());
   }
-  file.open("text/rooms.json");
+  file.open("text/json/rooms.json");
   if (!file.is_open()) {
     throw std::runtime_error("rooms.json not found!");
   }
@@ -91,7 +91,7 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
 Map* GenerateHelper::generateMap(std::string mapName) {
   if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
   mapName = TextHelper::tolower(TextHelper::trimAll(mapName));
-  std::ifstream file("text/" + mapName + ".json");
+  std::ifstream file("text/json/" + mapName + ".json");
   if (!file.is_open()) {
     throw std::runtime_error(mapName + ".json not found!");
   }
