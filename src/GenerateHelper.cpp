@@ -33,6 +33,7 @@ void GenerateHelper::setup() {
   for (auto it = j.begin(); it != j.end(); ++it) {
     jsonObjects.push_back(it.value());
   }
+  file.close();
   file.open("text/json/rooms.json");
   if (!file.is_open()) {
     throw std::runtime_error("rooms.json not found!");
