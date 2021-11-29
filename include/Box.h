@@ -21,10 +21,15 @@ class Box : public Object {
   Box();
 
   /**
+  * Destructor
+  */
+  ~Box();
+
+  /**
   * Returns the objectContainer of the box
   * @return objects ObjectContainer that the box has
   */
-  ObjectContainer getBoxObjects();
+  ObjectContainer* getBoxObjects();
 
   /**
   * Adds the given Object to this container.
@@ -38,7 +43,7 @@ class Box : public Object {
   void interact();
 
  private:
-  ObjectContainer objects;
+  ObjectContainer* objects;
 };
 
 #endif

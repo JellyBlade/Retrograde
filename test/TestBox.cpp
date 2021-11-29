@@ -30,8 +30,10 @@ TEST(TestBox, constructorTest) {
 
   delete b;
   delete o2;
+  std::cout << "After deleting" << std::endl;
 }
 
 TEST(TestBox, interactTest) {
+  std::cout << "Before second test" << std::endl;
   Box* b = new Box();
 }
