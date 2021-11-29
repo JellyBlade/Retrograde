@@ -30,6 +30,13 @@ class Room : public NamedThing {
   ~Room();
 
   /**
+  * Adds the given object to the Room.
+  * A shorthand for room->getRoomObjects()->addObject();
+  * @param object the Object to add to the room.
+  */
+  void addObject(Object* object);
+
+  /**
   * Returns this room's ObjectContainer containing all of its contents.
   * @return this room's ObjectContainer.
   */

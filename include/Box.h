@@ -6,6 +6,8 @@
 #ifndef BOX_H
 #define BOX_H
 
+#include <iostream>
+
 #include "Object.h"
 #include "ObjectContainer.h"
 
@@ -38,9 +40,22 @@ class Box : public Object {
   void addObject(Object* object);
 
   /**
-  * Displays objects inside the container, asks user which one to take
+  * Displays objects inside the container, asks user which one to take.
+  * Calls displayBoxObjects, and playerInput if there are any objects to take.
   */
   void interact();
+
+  /**
+  * Lists the objects in the box to the screen in a formatted way, using
+  * TextHelper::listObjects.
+  */
+  void displayBoxObjects();
+
+  /**
+  * Asks for user input on which object from the box to grab, if any.
+  * @param input istream to use for input. cin for user, fstream for testing.
+  */
+  bool playerInput(std::istream& input);
 
  private:
   ObjectContainer* objects;

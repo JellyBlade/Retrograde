@@ -24,6 +24,10 @@ Room::~Room() {
   delete roomObjects;
 }
 
+void Room::addObject(Object* object) {
+  roomObjects->addObject(object);
+}
+
 ObjectContainer* Room::getRoomObjects() {
   return roomObjects;
 }

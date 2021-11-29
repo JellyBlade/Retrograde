@@ -31,23 +31,34 @@ ObjectContainer* Box::getBoxObjects() {
 }
 
 void Box::interact() {
-  std::string item;
+  displayBoxObjects();
+  if (getBoxObjects()->size() > 0) {
+    // This line is untestable.
+    playerInput(std::cin);
+  }
+}
+
+void Box::displayBoxObjects() {
   cout << "You look into the box and find" << endl;
   TextHelper::listObjects(objects->getObjects());
+}
+
+bool Box::playerInput(std::istream& input) {
+  std::string item = "";
   cout << "Which item did you want to pick up?" << endl;
   cout << "> ";
-  std::cin >> item;
+  std::getline(input, item);
+
+  item = TextHelper::tolower(TextHelper::trimAll(item));
 
   if (objects->isObjectInContainer(item)) {
-    //TODO(mart2720): how do i add it to the specific player's inventory?
-    // (hipt2720): Use InteractHelper like so
-    // We could probably add a function to InteractHelper to directly
-    // add/remove objects to the player's inventory too.
     InteractHelper::getPlayerHandler()->getPlayer()->getInventory()
       ->addObject(objects->getObject(item));
     objects->removeObject(objects->getObject(item));
+    return true;
 
   } else {
     cout << "Could not find item." << endl;
+    return false;
   }
 }
