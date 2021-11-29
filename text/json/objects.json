@@ -1,2 +1,112 @@
 {
+  {
+    "name": "Apple",
+    "desc": "It's an apple.",
+    "holdable": true
+  },
+  {
+    "name": "Orange",
+    "desc": "It's an orange.",
+    "holdable": true
+  },
+  {
+    "name": "Locker",
+    "desc": "It probably holds some neat stuff!",
+    "holdable": false,
+    "box" : [ "apple", "orange", "redkeycard" ]
+  },
+  {
+    "name": "Keypad",
+    "desc": "A simple 4-digit PIN keypad.",
+    "holdable": false,
+    "password": "1234"
+  },
+  {
+    "name": "Portable Oxygen Tank",
+    "desc": "Useful for resupplying spacesuits and medical equipment.",
+    "holdable": false,
+    "oxygenTankReuse": false
+  },
+  {
+    "name": "Oxygenator",
+    "desc": "A powerful Oxygen generator. Capable of servicing the oxygen needs for over three hundred people!",
+    "holdable": false,
+    "oxygenTankReuse": true
+  },
+  {
+    "name": "Blue Keycard Reader",
+    "desc": "You probably need a blue-coloured keycard.",
+    "holdable": false,
+    "reqItem": "bluekeycard"
+  },
+  {
+    "name": "Red Keycard Reader",
+    "desc": "You probably need a red-coloured keycard.",
+    "holdable": false,
+    "reqItem": "Red Keycard"
+  },
+  {
+    "name": "Red Keycard",
+    "desc": "Used to access rooms and containers secured by a red-coloured reader.",
+    "holdable": true
+  },
+  {
+    "name": "Green Keycard Reader",
+    "desc": "You probably need a green-coloured keycard.",
+    "holdable": false,
+    "reqItem": "Green Key Card"
+  },
+  {
+    "name" "Green Keycard",
+    "desc": "Used to access rooms and containers secured by a green-coloured reader.",
+    "holdable": true
+  },
+  {
+    "name": "Airlock Panel",
+    "desc": "It controls the airlock.",
+    "holdable": false,
+    "reqOxygen": 8000
+  },
+  {
+    "name": "Admiral's Log",
+    "desc": "It is dated for three hours ago.",
+    "holdable": true,
+    "logFile": "text/logs/admiral.txt"
+  },
+  {
+    "name": "Wrench",
+    "desc": "Standard-issue engineering wrench. Useful for tightening (or loosening) stubborn bolts.",
+    "holdable": true
+  },
+  {
+    "name": "Magazine",
+    "desc": "A copy of Engineering Monthly, Issue #211. This month's articles include pointers on maintaining starliner engines, tips on how to impress non-Engineering colleagues without boring them, and 34 hacks on how to hack hack hackers hacking hackable hacksaws. Fascinating stuff.",
+    "holdable": true
+  },
+  {
+    "name": "Hull Debris",
+    "desc": "A large chunk of the ship's hull. It probably shouldn't be there.",
+    "holdable": false
+  },
+  {
+    "name": "Twisted Metal",
+    "desc": "A huge twisted steel girder. While the flames didn't melt it, it appears that non-uniform thermally-induced stress upon the girder created a concentrated axial compressive load causing sudden structural deformation resulting in a loss of structural stability in the whole room, or something. You're not an engineer.",
+    "holdable": false
+  },
+  {
+    "name": "Melted Wiring",
+    "desc": "A bunch of plenum wiring that has melted and clumped together. Useless to all but the most desperate of scrapper.",
+    "holdable": true
+  },
+  {
+    "name": "Molten Slag",
+    "desc": "Ouch! This stuff is still red hot!",
+    "holdable": false
+  },
+  {
+    "name": "MACGFN Control Panel",
+    "desc": "This panel controls all of MAC-GFN's primary functionality. It has an insert slot for an AI Matrix.",
+    "holdable": false,
+    "reqItem": "ai repair matrix"
+  }
 }
