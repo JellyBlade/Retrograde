@@ -55,7 +55,10 @@ TEST(TestGenerateHelper, mapGenerationTest) {
   Map* map = GenerateHelper::generateMap("map1");
   EXPECT_EQ(map->getRooms().size(), 3);
   EXPECT_EQ(map->getDoors().size(), 2);
-  EXPECT_NE(map->getRoom("engineering room"), nullptr);
+  for (Door* d : map->getDoors()) {
+    std::cout << "Door connected to: " << d->getRooms().first->getName();
+    std::cout << " and " << d->getRooms().second->getName() << std::endl;
+  }
   EXPECT_EQ(map->getRoom("fake room that doesn't exist"), nullptr);
 
   delete map;
