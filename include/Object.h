@@ -28,7 +28,7 @@ class Object : public NamedThing {
   /**
   * Virtual destructor
   */
-  virtual ~Object() {};
+  virtual ~Object() {}
 
   /**
   * Returns the object's holdable value.
