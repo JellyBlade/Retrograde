@@ -16,7 +16,6 @@
 */
 class Box : public Object {
  public:
-
   /**
   * Default Constructor
   */

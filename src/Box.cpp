@@ -40,7 +40,7 @@ void Box::interact() {
 
 void Box::displayBoxObjects() {
   cout << "You look into the box and find" << endl;
-  TextHelper::listObjects(objects->getObjects());
+  cout << TextHelper::listObjects(objects->getObjects()) << endl;
 }
 
 bool Box::playerInput(std::istream& input) {
