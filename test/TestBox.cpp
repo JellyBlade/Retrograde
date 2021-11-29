@@ -17,15 +17,15 @@ TEST(TestBox, constructorTest) {
   b->addObject(o);
   b->addObject(o1);
 
-  std::cout << "Box size is " << b->getBoxObjects().getObjects().size() << std::endl;
+  std::cout << "Box size is " << b->getBoxObjects()->size() << std::endl;
 
-  EXPECT_EQ(b->getBoxObjects().getObjects().size(), 2);
+  EXPECT_EQ(b->getBoxObjects()->size(), 2);
   std::cout << "after size " << std::endl;
-  EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o));
+  EXPECT_TRUE(b->getBoxObjects()->isObjectInContainer(o));
   std::cout << "after is o in container " << std::endl;
-  EXPECT_TRUE(b->getBoxObjects().isObjectInContainer(o1));
+  EXPECT_TRUE(b->getBoxObjects()->isObjectInContainer(o1));
   std::cout << "after is o1 in container " << std::endl;
-  EXPECT_FALSE(b->getBoxObjects().isObjectInContainer(o2));
+  EXPECT_FALSE(b->getBoxObjects()->isObjectInContainer(o2));
   std::cout << "after is Harry Potter in container " << std::endl;
 
   delete b;
