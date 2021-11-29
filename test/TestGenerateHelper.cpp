@@ -42,10 +42,8 @@ TEST(TestGenerateHelper, roomGenerationTest) {
   Room* r3 = GenerateHelper::generateRoom("bridge");
   EXPECT_EQ(r3->getRoomObjects()->size(), 2);
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral's log"));
-  EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admirals log"));
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral'slog"));
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("Admiral's Log"));
-  EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("AdmiralsLog"));
   EXPECT_EQ(r3->getRoomOxygen(), 10000);
 
   delete r1;
