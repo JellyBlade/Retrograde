@@ -1,5 +1,5 @@
 {
-  {
+  "engineering_bay": {
     "name": "Engineering Bay",
     "desc": "Houses all of the equipment the ship's engineers need to keep the place running. Usually abuzz with mechanical whirring, it is eerily silent.",
     "oxygen": 10000,
@@ -11,7 +11,7 @@
       "locker"
     ]
   },
-  {
+  "ruined_hallway": {
     "name": "Ruined Hallway",
     "desc": "Tons of wreckage and debris fill this hallway. It's low oxygen levels has starved the fires, so it is no longer burning.",
     "oxygen": 2500,
@@ -22,7 +22,7 @@
       "molten slag"
     ]
   },
-  {
+  "bridge": {
     "name": "Bridge",
     "desc": "Where the Admiral will command his vessel. The ship's AI MAC-GFN's central processing unit is located here.",
     "oxygen": 10000,
