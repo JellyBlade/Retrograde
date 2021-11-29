@@ -7,6 +7,7 @@
 #define BOX_H
 
 #include <iostream>
+#include <string>
 
 #include "Object.h"
 #include "ObjectContainer.h"

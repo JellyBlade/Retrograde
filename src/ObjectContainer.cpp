@@ -24,8 +24,8 @@ void ObjectContainer::clear() {
   memory(search it on google), this may cause seg fault since destructor
   might do this too.  Just a possibility, watch for seg fault.
   */
-  for (Object* o : objects) {
-    delete o;
+  for (int i = 0; i < objects.size(); i++) {
+    delete objects[i];
   }
   objects.clear();
 }

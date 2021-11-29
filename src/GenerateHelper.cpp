@@ -64,7 +64,7 @@ Object* GenerateHelper::generateObject(std::string objectName) {
       } else if (o.contains("reqItem")) {
         return new ItemLock(o["name"], o["desc"], o["holdable"], o["reqItem"]);
       } else if (o.contains("reqOxygen")) {
-        //return new AirLock(o["name"], o["desc"], o["holdable"], o["reqOxygen"]);
+      //return new AirLock(o["name"], o["desc"], o["holdable"], o["reqOxygen"]);
       } else if (o.contains("logFile")) {
         return new Log(o["name"], o["desc"], o["holdable"], o["logFile"]);
       } else {
@@ -82,7 +82,8 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
       Room* room = new Room(r["name"], r["desc"]);
       room->setRoomOxygen(r["oxygen"]);
       for (auto& roomObject : r["objects"]) {
-        room->getRoomObjects()->addObject(generateObject(roomObject.get<std::string>()));
+        room->getRoomObjects()->addObject(
+          generateObject(roomObject.get<std::string>()));
       }
       return room;
     }
