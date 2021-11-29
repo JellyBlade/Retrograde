@@ -9,7 +9,7 @@
 
 #include "Box.h"
 #include "Game.h"
-#include "InteractHelper"
+#include "InteractHelper.h"
 #include "gtest/gtest.h"
 
 TEST(TestBox, constructorTest) {

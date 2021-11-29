@@ -41,15 +41,9 @@ class Box : public Object {
 
   /**
   * Displays objects inside the container, asks user which one to take.
-  * Calls displayBoxObjects, and playerInput if there are any objects to take.
+  * Calls displayBoxObjects, and playerInput if there are any items to take.
   */
   void interact();
-
-  /**
-  * Lists the objects in the box to the screen in a formatted way, using
-  * TextHelper::listObjects.
-  */
-  void displayBoxObjects();
 
   /**
   * Asks for user input on which object from the box to grab, if any.
@@ -58,6 +52,12 @@ class Box : public Object {
   bool playerInput(std::istream& input);
 
  private:
+  /**
+  * Lists the objects in the box to the screen in a formatted way, using
+  * TextHelper::listObjects.
+  */
+  void displayBoxObjects();
+
   ObjectContainer* objects;
 };
 
