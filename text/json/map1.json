@@ -7,7 +7,7 @@
     "east": {
       "roomName": "bridge",
       "blocked": true,
-      "blockedReason": "The door is locked by a keypad.".
+      "blockedReason": "The door is locked by a keypad."
     }
   }
 }
