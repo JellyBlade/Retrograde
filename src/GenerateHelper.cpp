@@ -21,6 +21,9 @@
 
 using json = nlohmann::json;
 
+std::vector<json> GenerateHelper::jsonObjects;
+std::vector<json> GenerateHelper::jsonRooms;
+
 void GenerateHelper::setup() {
   std::ifstream file("text/objects.json");
   if (!file.is_open()) {

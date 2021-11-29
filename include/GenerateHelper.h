@@ -21,8 +21,8 @@ using json = nlohmann::json;
 */
 namespace GenerateHelper {
 
-  std::vector<json> jsonObjects;
-  std::vector<json> jsonRooms;
+  extern std::vector<json> jsonObjects;
+  extern std::vector<json> jsonRooms;
 
   /**
   * Populates the objects and rooms vectors for the other functions to use.
