@@ -11,7 +11,7 @@
 
 Log::Log(std::string n, std::string d, bool h, std::string s) {
   setName(n);
-  setDescription(s);
+  setDescription(d);
   setHoldable(h);
   textPath = s;
 }
