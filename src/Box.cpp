@@ -13,9 +13,11 @@
 using std::cout;
 using std::endl;
 
-Box::Box() {
+Box::Box(std::string n, std::string d, bool h) {
+  setName(n);
+  setDescription(d);
+  setHoldable(h);
   objects = new ObjectContainer();
-  setHoldable(false);
 }
 
 Box::~Box() {

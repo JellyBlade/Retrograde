@@ -52,17 +52,17 @@ Object* GenerateHelper::generateObject(std::string objectName) {
         }
         return box;
       } else if (o.contains("password")) {
-        //return new PasswordLock(o["name"], o["desc"], o["holdable"],
+        return new PasswordLock(o["name"], o["desc"], o["holdable"],
         o["password"]);
       } else if (o.contains("oxygenTankReuse")) {
         //return new OxygenTank(o["name"], o["desc"], o["holdable"],
         //o["oxygenTankReuse"]);
       } else if (o.contains("reqItem")) {
-        //return new ItemLock(o["name"], o["desc"], o["holdable"], o["reqItem"]);
+        return new ItemLock(o["name"], o["desc"], o["holdable"], o["reqItem"]);
       } else if (o.contains("reqOxygen")) {
         //return new AirLock(o["name"], o["desc"], o["holdable"], o["reqOxygen"]);
       } else if (o.contains("logFile")) {
-        //return new Log(o["name"], o["desc"], o["holdable"], o["logFile"]);
+        return new Log(o["name"], o["desc"], o["holdable"], o["logFile"]);
       } else {
         return new Object(o["name"], o["desc"], o["holdable"]);
       }
