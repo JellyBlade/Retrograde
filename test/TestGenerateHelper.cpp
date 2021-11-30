@@ -74,4 +74,5 @@ TEST(TestGenerateHelper, mapGenerationTest) {
   EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), map->getRoom("reactor room"));
 
   delete map;
+  delete ph;
 }
