@@ -65,12 +65,14 @@ TEST(TestTextHelper, commandProcessorTest) {
   file = "test/text/commandProcessorTest_block_dialog.txt";
   TextHelper::readFile(file, input);
   file = "test/text/commandProcessorTest_block_invalid.txt";
-  EXPECT_THROW(TextHelper::readFile(file, input), std::runtime_error);
+  TextHelper::readFile(file, input);
   input.close();
 
   std::cout << "   === Unblock Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_unblock_dialog.txt";
+  TextHelper::readFile(file, input);
+  file = "test/text/commandProcessorTest_unblock_invalid.txt";
   TextHelper::readFile(file, input);
   input.close();
 
