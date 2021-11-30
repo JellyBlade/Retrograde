@@ -6,6 +6,7 @@
 #include <string>
 
 #include "GenerateHelper.h"
+#include "PlayerHandler.h"
 #include "Object.h"
 #include "Room.h"
 #include "Door.h"
@@ -53,13 +54,24 @@ TEST(TestGenerateHelper, roomGenerationTest) {
 
 TEST(TestGenerateHelper, mapGenerationTest) {
   Map* map = GenerateHelper::generateMap("map1");
-  EXPECT_EQ(map->getRooms().size(), 3);
-  EXPECT_EQ(map->getDoors().size(), 2);
+  PlayerHandler* ph = new PlayerHandler();
+  EXPECT_EQ(map->getRooms().size(), 8);
+  EXPECT_EQ(map->getDoors().size(), 7);
   for (Door* d : map->getDoors()) {
     std::cout << "Door connected to: " << d->getRooms().first->getName();
     std::cout << " and " << d->getRooms().second->getName() << std::endl;
   }
   EXPECT_EQ(map->getRoom("fake room that doesn't exist"), nullptr);
+  Room* start = map->getRoom("engineering bay");
+  ph->getPlayer()->setCurrentRoom(start);
+  EXPECT_TRUE(ph->movePlayer(Globals::Direction::NORTH));
+  EXPECT_FALSE(ph->movePlayer(Globals::Direction::NORTH));
+  EXPECT_TRUE(ph->movePlayer(Globals::Direction::SOUTH));
+  EXPECT_TRUE(ph->movePlayer(Globals::Direction::WEST));
+  EXPECT_FALSE(ph->movePlayer(Globals::Direction::WEST));
+  EXPECT_TRUE(ph->movePlayer(Globals::Direction::SOUTH));
+  EXPECT_TRUE(ph->movePlayer(Globals::Direction::SOUTH));
+  EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), map->getRoom("reactor room"));
 
   delete map;
 }

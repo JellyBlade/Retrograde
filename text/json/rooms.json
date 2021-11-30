@@ -13,8 +13,8 @@
   },
   "ruined_hallway": {
     "name": "Ruined Hallway",
-    "desc": "Tons of wreckage and debris fill this hallway. It's low oxygen levels has starved the fires, so it is no longer burning.",
-    "oxygen": 2500,
+    "desc": "Tons of wreckage and debris fill this hallway. There is evidence of a fire, but the low-oxygen environment now present has starved them of a fuel source.",
+    "oxygen": 1000,
     "objects": [
       "hull debris",
       "twisted metal",
@@ -30,5 +30,47 @@
       "MACGFN control panel",
       "Admiral's Log"
     ]
+  },
+  "admirals_quarters": {
+    "name": "Admiral's Quarters",
+    "desc": "This is where the Admiral rests and relaxes when he is off-duty.",
+    "oxygen": 10000,
+    "objects": [
+      "locker",
+      "magazine",
+      "blue keycard",
+      "orange"
+    ]
+  },
+  "med_bay": {
+    "name": "Medical Bay",
+    "desc": "The cupboards are packed with all sorts of medical supplies. Numerous hospital beds hidden by plastic divider curtains fill the room.",
+    "oxygen": 10000,
+    "objects": [
+      "locker",
+      "orange",
+      "apple",
+      "red keycard"
+    ]
+  },
+  "hallway_a": {
+    "name": "Hallway A",
+    "desc": "A futuristic hallway covered in shiny white panels. A large letter 'A' adorns one side in stylish yellow highlights.",
+    "oxygen": 10000,
+    "objects": [
+      "keypad"
+    ]
+  },
+  "hallway_b": {
+    "name": "Hallway B",
+    "desc": "A futuristic hallway covered in shiny white panels. A large letter 'B' adorns one side in stylish green highlights.",
+    "oxygen": 10000,
+    "objects": []
+  },
+  "reactor": {
+    "name": "Reactor Room",
+    "desc": "The room hums with power from the ship's antimatter reactor. You probably shouldn't touch anything in here...",
+    "oxygen": 5000,
+    "objects": []
   }
 }
