@@ -49,17 +49,17 @@ TEST(TestTextHelper, commandProcessorTest) {
   // input.close();
 
   std::cout << "=== Give Test ===" << std::endl;
+  EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 0);
   input.open("");
   file = "test/text/commandProcessorTest_give_dialog.txt";
   TextHelper::readFile(file, input);
+  EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 2);
   input.close();
 
   std::cout << "=== Setflag Test ===" << std::endl;
-  EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 0);
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_setflag_dialog.txt";
   TextHelper::readFile(file, input);
-  EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 2);
   input.close();
 
   std::cout << "=== If Test ===" << std::endl;
