@@ -11,11 +11,9 @@
 #include "TextHelper.h"
 
 Map::~Map() {
-  std::cout << "Deleting map rooms:" << std::endl;
   for (int i = 0; i < rooms.size(); i++) {
     delete rooms[i];
   }
-  std::cout << "Deleting map doors:" << std::endl;
   for (int i = 0; i < doors.size(); i++) {
     delete doors[i];
   }
