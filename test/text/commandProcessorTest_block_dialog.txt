@@ -1,0 +1,2 @@
+A pile of rubble falls from the ceiling, blocking the door to the south!
+:block south A pile of rubble sits in the way.

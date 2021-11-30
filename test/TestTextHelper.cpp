@@ -21,54 +21,72 @@ TEST(TestTextHelper, commandProcessorTest) {
   Map* map = game->getMap();
   Room* r1 = new Room("Room A", "This room is made out of the letter A.");
   Room* r2 = new Room("Room B", "This room is made of bees.");
+  Door* d1 = new Door(r1, r2);
+  r1->changeDoor(d1, Globals::Direction::NORTH);
+  r2->changeDoor(d1, Globals::Direction::SOUTH);
   map->addRoom(r1);
   map->addRoom(r2);
+  map->addDoor(d1);
   game->getPlayerHandler()->getPlayer()->setCurrentRoom(r1);
   InteractHelper::game = game;
 
-  std::cout << "=== Quit Test ===" << std::endl;
+  std::cout << "   === Quit Test ===" << std::endl;
   std::ifstream input("test/text/commandProcessorTest_quit_input.txt");
   std::string file = "test/text/commandProcessorTest_quit_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  std::cout << "=== Move Test ===" << std::endl;
+  std::cout << "   === Move Test ===" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r1);
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_move_dialog.txt";
   TextHelper::readFile(file, input);
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r2);
-  file = "test/text/commandProcessorTest_move_dialogWrong.txt";
+  file = "test/text/commandProcessorTest_move_invalid.txt";
   TextHelper::readFile(file, input);
   input.close();
 
   // Needs NPC to be implemented.
-  // input.open("");
+  // input.open("test/text/commandProcessorTest_empty_input.txt");
   // file = "test/text/commandProcessorTest_movenpc_dialog.txt";
   // TextHelper::readFile(file, input);
   // input.close();
 
-  std::cout << "=== Give Test ===" << std::endl;
+  std::cout << "   === Give Test ===" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 0);
-  input.open("");
+  input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_give_dialog.txt";
   TextHelper::readFile(file, input);
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 2);
   input.close();
 
-  std::cout << "=== Setflag Test ===" << std::endl;
+  std::cout << "   === Block Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_block_dialog.txt";
+  TextHelper::readFile(file, input);
+  file = "test/text/commandProcessorTest_block_invalid.txt";
+  EXPECT_THROW(TextHelper::readFile(file, input), std::runtime_error);
+  input.close();
+
+  std::cout << "   === Unblock Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_unblock_dialog.txt";
+  TextHelper::readFile(file, input);
+  input.close();
+
+  std::cout << "   === Setflag Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_setflag_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  std::cout << "=== If Test ===" << std::endl;
+  std::cout << "   === If Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_if_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  std::cout << "=== MC Test ===" << std::endl;
+  std::cout << "   === MC Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_mc_input.txt");
   file = "test/text/commandProcessorTest_mc_dialog.txt";
   TextHelper::readFile(file, input);

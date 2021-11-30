@@ -157,6 +157,32 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     InteractHelper::getPlayerInventory()
     ->addObject(GenerateHelper::generateObject(objectName));
     return false;
+  } else if (cmd == "block") {
+    if (params.size() <= 1) {
+      throw std::runtime_error("Not enough parameters for RGScript block");
+    }
+    std::string direction = params.front();
+    params.erase(params.begin());
+    std::string blockedReason;
+    for (std::string s : params) {
+      blockedReason += s;
+    }
+    Room* r = InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom();
+    Door* d = r->getDoor(Globals::stringToDirection(direction));
+    if (d == nullptr) {
+      throw std::runtime_error("RGScript: Attempt to block " + direction
+      + " door in " + r->getName() + " failed, as the door does not exist.");
+    }
+    d->blockDoor(blockedReason);
+  } else if (cmd == "unblock") {
+    std::string direction = params.front();
+    Room* r = InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom();
+    Door* d = r->getDoor(Globals::stringToDirection(direction));
+    if (d == nullptr) {
+      throw std::runtime_error("RGScript: Attempt to unblock " + direction
+      + " door in " + r->getName() + " failed, as the door does not exist.");
+    }
+    d->unblockDoor();
   } else if (cmd == "setflag") {
     if (params.size() <= 1) {
       throw std::runtime_error("Not enough parameters for RGScript setflag");
