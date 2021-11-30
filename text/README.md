@@ -1,4 +1,3 @@
-
 # Retrograde Command Processor (RGScript)
 - What is it?
   - Retrograde's Command Processor allows you to use specific keywords in any of the game's text to create conditional (if) and branching (mc) dialogue, and perform in-game actions, such as moving players/npcs, giving items to the player, blocking/unblocking doors, etc.
@@ -28,8 +27,8 @@
 	</pre></code>
 ## Conditional Dialogue
 ### :if & :else
-- :if allows for conditional dialogue based on specific criteria that have to be met in order for the lines inside of the if-block to be displayed.
-- :else lets you specify an alternative block of text to be read if the criteria is false.
+- `:if` allows for conditional dialogue based on specific criteria that have to be met in order for the lines inside of the if-block to be displayed.
+- `:else` lets you specify an alternative block of text to be read if the criteria is false.
 - **The :if block requires a matching :endif tag at the end of the block!**
 - <details>
 	 <summary><b>Example Usage:</b></summary>
@@ -42,8 +41,8 @@
 	  </code></pre>
 	</details>
 
-- :if criteria list
-	- spacesuit
+- `:if` criteria list
+	- `spacesuit`
 		- `:if spacesuit`
 		- Only true if the player has the spacesuit.
 		- <details>
@@ -57,7 +56,7 @@
 			 Come back to me once you've got it.
 			 :endif
 			 </code></pre></details>
-	- holding
+	- `holding`
 		- `:if holding [name of object]`
 		- Only true if the player has that object in their inventory.
 		- The object name can include spaces and punctuation.
@@ -71,7 +70,7 @@
 			Joe: You said you've get me that apple, man!
 			:endif
 			</pre></code>
-	- inroom
+	- `inroom`
 		- `:if inroom [name of object]`
 		- Only true if the room the player is located has that object in it.
 		- 	<details>
@@ -84,7 +83,7 @@
 			Sweeper Bot: SLEEP MODE ENGAGED.
 			:endif
 			</pre></code>
-	- flag / flagtrue
+	- `flag` / `flagtrue`
 		- `:if flag [name of flag]`
 		- `:if flagtrue [name of flag]`
 		- Only true if the given flag is true.
@@ -100,7 +99,7 @@
 			Joe: I'm starving. Do you have any food?
 			:endif
 			</pre></code>
-	- flagfalse
+	- `flagfalse`
 		- `:if flagfalse [name of flag]`
 		- Only true if the given flag is false
 		- Basically just the opposite of `flag`
