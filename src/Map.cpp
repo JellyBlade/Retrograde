@@ -11,11 +11,11 @@
 #include "TextHelper.h"
 
 Map::~Map() {
-  for (Room* r : rooms) {
-    delete r;
+  for (int i = 0; i < rooms.size(); i++) {
+    delete rooms[i];
   }
-  for (Door* d : doors) {
-    delete d;
+  for (int i = 0; i < doors.size(); i++) {
+    delete doors[i];
   }
   rooms.clear();
   doors.clear();

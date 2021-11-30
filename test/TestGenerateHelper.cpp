@@ -72,7 +72,9 @@ TEST(TestGenerateHelper, mapGenerationTest) {
   EXPECT_TRUE(ph->movePlayer(Globals::Direction::SOUTH));
   EXPECT_TRUE(ph->movePlayer(Globals::Direction::SOUTH));
   EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), map->getRoom("reactor room"));
+  std::cout << "After movement." << std::endl;
 
-  delete map;
   delete ph;
+  delete map;
+  std::cout << "After deletion." << std::endl;
 }
