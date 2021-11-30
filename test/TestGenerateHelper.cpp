@@ -75,6 +75,7 @@ TEST(TestGenerateHelper, mapGenerationTest) {
   std::cout << "After movement." << std::endl;
 
   delete ph;
+  std::cout << "After PlayerHandler deletion." << std::endl;
   delete map;
   std::cout << "After deletion." << std::endl;
 }
