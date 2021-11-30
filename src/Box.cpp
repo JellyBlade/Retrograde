@@ -41,7 +41,7 @@ void Box::interact() {
 }
 
 void Box::displayBoxObjects() {
-  cout << "You look into the box and find ";
+  cout << "You look into the box and find";
   cout << TextHelper::listObjects(objects->getObjects()) << endl;
 }
 

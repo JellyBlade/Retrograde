@@ -111,9 +111,9 @@ Map* GenerateHelper::generateMap(std::string mapName) {
           map->addRoom(origin);
         }
         if (it.value().contains("north")) {
-          Room* dest = map->getRoom(it.value()["north"]["name"]);
+          Room* dest = map->getRoom(it.value()["north"]["link"]);
           if (dest == nullptr) {
-            dest = generateRoom(it.value()["north"]["name"]);
+            dest = generateRoom(it.value()["north"]["link"]);
             map->addRoom(dest);
           }
           if (!map->doesDoorExistBetween(origin, dest)) {
@@ -127,9 +127,9 @@ Map* GenerateHelper::generateMap(std::string mapName) {
           }
         }
         if (it.value().contains("east")) {
-          Room* dest = map->getRoom(it.value()["east"]["name"]);
+          Room* dest = map->getRoom(it.value()["east"]["link"]);
           if (dest == nullptr) {
-            dest = generateRoom(it.value()["east"]["name"]);
+            dest = generateRoom(it.value()["east"]["link"]);
             map->addRoom(dest);
           }
           if (!map->doesDoorExistBetween(origin, dest)) {
@@ -143,9 +143,9 @@ Map* GenerateHelper::generateMap(std::string mapName) {
           }
         }
         if (it.value().contains("south")) {
-          Room* dest = map->getRoom(it.value()["south"]["name"]);
+          Room* dest = map->getRoom(it.value()["south"]["link"]);
           if (dest == nullptr) {
-            dest = generateRoom(it.value()["south"]["name"]);
+            dest = generateRoom(it.value()["south"]["link"]);
             map->addRoom(dest);
           }
           if (!map->doesDoorExistBetween(origin, dest)) {
@@ -159,9 +159,9 @@ Map* GenerateHelper::generateMap(std::string mapName) {
           }
         }
         if (it.value().contains("west")) {
-          Room* dest = map->getRoom(it.value()["west"]["name"]);
+          Room* dest = map->getRoom(it.value()["west"]["link"]);
           if (dest == nullptr) {
-            dest = generateRoom(it.value()["west"]["name"]);
+            dest = generateRoom(it.value()["west"]["link"]);
             map->addRoom(dest);
           }
           if (!map->doesDoorExistBetween(origin, dest)) {

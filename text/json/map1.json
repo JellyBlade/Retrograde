@@ -2,10 +2,10 @@
   "engineering_room": {
     "name": "engineering room",
     "north": {
-      "name": "ruined hallway"
+      "link": "ruined hallway"
     },
     "east": {
-      "name": "bridge",
+      "link": "bridge",
       "blocked": true,
       "blockedReason": "The door is locked by a keypad."
     }
