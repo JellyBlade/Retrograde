@@ -38,7 +38,7 @@ TEST(TestGenerateHelper, roomGenerationTest) {
   Room* r2 = GenerateHelper::generateRoom("ruined hallway");
   EXPECT_EQ(r2->getRoomObjects()->size(), 4);
   EXPECT_TRUE(r2->getRoomObjects()->isObjectInContainer("hull debris"));
-  EXPECT_EQ(r2->getRoomOxygen(), 2500);
+  EXPECT_EQ(r2->getRoomOxygen(), 1000);
 
   Room* r3 = GenerateHelper::generateRoom("bridge");
   EXPECT_EQ(r3->getRoomObjects()->size(), 2);
@@ -53,7 +53,7 @@ TEST(TestGenerateHelper, roomGenerationTest) {
 }
 
 TEST(TestGenerateHelper, mapGenerationTest) {
-  Map* map = GenerateHelper::generateMap("map1");
+  Map* map = GenerateHelper::generateMap("testMap");
   PlayerHandler* ph = new PlayerHandler();
   EXPECT_EQ(map->getRooms().size(), 8);
   EXPECT_EQ(map->getDoors().size(), 7);
