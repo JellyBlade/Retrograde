@@ -14,15 +14,21 @@
 #include "Box.h"
 #include "gtest/gtest.h"
 
+using GenerateHelper::generateObject;
+using GenerateHelper::generateRoom;
+using GenerateHelper::generateMap;
+
 TEST(TestGenerateHelper, objectGenerationTest) {
   Object* o1 = new Object("Apple", "It's an apple.", true);
-  Object* o2 = GenerateHelper::generateObject("apple");
+  Object* o2 = generateObject("apple");
   EXPECT_EQ(o2->getName(), o1->getName());
 
-  Box* o3 = dynamic_cast<Box*>(GenerateHelper::generateObject("locker"));
+  Box* o3 = dynamic_cast<Box*>(generateObject("locker"));
   EXPECT_EQ(o3->getBoxObjects()->size(), 3);
   EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("apple"));
   EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("bluekeycard"));
+
+  EXPECT_THROW(generateObject("sadijf#(*$%K)"), std::runtime_error);
 
   delete o1;
   delete o2;
@@ -30,17 +36,17 @@ TEST(TestGenerateHelper, objectGenerationTest) {
 }
 
 TEST(TestGenerateHelper, roomGenerationTest) {
-  Room* r1 = GenerateHelper::generateRoom("engineeringbay");
+  Room* r1 = generateRoom("engineeringbay");
   EXPECT_EQ(r1->getRoomObjects()->size(), 5);
   EXPECT_TRUE(r1->getRoomObjects()->isObjectInContainer("locker"));
   EXPECT_EQ(r1->getRoomOxygen(), 10000);
 
-  Room* r2 = GenerateHelper::generateRoom("ruined hallway");
+  Room* r2 = generateRoom("ruined hallway");
   EXPECT_EQ(r2->getRoomObjects()->size(), 4);
   EXPECT_TRUE(r2->getRoomObjects()->isObjectInContainer("hull debris"));
   EXPECT_EQ(r2->getRoomOxygen(), 1000);
 
-  Room* r3 = GenerateHelper::generateRoom("bridge");
+  Room* r3 = generateRoom("bridge");
   EXPECT_EQ(r3->getRoomObjects()->size(), 2);
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral's log"));
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral'slog"));
@@ -53,7 +59,7 @@ TEST(TestGenerateHelper, roomGenerationTest) {
 }
 
 TEST(TestGenerateHelper, mapGenerationTest) {
-  Map* map = GenerateHelper::generateMap("testMap");
+  Map* map = generateMap("testMap");
   PlayerHandler* ph = new PlayerHandler();
   EXPECT_EQ(map->getRooms().size(), 8);
   EXPECT_EQ(map->getDoors().size(), 7);
