@@ -74,6 +74,8 @@ Object* GenerateHelper::generateObject(std::string objectName) {
       }
     }
   }
+  throw std::runtime_error("Invalid Object with name: " + objectName
+  + ". Check spelling and ensure this object is defined in objects.json!");
 }
 
 Room* GenerateHelper::generateRoom(std::string roomName) {
