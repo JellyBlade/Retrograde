@@ -1,0 +1,17 @@
+Hello!
+
+If you are reading this, something went very wrong.
+Somehow, a Log-type object was generated without supplying a proper textPath.
+Either that, or someone mistakenly set the path of Log-type object to this file
+without realizing that it is not an actual story element.
+
+If you somehow are encountering this during normal gameplay, that means we made
+an oopsies somewhere! If you are a bug tester, then great! Please report the
+name of the object you just interacted with to us.
+If you are not a bug tester... sorry! That's our bad.
+
+(\_/)
+( `_`)
+(>  )>o Here's a cookie.
+ U U
+:pause

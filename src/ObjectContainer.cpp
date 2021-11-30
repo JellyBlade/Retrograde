@@ -10,7 +10,10 @@
 #include "TextHelper.h"
 
 ObjectContainer::~ObjectContainer() {
-  this->clear();
+  for (int i = 0; i < objects.size(); i++) {
+    delete objects[i];
+  }
+  objects.clear();
 }
 
 int ObjectContainer::size() {
@@ -18,14 +21,8 @@ int ObjectContainer::size() {
 }
 
 void ObjectContainer::clear() {
-  /*
-  TODO(mart2720): This is to deallocate the memory before all the
-  objects are cleared. Clearing does not deallocate the
-  memory(search it on google), this may cause seg fault since destructor
-  might do this too.  Just a possibility, watch for seg fault.
-  */
-  for (Object* o : objects) {
-    delete o;
+  for (int i = 0; i < objects.size(); i++) {
+    delete objects[i];
   }
   objects.clear();
 }

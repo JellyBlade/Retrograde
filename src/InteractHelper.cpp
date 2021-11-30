@@ -10,6 +10,7 @@
 #include "Map.h"
 #include "NPC.h"
 #include "PlayerHandler.h"
+#include "Inventory.h"
 
 // Value is declared in main.cpp
 Game* InteractHelper::game;
@@ -20,6 +21,10 @@ Map* InteractHelper::getMap() {
 
 PlayerHandler* InteractHelper::getPlayerHandler() {
   return game->getPlayerHandler();
+}
+
+Inventory* InteractHelper::getPlayerInventory() {
+  return getPlayerHandler()->getPlayer()->getInventory();
 }
 
 std::vector<NPC*> InteractHelper::getNPCs() {

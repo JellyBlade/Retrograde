@@ -17,9 +17,14 @@ class Log : public Object {
  public:
   /**
   * Constructor
-  * @param s string that textPath will be set to
+  * @param n string that the name will be set to. Default value is "Log".
+  * @param d string that the description will be set to.
+  * Default value is "This is a log.".
+  * @param h Whether it can be picked up by the Player. Default is true.
+  * @param s the path of the file to read when interacting with this log.
   */
-  Log(std::string s);
+  Log(std::string n = "Log", std::string d = "This is a log.",
+  bool h = true, std::string s = "text/logs/error_no_given_path.txt");
 
   /**
   * Reads the .txt file at bookPath and outputs to the screen

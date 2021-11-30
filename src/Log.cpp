@@ -9,7 +9,12 @@
 #include "Log.h"
 #include "TextHelper.h"
 
-Log::Log(std::string s) : textPath{s} {}
+Log::Log(std::string n, std::string d, bool h, std::string s) {
+  setName(n);
+  setDescription(d);
+  setHoldable(h);
+  textPath = s;
+}
 
 void Log::interact() {
   TextHelper::readFile(textPath);

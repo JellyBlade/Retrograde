@@ -26,6 +26,11 @@ class Object : public NamedThing {
   bool h = false);
 
   /**
+  * Virtual destructor
+  */
+  virtual ~Object() {}
+
+  /**
   * Returns the object's holdable value.
   * @return bool holdable value of the objet.
   */

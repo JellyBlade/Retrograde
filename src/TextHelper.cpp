@@ -15,6 +15,7 @@
 
 #include "TextHelper.h"
 #include "InteractHelper.h"
+#include "GenerateHelper.h"
 #include "Globals.h"
 #include "Room.h"
 #include "Door.h"
@@ -92,7 +93,6 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         }
       } else {
         std::cout << "Unknown RGScript if criterion.";
-        // Unknown RGScript if criterion.
         throw std::runtime_error("Unknown RGScript if criterion: " + criterion);
       }
     }
@@ -149,12 +149,16 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
   } else if (cmd == "give") {
-    // TODO(hipt2720): This requires a list of all possible objects.
+    std::string objectName;
+    for (std::string s : params) {
+      objectName += s;
+    }
+    objectName = tolower(trimAll(objectName));
+    InteractHelper::getPlayerInventory()
+    ->addObject(GenerateHelper::generateObject(objectName));
     return false;
   } else if (cmd == "setflag") {
     if (params.size() <= 1) {
-      std::cout << "Not enough parameters for RGScript setflag";
-      // Not enough parameters for RGScript setflag
       throw std::runtime_error("Not enough parameters for RGScript setflag");
     }
     std::string flagName;
@@ -177,7 +181,6 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         return false;
       }
     }
-    // Room not found for RGScript move
     throw std::runtime_error("Room not found for RGScript move.");
   } else if (cmd == "movenpc") {
     std::string roomName;
@@ -195,11 +198,9 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
             return false;
           }
         }
-        // NPC not found for RGScript movenpc
         throw std::runtime_error("NPC not found for RGScript movenpc");
       }
     }
-    // Room not found for RGScript movenpc
     throw std::runtime_error("Room not found for RGScript movenpc");
   } else if (cmd == "quit") {
     return true;
@@ -214,7 +215,6 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::cin.ignore();
     return false;
   } else {
-    // RGScript command not recognized.
     std::cout << "RGScript command not recognized.";
     throw std::exception{};
   }

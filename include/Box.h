@@ -7,6 +7,7 @@
 #define BOX_H
 
 #include <iostream>
+#include <string>
 
 #include "Object.h"
 #include "ObjectContainer.h"
@@ -17,9 +18,14 @@
 class Box : public Object {
  public:
   /**
-  * Default Constructor
+  * Constructor
+  * @param n string that the name will be set to. Default value is "Box".
+  * @param d string that the description will be set to.
+  * Default value is "This is a box.".
+  * @param h bool Whether it can be picked up by the Player. Default is false.
   */
-  Box();
+  Box(std::string n = "Box", std::string d = "This is a box.",
+  bool h = false);
 
   /**
   * Destructor

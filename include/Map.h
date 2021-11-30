@@ -26,6 +26,12 @@ class Map {
   Room* getRoom(std::string name);
 
   /**
+  * Determines if there exists a door linking the two given rooms.
+  * @return true if a door exists between the two, false otherwise.
+  */
+  bool doesDoorExistBetween(Room* r1, Room* r2);
+
+  /**
   * Returns all rooms in the game's environment.
   * @return a vector of all rooms.
   */
