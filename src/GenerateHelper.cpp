@@ -104,7 +104,7 @@ Map* GenerateHelper::generateMap(std::string mapName) {
   for (auto it = mapJSON.begin(); it != mapJSON.end(); ++it) {
     for (auto r : jsonRooms) {
       if (TextHelper::tolower(TextHelper::trimAll(it.value()["name"]))
-      == TextHelper::tolower(TextHelper::trimAll(it.value()["name"]))) {
+      == TextHelper::tolower(TextHelper::trimAll(r["name"]))) {
         Room* origin = map->getRoom(r["name"]);
         if (origin == nullptr) {
           origin = generateRoom(r["name"]);
