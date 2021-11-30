@@ -26,13 +26,13 @@ TEST(TestTextHelper, commandProcessorTest) {
   game->getPlayerHandler()->getPlayer()->setCurrentRoom(r1);
   InteractHelper::game = game;
 
-  std::cout << "Quit test" << std::endl;
+  std::cout << "=== Quit Test ===" << std::endl;
   std::ifstream input("test/text/commandProcessorTest_quit_input.txt");
   std::string file = "test/text/commandProcessorTest_quit_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  std::cout << "Move test" << std::endl;
+  std::cout << "=== Move Test ===" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getCurrentRoom(), r1);
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_move_dialog.txt";
@@ -48,25 +48,27 @@ TEST(TestTextHelper, commandProcessorTest) {
   // TextHelper::readFile(file, input);
   // input.close();
 
-  // Needs a list of all objects or live instantiantion to be implemented
-  // input.open("");
-  // file = "test/text/commandProcessorTest_give_dialog.txt";
-  // TextHelper::readFile(file, input);
-  // input.close();
-
-  std::cout << "Setflag test" << std::endl;
-  input.open("test/text/commandProcessorTest_empty_input.txt");
-  file = "test/text/commandProcessorTest_setflag_dialog.txt";
+  std::cout << "=== Give Test ===" << std::endl;
+  input.open("");
+  file = "test/text/commandProcessorTest_give_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  std::cout << "If test" << std::endl;
+  std::cout << "=== Setflag Test ===" << std::endl;
+  EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 0);
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_setflag_dialog.txt";
+  TextHelper::readFile(file, input);
+  EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 2);
+  input.close();
+
+  std::cout << "=== If Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_if_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
 
-  std::cout << "MC test" << std::endl;
+  std::cout << "=== MC Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_mc_input.txt");
   file = "test/text/commandProcessorTest_mc_dialog.txt";
   TextHelper::readFile(file, input);

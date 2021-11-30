@@ -34,6 +34,13 @@ namespace InteractHelper {
   PlayerHandler* getPlayerHandler();
 
   /**
+  * Returns the player's inventory.
+  * Shortcut for getPlayerHandler()->getPlayer()->getInventory()
+  * @return the player's Inventory class, containing bag items and oxygen.
+  */
+  Inventory* getPlayerInventory();
+
+  /**
   * Returns all of the NPCs in the game.
   * @return a vector containing all NPCs.
   */
