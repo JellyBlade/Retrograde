@@ -94,7 +94,6 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
 
 Map* GenerateHelper::generateMap(std::string mapName) {
   if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
-  mapName = TextHelper::tolower(TextHelper::trimAll(mapName));
   std::ifstream file("text/json/" + mapName + ".json");
   if (!file.is_open()) {
     throw std::runtime_error(mapName + ".json not found!");
