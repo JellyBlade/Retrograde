@@ -1,6 +1,6 @@
 {
   "engineering_room": {
-    "name": "engineering room",
+    "name": "engineering bay",
     "north": {
       "link": "ruined hallway"
     },
