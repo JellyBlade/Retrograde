@@ -62,6 +62,7 @@ void NPC::stab(std::istream& input) {
     } else {
       std::cout << "You stab " << getName() << ", killing them." << std::endl;
     }
+    alive = false;
   } else {
     std::cout << "You stab " << getName() << "'s corpse. Their body doesn't";
     std::cout << " need additional convincing of its demise, you monster.";
