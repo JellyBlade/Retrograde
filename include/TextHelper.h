@@ -24,6 +24,8 @@ namespace TextHelper {
   * Outputs dialogue from file to screen,
   * calling commandProcessor if it encounters a script command to execute.
   * @param textPath to the path of the file to read from.
+  * @param input the istream to use for user-input.
+  * An fstream is used for automated testing, and std::cin is for user-input.
   */
   void readFile(std::string textPath, std::istream& input = std::cin);
 
@@ -33,7 +35,7 @@ namespace TextHelper {
   * @param command the script command to parse and execute.
   * @param file the file currently being read.
   * @param input the istream to use for user-input.
-  * an fstream is used for automated testing, and std::cin is for user-input.
+  * An fstream is used for automated testing, and std::cin is for user-input.
   * @return true if the file being read should be closed, false if it should
   * continue to be read.
   */

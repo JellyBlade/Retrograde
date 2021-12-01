@@ -104,13 +104,12 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       if (!dialog.empty() && dialog[0] == '/') { continue; }
       if (dialog == ":endif") {
         return false;
-      }
-      if (dialog == ":else") {
+      } else if (dialog == ":else") {
         skip = readIf;
         continue;
-      }
-      if (!dialog.empty() && dialog[0] == ':') {
+      } else if (!skip && !dialog.empty() && dialog[0] == ':') {
          commandProcessor(dialog, file, input);
+         continue;
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }

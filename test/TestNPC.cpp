@@ -34,9 +34,12 @@ TEST(TestNPC, talkTest) {
 }
 
 TEST(TestNPC, askTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  InteractHelper::chapter = 0;
   NPC* n1 = new NPC("testNPC");
   NPC* n2 = new NPC("Fake NPC");
-  InteractHelper::chapter = 0;
+
   std::ifstream input("test/text/npcTest_ask_input.txt");
   n1->ask(input);
   n2->ask(input);
@@ -47,6 +50,7 @@ TEST(TestNPC, askTest) {
 
   delete n1;
   delete n2;
+  delete game;
 }
 
 TEST(TestNPC, stabTest) {
