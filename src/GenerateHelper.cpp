@@ -97,7 +97,7 @@ Object* GenerateHelper::generateObject(std::string objectName) {
 NPC* GenerateHelper::generateNPC(std::string npcName) {
   if (jsonNPCs.size() < 1) { setup(); }
   npcName = TextHelper::tolower(TextHelper::trimAll(npcName));
-  for (auto n: jsonNPCs) {
+  for (auto n : jsonNPCs) {
     if (TextHelper::tolower(TextHelper::trimAll(n["name"])) == npcName) {
       return new NPC(n["name"], n["desc"]);
     }

@@ -118,13 +118,15 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::streampos topOfMC = file.tellg();
 
     while (std::getline(file, dialog)) {
-      if (++debug_emergency_exit > 1000) { return false; }
+      if (++debug_emergency_exit > 1000) {
+        return false;
+        std::cout << "     ===== EMERGENCY EXIT USED =====" << std:endl;
+      }
       dialog = trim(dialog);
       if (!dialog.empty() && dialog[0] == '/') { continue; }
       if (dialog == ":endmc" && validChoice) {
         return false;
       } else if (dialog == ":endmc" && !validChoice) {
-        std::cout << "[DEBUG]: Option given was: '" + choice + "' and is not valid.";
         std::cout << "Please enter a valid option." << std::endl;
         choice = "";
         file.seekg(topOfMC);
