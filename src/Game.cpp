@@ -19,6 +19,7 @@ Game::Game() {
 Game::~Game() {
   delete player;
   delete map;
+  delete npcs;
 }
 
 std::vector<NPC*> Game::getNPCs() {
