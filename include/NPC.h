@@ -63,8 +63,6 @@ class NPC : public NamedThing {
 
  private:
   Room* currentRoom;
-  std::string lastTalkFile;
-  std::string lastAskFile;
   bool alive;
 };
 

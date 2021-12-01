@@ -21,14 +21,20 @@ void NPC::talk(std::istream& input) {
     + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
     + std::to_string(InteractHelper::chapter) + ".txt";
     if (TextHelper::fileExists(filePath)) {
-      lastTalkFile = filePath;
       TextHelper::readFile(filePath, input);
-    } else if (!lastTalkFile.empty()) {
-      TextHelper::readFile(lastTalkFile, input);
     } else {
+      for (int i = InteractHelper::chapter; i > 0; i--) {
+        filePath = "text/dialog/"
+        + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
+        + std::to_string(i) + ".txt";
+        if (TextHelper::fileExists(filePath)) {
+          TextHelper::readFile(filePath, input);
+          return;
+        }
+      }
       TextHelper::readFile("text/dialog/"
       + TextHelper::tolower(TextHelper::trimAll(getName()))
-      + "/default.txt", input);
+      + "/default_ask.txt", input);
     }
   } else {
     std::cout << "You cannot talk to " << getName() << ", as they are dead.";
@@ -41,11 +47,17 @@ void NPC::ask(std::istream& input) {
     + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
     + std::to_string(InteractHelper::chapter) + "_ask.txt";
     if (TextHelper::fileExists(filePath)) {
-      lastAskFile = filePath;
       TextHelper::readFile(filePath, input);
-    } else if (!lastAskFile.empty()) {
-      TextHelper::readFile(lastAskFile, input);
     } else {
+      for (int i = InteractHelper::chapter; i > 0; i--) {
+        filePath = "text/dialog/"
+        + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
+        + std::to_string(i) + "_ask.txt";
+        if (TextHelper::fileExists(filePath)) {
+          TextHelper::readFile(filePath, input);
+          return;
+        }
+      }
       TextHelper::readFile("text/dialog/"
       + TextHelper::tolower(TextHelper::trimAll(getName()))
       + "/default_ask.txt", input);
