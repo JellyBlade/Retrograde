@@ -23,7 +23,7 @@ void PasswordLock::interact() {
   //TODO(mart2720): This function probably needs to change
   std::string temp;
   cout << "Enter the password. It's case sensitive" << endl;
-  std::cin >> temp;
+  std::getline(std::cin, temp);
 
   if (password == temp) {
     setSolved();
