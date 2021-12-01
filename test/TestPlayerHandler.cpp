@@ -52,7 +52,7 @@ TEST(TestPlayerHandler, lookExamineTest) {
   Object* o2 = new Object("Box of Boilery Stuff", "All sorts of things in it.");
   Object* o3 = new Object("Apple", "It has a bite taken out of it. Gross!");
   NPC* n1 = new NPC("Test NPC", "He likes to test things.");
-  n1->move(r1);
+  n1->moveNPC(r1);
   game->addNPC(n1);
   game->getMap()->addRoom(r1);
 
@@ -130,7 +130,7 @@ TEST(TestPlayerHandler, inputTest) {
   Object* o3 = new Object("Neutron Star", "Why is this here?", false);
   PlayerHandler* ph = InteractHelper::getPlayerHandler();
   NPC* n1 = new NPC("Test NPC", "He likes to test things.");
-  n1->move(r1);
+  n1->moveNPC(r1);
   game->getMap()->addRoom(r1);
   game->getMap()->addRoom(r2);
   game->getMap()->addDoor(d1);
