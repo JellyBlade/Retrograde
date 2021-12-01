@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 
+#include "InteractHelper.h"
 #include "ItemLock.h"
 
 ItemLock::ItemLock(std::string n, std::string d, bool h, std::string m)
@@ -16,5 +17,11 @@ ItemLock::ItemLock(std::string n, std::string d, bool h, std::string m)
 }
 
 void ItemLock::interact() {
-  //TODO(mart2720): Implement later
+  if (InteractHelper::getPlayerInventory()->isObjectInContainer(matchingName)) {
+    setSolved();
+    std::cout << "The " << matchingName << " unlocked it." << std::endl;
+  } else {
+    std::cout << "You need to have the " << matchingName
+    << " in order to access this " << this->getName() << std::endl;
+  }
 }
