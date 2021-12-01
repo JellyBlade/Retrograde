@@ -76,6 +76,8 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       }
       if (criterionType == "holding") {
         readIf = player->getInventory()->isObjectInContainer(criterion);
+      } else if (criterionType == "chapter") {
+        readIf = std::stoi(criterion) == InteractHelper::chapter;
       } else if (criterionType == "inroom") {
         readIf = player->getCurrentRoom()->getRoomObjects()
         ->isObjectInContainer(criterion);
@@ -217,17 +219,17 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     }
     for (Room* room : InteractHelper::getMap()->getRooms()) {
       if (tolower(trimAll(room->getName())) == trimAll(roomName)) {
-        for (NPC* npc : InteractHelper::getNPCs()) {
-          if (tolower(trimAll(npc->getName())) == trimAll(npcName)) {
-            // TODO(hipt2720): Uncomment this when NPC is implemented.
-            // npc->moveNPC(room);
-            return false;
-          }
+        NPC* npc = InteractHelper::getNPC(npcName);
+        if (npc != nullptr) {
+          npc->moveNPC(room);
+          return false;
         }
-        throw std::runtime_error("NPC not found for RGScript movenpc");
+        throw std::runtime_error("NPC with name: '" + npcName
+        + "' not found for RGScript movenpc");
       }
     }
-    throw std::runtime_error("Room not found for RGScript movenpc");
+    throw std::runtime_error("Room with name: '" + roomName
+    + "' not found for RGScript movenpc");
   } else if (cmd == "quit") {
     return true;
   } else if (cmd == "askquit") {
@@ -244,6 +246,11 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::cout << "RGScript command not recognized.";
     throw std::exception{};
   }
+}
+
+bool TextHelper::fileExists(std::string path) {
+  std::ifstream file(path);
+  return file.good();
 }
 
 std::string TextHelper::makePercent(int i) {

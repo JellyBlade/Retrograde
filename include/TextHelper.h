@@ -41,6 +41,12 @@ namespace TextHelper {
     std::istream& input = std::cin);
 
   /**
+  * Checks if the file at the given path exists.
+  * @return true if the file exists, false otherwise.
+  */
+  bool fileExists(std::string path);
+
+  /**
   * Turns the given integer into a fake percentage with two decimals of
   * precision by adding a decimal place two places from the last digit.
   * (10000 -> 100.00, 5500 -> 55.00)
