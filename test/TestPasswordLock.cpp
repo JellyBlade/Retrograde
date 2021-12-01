@@ -3,6 +3,8 @@
 * @date 2021-11
 */
 
+#include <iostream>
+
 #include "PasswordLock.h"
 #include "gtest/gtest.h"
 
