@@ -134,7 +134,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         choice == ":skip";
         continue;
       } else if (dialog == ":endmcdef") {
-        std::cout << (skip ? "" : "Select an option.") << std::endl << "> ";
+        std::cout << (skip ? "" : "Select an option.\n") << "> ";
         input >> choice;
         choice = ":" + trimAll(choice);
         continue;
