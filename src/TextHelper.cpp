@@ -124,6 +124,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     while (std::getline(file, dialog)) {
       dialog = trim(dialog);
       if (!dialog.empty() && dialog[0] == '/') { continue; }
+      if (dialog == ":mc") { continue; }
       if (dialog == ":endmc") {
         return false;
       } else if (dialog == ":back" && !skip) {
