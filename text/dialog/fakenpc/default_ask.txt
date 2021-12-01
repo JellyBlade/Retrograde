@@ -13,6 +13,7 @@ Fake NPC: This is my default ask file.
   of testing someone's code. In fact, once I no longer have any lines to read,
   I will cease to exist, except for brief appearances (like this one) inside
   the output log of a build pipeline.
+  :continue
   :endmc
 :else
   :mc

@@ -112,15 +112,18 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
   } else if (cmd == "mc") {
     std::string dialog;
     std::string choice = "";
+    int debug_emergency_exit = 0;
     bool skip = false;
+    bool validChoice = false;
     std::streampos topOfMC = file.tellg();
 
     while (std::getline(file, dialog)) {
+      if (++debug_emergency_exit > 1000) { return false; }
       dialog = trim(dialog);
       if (!dialog.empty() && dialog[0] == '/') { continue; }
-      if (dialog == ":endmc"  && !choice.size() > 1) {
+      if (dialog == ":endmc" && validChoice) {
         return false;
-      } else if (dialog == ":endmc" && choice.size() <= 1) {
+      } else if (dialog == ":endmc" && !validChoice) {
         std::cout << "[DEBUG]: Option given was: '" + choice + "' and is not valid.";
         std::cout << "Please enter a valid option." << std::endl;
         choice = "";
@@ -128,6 +131,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         continue;
       } else if (dialog == ":back" && !skip) {
         choice = "";
+        validChoice = false;
         file.seekg(topOfMC);
         continue;
       } else if (dialog == ":continue" && !skip) {
@@ -141,6 +145,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         continue;
       } else if (dialog == choice) {
         skip = false;
+        validChoice = true;
         continue;
       } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice) {
         skip = true;

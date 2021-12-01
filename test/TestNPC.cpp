@@ -46,8 +46,6 @@ TEST(TestNPC, askTest) {
 
   std::ifstream input2("test/text/npcTest_ask_input2.txt");
   n2->ask(input2);
-  input2.close();
-  input2.open("test/text/npcTest_ask_input2.txt");
   InteractHelper::chapter = 1;
   n2->ask(input2);
   input2.close();
