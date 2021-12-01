@@ -213,7 +213,8 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         return false;
       }
     }
-    throw std::runtime_error("Room not found for RGScript move.");
+    throw std::runtime_error("Room with name: '" + roomName
+    + "' not found for RGScript move");
   } else if (cmd == "movenpc") {
     std::string roomName;
     std::string npcName = params.front();
@@ -247,8 +248,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::cin.ignore();
     return false;
   } else {
-    std::cout << "RGScript command not recognized.";
-    throw std::exception{};
+    throw std::runtime_error("RGScript command: '" + cmd + "' not recognized.");
   }
 }
 
