@@ -23,7 +23,7 @@ void NPC::talk(std::istream& input) {
     if (TextHelper::fileExists(filePath)) {
       TextHelper::readFile(filePath, input);
     } else {
-      for (int i = InteractHelper::chapter; i > 0; i--) {
+      for (int i = InteractHelper::chapter; i >= 0; i--) {
         filePath = "text/dialog/"
         + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
         + std::to_string(i) + ".txt";
@@ -49,7 +49,7 @@ void NPC::ask(std::istream& input) {
     if (TextHelper::fileExists(filePath)) {
       TextHelper::readFile(filePath, input);
     } else {
-      for (int i = InteractHelper::chapter; i > 0; i--) {
+      for (int i = InteractHelper::chapter; i >= 0; i--) {
         filePath = "text/dialog/"
         + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
         + std::to_string(i) + "_ask.txt";
