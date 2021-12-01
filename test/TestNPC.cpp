@@ -13,9 +13,11 @@
 
 
 TEST(TestNPC, talkTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  InteractHelper::chapter = 0;
   NPC* n1 = new NPC("Test NPC");
   NPC* n2 = new NPC("Fake NPC");
-  InteractHelper::chapter = 0;
   std::ifstream input("test/text/npcTest_empty_input.txt");
 
   n1->talk(input);

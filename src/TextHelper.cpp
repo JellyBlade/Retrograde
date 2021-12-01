@@ -124,10 +124,14 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     while (std::getline(file, dialog)) {
       dialog = trim(dialog);
       if (!dialog.empty() && dialog[0] == '/') { continue; }
-      if (dialog == ":mc") { continue; }
-      if (dialog == ":endmc") {
+      if (dialog == ":endmc"  && !choice.size() > 1) {
         return false;
+      } else if (dialog == ":endmc" && choice.size() <= 1) {
+        std::cout << "Please enter a valid option.";
+        file.seekg(topOfMC);
+        continue;
       } else if (dialog == ":back" && !skip) {
+        choice = "";
         file.seekg(topOfMC);
         continue;
       } else if (dialog == ":continue" && !skip) {
@@ -137,7 +141,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       } else if (dialog == ":endmcdef") {
         std::cout << "Select an option." << std::endl << "> ";
         input >> choice;
-        choice = ":" + choice;
+        choice = ":" + trimAll(choice);
         continue;
       } else if (dialog == choice) {
         skip = false;
