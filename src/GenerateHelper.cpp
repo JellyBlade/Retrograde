@@ -20,29 +20,45 @@
 #include "PasswordLock.h"
 #include "Box.h"
 #include "AirLock.h"
+#include "NPC.h"
 
 using json = nlohmann::json;
 
 std::vector<json> GenerateHelper::jsonObjects;
 std::vector<json> GenerateHelper::jsonRooms;
+std::vector<json> GenerateHelper::jsonNPCs;
 
 void GenerateHelper::setup() {
-  std::ifstream file("text/json/objects.json");
-  if (!file.is_open()) {
-    throw std::runtime_error("objects.json not found!");
+  if (jsonObjects.size() < 1) {
+    std::ifstream file("text/json/objects.json");
+    if (!file.is_open()) {
+      throw std::runtime_error("objects.json not found!");
+    }
+    json j = json::parse(file);
+    for (auto it = j.begin(); it != j.end(); ++it) {
+      jsonObjects.push_back(it.value());
+    }
+    file.close();
   }
-  json j = json::parse(file);
-  for (auto it = j.begin(); it != j.end(); ++it) {
-    jsonObjects.push_back(it.value());
+  if (jsonRooms.size() < 1) {
+    std::ifstream file("text/json/rooms.json");
+    if (!file.is_open()) {
+      throw std::runtime_error("rooms.json not found!");
+    }
+    json j = json::parse(file);
+    for (auto it = j.begin(); it != j.end(); ++it) {
+      jsonRooms.push_back(it.value());
+    }
   }
-  file.close();
-  file.open("text/json/rooms.json");
-  if (!file.is_open()) {
-    throw std::runtime_error("rooms.json not found!");
-  }
-  j = json::parse(file);
-  for (auto it = j.begin(); it != j.end(); ++it) {
-    jsonRooms.push_back(it.value());
+  if (jsonNPCs.size() < 1) {
+    std::ifstream file("text/json/npcs.json");
+    if (!file.is_open()) {
+      throw std::runtime_error("npcs.json not found!");
+    }
+    json j = json::parse(file);
+    for (auto it = j.begin(); it != j.end(); ++it) {
+      jsonNPCs.push_back(it.value());
+    }
   }
 }
 
@@ -76,6 +92,16 @@ Object* GenerateHelper::generateObject(std::string objectName) {
   }
   throw std::runtime_error("Invalid Object with name: " + objectName
   + ". Check spelling and ensure this object is defined in objects.json!");
+}
+
+NPC* GenerateHelper::generateNPC(std::string npcName) {
+  if (jsonNPCs.size() < 1) { setup(); }
+  npcName = TextHelper::tolower(TextHelper::trimAll(npcName));
+  for (auto n: jsonNPCs) {
+    if (TextHelper::tolower(TextHelper::trimAll(n["name"])) == npcName) {
+      return new NPC(n["name"], n["desc"]);
+    }
+  }
 }
 
 Room* GenerateHelper::generateRoom(std::string roomName) {

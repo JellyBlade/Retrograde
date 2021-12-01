@@ -13,6 +13,7 @@
 #include "Object.h"
 #include "Room.h"
 #include "Map.h"
+#include "NPC.h"
 
 using json = nlohmann::json;
 
@@ -23,6 +24,7 @@ namespace GenerateHelper {
 
   extern std::vector<json> jsonObjects;
   extern std::vector<json> jsonRooms;
+  extern std::vector<json> jsonNPCs;
 
   /**
   * Populates the objects and rooms vectors for the other functions to use.
@@ -36,6 +38,13 @@ namespace GenerateHelper {
   * @return The JSON-generated object.
   */
   Object* generateObject(std::string objectName);
+
+  /**
+  * Generates an NPC from JSON based on the name.
+  * @param npcName The name of the NPC to generate.
+  * @return the JSON-generated NPC.
+  */
+  NPC* generateNPC(std::string npcName);
 
   /**
   * Generates a Room from JSON, with room objects if available.
