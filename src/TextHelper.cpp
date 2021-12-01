@@ -120,7 +120,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     while (std::getline(file, dialog)) {
       if (++debug_emergency_exit > 1000) {
         return false;
-        std::cout << "     ===== EMERGENCY EXIT USED =====" << std:endl;
+        std::cout << "     ===== EMERGENCY EXIT USED =====" << std::endl;
       }
       dialog = trim(dialog);
       if (!dialog.empty() && dialog[0] == '/') { continue; }
