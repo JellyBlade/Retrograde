@@ -6,6 +6,7 @@
 #ifndef PASSWORDLOCK_H
 #define PASSWORDLOCK_H
 
+#include <iostream>
 #include <string>
 #include "Puzzle.h"
 
@@ -31,6 +32,12 @@ class PasswordLock : public Puzzle {
   * Prompt the password input to solve
   */
   void interact();
+
+  /**
+  * Asks for user input on what the password is.
+  * @param input istream to use for input. cin for user, fstream for testing.
+  */
+  bool playerInput(std::istream& input);
 
  private:
   std::string password;

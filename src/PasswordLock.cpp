@@ -19,15 +19,22 @@ PasswordLock::PasswordLock(std::string n, std::string d, bool h, std::string p)
   setHoldable(h);
 }
 
+//This is untestable
 void PasswordLock::interact() {
-  //TODO(mart2720): This function probably needs to change
-  std::string temp;
-  cout << "Enter the password. It's case sensitive" << endl;
-  std::getline(std::cin, temp);
+  playerInput(std::cin);
+}
 
-  if (password == temp) {
+bool PasswordLock::playerInput(std::istream& input) {
+  std::string item = "";
+  cout << "Enter the password. It's case sensitive." << endl;
+  cout << "> ";
+  std::getline(input, item);
+
+  if (item == password) {
     setSolved();
+    return true;
   } else {
     cout << "Incorrect password." << endl;
+    return false;
   }
 }
