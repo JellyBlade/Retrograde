@@ -168,22 +168,22 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
-  EXPECT_TRUE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
   file.close();
 
   file.open("test/text/inputTest_ask.txt");
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
-  EXPECT_TRUE(ph->input(file));
+  EXPECT_false(ph->input(file));
   file.close();
 
   file.open("test/text/inputTest_stab.txt");
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
-  EXPECT_TRUE(ph->input(file));
-  EXPECT_TRUE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
   file.close();
 
   file.open("test/text/inputTest_move.txt");

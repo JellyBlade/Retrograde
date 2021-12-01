@@ -56,15 +56,24 @@ bool PlayerHandler::input(std::istream& input) {
   } else if (action == "talk") {
     if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
       InteractHelper::getNPC(param)->talk(input);
+      return false;
     }
+    cout << "That person is not here right now." << endl;
+    return false;
   } else if (action == "ask") {
     if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
       InteractHelper::getNPC(param)->ask(input);
+      return false;
     }
+    cout << "That person is not here right now." << endl;
+    return false;
   } else if (action == "stab") {
     if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
       InteractHelper::getNPC(param)->stab(input);
+      return false;
     }
+    cout << "That person is not here right now." << endl;
+    return false;
   } else if (action == "look") {
     look();
     return false;
@@ -201,7 +210,7 @@ bool PlayerHandler::examine(NPC* npc) {
     cout << npc->getDescription() << endl;
     return true;
   } else {
-    cout << npc->getName() << " is not in this room.";
+    cout << npc->getName() << " is not in this room." << endl;
     return false;
   }
 }
