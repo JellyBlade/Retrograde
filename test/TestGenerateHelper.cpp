@@ -42,6 +42,9 @@ TEST(TestGenerateHelper, npcGenerationTest) {
   NPC* n2 = generateNPC("joe");
   EXPECT_EQ(n1->getName(), n2->getName());
   EXPECT_EQ(n1->getDescription(), n2->getDescription());
+
+  delete n1;
+  delete n2;
 }
 
 TEST(TestGenerateHelper, roomGenerationTest) {

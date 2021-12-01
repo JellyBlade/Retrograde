@@ -83,11 +83,12 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         ->isObjectInContainer(criterion);
       } else if (criterionType == "flag" || criterionType == "flagtrue") {
         if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          readIf = TextHelper::rgScriptFlags[criterion]);
+          readIf = TextHelper::rgScriptFlags[criterion];
         }
       } else if (criterionType == "flagfalse") {
         if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          readIf = !TextHelper::rgScriptFlags[criterion]
+          readIf = !TextHelper::rgScriptFlags[criterion];
+        }
       } else {
         throw std::runtime_error("Unknown RGScript if criterion: " + criterion);
       }
