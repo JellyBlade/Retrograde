@@ -10,7 +10,7 @@
 TEST(TestItemLock, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
-  Object* o = new Object("Key", "unlocks someting", false);
+  Object* o = new Object("Key", "unlocks someting", true);
   ItemLock* i = new ItemLock("Locker", "Something is inside", false, "Key");
 
   EXPECT_EQ(i->isPuzzleSolved(), false);
