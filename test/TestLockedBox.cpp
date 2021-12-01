@@ -42,5 +42,32 @@ TEST(LockedBoxTest, ConstructorTest) {
   std::cout << "Yay" << std::endl;
   delete o2;
   std::cout << "May happen after function." << std::endl;
-  
+
+}
+
+TEST(LockedBoxTest, interactTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  Puzzle* p = new Puzzle();
+  LockedBox* b = new LockedBox(p);
+  Object* o1 = new Object("Test", "Test!", true);
+  Object* o2 = new Object("Better test", "It really is just better.", true);
+  std::ifstream file("test/text/boxTest.txt");
+
+  EXPECT_EQ(b->getBoxObjects()->size(), 0);
+  b->interact();
+  b->addObject(o1);
+  b->addObject(o2);
+  EXPECT_EQ(b->getBoxObjects()->size(), 2);
+
+  b->displayBoxObjects();
+  EXPECT_FALSE(b->playerInput(file));
+  EXPECT_TRUE(b->playerInput(file));
+  EXPECT_EQ(b->getBoxObjects()->size(), 1);
+  EXPECT_EQ(InteractHelper::getPlayerHandler()->getPlayer()
+  ->getInventory()->size(), 1);
+
+  delete game;
+  delete b;
+  delete p;
 }
