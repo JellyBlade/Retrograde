@@ -37,11 +37,7 @@ TEST(LockedBoxTest, ConstructorTest) {
 
   delete b;
   delete b2;
-  std::cout << "Probably going to be a seg fault here" << std::endl;
-  delete p;
-  std::cout << "Yay" << std::endl;
   delete o2;
-  std::cout << "May happen after function." << std::endl;
 }
 
 TEST(LockedBoxTest, interactTest) {
@@ -71,5 +67,4 @@ TEST(LockedBoxTest, interactTest) {
 
   delete game;
   delete b;
-  delete p;
 }
