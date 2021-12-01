@@ -26,3 +26,7 @@ void LockedBox::interact() {
     << std::endl;
   }
 }
+
+Puzzle* LockedBox::getPuzzle() {
+  return puzzle;
+}

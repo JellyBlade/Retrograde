@@ -33,8 +33,14 @@ class LockedBox : public Box {
   */
   void interact();
 
+  /**
+  * returns the puzzle object
+  * @return puzzle Puzzle* in the Locked Box
+  */
+  Puzzle* getPuzzle();
+
  private:
-  Puzzle* puzzle;
+   Puzzle* puzzle;
 };
 
 #endif

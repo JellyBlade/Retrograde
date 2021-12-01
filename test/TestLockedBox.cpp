@@ -48,10 +48,13 @@ TEST(LockedBoxTest, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
   Puzzle* p = new Puzzle();
-  LockedBox* b = new LockedBox(p);
+  LockedBox* b = new LockedBox("Treasure Chest", "Just some gold", false, p);
   Object* o1 = new Object("Test", "Test!", true);
   Object* o2 = new Object("Better test", "It really is just better.", true);
   std::ifstream file("test/text/boxTest.txt");
+
+  b->interact();
+  b->getPuzzle()->setSolved();
 
   EXPECT_EQ(b->getBoxObjects()->size(), 0);
   b->interact();
