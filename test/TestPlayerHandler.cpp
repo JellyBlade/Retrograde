@@ -228,11 +228,3 @@ TEST(TestPlayerHandler, inputTest) {
 
   delete game;
 }
-
-// TEST(TestPlayerHandler, getNPCsInCurrentRoomTest) {
-//   PlayerHandler* ph = new PlayerHandler();
-//
-//   EXPECT_EQ(ph->getNPCsInCurrentRoom().size(), 0);
-//
-//   delete ph;
-// }

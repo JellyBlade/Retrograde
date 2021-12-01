@@ -19,6 +19,7 @@ using json = nlohmann::json;
 
 /**
 * Provides functions for instantiating objects/rooms from JSON.
+* @see https://github.com/nlohmann/json
 */
 namespace GenerateHelper {
 
