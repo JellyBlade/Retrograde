@@ -1,0 +1,31 @@
+Fake NPC: This is my default ask file.
+:if chapter 0
+  :mc
+  [1]: Why default?
+  [2]: Why are you Fake?
+  :endmcdef
+  :1
+  Because this is the file I use when I don't have a fallback dialog file to
+  use for asking questions.
+  :back
+  :2
+  I am fake because this reality is a lie. We are all here just for the purposes
+  of testing someone's code. In fact, once I no longer have any lines to read,
+  I will cease to exist, except for brief appearances (like this one) inside
+  the output log of a build pipeline.
+  :continue
+  :endmc
+:else
+  :mc
+  [1]: Woah, why'd the questions change!?
+  [2]: What happened!
+  :endmcdef
+  :1
+  Because we're in a new chapter. Even in my default ask file, I can use
+  the Command Processor to react to the current game chapter without having to
+  create entirely new ask files.
+  It's quite handy.
+  :2
+  The chapter changed. I have new ask dialog without requiring a new file.
+  :endmc
+:endif

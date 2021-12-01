@@ -3,26 +3,63 @@
 * @date 2021-11
 */
 
-#include "NPC.h"
 #include <iostream>
+#include <fstream>
 #include <string>
+
+#include "NPC.h"
+#include "InteractHelper.h"
 #include "gtest/gtest.h"
 
-/*
-TODO(mart2720): To be tested after implementation
-TEST(TestNPC, talkTest){}
-*/
 
-/*
-TODO(mart2720): To be tested after implementation
-TEST(TestNPC, askTest){}
-*/
+TEST(TestNPC, talkTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  InteractHelper::chapter = 0;
+  NPC* n1 = new NPC("Test NPC");
+  NPC* n2 = new NPC("Fake NPC");
+  std::ifstream input("test/text/npcTest_empty_input.txt");
+
+  n1->talk(input);
+  InteractHelper::chapter = 1;
+  n1->talk(input);
+  InteractHelper::chapter = 2;
+  n1->talk(input);
+  n2->talk(input);
+  input.close();
+
+  delete n1;
+  delete n2;
+  delete game;
+}
+
+TEST(TestNPC, askTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  InteractHelper::chapter = 0;
+  NPC* n1 = new NPC("testNPC");
+  NPC* n2 = new NPC("Fake NPC");
+
+  std::ifstream input1("test/text/npcTest_ask_input1.txt");
+  n1->ask(input1);
+  input1.close();
+
+  std::ifstream input2("test/text/npcTest_ask_input2.txt");
+  n2->ask(input2);
+  InteractHelper::chapter = 1;
+  n2->ask(input2);
+  input2.close();
+
+  delete n1;
+  delete n2;
+  delete game;
+}
 
 TEST(TestNPC, stabTest) {
-  NPC* n = new NPC();
-
+  NPC* n = new NPC("Test NPC");
+  std::ifstream input("test/text/npcTest_empty_input.txt");
   EXPECT_EQ(n->isAlive(), true);
-  n->stab();
+  n->stab(input);
   EXPECT_EQ(n->isAlive(), false);
 
   delete n;

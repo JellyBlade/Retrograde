@@ -76,23 +76,20 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       }
       if (criterionType == "holding") {
         readIf = player->getInventory()->isObjectInContainer(criterion);
+      } else if (criterionType == "chapter") {
+        readIf = std::stoi(criterion) == InteractHelper::chapter;
       } else if (criterionType == "inroom") {
         readIf = player->getCurrentRoom()->getRoomObjects()
         ->isObjectInContainer(criterion);
       } else if (criterionType == "flag" || criterionType == "flagtrue") {
         if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          if (TextHelper::rgScriptFlags[criterion]) {
-            readIf = true;
-          }
+          readIf = TextHelper::rgScriptFlags[criterion];
         }
       } else if (criterionType == "flagfalse") {
         if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          if (!TextHelper::rgScriptFlags[criterion]) {
-            readIf = true;
-          }
+          readIf = !TextHelper::rgScriptFlags[criterion];
         }
       } else {
-        std::cout << "Unknown RGScript if criterion.";
         throw std::runtime_error("Unknown RGScript if criterion: " + criterion);
       }
     }
@@ -102,13 +99,12 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       if (!dialog.empty() && dialog[0] == '/') { continue; }
       if (dialog == ":endif") {
         return false;
-      }
-      if (dialog == ":else") {
+      } else if (dialog == ":else") {
         skip = readIf;
         continue;
-      }
-      if (!dialog.empty() && dialog[0] == ':') {
+      } else if (!skip && !dialog.empty() && dialog[0] == ':') {
          commandProcessor(dialog, file, input);
+         continue;
       }
       std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
     }
@@ -116,15 +112,28 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
   } else if (cmd == "mc") {
     std::string dialog;
     std::string choice = "";
+    int debug_emergency_exit = 0;
     bool skip = false;
+    bool validChoice = false;
     std::streampos topOfMC = file.tellg();
 
     while (std::getline(file, dialog)) {
+      if (++debug_emergency_exit > 1000) {
+        return false;
+        std::cout << "     ===== EMERGENCY EXIT USED =====" << std::endl;
+      }
       dialog = trim(dialog);
       if (!dialog.empty() && dialog[0] == '/') { continue; }
-      if (dialog == ":endmc") {
+      if (dialog == ":endmc" && validChoice) {
         return false;
+      } else if (dialog == ":endmc" && !validChoice) {
+        std::cout << "Please enter a valid option." << std::endl;
+        choice = "";
+        file.seekg(topOfMC);
+        continue;
       } else if (dialog == ":back" && !skip) {
+        choice = "";
+        validChoice = false;
         file.seekg(topOfMC);
         continue;
       } else if (dialog == ":continue" && !skip) {
@@ -132,12 +141,13 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         choice == ":skip";
         continue;
       } else if (dialog == ":endmcdef") {
-        std::cout << "Select an option." << std::endl << "> ";
+        std::cout << (skip ? "" : "Select an option.\n") << "> ";
         input >> choice;
-        choice = ":" + choice;
+        choice = ":" + trim(choice);
         continue;
       } else if (dialog == choice) {
         skip = false;
+        validChoice = true;
         continue;
       } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice) {
         skip = true;
@@ -207,7 +217,8 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         return false;
       }
     }
-    throw std::runtime_error("Room not found for RGScript move.");
+    throw std::runtime_error("Room with name: '" + roomName
+    + "' not found for RGScript move");
   } else if (cmd == "movenpc") {
     std::string roomName;
     std::string npcName = params.front();
@@ -217,17 +228,17 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     }
     for (Room* room : InteractHelper::getMap()->getRooms()) {
       if (tolower(trimAll(room->getName())) == trimAll(roomName)) {
-        for (NPC* npc : InteractHelper::getNPCs()) {
-          if (tolower(trimAll(npc->getName())) == trimAll(npcName)) {
-            // TODO(hipt2720): Uncomment this when NPC is implemented.
-            // npc->moveNPC(room);
-            return false;
-          }
+        NPC* npc = InteractHelper::getNPC(npcName);
+        if (npc != nullptr) {
+          npc->moveNPC(room);
+          return false;
         }
-        throw std::runtime_error("NPC not found for RGScript movenpc");
+        throw std::runtime_error("NPC with name: '" + npcName
+        + "' not found for RGScript movenpc");
       }
     }
-    throw std::runtime_error("Room not found for RGScript movenpc");
+    throw std::runtime_error("Room with name: '" + roomName
+    + "' not found for RGScript movenpc");
   } else if (cmd == "quit") {
     return true;
   } else if (cmd == "askquit") {
@@ -241,9 +252,13 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::cin.ignore();
     return false;
   } else {
-    std::cout << "RGScript command not recognized.";
-    throw std::exception{};
+    throw std::runtime_error("RGScript command: '" + cmd + "' not recognized.");
   }
+}
+
+bool TextHelper::fileExists(std::string path) {
+  std::ifstream file(path);
+  return file.good();
 }
 
 std::string TextHelper::makePercent(int i) {

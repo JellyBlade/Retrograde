@@ -97,14 +97,6 @@ class PlayerHandler {
   */
   bool drop(std::string drop);
 
-  // TODO(hipt2720): Should this function be moved somewhere else?
-  /**
-  * Returns a list of the NPCs in the player's current room.
-  * @return a vector containing all of the NPCs in the player's current room.
-  * May be empty.
-  */
-  std::vector<NPC*> getNPCsInCurrentRoom();
-
  private:
   Player* player;
 };

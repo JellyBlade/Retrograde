@@ -1,0 +1,13 @@
+Test NPC: How goes it?
+:mc
+[1]: It's going good!
+[2]: It's going alright.
+[3]: We exist in a simulation, and none of this is real.
+:endmcdef
+:1
+That's good!
+:2
+Ah, could be better, eh?
+:3
+YES OF COURSE, THIS IS JUST FOR TESTING. ALL IS SIMULATED.
+:endmc

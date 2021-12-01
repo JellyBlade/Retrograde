@@ -28,6 +28,7 @@ Cats are not cute :(
 Cats are not cute :(
 :else
 Cats are cute! :)
+:endif
 
 // alternate way to handle nesting statements.
 :if flag cats are cute

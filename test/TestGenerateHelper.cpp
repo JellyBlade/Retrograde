@@ -9,6 +9,7 @@
 #include "PlayerHandler.h"
 #include "Object.h"
 #include "Room.h"
+#include "NPC.h"
 #include "Door.h"
 #include "Map.h"
 #include "Box.h"
@@ -17,6 +18,7 @@
 using GenerateHelper::generateObject;
 using GenerateHelper::generateRoom;
 using GenerateHelper::generateMap;
+using GenerateHelper::generateNPC;
 
 TEST(TestGenerateHelper, objectGenerationTest) {
   Object* o1 = new Object("Apple", "It's an apple.", true);
@@ -33,6 +35,16 @@ TEST(TestGenerateHelper, objectGenerationTest) {
   delete o1;
   delete o2;
   delete o3;
+}
+
+TEST(TestGenerateHelper, npcGenerationTest) {
+  NPC* n1 = new NPC("Joe", "It's Joe!");
+  NPC* n2 = generateNPC("joe");
+  EXPECT_EQ(n1->getName(), n2->getName());
+  EXPECT_EQ(n1->getDescription(), n2->getDescription());
+
+  delete n1;
+  delete n2;
 }
 
 TEST(TestGenerateHelper, roomGenerationTest) {

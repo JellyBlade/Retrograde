@@ -3,24 +3,73 @@
 * @date 2021-11
 */
 
+#include <string>
+#include <iostream>
+
 #include "NPC.h"
+#include "TextHelper.h"
+#include "InteractHelper.h"
 
-NPC::NPC() : alive{true} {}
+NPC::NPC(std::string n, std::string d) : alive{true} {
+  setName(n);
+  setDescription(d);
+}
 
-void NPC::talk() {
+void NPC::talk(std::istream& input) {
   if (alive) {
-    // implement later
+    std::string filePath = "text/dialog/"
+    + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
+    + std::to_string(InteractHelper::chapter) + ".txt";
+    if (TextHelper::fileExists(filePath)) {
+      lastTalkFile = filePath;
+      TextHelper::readFile(filePath, input);
+    } else if (!lastTalkFile.empty()) {
+      TextHelper::readFile(lastTalkFile, input);
+    } else {
+      TextHelper::readFile("text/dialog/"
+      + TextHelper::tolower(TextHelper::trimAll(getName()))
+      + "/default.txt", input);
+    }
+  } else {
+    std::cout << "You cannot talk to " << getName() << ", as they are dead.";
   }
 }
 
-void NPC::ask() {
+void NPC::ask(std::istream& input) {
   if (alive) {
-    // implement later
+    std::string filePath = "text/dialog/"
+    + TextHelper::tolower(TextHelper::trimAll(getName())) + "/"
+    + std::to_string(InteractHelper::chapter) + "_ask.txt";
+    if (TextHelper::fileExists(filePath)) {
+      lastAskFile = filePath;
+      TextHelper::readFile(filePath, input);
+    } else if (!lastAskFile.empty()) {
+      TextHelper::readFile(lastAskFile, input);
+    } else {
+      TextHelper::readFile("text/dialog/"
+      + TextHelper::tolower(TextHelper::trimAll(getName()))
+      + "/default_ask.txt", input);
+    }
+  } else {
+    std::cout << "You cannot talk to " << getName() << ", as they are dead.";
   }
 }
 
-void NPC::stab() {
-  alive = false;
+void NPC::stab(std::istream& input) {
+  if (alive) {
+    std::string stabFilePath = "text/dialog/"
+    + TextHelper::tolower(TextHelper::trimAll(getName())) + "/stab.txt";
+    if (TextHelper::fileExists(stabFilePath)) {
+      TextHelper::readFile(stabFilePath, input);
+    } else {
+      std::cout << "You stab " << getName() << ", killing them." << std::endl;
+    }
+    alive = false;
+  } else {
+    std::cout << "You stab " << getName() << "'s corpse. Their body doesn't";
+    std::cout << " need additional convincing of its demise, you monster.";
+    std::cout << std::endl;
+  }
 }
 
 bool NPC::isAlive() {

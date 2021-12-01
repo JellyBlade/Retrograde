@@ -21,7 +21,7 @@ Game::~Game() {
 }
 
 std::vector<NPC*> Game::getNPCs() {
-  // TODO(hipt2720): implement
+  return npcs;
 }
 
 void Game::playerTurn() {
@@ -158,8 +158,7 @@ void Game::generateMap() {
 }
 
 void Game::generateNPCs() {
-  std::cout << "Generating NPCs..." << std::endl;
-  std::cout << "Alright they're totally there ;)" << std::endl;
+  npcs.push_back(new NPC("Joe", "He's Joe."));
 }
 
 Map* Game::getMap() {

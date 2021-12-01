@@ -202,9 +202,3 @@ bool PlayerHandler::drop(std::string drop) {
   cout << "You dropped " << obj->getName() << " into the room." << endl;
   return true;
 }
-
-std::vector<NPC*> getNPCsInCurrentRoom() {
-  std::vector<NPC*> vector;
-  // TODO(hipt2720): This requires NPCs and Game to be implemented first.
-  return vector;
-}
