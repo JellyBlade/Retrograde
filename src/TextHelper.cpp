@@ -83,18 +83,12 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         ->isObjectInContainer(criterion);
       } else if (criterionType == "flag" || criterionType == "flagtrue") {
         if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          if (TextHelper::rgScriptFlags[criterion]) {
-            readIf = true;
-          }
+          readIf = TextHelper::rgScriptFlags[criterion]);
         }
       } else if (criterionType == "flagfalse") {
         if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          if (!TextHelper::rgScriptFlags[criterion]) {
-            readIf = true;
-          }
-        }
+          readIf = !TextHelper::rgScriptFlags[criterion]
       } else {
-        std::cout << "Unknown RGScript if criterion.";
         throw std::runtime_error("Unknown RGScript if criterion: " + criterion);
       }
     }
@@ -127,6 +121,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         return false;
       } else if (dialog == ":endmc" && choice.size() <= 1) {
         std::cout << "Please enter a valid option.";
+        choice = "";
         file.seekg(topOfMC);
         continue;
       } else if (dialog == ":back" && !skip) {
