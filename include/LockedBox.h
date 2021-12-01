@@ -6,6 +6,8 @@
 #ifndef LOCKEDBOX_H
 #define LOCKEDBOX_H
 
+#include <string>
+
 #include "Puzzle.h"
 #include "PasswordLock.h"
 #include "Box.h"
@@ -15,7 +17,6 @@
 */
 class LockedBox : public Box {
  public:
-
   /**
   * Constructor, sets the puzzle to p;
   * @param p Puzzle* that puzzle will be set to.
@@ -40,7 +41,7 @@ class LockedBox : public Box {
   Puzzle* getPuzzle();
 
  private:
-   Puzzle* puzzle;
+  Puzzle* puzzle;
 };
 
 #endif

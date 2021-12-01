@@ -6,6 +6,7 @@
 
 #include "OxygenTank.h"
 #include "Game.h"
+#include "InteractHelper.h"
 #include "gtest/gtest.h"
 
 TEST(TestOxygenTank, interactTest) {

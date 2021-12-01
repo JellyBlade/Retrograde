@@ -12,6 +12,7 @@ void OxygenTank::interact() {
   if (InteractHelper::getPlayerInventory()->hasSpaceSuit()) {
     InteractHelper::getPlayerInventory()->setOxygen(10000);
   } else {
-    std::cout << "No space suit to restore oxygen." << std::endl;
+    std::cout << "Inhaling direct oxygen into the lungs is fatal"
+    " try getting a space suit before." << std::endl;
   }
 }
