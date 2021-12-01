@@ -42,7 +42,6 @@ TEST(LockedBoxTest, ConstructorTest) {
   std::cout << "Yay" << std::endl;
   delete o2;
   std::cout << "May happen after function." << std::endl;
-
 }
 
 TEST(LockedBoxTest, interactTest) {
