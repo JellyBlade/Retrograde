@@ -40,19 +40,14 @@ TEST(TestNPC, askTest) {
   NPC* n1 = new NPC("testNPC");
   NPC* n2 = new NPC("Fake NPC");
 
-  std::ifstream input("test/text/npcTest_ask_input1.txt");
-  n1->ask(input);
-  input.close();
-  InteractHelper::chapter = 1;
-  input.open("test/text/npcTest_ask_input1.txt");
-  n1->ask(input);
-  input.close();
+  std::ifstream input1("test/text/npcTest_ask_input1.txt");
+  n1->ask(input1);
+  input1.close();
 
-  InteractHelper::chapter = 0;
-  input.open("test/text/npcTest_ask_input2.txt");
-  n2->ask(input);
+  std::ifstream input2("test/text/npcTest_ask_input2.txt");
+  n2->ask(input2);
   InteractHelper::chapter = 1;
-  n2->ask(input);
+  n2->ask(input2);
   input.close();
 
   delete n1;

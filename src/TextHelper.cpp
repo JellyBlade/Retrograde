@@ -121,7 +121,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       if (dialog == ":endmc"  && !choice.size() > 1) {
         return false;
       } else if (dialog == ":endmc" && choice.size() <= 1) {
-        std::cout << "Please enter a valid option.";
+        std::cout << "Please enter a valid option." << std::endl;
         choice = "";
         file.seekg(topOfMC);
         continue;
@@ -134,7 +134,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         choice == ":skip";
         continue;
       } else if (dialog == ":endmcdef") {
-        std::cout << "Select an option." << std::endl << "> ";
+        std::cout << (skip ? "" : "Select an option.") << std::endl << "> ";
         input >> choice;
         choice = ":" + trimAll(choice);
         continue;
