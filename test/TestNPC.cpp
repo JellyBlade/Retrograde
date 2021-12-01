@@ -30,6 +30,7 @@ TEST(TestNPC, talkTest) {
 
   delete n1;
   delete n2;
+  delete game;
 }
 
 TEST(TestNPC, askTest) {
