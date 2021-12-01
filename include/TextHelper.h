@@ -19,7 +19,8 @@
 * strings.
 */
 namespace TextHelper {
-  extern std::map<std::string, bool> rgScriptFlags;
+  extern std::map<std::string, bool> rgScriptLocalFlags;
+  extern std::map<std::string, bool> rgScriptGlobalFlags;
   /**
   * Outputs dialogue from file to screen,
   * calling commandProcessor if it encounters a script command to execute.

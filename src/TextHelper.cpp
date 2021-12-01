@@ -21,7 +21,8 @@
 #include "Door.h"
 #include "Player.h"
 
-std::map<std::string, bool> TextHelper::rgScriptFlags;
+std::map<std::string, bool> TextHelper::rgScriptLocalFlags;
+std::map<std::string, bool> TextHelper::rgScriptGlobalFlags;
 
 void TextHelper::readFile(std::string textPath, std::istream& input) {
   std::string s;
@@ -31,7 +32,7 @@ void TextHelper::readFile(std::string textPath, std::istream& input) {
     if (!s.empty() && trim(s)[0] == ':') {
       try {
         if (commandProcessor(tolower(trim(s)), file, input)) {
-          TextHelper::rgScriptFlags.clear();
+          TextHelper::rgScriptLocalFlags.clear();
           file.close();
           return;
         }
@@ -42,7 +43,7 @@ void TextHelper::readFile(std::string textPath, std::istream& input) {
     }
     std::cout << s << std::endl;
   }
-  TextHelper::rgScriptFlags.clear();
+  TextHelper::rgScriptLocalFlags.clear();
   file.close();
 }
 
@@ -82,12 +83,16 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
         readIf = player->getCurrentRoom()->getRoomObjects()
         ->isObjectInContainer(criterion);
       } else if (criterionType == "flag" || criterionType == "flagtrue") {
-        if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          readIf = TextHelper::rgScriptFlags[criterion];
+        if (TextHelper::rgScriptLocalFlags.count(criterion) == 1) {
+          readIf = TextHelper::rgScriptLocalFlags[criterion];
+        } else if (TextHelper::rgScriptGlobalFlags.count(criterion) == 1) {
+          readIf = TextHelper::rgScriptGlobalFlags[criterion];
         }
       } else if (criterionType == "flagfalse") {
-        if (TextHelper::rgScriptFlags.count(criterion) == 1) {
-          readIf = !TextHelper::rgScriptFlags[criterion];
+        if (TextHelper::rgScriptLocalFlags.count(criterion) == 1) {
+          readIf = !TextHelper::rgScriptLocalFlags[criterion];
+        } else if (TextHelper::rgScriptGlobalFlags.count(criterion) == 1) {
+          readIf = !TextHelper::rgScriptGlobalFlags[criterion];
         }
       } else {
         throw std::runtime_error("Unknown RGScript if criterion: " + criterion);
@@ -204,7 +209,20 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
       flagName += s;
     }
     flagName = tolower(trimAll(flagName));
-    TextHelper::rgScriptFlags[flagName] = flagValue;
+    TextHelper::rgScriptLocalFlags[flagName] = flagValue;
+    return false;
+  } else if (cmd == "setgflag" || cmd == "setflagg") {
+    if (param.size() <= 1) {
+      throw std::runtime_error("Not enough parameters for RGSCript setgflag");
+    }
+    std::string flagName;
+    bool flagValue = (params.back() == "true" || params.back() == "1");
+    params.pop_back();
+    for (std::string s : params) {
+      flagName += s;
+    }
+    flagName = tolower(trimAll(flagName));
+    TextHelper::rgScriptGlobalFlags[flagName] = flagValue;
     return false;
   } else if (cmd == "move") {
     std::string roomName;
