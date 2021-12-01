@@ -4,6 +4,8 @@
 */
 
 #include <iostream>
+#include <fstream>
+#include <string>
 
 #include "PasswordLock.h"
 #include "gtest/gtest.h"
