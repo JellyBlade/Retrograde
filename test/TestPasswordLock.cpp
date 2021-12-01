@@ -18,15 +18,15 @@ false, "9863HiTheRe");
 
 
   EXPECT_EQ(p->isPuzzleSolved(), false);
-  p->playerInput(file);
+  EXPECT_FALSE(p->playerInput(file));
   EXPECT_EQ(p->isPuzzleSolved(), false);
-  p->playerInput(file);
+  EXPECT_TRUE(p->playerInput(file));
   EXPECT_EQ(p->isPuzzleSolved(), true);
 
   EXPECT_EQ(p1->isPuzzleSolved(), false);
-  p->playerInput(file);
+  EXPECT_FALSE(p1->playerInput(file));
   EXPECT_EQ(p1->isPuzzleSolved(), false);
-  p->playerInput(file);
+  EXPECT_TRUE(p1->playerInput(file));
   EXPECT_EQ(p1->isPuzzleSolved(), true);
 
   delete p;
