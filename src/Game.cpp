@@ -19,7 +19,10 @@ Game::Game() {
 Game::~Game() {
   delete player;
   delete map;
-  delete npcs;
+  for (int i = 0; i < npcs.size(); i++) {
+    delete npcs[i];
+  }
+  npcs.clear();
 }
 
 std::vector<NPC*> Game::getNPCs() {
