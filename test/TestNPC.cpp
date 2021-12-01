@@ -48,7 +48,7 @@ TEST(TestNPC, askTest) {
   n2->ask(input2);
   InteractHelper::chapter = 1;
   n2->ask(input2);
-  input.close();
+  input2.close();
 
   delete n1;
   delete n2;
