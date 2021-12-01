@@ -1,0 +1,5 @@
+ask beauregard spunkmeyer
+ask fake npc
+ask nobody
+ask test npc
+3

@@ -1,0 +1,4 @@
+talk fake npc
+talk true npc
+talk beauregard spunkmeyer
+talk test npc

@@ -78,6 +78,13 @@ class PlayerHandler {
   bool examine(Globals::Direction direction);
 
   /**
+  * Examines the given NPC, providing their description and name.
+  * @param examine the NPC to examine.
+  * @return true if the NPC was successfully examined, false otherwise.
+  */
+  bool examine(NPC* npc);
+
+  /**
   * Displays all of the item's in the player's inventory in a bullet-point list.
   *
   */

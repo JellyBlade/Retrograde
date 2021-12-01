@@ -60,6 +60,11 @@ class Game {
   void generateNPCs();
 
   /**
+  * Adds the given NPC to the game's list of NPCs.
+  */
+  void addNPC(NPC* npc);
+
+  /**
   * Returns a pointer to the game environment.
   * @return the Map for the game, containing all rooms and doors.
   */

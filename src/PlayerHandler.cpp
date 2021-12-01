@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "PlayerHandler.h"
+#include "InteractHelper.h"
 #include "TextHelper.h"
 #include "Room.h"
 #include "Door.h"
@@ -52,6 +53,18 @@ bool PlayerHandler::input(std::istream& input) {
   } else if (action == "status") {
     status();
     return false;
+  } else if (action == "talk") {
+    if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
+      InteractHelper::getNPC(param)->talk(input);
+    }
+  } else if (action == "ask") {
+    if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
+      InteractHelper::getNPC(param)->ask(input);
+    }
+  } else if (action == "stab") {
+    if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
+      InteractHelper::getNPC(param)->stab(input);
+    }
   } else if (action == "look") {
     look();
     return false;
@@ -60,6 +73,10 @@ bool PlayerHandler::input(std::istream& input) {
       examine(Globals::stringToDirection(param));
       return false;
     } catch ( ... ) {
+      NPC* npc = InteractHelper::getNPC(param);
+      if (npc != nullptr) {
+        examine(npc);
+      }
       examine(param);
       return false;
     }
@@ -109,7 +126,13 @@ void PlayerHandler::look() {
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());
   cout << endl;
   cout << TextHelper::listDoors(currentRoom) << endl;
-  // List NPCs here
+  for (NPC* n : InteractHelper::getNPCs()) {
+    if (InteractHelper::npcInRoom(n, currentRoom)) {
+      // TODO(hipt2720): Make a TextHelper function like listObjects for NPC
+      // names.
+      cout << n->getName() << " is here." << endl;
+    }
+  }
 }
 
 void PlayerHandler::status() {
@@ -170,6 +193,17 @@ bool PlayerHandler::examine(Globals::Direction direction) {
   cout << "Looking " << Globals::directionToString(direction);
   cout << ", you see a wall, with no way through." << endl;;
   return false;
+}
+
+bool PlayerHandler::examine(NPC* npc) {
+  Room* room = player->getCurrentRoom();
+  if (InteractHelper::npcInRoom(npc, room)) {
+    cout << npc->getDescription() << endl;
+    return true;
+  } else {
+    cout << npc->getName() << " is not in this room.";
+    return false;
+  }
 }
 
 bool PlayerHandler::pickUp(std::string pickUp) {

@@ -9,6 +9,7 @@
 #include "Room.h"
 #include "Door.h"
 #include "Globals.h"
+#include "GenerateHelper.h"
 
 Game::Game() {
   player = new PlayerHandler();
@@ -158,7 +159,11 @@ void Game::generateMap() {
 }
 
 void Game::generateNPCs() {
-  npcs.push_back(new NPC("Joe", "He's Joe."));
+  npcs.push_back(GenerateHelper::generateNPC("joe"));
+}
+
+void Game::addNPC(NPC* npc) {
+  npcs.push_back(npc);
 }
 
 Map* Game::getMap() {

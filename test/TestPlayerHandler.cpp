@@ -6,6 +6,8 @@
 #include <fstream>
 
 #include "PlayerHandler.h"
+#include "Game.h"
+#include "InteractHelper.h"
 #include "Room.h"
 #include "Door.h"
 #include "Globals.h"
@@ -42,11 +44,17 @@ TEST(TestPlayerHandler, movePlayerTest) {
 }
 
 TEST(TestPlayerHandler, lookExamineTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  PlayerHandler* ph = InteractHelper::getPlayerHandler();
   Room* r1 = new Room("Boiler room", "It is swelteringly hot and humid.");
   Object* o1 = new Object("Crescent Wrench", "For tightening bolts.");
   Object* o2 = new Object("Box of Boilery Stuff", "All sorts of things in it.");
   Object* o3 = new Object("Apple", "It has a bite taken out of it. Gross!");
-  PlayerHandler* ph = new PlayerHandler();
+  NPC* n1 = new NPC("Test NPC", "He likes to test things.");
+  n1->setCurrentRoom(r1);
+  game->addNPC(n1);
+  game->getMap()->addRoom(r1);
 
   r1->getRoomObjects()->addObject(o1);
   r1->getRoomObjects()->addObject(o2);
@@ -59,9 +67,9 @@ TEST(TestPlayerHandler, lookExamineTest) {
   ph->examine("    apple  ");
   std::cout << "Next one should be 'You cannot find that here.'" << std::endl;
   ph->examine("Croissant Wrench");
+  ph->examine("test npc");
 
-  delete r1;
-  delete ph;
+  delete game;
 }
 
 TEST(TestPlayerHandler, pickUpTest) {
@@ -111,13 +119,22 @@ TEST(TestPlayerHandler, dropTest) {
 }
 
 TEST(TestPlayerHandler, inputTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
+  InteractHelper::chapter = 0;
   Room* r1 = new Room("Boiler room", "Hot and steamy!");
   Room* r2 = new Room("Illegal Whitespace", "It's nothing but white.");
   Door* d1 = new Door(r1, r2);
   Object* o1 = new Object("Apple", "It's an apple.", true);
   Object* o2 = new Object("Orange", "It's an orange.", true);
   Object* o3 = new Object("Neutron Star", "Why is this here?", false);
-  PlayerHandler* ph = new PlayerHandler();
+  PlayerHandler* ph = InteractHelper::getPlayerHandler();
+  NPC* n1 = new NPC("Test NPC", "He likes to test things.");
+  n1->setCurrentRoom(r1);
+  game->getMap()->addRoom(r1);
+  game->getMap()->addRoom(r2);
+  game->getMap()->addDoor(d1);
+  game->addNPC(n1);
 
   r1->changeDoor(d1, Globals::Direction::NORTH);
   r2->changeDoor(d1, Globals::Direction::SOUTH);
@@ -145,6 +162,28 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
+  file.close();
+
+  file.open("test/text/inputTest_talk.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_TRUE(ph->input(file));
+  file.close();
+
+  file.open("test/text/inputTest_ask.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_TRUE(ph->input(file));
+  file.close();
+
+  file.open("test/text/inputTest_stab.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_TRUE(ph->input(file));
+  EXPECT_TRUE(ph->input(file));
   file.close();
 
   file.open("test/text/inputTest_move.txt");
@@ -187,10 +226,7 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   file.close();
 
-  delete ph;
-  delete r1;
-  delete r2;
-  delete d1;
+  delete game;
 }
 
 // TEST(TestPlayerHandler, getNPCsInCurrentRoomTest) {
