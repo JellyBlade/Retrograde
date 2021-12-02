@@ -10,7 +10,7 @@
 TEST(TestAirLock, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
-  AirLock* a = AirLock("test", "test", false, 5000);
+  AirLock* a = new AirLock("test", "test", false, 5000);
 
   EXPECT_EQ(a->isPuzzleSolved(), false);
   a->interact();
