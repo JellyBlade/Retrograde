@@ -16,8 +16,5 @@ InteractHelper::getPlayerInventory()->isObjectInContainer(this)) {
   ->getRoomObjects()->isObjectInContainer(this)) {
     InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
     ->setRoomOxygen(10000);
-  } else {
-    std::cout << "Inhaling direct oxygen into the lungs is fatal,"
-    " try getting a space suit before." << std::endl;
   }
 }
