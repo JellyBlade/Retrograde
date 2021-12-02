@@ -141,9 +141,11 @@ std::istream& input) {
   while (std::getline(file, dialog)) {
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
-    if (dialog == ":endif" && nestedCount-- == 0) {
+    if (dialog == ":endif") {
+      if (nestedCount-- == 0) { continue; }
       return false;
-    } else if (dialog == ":else" && nestedCount == 0) {
+    } else if (dialog == ":else") {
+      if (nestedCount == 0) { continue; }
       skip = readIf;
       continue;
     } else if (!dialog.empty() && dialog[0] == ':') {
