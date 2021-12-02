@@ -31,9 +31,12 @@ TEST(TestOxygenTank, interactTest) {
 
   InteractHelper::getPlayerInventory()->setOxygen(0);
   EXPECT_EQ(InteractHelper::getPlayerInventory()->getOxygen(), 0);
+  std::cout << "Testing if it gets past interact" << std::endl;
   o->interact();
+  std::cout << "Yes it did" << std::endl;
   EXPECT_EQ(InteractHelper::getPlayerInventory()->getOxygen(), 10000);
 
   delete game;
   delete r;
+  std::cout << "Testing if it gets function" << std::endl;
 }
