@@ -31,6 +31,13 @@ class ItemLock : public Puzzle {
   */
   void interact();
 
+  /**
+  * Handles any player input required, and provides an istream source for
+  * TextHelper::readFile() for setSolved()
+  * @return true if the puzzle was solved, false otherwise.
+  */
+  bool playerInput(std::istream& input);
+
  private:
   std::string matchingName;
 };

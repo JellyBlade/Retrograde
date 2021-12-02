@@ -6,6 +6,9 @@
 #ifndef PUZZLE_H
 #define PUZZLE_H
 
+#include <string>
+#include <iostream>
+
 #include "Object.h"
 
 /**
@@ -25,9 +28,17 @@ class Puzzle : public Object {
   bool isPuzzleSolved();
 
   /**
-  * sets the solved boolean value of the puzzle to true.
+  * Sets the solved value to true.
+  * Also reads a puzzle text file if it exists for this puzzle's name.
   */
-  void setSolved();
+  void setSolved(std::istream& input);
+
+  /**
+  * Handles any player input required, and provides an istream source for
+  * TextHelper::readFile() for setSolved()
+  * @return true if the puzzle was solved, false otherwise.
+  */
+  virtual bool playerInput(std::istream& input) {}
 
  private:
   bool solved;
