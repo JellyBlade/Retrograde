@@ -142,7 +142,7 @@ std::istream& input) {
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
     if (dialog == ":endif") {
-      if (nestedCount-- > 0) { continue; }
+      if (--nestedCount > 0) { continue; }
       return false;
     } else if (dialog == ":else") {
       if (nestedCount > 0) { continue; }
