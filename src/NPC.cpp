@@ -34,7 +34,7 @@ void NPC::talk(std::istream& input) {
       }
       TextHelper::readFile("text/dialog/"
       + TextHelper::tolower(TextHelper::trimAll(getName()))
-      + "/default_ask.txt", input);
+      + "/default.txt", input);
     }
   } else {
     std::cout << "You cannot talk to " << getName() << ", as they are dead.";

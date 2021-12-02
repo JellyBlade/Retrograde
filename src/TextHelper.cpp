@@ -139,23 +139,18 @@ std::istream& input) {
   }
   skip = !readIf;
   while (std::getline(file, dialog)) {
-    std::cout << "[DEBUG]: nested: " << nestedCount << std::endl;
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
     if (dialog == ":endif") {
       if (nestedCount-- > 0) { continue; }
-      std::cout << "[DEBUG]: ending if" << std::endl;
       return false;
     } else if (dialog == ":else") {
       if (nestedCount > 0) { continue; }
-      std::cout << "[DEBUG]: Reading else" << std::endl;
       skip = readIf;
       continue;
     } else if (!dialog.empty() && dialog[0] == ':') {
-      std::cout << "[DEBUG]: command detected: " << dialog << std::endl;
       if (dialog.substr(0, dialog.find(' ')) == ":if") { nestedCount += 1; }
       if (!skip) {
-        std::cout << "[DEBUG]: sending to cp: " << dialog << std::endl;
         commandProcessor(dialog, file, input);
         continue;
       }
