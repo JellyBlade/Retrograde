@@ -13,11 +13,21 @@ TEST(TestOxygenTank, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
   OxygenTank* o = new OxygenTank();
+  Room* r = new Room();
+  InteractHelper::getPlayerHandler()->getPlayer()->setCurrentRoom(r);
 
   EXPECT_FALSE(InteractHelper::getPlayerInventory()->hasSpaceSuit());
   o->interact();
 
+  r->addObject(o);
+  r->setRoomOxygen(5000);
+  EXPECT_EQ(r->getRoomOxygen(), 5000);
+  o->interact();
+  EXPECT_EQ(r->getRoomOxygen(), 10000);
+  EXPECT_FALSE(InteractHelper::getPlayerInventory()->hasSpaceSuit());
+
   InteractHelper::getPlayerInventory()->giveSpaceSuit();
+  InteractHelper::getPlayerInventory()->addObject(o);
   EXPECT_TRUE(InteractHelper::getPlayerInventory()->hasSpaceSuit());
   EXPECT_EQ(InteractHelper::getPlayerInventory()->getOxygen(), 10000);
 
