@@ -87,6 +87,19 @@ namespace TextHelper {
   bool cpMC(std::istream& file, std::istream& input);
 
   /**
+  * Changes the game's chapter to the given value. Can also use '+' and '-'
+  * operators to increment/decrement the chapter value.
+  *
+  * Associated Command: :chapter
+  * @param params Contains parameters. params[0] should always be a valid choice
+  * for the chapter. The other parameters are ignored.
+  * @throws invalid_arguemnt if there are no parameters.
+  * @throws invalid_arguemnt if param[0] isn't +/- or a valid int.
+  * @return false
+  */
+  bool cpChapter(std::vector<std::string> params);
+
+  /**
   * Gives the player an object, adding it to their inventory, based on the
   * name given in the file.
   *
@@ -174,6 +187,17 @@ namespace TextHelper {
   * @throws runtime_error if a room with the name given does not exist.
   */
   bool cpMoveNPC(std::vector<std::string> params);
+
+  /**
+  * Kills the NPC given by name. Does not call NPC::stab(), instead setting
+  * their alive value to false directly.
+  *
+  * Associated Command: :killnpc
+  * @param params Strings to combine to get the name of the NPC to kill.
+  * @return false
+  * @throws runtime_error if an NPC with the name given does not exist.
+  */
+  bool cpKillNPC(std::vector<std::string> params);
 
   /**
   * Checks if the file at the given path exists.

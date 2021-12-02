@@ -61,6 +61,12 @@ class NPC : public NamedThing {
   */
   bool isAlive();
 
+  /**
+  * Sets this NPC's alive value to the given bool.
+  * @see TextHelper::cpKillNPC()
+  */
+  void setAlive(bool newVal);
+
  private:
   Room* currentRoom;
   bool alive;

@@ -63,6 +63,8 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     return cpIf(params, file, input);
   } else if (cmd == "mc") {
     return cpMC(file, input);
+  } else if (cmd == "chapter") {
+    return cpChapter(params);
   } else if (cmd == "give") {
     return cpGive(params);
   } else if (cmd == "block") {
@@ -77,6 +79,11 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     return cpMovePlayer(params);
   } else if (cmd == "movenpc") {
     return cpMoveNPC(params);
+  } else if (cmd == "kill") {
+    InteractHelper::game->playerLose();
+    return true;
+  } else if (cmd == "killnpc") {
+    return cpKillNPC(params);
   } else if (cmd == "quit") {
     return true;
   } else if (cmd == "askquit") {
@@ -212,6 +219,22 @@ bool TextHelper::cpMC(std::istream& file, std::istream& input) {
   }
 }
 
+bool TextHelper::cpChapter(std::vector<std::string> params) {
+  if (params.size() == 0) {
+    throw std::invalid_argument("Not enough parameters for RGScript chapter");
+  }
+  if (params[0][0] == '+') {
+    InteractHelper::chapter++;
+  } else if (params[0][0] == '-') {
+    InteractHelper::chapter--;
+  } else if (std::all_of(params[0].begin(), params[0].end(), ::isdigit)) {
+    InteractHelper::chapter = std::stoi(params[0]);
+  } else {
+    throw std::invalid_argument("RGScript chapter parameter is not -+ or int.");
+  }
+  return false;
+}
+
 bool TextHelper::cpGive(std::vector<std::string> params) {
   if (params.size() == 0) {
     throw std::runtime_error("Not enough parameters for RGScript give");
@@ -324,6 +347,20 @@ bool TextHelper::cpMoveNPC(std::vector<std::string> params) {
   }
   throw std::runtime_error("Room with name: '" + roomName
   + "' not found for RGScript movenpc");
+}
+
+bool TextHelper::cpKillNPC(std::vector<std::string> params) {
+  std::string npcName;
+  for (std::string s : params) {
+    npcName += s;
+  }
+  NPC* npc = InteractHelper::getNPC(npcName);
+  if (npc != nullptr) {
+    npc->setAlive(false);
+    return false;
+  }
+  throw std::runtime_error("NPC with name '" + npcName
+  + "' not found for RGScript killnpc");
 }
 
 bool TextHelper::fileExists(std::string path) {

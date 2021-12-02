@@ -88,6 +88,10 @@ bool NPC::isAlive() {
   return alive;
 }
 
+void NPC::setAlive(bool newVal) {
+  alive = newVal;
+}
+
 Room* NPC::getCurrentRoom() {
   return currentRoom;
 }
