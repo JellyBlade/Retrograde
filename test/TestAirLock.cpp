@@ -29,4 +29,5 @@ TEST(TestAirLock, interactTest) {
 
   delete game;
   delete a;
+  delete r;
 }
