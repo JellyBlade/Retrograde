@@ -139,13 +139,16 @@ std::istream& input) {
   }
   skip = !readIf;
   while (std::getline(file, dialog)) {
+    std::cout << "[DEBUG]: nested: " << nestedCount << std::endl;
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
     if (dialog == ":endif") {
       if (--nestedCount > 0) { continue; }
+      std::cout << "[DEBUG]: ending if" << std::endl;
       return false;
     } else if (dialog == ":else") {
       if (nestedCount > 0) { continue; }
+      std::cout << "[DEBUG]: Reading else" << std::endl;
       skip = readIf;
       continue;
     } else if (!dialog.empty() && dialog[0] == ':') {
