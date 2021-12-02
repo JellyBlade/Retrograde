@@ -23,7 +23,7 @@ InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
   setSolved();
 } else {
   if (!InteractHelper::getPlayerInventory()->hasSpaceSuit()) {
-    std::cout << "Warning! Need space suit to enter this area." << std::endl;
+    std::cout << "Warning! Need space suit to unlock." << std::endl;
   }
   if (InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
   ->getRoomOxygen() < oxygenTarget) {

@@ -23,7 +23,7 @@ TEST(TestAirLock, interactTest) {
   a->interact();
   EXPECT_EQ(a->isPuzzleSolved(), false);
   InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
-  ->setRoomOxygen(1000);
+  ->setRoomOxygen(10000);
   a->interact();
   EXPECT_EQ(a->isPuzzleSolved(), true);
 
