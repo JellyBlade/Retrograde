@@ -23,8 +23,8 @@ class OxygenTank : public Object {
   * Default value is "Refills the room or space suit oxygen".
   * @param h bool that holdable will be set to.  Default value is false.
   */
-  OxygenTank(std::string n = "Object", std::string d = "This object does nothing",
-  bool h = false);
+  OxygenTank(std::string n = "Object", std::string d =
+  "This object does nothing", bool h = false);
 
   /**
   * Refills the oxygen spaceSuits oxygen tank
