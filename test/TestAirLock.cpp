@@ -11,7 +11,7 @@ TEST(TestAirLock, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
   Room* r = new Room();
-  AirLock* a = new AirLock("test", "test", false, 5000);
+  AirLock* a = new AirLock("test", "test", true, 5000);
   InteractHelper::getPlayerHandler()->getPlayer()->setCurrentRoom(r);
 
   EXPECT_EQ(a->isPuzzleSolved(), false);

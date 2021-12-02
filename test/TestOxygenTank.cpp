@@ -28,6 +28,7 @@ TEST(TestOxygenTank, interactTest) {
 
   InteractHelper::getPlayerInventory()->giveSpaceSuit();
   InteractHelper::getPlayerInventory()->addObject(o);
+  r->removeObject(o);
   EXPECT_TRUE(InteractHelper::getPlayerInventory()->hasSpaceSuit());
   EXPECT_EQ(InteractHelper::getPlayerInventory()->getOxygen(), 10000);
 
