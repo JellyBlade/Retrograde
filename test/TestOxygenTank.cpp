@@ -36,7 +36,6 @@ TEST(TestOxygenTank, interactTest) {
   std::cout << "Yes it did" << std::endl;
   EXPECT_EQ(InteractHelper::getPlayerInventory()->getOxygen(), 10000);
 
-  game->getMap()->addRoom(r);
   delete game;
   std::cout << "Testing if its delete r function" << std::endl;
   std::cout << "Testing if it gets function" << std::endl;
