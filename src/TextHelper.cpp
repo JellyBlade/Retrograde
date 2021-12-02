@@ -152,7 +152,8 @@ std::istream& input) {
       skip = readIf;
       continue;
     } else if (!dialog.empty() && dialog[0] == ':') {
-      if (dialog == ":if") { nestedCount++; }
+      std::cout << "[DEBUG]: command detected: " << dialog << std::endl;
+      if (dialog == ":if") { nestedCount += 1; }
       if (!skip) {
         std::cout << "[DEBUG]: sending to cp: " << dialog << std::endl;
         commandProcessor(dialog, file, input);
