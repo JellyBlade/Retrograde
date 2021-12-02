@@ -8,6 +8,7 @@
 
 #include "InteractHelper.h"
 #include "ItemLock.h"
+#include "TextHelper.h"
 
 ItemLock::ItemLock(std::string n, std::string d, bool h, std::string m)
 : matchingName{m} {
@@ -21,7 +22,8 @@ void ItemLock::interact() {
     setSolved();
     std::cout << "The " << matchingName << " unlocked it." << std::endl;
   } else {
-    std::cout << "You need to have the " << matchingName
-    << " in order to access this " << this->getName() << std::endl;
+    std::cout << "You need to have the " << TextHelper::tolower(matchingName)
+    << " in order to access this " <<
+    TextHelper::tolower(this->getName()) << std::endl;
   }
 }
