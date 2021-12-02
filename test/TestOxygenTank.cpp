@@ -12,7 +12,7 @@
 TEST(TestOxygenTank, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
-  OxygenTank* o = new OxygenTank();
+  OxygenTank* o = new OxygenTank("test", "test", true);
   Room* r = new Room();
   InteractHelper::getPlayerHandler()->getPlayer()->setCurrentRoom(r);
 
@@ -35,6 +35,5 @@ TEST(TestOxygenTank, interactTest) {
   EXPECT_EQ(InteractHelper::getPlayerInventory()->getOxygen(), 10000);
 
   delete game;
-  delete o;
   delete r;
 }
