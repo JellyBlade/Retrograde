@@ -103,6 +103,7 @@ std::istream& input) {
   std::string dialog;
   bool readIf = false;
   bool skip = false;
+  int nestedCount = 0;
   Player* player = InteractHelper::getPlayerHandler()->getPlayer();
   if (params.size() == 1 && params[0] == "spacesuit") {
     readIf = player->hasSpaceSuit();
@@ -140,14 +141,17 @@ std::istream& input) {
   while (std::getline(file, dialog)) {
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
-    if (dialog == ":endif") {
+    if (dialog == ":endif" && nestedCount-- == 0) {
       return false;
-    } else if (dialog == ":else") {
+    } else if (dialog == ":else" && nestedCount == 0) {
       skip = readIf;
       continue;
-    } else if (!skip && !dialog.empty() && dialog[0] == ':') {
-       commandProcessor(dialog, file, input);
-       continue;
+    } else if (!dialog.empty() && dialog[0] == ':') {
+      if (dialog == ":if") { nestedCount++; }
+      if (!skip) {
+        commandProcessor(dialog, file, input);
+        continue;
+      }
     }
     std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
   }

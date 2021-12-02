@@ -135,13 +135,15 @@ void PlayerHandler::look() {
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());
   cout << endl;
   cout << TextHelper::listDoors(currentRoom) << endl;
-  for (NPC* n : InteractHelper::getNPCs()) {
-    if (InteractHelper::npcInRoom(n, currentRoom)) {
-      // TODO(hipt2720): Make a TextHelper function like listObjects for NPC
-      // names.
-      cout << n->getName() << " is here." << endl;
-    }
+
+  std::vector<NPC*> npcs = InteractHelper::getNPCs();
+  auto it = npcs.begin();
+  while (it != npcs.end()) {
+    if (!InteractHelper::npcInRoom(*it, currentRoom)) {
+      it = npcs.erase(it);
+    } else { ++it; }
   }
+  cout << TextHelper::listNPCs(npcs) << endl;
 }
 
 void PlayerHandler::status() {
