@@ -10,20 +10,20 @@
 TEST(TestAirLock, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
-  AirLock* a = AirLock(5000);
+  AirLock* a = AirLock("test", "test", false, 5000);
 
-  EXPECT_EQ(a->isSolved(), false);
+  EXPECT_EQ(a->isPuzzleSolved(), false);
   a->interact();
-  EXPECT_EQ(a->isSolved(), false);
+  EXPECT_EQ(a->isPuzzleSolved(), false);
   InteractHelper::getPlayerInventory()->giveSpaceSuit();
   InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
-  ->setRoomOxygen(0)
+  ->setRoomOxygen(0);
   a->interact();
-  EXPECT_EQ(a->isSolved(), false);
+  EXPECT_EQ(a->isPuzzleSolved(), false);
   InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
   ->setRoomOxygen(1000);
   a->interact();
-  EXPECT_EQ(a->isSolved(), true);
+  EXPECT_EQ(a->isPuzzleSolved(), true);
 
   delete game;
   delete a;

@@ -9,11 +9,11 @@
 #include "AirLock.h"
 #include "InteractHelper.h"
 
-AirLock::AirLock(int o)
+AirLock::AirLock(std::string n, std::string d, bool h, int o)
 : oxygenTarget{o} {
-  setName("AirLock");
-  setDescription("Ready for the space walk?");
-  setHoldable(false);
+  setName(n);
+  setDescription(d);
+  setHoldable(h);
 }
 
 void AirLock::interact() {
