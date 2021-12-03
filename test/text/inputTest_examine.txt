@@ -1,5 +1,6 @@
 examine apple
 examine orange
+examine test npc
 examine north
 examine north
 examine south

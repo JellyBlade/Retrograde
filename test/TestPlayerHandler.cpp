@@ -48,13 +48,18 @@ TEST(TestPlayerHandler, lookExamineTest) {
   InteractHelper::game = game;
   PlayerHandler* ph = InteractHelper::getPlayerHandler();
   Room* r1 = new Room("Boiler room", "It is swelteringly hot and humid.");
+  Room* r2 = new Room("Liminal Void", "A space between time and dimensions.");
   Object* o1 = new Object("Crescent Wrench", "For tightening bolts.");
   Object* o2 = new Object("Box of Boilery Stuff", "All sorts of things in it.");
   Object* o3 = new Object("Apple", "It has a bite taken out of it. Gross!");
   NPC* n1 = new NPC("Test NPC", "He likes to test things.");
+  NPC* n2 = new NPC("Joe", "It's Joe!");
   n1->moveNPC(r1);
+  n2->moveNPC(r2);
   game->addNPC(n1);
+  game->addNPC(n2);
   game->getMap()->addRoom(r1);
+  game->getMap()->addRoom(r2);
 
   r1->getRoomObjects()->addObject(o1);
   r1->getRoomObjects()->addObject(o2);
@@ -67,7 +72,7 @@ TEST(TestPlayerHandler, lookExamineTest) {
   ph->examine("    apple  ");
   std::cout << "Next one should be 'You cannot find that here.'" << std::endl;
   ph->examine("Croissant Wrench");
-  ph->examine("test npc");
+  ph->examine(n1);
 
   delete game;
 }
@@ -207,6 +212,7 @@ TEST(TestPlayerHandler, inputTest) {
   ph->pickUp("apple");
 
   file.open("test/text/inputTest_examine.txt");
+  EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));

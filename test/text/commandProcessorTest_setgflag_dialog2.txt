@@ -1,0 +1,5 @@
+:if flag bunnies are cute
+Bunnies are cute, globally! :)
+:else
+Bunnies are not cute, globally :(
+:endif

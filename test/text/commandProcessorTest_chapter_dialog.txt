@@ -1,0 +1,27 @@
+:chapter 1
+:if chapter 1
+Chapter 1!
+:else
+Not Chapter 1
+:endif
+
+:chapter 2
+:if chapter 2
+Chapter 2!
+:else
+Not chapter 2 :(
+:endif
+
+:chapter +
+:if chapter 3
+Chapter 3!
+:else
+Not chapter 2 :(
+:endif
+
+:chapter -
+:if chapter 2
+Chapter 2, again!
+:else
+Not chapter 2 :(
+:endif

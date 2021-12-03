@@ -42,8 +42,10 @@ TEST(TestNPC, askTest) {
 
   std::ifstream input1("test/text/npcTest_ask_input1.txt");
   n1->ask(input1);
+  InteractHelper::chapter = 1;
   input1.close();
 
+  InteractHelper::chapter = 0;
   std::ifstream input2("test/text/npcTest_ask_input2.txt");
   n2->ask(input2);
   InteractHelper::chapter = 1;
@@ -61,6 +63,20 @@ TEST(TestNPC, stabTest) {
   EXPECT_EQ(n->isAlive(), true);
   n->stab(input);
   EXPECT_EQ(n->isAlive(), false);
+  n->talk(input);
+  n->ask(input);
+
+  delete n;
+}
+
+TEST(TestNPC, setAliveTest) {
+  NPC* n = new NPC("Test NPC");
+
+  EXPECT_EQ(n->isAlive(), true);
+  n->setAlive(false);
+  EXPECT_EQ(n->isAlive(), false);
+  n->setAlive(true);
+  EXPECT_EQ(n->isAlive(), true);
 
   delete n;
 }

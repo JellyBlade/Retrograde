@@ -22,6 +22,9 @@ TEST(TestTextHelper, commandProcessorTest) {
   Room* r1 = new Room("Room A", "This room is made out of the letter A.");
   Room* r2 = new Room("Room B", "This room is made of bees.");
   Door* d1 = new Door(r1, r2);
+  NPC* n1 = new NPC("Test NPC");
+  n1->moveNPC(r1);
+  game->addNPC(n1);
   r1->changeDoor(d1, Globals::Direction::NORTH);
   r2->changeDoor(d1, Globals::Direction::SOUTH);
   map->addRoom(r1);
@@ -46,11 +49,11 @@ TEST(TestTextHelper, commandProcessorTest) {
   TextHelper::readFile(file, input);
   input.close();
 
-  // Needs NPC to be implemented.
-  // input.open("test/text/commandProcessorTest_empty_input.txt");
-  // file = "test/text/commandProcessorTest_movenpc_dialog.txt";
-  // TextHelper::readFile(file, input);
-  // input.close();
+  std::cout << "   === Move NPC Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_movenpc_dialog.txt";
+  TextHelper::readFile(file, input);
+  input.close();
 
   std::cout << "   === Give Test ===" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 0);
@@ -82,6 +85,14 @@ TEST(TestTextHelper, commandProcessorTest) {
   TextHelper::readFile(file, input);
   input.close();
 
+  std::cout << "   === Setgflag Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_setgflag_dialog1.txt";
+  TextHelper::readFile(file, input);
+  file = "test/text/commandProcessorTest_setgflag_dialog2.txt";
+  TextHelper::readFile(file, input);
+  input.close();
+
   std::cout << "   === If Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_if_dialog.txt";
@@ -93,6 +104,27 @@ TEST(TestTextHelper, commandProcessorTest) {
   file = "test/text/commandProcessorTest_mc_dialog.txt";
   TextHelper::readFile(file, input);
   input.close();
+
+  std::cout << "   === Chapter Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_chapter_dialog.txt";
+  TextHelper::readFile(file, input);
+  input.close();
+
+  std::cout << "   === Kill NPC Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_killnpc_dialog.txt";
+  TextHelper::readFile(file, input);
+  EXPECT_FALSE(n1->isAlive());
+  input.close();
+
+  std::cout << "   === Kill Player Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_kill_dialog.txt";
+  TextHelper::readFile(file, input);
+  input.close();
+
+  delete game;
 }
 
 TEST(TestTextHelper, makePercentTest) {
@@ -147,6 +179,33 @@ TEST(TestTextHelper, listObjectsTest) {
   delete o3;
   delete o4;
 }
+
+TEST(TestTextHelper, listNPCsTest) {
+  std::vector<NPC*> npcs;
+  NPC* n1 = new NPC("Test1", "Test!");
+  NPC* n2 = new NPC("Test2", "Test!");
+  NPC* n3 = new NPC("Test3", "Test!");
+
+  EXPECT_EQ(TextHelper::listNPCs(npcs),
+  "There is nobody else in the room with you.");
+
+  npcs.push_back(n1);
+  EXPECT_EQ(TextHelper::listNPCs(npcs),
+  "Test1 is here.");
+
+  npcs.push_back(n2);
+  EXPECT_EQ(TextHelper::listNPCs(npcs),
+  "Test1, and Test2 are here.");
+
+  npcs.push_back(n3);
+  EXPECT_EQ(TextHelper::listNPCs(npcs),
+  "Test1, Test2, and Test3 are here.");
+
+  delete n1;
+  delete n2;
+  delete n3;
+}
+
 TEST(TestTextHelper, listDoorTest) {
   Room* rN = new Room();
   Room* rE = new Room();
