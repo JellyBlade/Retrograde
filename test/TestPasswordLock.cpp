@@ -10,8 +10,8 @@
 #include "PasswordLock.h"
 #include "gtest/gtest.h"
 
-TEST(TestPasswordLock, interactTest) {
-  PasswordLock* p = new PasswordLock();
+TEST(TestPasswordLock, solveTest) {
+  PasswordLock* p = new PasswordLock("test");
   PasswordLock* p1 = new PasswordLock("IPhone", "Requires password to unlock",
 false, "9863HiTheRe");
   std::ifstream file("test/text/passwordLockTest.txt");

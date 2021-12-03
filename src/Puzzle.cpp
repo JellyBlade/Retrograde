@@ -4,6 +4,7 @@
 */
 
 #include <iostream>
+#include <string>
 
 #include "Puzzle.h"
 #include "TextHelper.h"

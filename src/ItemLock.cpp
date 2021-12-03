@@ -17,7 +17,6 @@ ItemLock::ItemLock(std::string n, std::string d, bool h, std::string m)
   setHoldable(h);
 }
 
-// This is untestable
 void ItemLock::interact() {
   playerInput(std::cin);
 }
