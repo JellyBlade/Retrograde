@@ -38,6 +38,7 @@ void NPC::talk(std::istream& input) {
     }
   } else {
     std::cout << "You cannot talk to " << getName() << ", as they are dead.";
+    std::cout << std::endl;
   }
 }
 
@@ -63,7 +64,8 @@ void NPC::ask(std::istream& input) {
       + "/default_ask.txt", input);
     }
   } else {
-    std::cout << "You cannot talk to " << getName() << ", as they are dead.";
+    std::cout << "You cannot ask " << getName();
+    std::cout << " anything, as they are dead." << std::endl;
   }
 }
 

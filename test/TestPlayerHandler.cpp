@@ -73,6 +73,7 @@ TEST(TestPlayerHandler, lookExamineTest) {
   std::cout << "Next one should be 'You cannot find that here.'" << std::endl;
   ph->examine("Croissant Wrench");
   ph->examine(n1);
+  ph->examine(n2);
 
   delete game;
 }
