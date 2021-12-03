@@ -24,7 +24,8 @@ bool AirLock::playerInput(std::istream& input) {
   if (InteractHelper::getPlayerInventory()->hasSpaceSuit() &&
   InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
   ->getRoomOxygen() >= oxygenTarget) {
-    setSolved(input);
+    if (setSolved(input)) { return true; }
+    std::cout << "Oxygen target reached. Lock disengaged." << std::endl;
     return true;
   } else {
     if (!InteractHelper::getPlayerInventory()->hasSpaceSuit()) {

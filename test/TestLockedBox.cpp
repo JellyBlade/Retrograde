@@ -20,7 +20,8 @@ TEST(LockedBoxTest, ConstructorTest) {
   Object* o2 = new Object("You're a Harry Wizard", "yer a wezrd hry", false);
   Puzzle* p = new Puzzle();
   LockedBox* b = new LockedBox();
-  p->setSolved();
+  std::ifstream file("test/text/puzzleTest_empty.txt");
+  p->setSolved(file);
   LockedBox* b2 = new LockedBox("Treasure Chest", "Gold inside", true, p);
   b->addObject(o);
   b->addObject(o1);
@@ -47,10 +48,11 @@ TEST(LockedBoxTest, interactTest) {
   LockedBox* b = new LockedBox("Treasure Chest", "Just some gold", false, p);
   Object* o1 = new Object("Test", "Test!", true);
   Object* o2 = new Object("Better test", "It really is just better.", true);
-  std::ifstream file("test/text/boxTest.txt");
+  std::ifstream file1("test/text/boxTest.txt");
+  std::ifstream file2("test/text/puzzleTest_empty.txt");
 
   b->interact();
-  b->getPuzzle()->setSolved();
+  b->getPuzzle()->setSolved(file2);
 
   EXPECT_EQ(b->getBoxObjects()->size(), 0);
   b->interact();
@@ -59,8 +61,8 @@ TEST(LockedBoxTest, interactTest) {
   EXPECT_EQ(b->getBoxObjects()->size(), 2);
 
   b->displayBoxObjects();
-  EXPECT_FALSE(b->playerInput(file));
-  EXPECT_TRUE(b->playerInput(file));
+  EXPECT_FALSE(b->playerInput(file1));
+  EXPECT_TRUE(b->playerInput(file1));
   EXPECT_EQ(b->getBoxObjects()->size(), 1);
   EXPECT_EQ(InteractHelper::getPlayerHandler()->getPlayer()
   ->getInventory()->size(), 1);

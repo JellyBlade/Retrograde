@@ -24,7 +24,7 @@ void ItemLock::interact() {
 
 bool ItemLock::playerInput(std::istream& input) {
   if (InteractHelper::getPlayerInventory()->isObjectInContainer(matchingName)) {
-    setSolved(input);
+    if (setSolved(input)) { return true; }
     std::cout << "The " << matchingName << " unlocked it." << std::endl;
     return true;
   } else {

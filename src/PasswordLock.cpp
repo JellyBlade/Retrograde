@@ -31,7 +31,8 @@ bool PasswordLock::playerInput(std::istream& input) {
   std::getline(input, item);
 
   if (item == password) {
-    setSolved(input);
+    if (setSolved(input)) { return true; }
+    cout << "Password accepted." << endl;
     return true;
   } else {
     cout << "Incorrect password." << endl;

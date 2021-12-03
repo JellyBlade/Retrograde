@@ -14,11 +14,13 @@ bool Puzzle::isPuzzleSolved() {
   return solved;
 }
 
-void Puzzle::setSolved(std::istream& input) {
+bool Puzzle::setSolved(std::istream& input) {
   solved = true;
   std::string puzzleText = "text/puzzles/"
   + TextHelper::tolower(TextHelper::trimAll(getName())) + ".txt";
   if (TextHelper::fileExists(puzzleText)) {
     TextHelper::readFile(puzzleText, input);
+    return true;
   }
+  return false;
 }

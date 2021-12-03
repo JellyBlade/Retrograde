@@ -28,10 +28,14 @@ class Puzzle : public Object {
   bool isPuzzleSolved();
 
   /**
-  * Sets the solved value to true.
-  * Also reads a puzzle text file if it exists for this puzzle's name.
+  * Sets the solved value to true, and reads a puzzle text file if it exists
+  * for this puzzle's name.
+  * @param input the istream to use for input. std::cin for player input, and
+  * an fstream for testing.
+  * @returns true if the puzzle text file was successfully displayed, and thus
+  * the default solve response should <b>not</b> be output, false otherwise.
   */
-  void setSolved(std::istream& input);
+  bool setSolved(std::istream& input);
 
   /**
   * Handles any player input required, and provides an istream source for
