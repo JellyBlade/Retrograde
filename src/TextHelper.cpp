@@ -415,7 +415,7 @@ std::string TextHelper::listNPCs(std::vector<NPC*> npcs) {
       return s;
     default:
       for (NPC* n : npcs) {
-        if (n = npcs.back()) {
+        if (n == npcs.back()) {
           s += "and " + n->getName() + " are here.";
           continue;
         }
