@@ -29,7 +29,6 @@ bool PasswordLock::playerInput(std::istream& input) {
   cout << "Enter the password. It's case sensitive." << endl;
   cout << "> ";
   std::getline(input, item);
-  std::cout << item;
 
   if (item == password) {
     if (setSolved(input)) { return true; }
