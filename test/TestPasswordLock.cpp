@@ -11,6 +11,8 @@
 #include "gtest/gtest.h"
 
 TEST(TestPasswordLock, solveTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
   PasswordLock* p = new PasswordLock("test");
   PasswordLock* p1 = new PasswordLock("IPhone", "Requires password to unlock",
 false, "9863HiTheRe");
