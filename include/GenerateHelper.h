@@ -6,7 +6,7 @@
 #ifndef GENERATE_HELPER_H
 #define GENERATE_HELPER_H
 
-#include <vector>
+#include <map>
 #include <string>
 
 #include "nlohmann/json.hpp"
@@ -23,9 +23,9 @@ using json = nlohmann::json;
 */
 namespace GenerateHelper {
 
-  extern std::vector<json> jsonObjects;
-  extern std::vector<json> jsonRooms;
-  extern std::vector<json> jsonNPCs;
+  extern std::map<std::string, json> jsonObjects;
+  extern std::map<std::string, json> jsonRooms;
+  extern std::map<std::string, json> jsonNPCs;
 
   /**
   * Populates the objects and rooms vectors for the other functions to use.

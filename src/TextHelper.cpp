@@ -498,14 +498,21 @@ std::string TextHelper::toupper(std::string s) {
 }
 
 std::string TextHelper::trim(std::string s) {
-  if (s.size() <= 0 ) { return ""; }
+  if (s.size() == 0 ) { return ""; }
   s.erase(0, s.find_first_not_of(" \t\r\n"));
   s.erase(s.find_last_not_of(" \t\r\n") + 1, s.size() - 1);
   return s;
 }
 
 std::string TextHelper::trimAll(std::string s) {
-  if (s.size() <= 0 ) { return ""; }
+  if (s.size() == 0 ) { return ""; }
   s.erase(std::remove_if(s.begin(), s.end(), ::isspace), s.end());
+  return s;
+}
+
+std::string TextHelper::keyify(std::string s) {
+  if (s.size() == 0) { return ""; }
+  s = tolower(trim(s));
+  std::replace(s.begin(), s.end(), ' ', '_');
   return s;
 }

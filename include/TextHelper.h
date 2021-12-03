@@ -274,6 +274,13 @@ namespace TextHelper {
   */
   std::string trimAll(std::string s);
 
+  /**
+  * Trims, tolowers, and replaces all spaces with underscores.
+  * @param s the string to keyify
+  * @return a string that can be compared to JSON keys.
+  */
+  std::string keyify(std::string s);
+
 } // namespace TextHelper
 
 #endif // TEXT_HELPER_H
