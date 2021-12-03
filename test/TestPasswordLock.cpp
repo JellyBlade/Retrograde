@@ -8,6 +8,8 @@
 #include <string>
 
 #include "PasswordLock.h"
+#include "Game.h"
+#include "InteractHelper.h"
 #include "gtest/gtest.h"
 
 TEST(TestPasswordLock, solveTest) {
