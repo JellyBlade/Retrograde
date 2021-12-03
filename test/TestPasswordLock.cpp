@@ -21,9 +21,9 @@ false, "9863HiTheRe");
   EXPECT_EQ(p->isPuzzleSolved(), false);
   EXPECT_TRUE(p->playerInput(file));
   EXPECT_EQ(p->isPuzzleSolved(), true);
-  file.close()
+  file.close();
 
-  file.open("test/text/passwordLockTest2.txt")
+  file.open("test/text/passwordLockTest2.txt");
   EXPECT_EQ(p1->isPuzzleSolved(), false);
   EXPECT_FALSE(p1->playerInput(file));
   EXPECT_EQ(p1->isPuzzleSolved(), false);
