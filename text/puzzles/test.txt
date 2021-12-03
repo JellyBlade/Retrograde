@@ -1,0 +1,23 @@
+Congratulations! You solved the puzzle!
+:setflag puzzle is solved? hell yeah it is :) true
+:if flag puzzle is solved? hell yeah it is :)
+  [This puzzle is now solved]
+  You get... absolutely nothing!
+  Because I was too lazy to set up this test to allow for testing of further
+  cp commands like give or whatever, so you get this instead.
+  Congrats :)
+  :mc
+    [1]: That's cool, man.
+    [2]: Woohoo, go me.
+    :endmcdef
+    :1
+    Yeah it is :)
+    :continue
+    :2
+    So snarky lol
+    :continue
+  :endmc
+:else
+  Idk how you got here, the puzzle was clearly solved, and I definitely set that
+  flag correctly. If you got here... that's wild, man.
+:endif
