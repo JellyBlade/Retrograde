@@ -37,4 +37,5 @@ false, "9863HiTheRe");
 
   delete p;
   delete p1;
+  delete game;
 }
