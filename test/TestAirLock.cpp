@@ -34,7 +34,7 @@ TEST(TestAirLock, interactTest) {
   delete r;
 }
 
-TEST(TestItemLock, solvedTextTest) {
+TEST(TestAirLock, solvedTextTest) {
   Game* game = new Game();
   InteractHelper::game = game;
   Room* r = new Room();
