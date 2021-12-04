@@ -44,18 +44,25 @@ TEST(TestInteractHelper, npcInRoomTest) {
   Game* game = new Game();
   InteractHelper::game = game;
   NPC* n1 = new NPC("joe", "it's joe!");
-  NPC* n2 = new NPC("not joe", "it's not joe :()");
+  NPC* n2 = new NPC("not joe", "it's not joe :(");
   Room* r1 = new Room("test", "test");
+  Room* r2 = new Room("test2", "test2");
   InteractHelper::getMap()->addRoom(r1);
+  InteractHelper::getMap()->addRoom(r2);
   game->addNPC(n1);
   game->addNPC(n2);
   n1->moveNPC(r1);
+  n2->moveNPC(r2);
 
   EXPECT_TRUE(InteractHelper::npcInRoom(n1, r1));
   EXPECT_TRUE(InteractHelper::npcInRoom("joe", r1));
-
   EXPECT_FALSE(InteractHelper::npcInRoom(n2, r1));
   EXPECT_FALSE(InteractHelper::npcInRoom("notjoe", r1));
+
+  EXPECT_TRUE(InteractHelper::npcInRoom(n2, r2));
+  EXPECT_TRUE(InteractHelper::npcInRoom("notjoe", r2));
+  EXPECT_FALSE(InteractHelper::npcInRoom(n1, r2));
+  EXPECT_FALSE(InteractHelper::npcInRoom("joe", r2));
 
   delete game;
 }

@@ -7,7 +7,7 @@
 
 int main() {
   std::string choice;
-  while(1) {
+  while (1) {
     Game* game = new Game();
     InteractHelper::game = game;
     game->generateMap();

@@ -44,11 +44,11 @@ void TextHelper::readFile(std::string textPath, std::istream& input) {
       } catch (std::runtime_error& e) {
         std::cout << "Error while reading '" << textPath << "':" << std::endl;
         std::cout << e.what() << std::endl;
-        throw (e);
+        throw(e);
       } catch (std::invalid_argument& e) {
         std::cout << "Error while reading '" << textPath << "':" << std::endl;
         std::cout << e.what() << std::endl;
-        throw (e);
+        throw(e);
       }
     }
     std::cout << s << std::endl;

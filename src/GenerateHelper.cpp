@@ -42,7 +42,7 @@ void GenerateHelper::setup() {
       }
     } catch (json::parse_error& e) {
       std::cout << "Error occurred while reading objects.json" << std::endl;
-      throw (e);
+      throw(e);
     }
     file.close();
   }
@@ -58,7 +58,7 @@ void GenerateHelper::setup() {
       }
     } catch (json::parse_error& e) {
       std::cout << "Error occurred while reading rooms.json" << std::endl;
-      throw (e);
+      throw(e);
     }
     file.close();
   }
@@ -74,7 +74,7 @@ void GenerateHelper::setup() {
       }
     } catch (json::parse_error& e) {
       std::cout << "Error occurred while reading npcs.json" << std::endl;
-      throw (e);
+      throw(e);
     }
     file.close();
   }
@@ -84,7 +84,7 @@ Object* GenerateHelper::generateObject(std::string objectName) {
   try {
     if (jsonObjects.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
-    throw (e);
+    throw(e);
   }
   for (auto& o : jsonObjects) {
     if (TextHelper::keyify(objectName) == o.first
@@ -132,9 +132,9 @@ NPC* GenerateHelper::generateNPC(std::string npcName) {
   try {
     if (jsonNPCs.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
-    throw (e);
+    throw(e);
   } catch (json::parse_error& e) {
-    throw (e);
+    throw(e);
   }
   for (auto& n : jsonNPCs) {
     if (TextHelper::keyify(npcName) == n.first
@@ -151,9 +151,9 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
   try {
     if (jsonRooms.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
-    throw (e);
+    throw(e);
   } catch (json::parse_error& e) {
-    throw (e);
+    throw(e);
   }
   for (auto& r : jsonRooms) {
     if (TextHelper::keyify(roomName) == r.first
@@ -176,9 +176,9 @@ Map* GenerateHelper::generateMap(std::string mapName) {
   try {
     if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
-    throw (e);
+    throw(e);
   } catch (json::parse_error& e) {
-    throw (e);
+    throw(e);
   }
   std::ifstream file("text/json/" + mapName + ".json");
   if (!file.is_open()) {
