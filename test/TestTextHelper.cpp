@@ -108,6 +108,8 @@ TEST(TestTextHelper, commandProcessorTest) {
   EXPECT_THROW(TextHelper::readFile(file, input), std::invalid_argument);
   input.close();
 
+  TextHelper::rgScriptGlobalFlags["debugmode"] == 1;
+
   std::cout << "   === If Test ===" << std::endl;
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_if_dialog.txt";
@@ -147,6 +149,17 @@ TEST(TestTextHelper, commandProcessorTest) {
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_kill_dialog.txt";
   TextHelper::readFile(file, input);
+  input.close();
+
+  std::cout << "   === Invalid Test ===" << std::endl;
+  input.open("test/text/commandProcessorTest_empty_input.txt");
+  file = "test/text/commandProcessorTest_invalid_command_if.txt";
+  EXPECT_THROW(TextHelper::readFile(file, input), std::invalid_argument);
+  file = "test/text/commandProcessorTest_invalid_command_mc.txt";
+  EXPECT_THROW(TextHelper::readFile(file, input), std::invalid_argument);
+  file = "test/text/commandProcessorTest_invalid_command.txt";
+  EXPECT_THROW(TextHelper::readFile(file, input), std::invalid_argument);
+
   input.close();
 
   delete game;

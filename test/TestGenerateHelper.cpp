@@ -8,6 +8,7 @@
 #include "GenerateHelper.h"
 #include "PlayerHandler.h"
 #include "Object.h"
+#include "AirLock.h"
 #include "Room.h"
 #include "NPC.h"
 #include "Door.h"
@@ -37,12 +38,15 @@ TEST(TestGenerateHelper, objectGenerationTest) {
   EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("blue key card"));
   EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
 
+  AirLock* o5 = dynamic_cast<AirLock*>(generateObject("airlock_panel"));
+
   EXPECT_THROW(generateObject("sadijf#(*$%K)"), std::runtime_error);
 
   delete o1;
   delete o2;
   delete o3;
   delete o4;
+  delete o5;
 }
 
 TEST(TestGenerateHelper, npcGenerationTest) {
@@ -74,6 +78,8 @@ TEST(TestGenerateHelper, roomGenerationTest) {
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral'slog"));
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("Admiral's Log"));
   EXPECT_EQ(r3->getRoomOxygen(), 10000);
+
+  EXPECT_THROW(generateRoom("Totally real room"), std::runtime_error);
 
   delete r1;
   delete r2;

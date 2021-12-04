@@ -208,11 +208,6 @@ bool TextHelper::cpMC(std::istream& file, std::istream& input) {
 
   while (std::getline(file, dialog)) {
     TextHelper::line++;
-    // TODO(hipt2720): Remove this, this is just so we don't bork the runners.
-    if (++debug_emergency_exit > 1000) {
-      return false;
-      std::cout << "     ===== EMERGENCY EXIT USED =====" << std::endl;
-    }
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
     if (dialog == ":mc" && skip) { nestedCount++; }

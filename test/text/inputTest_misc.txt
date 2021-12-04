@@ -1,3 +1,4 @@
+debug
 look
 bag
 bag
