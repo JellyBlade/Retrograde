@@ -79,9 +79,8 @@ void Game::generateNPCs() {
 
 void Game::addNPC(NPC* npc) {
   // Check if NPC has already been added.
-  if (std::find(npcs.begin(), npcs.end(), npc) != npcs.end()) {
-    npcs.push_back(npc);
-  }
+  if (std::find(npcs.begin(), npcs.end(), npc) != npcs.end()) { return; }
+  npcs.push_back(npc);
 }
 
 Map* Game::getMap() {

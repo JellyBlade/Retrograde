@@ -133,6 +133,8 @@ NPC* GenerateHelper::generateNPC(std::string npcName) {
     if (jsonNPCs.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
     throw (e);
+  } catch (json::parse_error& e) {
+    throw (e);
   }
   for (auto& n : jsonNPCs) {
     if (TextHelper::keyify(npcName) == n.first
@@ -141,12 +143,16 @@ NPC* GenerateHelper::generateNPC(std::string npcName) {
       return new NPC(n.second["name"], n.second["desc"]);
     }
   }
+  throw std::runtime_error("Invalid NPC with name: " + npcName
+  + ". Check spelling and ensure this object is defined in npcs.json!");
 }
 
 Room* GenerateHelper::generateRoom(std::string roomName) {
   try {
     if (jsonRooms.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
+    throw (e);
+  } catch (json::parse_error& e) {
     throw (e);
   }
   for (auto& r : jsonRooms) {
@@ -162,12 +168,16 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
       return room;
     }
   }
+  throw std::runtime_error("Invalid Room with name: " + roomName
+  + ". Check spelling and ensure this object is defined in rooms.json!");
 }
 
 Map* GenerateHelper::generateMap(std::string mapName) {
   try {
     if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
   } catch (std::runtime_error& e) {
+    throw (e);
+  } catch (json::parse_error& e) {
     throw (e);
   }
   std::ifstream file("text/json/" + mapName + ".json");

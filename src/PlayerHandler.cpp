@@ -96,7 +96,7 @@ bool PlayerHandler::input(std::istream& input) {
     showInventory();
     return false;
   } else if (action == "help") {
-    TextHelper::readFile("text/help.txt");
+    TextHelper::readFile("text/help.txt", input);
     return false;
   } else if (action == "drop") {
     return drop(param);

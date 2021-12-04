@@ -55,9 +55,7 @@
     "name": "Hallway A",
     "desc": "The futuristic hallway covered in shiny white panels. A large letter 'A' adorns one side in stylish yellow highlights.",
     "oxygen": 10000,
-    "objects": [
-      "keypad"
-    ]
+    "objects": []
   },
   "hallway_b": {
     "name": "Hallway B",

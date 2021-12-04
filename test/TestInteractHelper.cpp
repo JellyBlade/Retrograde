@@ -32,6 +32,7 @@ TEST(TestInteractHelper, getNPCTest) {
   EXPECT_EQ(InteractHelper::getNPCs().size(), 0);
   game->addNPC(n1);
   EXPECT_EQ(InteractHelper::getNPCs().size(), 1);
+  EXPECT_EQ(game->getNPCs().size(), 1);
 
   EXPECT_EQ(InteractHelper::getNPC("joe"), n1);
   EXPECT_EQ(InteractHelper::getNPC("nobody special"), nullptr);
