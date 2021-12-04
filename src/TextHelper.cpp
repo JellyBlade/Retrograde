@@ -24,11 +24,14 @@
 
 std::map<std::string, bool> TextHelper::rgScriptLocalFlags;
 std::map<std::string, bool> TextHelper::rgScriptGlobalFlags;
+int TextHelper::line = 0;
 
 void TextHelper::readFile(std::string textPath, std::istream& input) {
+  TextHelper::line = 0;
   std::string s;
   std::ifstream file(textPath);
   while (std::getline(file, s)) {
+    TextHelper::line++;
     if (!s.empty() && trim(s)[0] == '/') { continue; }
     if (!s.empty() && trim(s)[0] == ':') {
       try {
@@ -39,7 +42,13 @@ void TextHelper::readFile(std::string textPath, std::istream& input) {
         }
         continue;
       } catch (std::runtime_error& e) {
+        std::cout << "Error while reading '" << textPath << "':" << std::endl;
         std::cout << e.what() << std::endl;
+        throw (e);
+      } catch (std::invalid_argument& e) {
+        std::cout << "Error while reading '" << textPath << "':" << std::endl;
+        std::cout << e.what() << std::endl;
+        throw (e);
       }
     }
     std::cout << s << std::endl;
@@ -80,7 +89,7 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
   } else if (cmd == "movenpc") {
     return cpMoveNPC(params);
   } else if (cmd == "kill") {
-    InteractHelper::game->playerLose();
+    rgScriptGlobalFlags["lose"] = true;
     return true;
   } else if (cmd == "killnpc") {
     return cpKillNPC(params);
@@ -97,15 +106,27 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     std::cin.ignore();
     return false;
   } else {
-    throw std::invalid_argument("RGScript command: '"
-    + cmd + "' not recognized.");
+    if (cmd == "back" || cmd == "endmc" || cmd == "endmcdef"
+    || cmd == "continue" || ::isdigit(cmd[0])) {
+      throw std::invalid_argument(std::string("RGScript command: '")
+      + cmd + "' encountered outside of MC block on line: "
+      + std::to_string(TextHelper::line));
+    } else if (cmd == "endif" || cmd == "else") {
+      throw std::invalid_argument(std::string("RGScript command: '")
+      + cmd + "' encountered outside of if statement on line: "
+      + std::to_string(TextHelper::line));
+    } else {
+      throw std::invalid_argument(std::string("RGScript command: '")
+      + cmd + "' not recognized on line: " + std::to_string(TextHelper::line));
+    }
   }
 }
 
 bool TextHelper::cpIf(std::vector<std::string> params, std::istream& file,
 std::istream& input) {
   if (params.size() == 0) {
-    throw std::invalid_argument("Not enough parameters for RGScript if");
+    throw std::invalid_argument(std::string("Not enough parameters for")
+    + " RGScript if on line: " + std::to_string(TextHelper::line));
   }
   std::string dialog;
   bool readIf = false;
@@ -141,11 +162,13 @@ std::istream& input) {
         readIf = !TextHelper::rgScriptGlobalFlags[criterion];
       }
     } else {
-      throw std::invalid_argument("Unknown RGScript if criteria: " + criterion);
+      throw std::invalid_argument(std::string("Unknown RGScript if criteria: ")
+      + criterion + " on line: " + std::to_string(TextHelper::line));
     }
   }
   skip = !readIf;
   while (std::getline(file, dialog)) {
+    TextHelper::line++;
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
     if (dialog == ":endif") {
@@ -156,9 +179,15 @@ std::istream& input) {
       skip = readIf;
       continue;
     } else if (!dialog.empty() && dialog[0] == ':') {
-      if (dialog.substr(0, dialog.find(' ')) == ":if") { nestedCount += 1; }
+      if (skip && dialog.substr(0, dialog.find(' ')) == ":if") {
+         nestedCount += 1;
+      }
       if (!skip) {
-        commandProcessor(dialog, file, input);
+        if (TextHelper::rgScriptGlobalFlags.count("debugmode") == 1) {
+          std::cout << "[DEBUG_if]: L: " << TextHelper::line << "; Sending: "
+          << dialog << std::endl;
+        }
+        if (commandProcessor(dialog, file, input)) { return true; }
         continue;
       }
     }
@@ -171,11 +200,14 @@ bool TextHelper::cpMC(std::istream& file, std::istream& input) {
   std::string dialog;
   std::string choice = "";
   int debug_emergency_exit = 0;
+  int nestedCount = 0;
+  int prevLine = TextHelper::line;
   bool skip = false;
   bool validChoice = false;
   std::streampos topOfMC = file.tellg();
 
   while (std::getline(file, dialog)) {
+    TextHelper::line++;
     // TODO(hipt2720): Remove this, this is just so we don't bork the runners.
     if (++debug_emergency_exit > 1000) {
       return false;
@@ -183,36 +215,46 @@ bool TextHelper::cpMC(std::istream& file, std::istream& input) {
     }
     dialog = trim(dialog);
     if (!dialog.empty() && dialog[0] == '/') { continue; }
-    if (dialog == ":endmc" && validChoice) {
+    if (dialog == ":mc" && skip) { nestedCount++; }
+    if (dialog == ":endmc" && validChoice && nestedCount-- <= 0) {
       return false;
-    } else if (dialog == ":endmc" && !validChoice) {
+    } else if (dialog == ":endmc" && !validChoice && nestedCount-- <= 0) {
       std::cout << "Please enter a valid option." << std::endl;
       choice = "";
+      skip = false;
       file.seekg(topOfMC);
+      TextHelper::line = prevLine;
       continue;
     } else if (dialog == ":back" && !skip) {
       choice = "";
       validChoice = false;
       file.seekg(topOfMC);
+      TextHelper::line = prevLine;
       continue;
     } else if (dialog == ":continue" && !skip) {
       skip = true;
       choice == ":skip";
       continue;
-    } else if (dialog == ":endmcdef") {
+    } else if (dialog == ":endmcdef" && !skip) {
       std::cout << (skip ? "" : "Select an option.\n") << "> ";
       input >> choice;
       choice = ":" + trim(choice);
+      input.ignore(256, '\n');
       continue;
-    } else if (dialog == choice) {
+    } else if (dialog == choice && nestedCount <= 0) {
       skip = false;
       validChoice = true;
       continue;
-    } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice) {
+    } else if (dialog[0] == ':' && ::isdigit(dialog[1]) && dialog != choice
+      && !skip) {
       skip = true;
       continue;
-    } else if (dialog[0] == ':' && !skip && !::isdigit(dialog[1])) {
-      commandProcessor(dialog, file, input);
+    } else if (dialog[0] == ':' && !::isdigit(dialog[1]) && !skip) {
+      if (TextHelper::rgScriptGlobalFlags.count("debugmode") == 1) {
+        std::cout << "[DEBUG_mc]: L: " << TextHelper::line << "; Sending: "
+        << dialog << std::endl;
+      }
+      if (commandProcessor(dialog, file, input)) { return true; }
       continue;
     }
     std::cout << (skip ? "" : dialog) << (skip ? "" : "\n");
@@ -221,7 +263,8 @@ bool TextHelper::cpMC(std::istream& file, std::istream& input) {
 
 bool TextHelper::cpChapter(std::vector<std::string> params) {
   if (params.size() == 0) {
-    throw std::invalid_argument("Not enough parameters for RGScript chapter");
+    throw std::invalid_argument(std::string("Not enough parameters for")
+    + " RGScript chapter on line: " + std::to_string(TextHelper::line));
   }
   if (params[0][0] == '+') {
     InteractHelper::chapter++;
@@ -230,14 +273,16 @@ bool TextHelper::cpChapter(std::vector<std::string> params) {
   } else if (std::all_of(params[0].begin(), params[0].end(), ::isdigit)) {
     InteractHelper::chapter = std::stoi(params[0]);
   } else {
-    throw std::invalid_argument("RGScript chapter parameter is not -+ or int.");
+    throw std::invalid_argument(std::string("RGScript chapter parameter is")
+    + " not -+ or int. on line: " + std::to_string(TextHelper::line));
   }
   return false;
 }
 
 bool TextHelper::cpGive(std::vector<std::string> params) {
   if (params.size() == 0) {
-    throw std::runtime_error("Not enough parameters for RGScript give");
+    throw std::runtime_error(std::string("Not enough parameters for ")
+    + " RGScript give on line: " + std::to_string(TextHelper::line));
   }
   std::string objectName;
   for (std::string s : params) {
@@ -251,7 +296,8 @@ bool TextHelper::cpGive(std::vector<std::string> params) {
 
 bool TextHelper::cpBlock(std::vector<std::string> params) {
   if (params.size() <= 1) {
-    throw std::invalid_argument("Not enough parameters for RGScript block");
+    throw std::invalid_argument(std::string("Not enough parameters for")
+    + " RGScript block on line: " + std::to_string(TextHelper::line));
   }
   std::string direction = params.front();
   params.erase(params.begin());
@@ -262,29 +308,37 @@ bool TextHelper::cpBlock(std::vector<std::string> params) {
   Room* r = InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom();
   Door* d = r->getDoor(Globals::stringToDirection(direction));
   if (d == nullptr) {
-    throw std::runtime_error("RGScript: Attempt to block " + direction
-    + " door in " + r->getName() + " failed, as the door does not exist.");
+    throw std::runtime_error(std::string("RGScript: Attempt to block ")
+    + direction + " door in " + r->getName()
+    + " failed, as the door does not exist." + " on line: "
+    + std::to_string(TextHelper::line));
   }
   d->blockDoor(blockedReason);
+  return false;
 }
 
 bool TextHelper::cpUnblock(std::vector<std::string> params) {
   if (params.size() == 0) {
-    throw std::invalid_argument("Not enough parameters for RGScript block");
+    throw std::invalid_argument(std::string("Not enough parameters for")
+    + " RGScript block on line: " + std::to_string(TextHelper::line));
   }
   std::string direction = params.front();
   Room* r = InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom();
   Door* d = r->getDoor(Globals::stringToDirection(direction));
   if (d == nullptr) {
-    throw std::runtime_error("RGScript: Attempt to unblock " + direction
-    + " door in " + r->getName() + " failed, as the door does not exist.");
+    throw std::runtime_error(std::string("RGScript: Attempt to unblock ")
+    + direction + " door in " + r->getName()
+    + " failed, as the door does not exist." + " on line: "
+    + std::to_string(TextHelper::line));
   }
   d->unblockDoor();
+  return false;
 }
 
 bool TextHelper::cpSetFlag(std::vector<std::string> params) {
   if (params.size() <= 1) {
-    throw std::invalid_argument("Not enough parameters for RGScript setflag");
+    throw std::invalid_argument(std::string("Not enough parameters for")
+    + " RGScript setflag on line: " + std::to_string(TextHelper::line));
   }
   std::string flagName;
   bool flagValue = (params.back()[0] == 't' || params.back() == "1");
@@ -299,7 +353,8 @@ bool TextHelper::cpSetFlag(std::vector<std::string> params) {
 
 bool TextHelper::cpSetGlobalFlag(std::vector<std::string> params) {
   if (params.size() <= 1) {
-    throw std::invalid_argument("Not enough parameters for RGSCript setgflag");
+    throw std::invalid_argument(std::string("Not enough parameters for")
+    + " RGSCript setgflag on line: " + std::to_string(TextHelper::line));
   }
   std::string flagName;
   bool flagValue = (params.back()[0] == 't' || params.back() == "1");
@@ -323,8 +378,9 @@ bool TextHelper::cpMovePlayer(std::vector<std::string> params) {
       return false;
     }
   }
-  throw std::runtime_error("Room with name: '" + roomName
-  + "' not found for RGScript move");
+  throw std::runtime_error(std::string("Room with name: '") + roomName
+  + "' not found for RGScript move on line: "
+  + std::to_string(TextHelper::line));
 }
 
 bool TextHelper::cpMoveNPC(std::vector<std::string> params) {
@@ -341,12 +397,14 @@ bool TextHelper::cpMoveNPC(std::vector<std::string> params) {
         npc->moveNPC(room);
         return false;
       }
-      throw std::runtime_error("NPC with name: '" + npcName
-      + "' not found for RGScript movenpc");
+      throw std::runtime_error(std::string("NPC with name: '") + npcName
+      + "' not found for RGScript movenpc on line: "
+      + std::to_string(TextHelper::line));
     }
   }
-  throw std::runtime_error("Room with name: '" + roomName
-  + "' not found for RGScript movenpc");
+  throw std::runtime_error(std::string("Room with name: '") + roomName
+  + "' not found for RGScript movenpc on line: "
+  + std::to_string(TextHelper::line));
 }
 
 bool TextHelper::cpKillNPC(std::vector<std::string> params) {
@@ -359,8 +417,9 @@ bool TextHelper::cpKillNPC(std::vector<std::string> params) {
     npc->setAlive(false);
     return false;
   }
-  throw std::runtime_error("NPC with name '" + npcName
-  + "' not found for RGScript killnpc");
+  throw std::runtime_error(std::string("NPC with name '") + npcName
+  + "' not found for RGScript killnpc on line: "
+  + std::to_string(TextHelper::line));
 }
 
 bool TextHelper::fileExists(std::string path) {
@@ -384,7 +443,7 @@ std::string TextHelper::listObjects(std::vector<Object*> objects) {
   std::string s = "";
   switch (objects.size()) {
     case 0:
-      s = " it is empty.";
+      s = " nothing useful.";
       return s;
     case 1:
       s = startsWithVowel(objects[0]->getName()) ? " an " : " a ";

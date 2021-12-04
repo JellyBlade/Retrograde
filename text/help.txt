@@ -1,30 +1,191 @@
-Actions:
-  move <direction>
-    - ex: 'move n' or 'move north' for [n/e/s/w] & [north/east/south/west]
-  pickup <object name>
-    - ex: 'pickup statue of dark'
-    - Picks up the objects and adds it to your inventory if possible.
-    - Some objects cannot be carried.
-  drop <object name>
-    - ex: 'drop cool apple'
-    - Drops the object from your inventory into the room.
-  look
-    - ex: 'look'
-    - Displays information about your surroundings.
-      - What objects are in the room, which directions you can go, what the room
-        looks like, etc.
-  examine <object name>
-    - ex: 'examine cool apple'
-    - Gives you a description of what the object is.
-    - Can be used for objects in your inventory and in the room.
-  examine <direction>
-    - ex: 'examine n' or 'examine north' for [n/e/s/w] & [north/east/south/west]
-    - Gives you the name of the room in that direction.
-    - Will also let you know if that way is blocked and why.
-  bag
-    - ex: 'bag'
-    - Displays the items you are carrying in your inventory.
-  status
-    - ex: 'status'
-    - Displays your spacesuit status, and remaining oxygen in your spacesuit and
-    - the room you're in.
+
+:if flag voice name
+[MAC-GFN Interactive Help v1.1]
+:else
+[Interactive Help v0.4]
+:endif
+
+:mc
+:if flag voice name
+MAC-GFN: What do you need help with?
+:else
+Voice: What do you need help with?
+:endif
+[1]: What can I do?          [List Possible Actions]
+[2]: What do I need to do?   [View Current Objective]
+[3]: I'm stuck!              [Puzzle Assistance]
+[0]: I don't need help.      [Exit Help]
+:endmcdef
+:0
+  [Exited Help]
+  :quit
+:1
+
+  [Here are the actions you can perform in this game]
+
+  [Select an option to view more information about the command]
+
+  [Select '0' to return to the main directory]
+  :mc
+  [1]: move [direction]
+  [2]: pickup [object name]
+  [3]: drop [object name]
+  [4]: interact [object name]
+  [5]: examine [object name]
+  [6]: examine [direction]
+  [7]: examine [NPC name]
+  [8]: bag
+  [9]: status
+  [0]: [Back]
+  :endmcdef
+  :0
+    :continue
+  :1
+
+    == Move ==
+    - Moves you in the given direction.
+    - Usage: 'move n', 'move north'
+    - Directions: [n/e/s/w] or [north/east/south/west]
+    * This action uses up oxygen.
+
+    :pause
+
+    :back
+  :2
+
+    == Pickup ==
+    - Picks up an object and adds it to your bag.
+    - Usage: 'pickup apple', 'pickup box of apples'
+    * Some objects cannot be picked up.
+    * This action uses up oxygen.
+
+    :pause
+
+    :back
+  :3
+
+    == Drop ==
+    - Drops an object from your bag into your current room.
+    - Usage: 'drop apple', 'drop box of apples'
+    * This action uses up oxygen.
+
+    :pause
+
+    :back
+  :4
+
+    == Interact ==
+    - Interacts with an object.
+    - Usage: 'interact locker', 'interact keycard reader'
+    * Not all objects do something.
+
+    :pause
+
+    :back
+  :5
+
+    == Examine (Object) ==
+    - Examines the object, giving a rough description of it.
+    - Usage: 'examine apple', 'examine box of apples'
+
+    :pause
+
+    :back
+  :6
+
+    == Examine (Direction) ==
+    - Examines the cardinal direction of your current room, giving information
+    - about what lays in that direction, and whether you can move there.
+    - Usage: 'examine north', 'examine n'
+    - Directions: [n/e/s/w] or [north/east/south/west]
+
+    :pause
+
+    :back
+  :7
+
+    == Examine (Character) ==
+    - Examines the Character in the same room as you, giving
+    - a rough description of them.
+    - Usage: 'examine joe', 'examine joe but stronger'
+    * They must be in the same room as you.
+
+    :pause
+
+    :back
+  :8
+
+    == Bag ==
+    - Shows you what items you are currently carrying.
+    - Usage: 'bag'
+    * There is no limit to the number of items you can carry.
+
+    :pause
+
+    :back
+  :9
+
+    == Status ==
+    - Shows you information about your spacesuit's- and your current room's
+    - remaining oxygen percentage.
+    - Usage: 'status'
+    * If you reach 0% oxygen in a room and don't have a spacesuit, you will die!
+
+    :pause
+
+    :back
+  :endmc
+  :back
+:2
+  // Put objective reminders here!
+  :if chapter 0
+
+    Current Objective:
+    :if holding red key card
+      Use the Red Keycard to unlock the Recreation Center's north door.
+      :else
+      Find a Red Keycard to unlock the Recreation Center's north door.
+    :endif
+  :endif
+  :if chapter 1
+
+    TBD
+
+  :endif
+  :if chapter 2
+
+    TBD
+
+  :endif
+  :if chapter 3
+
+    TBD
+
+  :endif
+  :if chapter 4
+
+    TBD
+
+  :endif
+  // End objective reminder area, put those above this line!
+
+  :back
+:3
+  // Puzzle assistance goes here!
+  :if chapter 0
+
+    [You can find the Red Keycard inside of Locker 7 in the Medical Bay]
+
+    [More assistance is available]
+    :askquit
+
+    [Try interacting with the Laptop in the Medical Bay]
+
+    [More assistance is available]
+    :askquit
+    
+    [The passcode for Locker 7 is: '9823']
+  :endif
+  //Puzzle assistance goes above this line
+  :quit
+:endmc

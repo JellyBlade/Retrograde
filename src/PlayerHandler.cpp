@@ -53,6 +53,9 @@ bool PlayerHandler::input(std::istream& input) {
   } else if (action == "status") {
     status();
     return false;
+  } else if (action == "interact") {
+    interact(param);
+    return false;
   } else if (action == "talk") {
     if (InteractHelper::npcInRoom(param, player->getCurrentRoom())) {
       InteractHelper::getNPC(param)->talk(input);
@@ -97,6 +100,10 @@ bool PlayerHandler::input(std::istream& input) {
     return false;
   } else if (action == "drop") {
     return drop(param);
+  } else if (action == "debug") {
+    std::cout << "[DEBUG mode enabled]" << std::endl;
+    TextHelper::rgScriptGlobalFlags["debugmode"] = 1;
+    return false;
   } else {
     cout << "You cannot do that here." << endl;
     return false;
@@ -126,10 +133,28 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
   return true;
 }
 
+bool PlayerHandler::interact(std::string interact) {
+  Room* currentRoom = player->getCurrentRoom();
+  Object* object;
+  if (!currentRoom->getRoomObjects()->isObjectInContainer(interact)
+      && !player->getInventory()->isObjectInContainer(interact)) {
+    cout << "You cannot find that here." << endl;
+    return false;
+  }
+
+  if (currentRoom->getRoomObjects()->isObjectInContainer(interact)) {
+    object = currentRoom->getRoomObjects()->getObject(interact);
+  } else {
+    object = player->getInventory()->getObject(interact);
+  }
+  object->interact();
+  return true;
+}
+
 void PlayerHandler::look() {
   Room* currentRoom = player->getCurrentRoom();
   cout << "You are in the " << currentRoom->getName() << "." << endl;
-  cout << currentRoom->getDescription() << endl;
+  cout << currentRoom->getDescription() << endl << endl;
 
   cout << "Looking around the room, you see";
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());

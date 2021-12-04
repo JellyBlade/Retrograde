@@ -54,6 +54,14 @@ class PlayerHandler {
   bool movePlayer(Globals::Direction direction);
 
   /**
+  * Interacts with the given object in the room/inventory.
+  * @see Object::interact()
+  * @param interact the name of the object to interact with.
+  * @return true if the object was successfully interacted with, false otherwise
+  */
+  bool interact(std::string interact);
+
+  /**
   * Outputs the room's name and description to the screen, and lists off
   * the objects in the room, and possible directions to travel.
   */
@@ -65,7 +73,7 @@ class PlayerHandler {
   void status();
 
   /**
-  * Examines the given object in the room, giving a description of it.
+  * Examines the given object in the room/inventory, giving a description of it.
   * @param examine the name of the object to examine.
   * @return true if the object was successfully examined, false otherwise.
   */

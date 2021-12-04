@@ -35,9 +35,14 @@ void GenerateHelper::setup() {
     if (!file.is_open()) {
       throw std::runtime_error("objects.json not found!");
     }
-    json j = json::parse(file);
-    for (auto it = j.begin(); it != j.end(); ++it) {
-      jsonObjects[it.key()] = it.value();
+    try {
+      json j = json::parse(file);
+      for (auto it = j.begin(); it != j.end(); ++it) {
+        jsonObjects[it.key()] = it.value();
+      }
+    } catch (json::parse_error& e) {
+      std::cout << "Error occurred while reading objects.json" << std::endl;
+      throw (e);
     }
     file.close();
   }
@@ -46,30 +51,41 @@ void GenerateHelper::setup() {
     if (!file.is_open()) {
       throw std::runtime_error("rooms.json not found!");
     }
-    json j = json::parse(file);
-    for (auto it = j.begin(); it != j.end(); ++it) {
-      jsonRooms[it.key()] = it.value();
+    try {
+      json j = json::parse(file);
+      for (auto it = j.begin(); it != j.end(); ++it) {
+        jsonRooms[it.key()] = it.value();
+      }
+    } catch (json::parse_error& e) {
+      std::cout << "Error occurred while reading rooms.json" << std::endl;
+      throw (e);
     }
+    file.close();
   }
   if (jsonNPCs.size() < 1) {
     std::ifstream file("text/json/npcs.json");
     if (!file.is_open()) {
       throw std::runtime_error("npcs.json not found!");
     }
-    json j = json::parse(file);
-    for (auto it = j.begin(); it != j.end(); ++it) {
-      jsonNPCs[it.key()] = it.value();
+    try {
+      json j = json::parse(file);
+      for (auto it = j.begin(); it != j.end(); ++it) {
+        jsonNPCs[it.key()] = it.value();
+      }
+    } catch (json::parse_error& e) {
+      std::cout << "Error occurred while reading npcs.json" << std::endl;
+      throw (e);
     }
+    file.close();
   }
 }
 
 Object* GenerateHelper::generateObject(std::string objectName) {
   if (jsonObjects.size() < 1) { setup(); }
-  objectName = TextHelper::tolower(TextHelper::trimAll(objectName));
   for (auto& o : jsonObjects) {
     if (TextHelper::keyify(objectName) == o.first
     || TextHelper::tolower(TextHelper::trimAll(o.second["name"]))
-    == objectName) {
+    == TextHelper::tolower(TextHelper::trimAll(objectName))) {
       if (o.second.contains("box")) {
         Box* box;
         if (o.second.contains("reqPuzzle")) {
@@ -110,10 +126,10 @@ Object* GenerateHelper::generateObject(std::string objectName) {
 
 NPC* GenerateHelper::generateNPC(std::string npcName) {
   if (jsonNPCs.size() < 1) { setup(); }
-  npcName = TextHelper::tolower(TextHelper::trimAll(npcName));
   for (auto& n : jsonNPCs) {
     if (TextHelper::keyify(npcName) == n.first
-    || TextHelper::tolower(TextHelper::trimAll(n.second["name"])) == npcName) {
+    || TextHelper::tolower(TextHelper::trimAll(n.second["name"]))
+    == TextHelper::tolower(TextHelper::trimAll(npcName))) {
       return new NPC(n.second["name"], n.second["desc"]);
     }
   }
@@ -121,11 +137,10 @@ NPC* GenerateHelper::generateNPC(std::string npcName) {
 
 Room* GenerateHelper::generateRoom(std::string roomName) {
   if (jsonRooms.size() < 1) { setup(); }
-  roomName = TextHelper::tolower(TextHelper::trimAll(roomName));
   for (auto& r : jsonRooms) {
     if (TextHelper::keyify(roomName) == r.first
     || TextHelper::tolower(TextHelper::trimAll(r.second["name"]))
-    == roomName) {
+    == TextHelper::tolower(TextHelper::trimAll(roomName))) {
       Room* room = new Room(r.second["name"], r.second["desc"]);
       room->setRoomOxygen(r.second["oxygen"]);
       for (auto& roomObject : r.second["objects"]) {

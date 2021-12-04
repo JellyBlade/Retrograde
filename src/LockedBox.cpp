@@ -17,7 +17,7 @@ LockedBox::LockedBox(std::string n, std::string d, bool h, Puzzle* p)
 }
 
 LockedBox::LockedBox(std::string n, std::string d, bool h,
-std::string puzzleName) {
+  std::string puzzleName) {
   setName(n);
   setDescription(d);
   setHoldable(h);

@@ -67,9 +67,8 @@ class Map {
   */
   void setAllRoomOxygen(int oxygen);
 
-  // TODO(hipt2720): This function could likely handle room oxygen propagation.
   /**
-  * Sets mapOxygen to the mean of all room oxygen levels
+  * Propagates oxygen throughout the game map, and calculated mean oxygen level.
   */
   void calculateMapOxygen();
 
