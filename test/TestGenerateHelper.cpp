@@ -25,16 +25,22 @@ TEST(TestGenerateHelper, objectGenerationTest) {
   Object* o2 = generateObject("apple");
   EXPECT_EQ(o2->getName(), o1->getName());
 
-  Box* o3 = dynamic_cast<Box*>(generateObject("locker"));
+  Box* o3 = dynamic_cast<Box*>(generateObject("locker 7"));
   EXPECT_EQ(o3->getBoxObjects()->size(), 3);
   EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("apple"));
-  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("bluekeycard"));
+  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
+
+  Box* o4 = dynamic_cast<Box*>(generateObject("valentina_locker"));
+  EXPECT_EQ(o3->getBoxObjects()->size(), 3);
+  EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("apple"));
+  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
 
   EXPECT_THROW(generateObject("sadijf#(*$%K)"), std::runtime_error);
 
   delete o1;
   delete o2;
   delete o3;
+  delete o4;
 }
 
 TEST(TestGenerateHelper, npcGenerationTest) {
@@ -43,14 +49,16 @@ TEST(TestGenerateHelper, npcGenerationTest) {
   EXPECT_EQ(n1->getName(), n2->getName());
   EXPECT_EQ(n1->getDescription(), n2->getDescription());
 
+  EXPECT_THROW(generateNPC("sadijf#(*$%K)"), std::runtime_error);
+
   delete n1;
   delete n2;
 }
 
 TEST(TestGenerateHelper, roomGenerationTest) {
-  Room* r1 = generateRoom("engineeringbay");
-  EXPECT_EQ(r1->getRoomObjects()->size(), 5);
-  EXPECT_TRUE(r1->getRoomObjects()->isObjectInContainer("locker"));
+  Room* r1 = generateRoom("medical bay");
+  EXPECT_EQ(r1->getRoomObjects()->size(), 4);
+  EXPECT_TRUE(r1->getRoomObjects()->isObjectInContainer("locker 7"));
   EXPECT_EQ(r1->getRoomOxygen(), 10000);
 
   Room* r2 = generateRoom("ruined hallway");
