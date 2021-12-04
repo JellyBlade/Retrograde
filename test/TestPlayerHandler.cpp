@@ -182,7 +182,7 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
-  EXPECT_FALSE(ph->input(file));
+  ph->input(file);
   EXPECT_FALSE(ph->input(file));
   file.close();
 
