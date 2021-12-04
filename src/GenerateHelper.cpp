@@ -81,7 +81,11 @@ void GenerateHelper::setup() {
 }
 
 Object* GenerateHelper::generateObject(std::string objectName) {
-  if (jsonObjects.size() < 1) { setup(); }
+  try {
+    if (jsonObjects.size() < 1) { setup(); }
+  } catch (std::runtime_error& e) {
+    throw (e);
+  }
   for (auto& o : jsonObjects) {
     if (TextHelper::keyify(objectName) == o.first
     || TextHelper::tolower(TextHelper::trimAll(o.second["name"]))
@@ -125,7 +129,11 @@ Object* GenerateHelper::generateObject(std::string objectName) {
 }
 
 NPC* GenerateHelper::generateNPC(std::string npcName) {
-  if (jsonNPCs.size() < 1) { setup(); }
+  try {
+    if (jsonNPCs.size() < 1) { setup(); }
+  } catch (std::runtime_error& e) {
+    throw (e);
+  }
   for (auto& n : jsonNPCs) {
     if (TextHelper::keyify(npcName) == n.first
     || TextHelper::tolower(TextHelper::trimAll(n.second["name"]))
@@ -136,7 +144,11 @@ NPC* GenerateHelper::generateNPC(std::string npcName) {
 }
 
 Room* GenerateHelper::generateRoom(std::string roomName) {
-  if (jsonRooms.size() < 1) { setup(); }
+  try {
+    if (jsonRooms.size() < 1) { setup(); }
+  } catch (std::runtime_error& e) {
+    throw (e);
+  }
   for (auto& r : jsonRooms) {
     if (TextHelper::keyify(roomName) == r.first
     || TextHelper::tolower(TextHelper::trimAll(r.second["name"]))
@@ -153,7 +165,11 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
 }
 
 Map* GenerateHelper::generateMap(std::string mapName) {
-  if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
+  try {
+    if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
+  } catch (std::runtime_error& e) {
+    throw (e);
+  }
   std::ifstream file("text/json/" + mapName + ".json");
   if (!file.is_open()) {
     throw std::runtime_error(mapName + ".json not found!");

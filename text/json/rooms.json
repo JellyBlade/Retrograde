@@ -35,7 +35,6 @@
     "desc": "This is where the Admiral rests and relaxes when he is off-duty.",
     "oxygen": 10000,
     "objects": [
-      "locker",
       "magazine",
       "green keycard",
       "orange"

@@ -27,13 +27,15 @@ TEST(TestGenerateHelper, objectGenerationTest) {
 
   Box* o3 = dynamic_cast<Box*>(generateObject("locker 7"));
   EXPECT_EQ(o3->getBoxObjects()->size(), 3);
-  EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("apple"));
-  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
+  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("apple"));
+  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("blue key card"));
+  EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
 
-  Box* o4 = dynamic_cast<Box*>(generateObject("valentina_locker"));
+  Box* o4 = dynamic_cast<Box*>(generateObject("valencia_locker"));
   EXPECT_EQ(o3->getBoxObjects()->size(), 3);
-  EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("apple"));
-  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
+  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("apple"));
+  EXPECT_FALSE(o3->getBoxObjects()->isObjectInContainer("blue key card"));
+  EXPECT_TRUE(o3->getBoxObjects()->isObjectInContainer("redkeycard"));
 
   EXPECT_THROW(generateObject("sadijf#(*$%K)"), std::runtime_error);
 
