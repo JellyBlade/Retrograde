@@ -51,8 +51,7 @@ TEST(LockedBoxTest, interactTest) {
   std::ifstream file1("test/text/boxTest.txt");
   std::ifstream file2("test/text/puzzleTest_empty.txt");
 
-  b->interact();
-  b->getPuzzle()->setSolved(file2);
+  b->playerInput(file1);
 
   EXPECT_EQ(b->getBoxObjects()->size(), 0);
   b->interact();
