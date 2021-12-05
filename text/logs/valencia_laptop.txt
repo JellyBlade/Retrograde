@@ -7,7 +7,7 @@
 
 [You open up and try to turn on the laptop, but it is dead]
 :mc
-[1]: Examine the laptop.
+[1]: Take a closer look at the laptop.
 [2]: Put the laptop back down.
 :endmcdef
 :1
