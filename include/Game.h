@@ -34,9 +34,10 @@ class Game {
   std::vector<NPC*> getNPCs();
 
   /**
-  * Prompt the user for actions they want to perform.
+  * The core gameplay loop. Checks for win/lose conditions, prompts player
+  * to perform actions, and calls for oxygen calculation when needed.
   */
-  void playerTurn();
+  void play();
 
   /**
   * Displays several endings based on the actions performed, puzzles solved,

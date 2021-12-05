@@ -1,0 +1,15 @@
+{
+  "recreation_center": {
+    "name": "recreation center",
+    "north": {
+      "link": "bridge",
+      "blocked": true,
+      "blockedReason": "The door seems to require a keycard to gain entry."
+    },
+    "east": {
+      "link": "medical bay",
+      "blocked": true,
+      "blockedReason": "The door has no power; Its deadman switch has engaged."
+    }
+  }
+}

@@ -22,6 +22,7 @@
 namespace TextHelper {
   extern std::map<std::string, bool> rgScriptLocalFlags;
   extern std::map<std::string, bool> rgScriptGlobalFlags;
+  extern int line;
   /**
   * Outputs dialogue from file to screen,
   * calling commandProcessor if it encounters a script command to execute.
@@ -273,6 +274,13 @@ namespace TextHelper {
   * @return a string without any whitespace.
   */
   std::string trimAll(std::string s);
+
+  /**
+  * Trims, tolowers, and replaces all spaces with underscores.
+  * @param s the string to keyify
+  * @return a string that can be compared to JSON keys.
+  */
+  std::string keyify(std::string s);
 
 } // namespace TextHelper
 

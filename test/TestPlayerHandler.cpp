@@ -177,6 +177,15 @@ TEST(TestPlayerHandler, inputTest) {
   EXPECT_FALSE(ph->input(file));
   file.close();
 
+  file.open("test/text/inputTest_interact.txt");
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  EXPECT_FALSE(ph->input(file));
+  ph->input(file);
+  EXPECT_FALSE(ph->input(file));
+  file.close();
+
   file.open("test/text/inputTest_ask.txt");
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
@@ -224,6 +233,7 @@ TEST(TestPlayerHandler, inputTest) {
   file.close();
 
   file.open("test/text/inputTest_misc.txt");
+  EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   EXPECT_FALSE(ph->input(file));
   // drop apple for bag coverage.

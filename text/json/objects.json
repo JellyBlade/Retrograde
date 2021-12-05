@@ -1,30 +1,64 @@
 {
   "apple": {
     "name": "Apple",
-    "desc": "It's an apple.",
+    "desc": "A polished red apple. Looks delicious!",
     "holdable": true
   },
   "orange": {
     "name": "Orange",
-    "desc": "It's an orange.",
+    "desc": "An orange. The faint smell of citrus lingers in the air.",
     "holdable": true
   },
-  "locker": {
-    "name": "Locker",
-    "desc": "It probably holds some neat stuff!",
-    "holdable": false,
-    "box" : [ "apple", "orange", "redkeycard" ]
+  "sandwich": {
+    "name": "Sandwich",
+    "desc": "A tuna salad sandwich with chopped pickles. It's probably Valencia's.",
+    "holdable": true
   },
-  "keypad": {
-    "name": "Keypad",
+  "energy_bar": {
+    "name": "Snaxx Bar",
+    "desc": "A protein bar. The label reads:\n\"For the athlete inside your soul. Feel your olympic energy with Astrax' Snaxx Bar.\"",
+    "holdable": true
+  },
+  "pda": {
+    "name": "PDA",
+    "desc": "Used to communicate with MAC-GFN and access ship controls.",
+    "holdable": true,
+    "logFile": "text/logs/pda.txt"
+  },
+  "valencia_locker": {
+    "name": "Locker 7",
+    "desc": "A tag on the locker reads: \"Valencia's Locker! Stay out!\". It is covered in \nstickers of cute animals. \nA 4-digit keypad is attached to the front.",
+    "holdable": false,
+    "box" : [ "lunch bag", "stack of magazines", "redkeycard" ],
+    "reqPuzzle": "valencia_keypad"
+  },
+  "lunch_bag": {
+    "name": "Lunch Bag",
+    "desc": "A dark blue lunch bag with polka dots on it. Stylish.",
+    "holdable": true,
+    "box": [ "apple", "orange", "sandwich", "energy bar" ]
+  },
+  "stack_of_magazines": {
+    "name": "Stack of Magazines",
+    "desc": "A bunch of magazines in a stack. Or is it a heap?\\nEither way, there's a lot of magazines here, ranging from fashion magazines to home renovation catalogues.",
+    "holdable": true
+  },
+  "valencia_keypad": {
+    "name": "4-digit PIN Keypad",
     "desc": "A simple 4-digit PIN keypad.",
     "holdable": false,
-    "password": "1234"
+    "password": "9832"
+  },
+  "valencia_laptop": {
+    "name": "Laptop",
+    "desc": "A laptop. It is covered in stickers of cute animals.",
+    "holdable": false,
+    "logFile": "text/logs/valencia_laptop.txt"
   },
   "portable_oxygen_tank": {
     "name": "Portable Oxygen Tank",
     "desc": "Useful for resupplying spacesuits and medical equipment.",
-    "holdable": false,
+    "holdable": true,
     "oxygenTankReuse": false
   },
   "oxygenator": {
@@ -39,9 +73,25 @@
     "holdable": false,
     "reqItem": "bluekeycard"
   },
+  "blue_keycard": {
+    "name": "Blue Keycard",
+    "desc": "Used to access rooms and containers secured by a blue-coloured reader.",
+    "holdable": true
+  },
+  "black_keycard_reader": {
+    "name": "Black Keycard Reader",
+    "desc": "You probably need a black-coloured keycard.",
+    "holdable": false,
+    "reqItem": "blackkeycard"
+  },
+  "black_keycard": {
+    "name": "Black Keycard",
+    "desc": "Used to access rooms and containers secured by a black-coloured reader.",
+    "holdable": true
+  },
   "red_keycard_reader": {
     "name": "Red Keycard Reader",
-    "desc": "You probably need a red-coloured keycard.",
+    "desc": "The Red Keycard Reader is next to the door. The small display panel reads: 'Please insert your Red Keycard' in a large red font.",
     "holdable": false,
     "reqItem": "Red Keycard"
   },
