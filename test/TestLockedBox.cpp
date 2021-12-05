@@ -20,8 +20,8 @@ TEST(LockedBoxTest, ConstructorTest) {
   Object* o2 = new Object("You're a Harry Wizard", "yer a wezrd hry", false);
   Puzzle* p = new Puzzle();
   LockedBox* b = new LockedBox();
-  EXPECT_THROW(LockedBox("fail", "fail", true, "totally real puzzzzzle"),
-  std::runtime_error);
+  EXPECT_THROW(LockedBox* b3 = new LockedBox("fail", "fail",
+  true, "totally real puzzzzzle"), std::runtime_error);
   std::ifstream file("test/text/puzzleTest_empty.txt");
   p->setSolved(file);
   LockedBox* b2 = new LockedBox("Treasure Chest", "Gold inside", true, p);

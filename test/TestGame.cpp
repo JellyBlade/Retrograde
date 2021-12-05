@@ -15,6 +15,7 @@ TEST(TestGame, playTest) {
   InteractHelper::game = game;
   TextHelper::rgScriptGlobalFlags["win"] = true;
   game->play();
+  TextHelper::rgScriptGlobalFlags["win"] = false;
   TextHelper::rgScriptGlobalFlags["lose"] = true;
   game->play();
   TextHelper::rgScriptGlobalFlags["asphyxiated"] = true;

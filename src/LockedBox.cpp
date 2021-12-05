@@ -22,10 +22,12 @@ LockedBox::LockedBox(std::string n, std::string d, bool h,
   setName(n);
   setDescription(d);
   setHoldable(h);
-  puzzle = dynamic_cast<Puzzle*>(GenerateHelper::generateObject(puzzleName));
-  if (puzzle == nullptr) {
+  try {
+    puzzle = dynamic_cast<Puzzle*>(GenerateHelper::generateObject(puzzleName));
+  }
+  catch (std::runtime_error& e) {
     throw std::runtime_error("Puzzle with name: '" + puzzleName + "' not found"
-    " when creating LockedBox with name: '" + n + "'.");
+    " when creating LockedBox with name: '" + n + "'.\n" + e.what());
   }
 }
 

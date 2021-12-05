@@ -77,6 +77,7 @@ void Game::playerLose() {
 }
 
 void Game::generateMap() {
+  delete map;
   map = GenerateHelper::generateMap("sirona");
 }
 
