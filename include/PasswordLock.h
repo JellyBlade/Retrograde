@@ -36,6 +36,7 @@ class PasswordLock : public Puzzle {
   /**
   * Asks for user input on what the password is.
   * @param input istream to use for input. cin for user, fstream for testing.
+  * @return true if the puzzle was solved, false otherwise.
   */
   bool playerInput(std::istream& input);
 
