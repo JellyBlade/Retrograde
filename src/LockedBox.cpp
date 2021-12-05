@@ -10,8 +10,8 @@
 #include "GenerateHelper.h"
 #include "TextHelper.h"
 
-LockedBox::LockedBox(std::string n, std::string d, bool h, Puzzle* p)
-: puzzle{p} {
+LockedBox::LockedBox(std::string n, std::string d, bool h, Puzzle* p) {
+  puzzle = p;
   setName(n);
   setDescription(d);
   setHoldable(h);
@@ -44,7 +44,7 @@ bool LockedBox::playerInput(std::istream& input) {
   } else {
     std::cout << "This " << getName() << " is locked by a "
     << puzzle->getName() << std::endl;
-    puzzle->interact();
+    puzzle->playerInput(input);
     if (puzzle->isPuzzleSolved()) {
       std::string choice;
       std::cout << "Would you like to take a look inside of the " << getName()
