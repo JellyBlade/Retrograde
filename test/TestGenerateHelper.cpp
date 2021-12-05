@@ -87,6 +87,7 @@ TEST(TestGenerateHelper, roomGenerationTest) {
 }
 
 TEST(TestGenerateHelper, mapGenerationTest) {
+  EXPECT_THROW(generateMap("nonExistentMap"), std::runtime_error);
   Map* map = generateMap("testMap");
   PlayerHandler* ph = new PlayerHandler();
   EXPECT_EQ(map->getRooms().size(), 11);

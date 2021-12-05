@@ -192,7 +192,6 @@ Map* GenerateHelper::generateMap(std::string mapName) {
   }
   std::ifstream file("text/json/" + mapName + ".json");
   if (!file.is_open()) {
-    // Not testable
     throw std::runtime_error(mapName + ".json not found!");
   }
   Map* map = new Map();
