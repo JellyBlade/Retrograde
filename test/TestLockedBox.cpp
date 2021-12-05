@@ -44,7 +44,7 @@ TEST(LockedBoxTest, ConstructorTest) {
 TEST(LockedBoxTest, interactTest) {
   Game* game = new Game();
   InteractHelper::game = game;
-  Puzzle* p = new Puzzle();
+  PasswordLock* p = new PasswordLock();
   LockedBox* b = new LockedBox("Treasure Chest", "Just some gold", false, p);
   Object* o1 = new Object("Test", "Test!", true);
   Object* o2 = new Object("Better test", "It really is just better.", true);
