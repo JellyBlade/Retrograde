@@ -7,11 +7,10 @@
 :pause
 :unblock north
 
-[The Recreation Center's north door is now unlocked!]
+[The Bridge's north door is now unlocked!]
 
 :pause
 
-[The Voice speaks again from the PDA]
+[MAC-GFN speaks again from the PDA]
 
-Voice: Nice! Now, if you keep going north through the hallway, you'll reach this
-ship's Bridge.
+MAC-GFN: Great! This leads to Hallway B which leads to the Dining Hall.

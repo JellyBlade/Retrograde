@@ -9,6 +9,34 @@
     "desc": "An orange. The faint smell of citrus lingers in the air.",
     "holdable": true
   },
+  "banana": {
+    "name": "Banana",
+    "desc": "A banana. Excellent source of potassium!",
+    "holdable": true
+  },
+  "fruit_bowl": {
+    "name": "Fruit Bowl",
+    "desc": "A bowl containing an apple, an orange, a banana, and a keycard.",
+    "holdable": false,
+    "box": [ "apple", "orange", "banana", "storage keycard" ]
+  },
+  "storage_keycard_reader": {
+    "name": "Storage Keycard Reader",
+    "desc": "It requires the Storage Keycard to unlock.",
+    "holdable": false,
+    "reqItem": "storagekeycard"
+  },
+  "storage_keycard": {
+    "name": "Storage Keycard",
+    "desc": "A keycard labled \"STORAGE\".",
+    "holdable": true
+  },
+  "purple_box": {
+    "name": "Purple Box",
+    "desc": "A small purple box, it has a beautiful shine to it.",
+    "holdable": false,
+    "box": [ "purple key" ]
+  },
   "sandwich": {
     "name": "Sandwich",
     "desc": "A tuna salad sandwich with chopped pickles. It's probably Valencia's.",
@@ -31,6 +59,24 @@
     "holdable": false,
     "box" : [ "lunch bag", "stack of magazines", "redkeycard" ],
     "reqPuzzle": "valencia_keypad"
+  },
+  "rec_locker": {
+    "name": "Locker 13",
+    "desc": "A generic looking grey locker with a purple lock securing it.",
+    "holdable": false,
+    "box" : [ "black keycard" ],
+    "reqPuzzle": "purple_keycard_reader"
+  },
+  "purple_keycard_reader": {
+    "name": "Purple Lock",
+    "desc": "A lock that has been poorly spraypainted purple with a \"V\" etched into the back. It looks like it takes a key.",
+    "holdable": false,
+    "reqItem": "Purple Key"
+  },
+  "purple_keycard": {
+    "name": "Purple Key",
+    "desc": "A metal key that has been poorly spraypainted purple. It looks like it is for a padlock somewhere.",
+    "holdable": true
   },
   "lunch_bag": {
     "name": "Lunch Bag",
