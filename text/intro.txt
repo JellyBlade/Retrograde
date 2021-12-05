@@ -315,14 +315,14 @@ But everything is on the fritz. You will have to find a key card.
 :pause
 
 Voice: But there's some good news! Maybe. There might be a key card in the
-Medical Bay to the east. Hold on...
+Locker Room to the east. Hold on...
 
 :pause
 
 :unblock east
 [The east door beeps, and a green light shines briefly above the door]
 
-Voice: There! You should be able to move into the Medical Bay now.
+Voice: There! You should be able to move into the Locker Room now.
 Once you're inside, look around for a Red Keycard. You might need to look around
 a bit, but you'll find it eventually, I hope.
 
