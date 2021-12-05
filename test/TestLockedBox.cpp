@@ -48,7 +48,7 @@ TEST(LockedBoxTest, interactTest) {
   LockedBox* b = new LockedBox("Treasure Chest", "Just some gold", false, p);
   Object* o1 = new Object("Test", "Test!", true);
   Object* o2 = new Object("Better test", "It really is just better.", true);
-  std::ifstream file1("test/text/boxTest.txt");
+  std::ifstream file1("test/text/lockedBoxTest.txt");
   std::ifstream file2("test/text/puzzleTest_empty.txt");
 
   b->playerInput(file1);

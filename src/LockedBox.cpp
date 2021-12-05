@@ -41,9 +41,9 @@ bool LockedBox::playerInput(std::istream& input) {
   if (puzzle->isPuzzleSolved()) {
     Box::displayBoxObjects();
     if (getBoxObjects()->size() > 0) {
-      Box::playerInput(input);
+      return Box::playerInput(input);
     }
-    return true;
+    return false;
   } else {
     std::cout << "This " << getName() << " is locked by a "
     << puzzle->getName() << std::endl;
@@ -58,7 +58,7 @@ bool LockedBox::playerInput(std::istream& input) {
         if (getBoxObjects()->size() > 0) {
           return Box::playerInput(input);
         }
-        return true;
+        return false;
       }
     }
     return false;

@@ -70,10 +70,10 @@ TEST(TestGenerateHelper, roomGenerationTest) {
   Room* r2 = generateRoom("ruined hallway");
   EXPECT_EQ(r2->getRoomObjects()->size(), 4);
   EXPECT_TRUE(r2->getRoomObjects()->isObjectInContainer("hull debris"));
-  EXPECT_EQ(r2->getRoomOxygen(), 1000);
+  EXPECT_EQ(r2->getRoomOxygen(), 0);
 
   Room* r3 = generateRoom("bridge");
-  EXPECT_EQ(r3->getRoomObjects()->size(), 2);
+  EXPECT_EQ(r3->getRoomObjects()->size(), 5);
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral's log"));
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral'slog"));
   EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("Admiral's Log"));
