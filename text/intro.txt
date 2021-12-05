@@ -1,10 +1,12 @@
 :if flag skip intro
 [Skipping Introduction]
+:move recreation center
 :give PDA
 [Unblocking East Door]
 :unblock east
 :quit
 :endif
+:move recreation center
 
 A voice calls out from the darkness.
 It is too faint to understand.

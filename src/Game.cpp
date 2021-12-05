@@ -70,7 +70,6 @@ void Game::playerLose() {
 
 void Game::generateMap() {
   map = GenerateHelper::generateMap("sirona");
-  player->getPlayer()->setCurrentRoom(map->getRoom("recreation center"));
 }
 
 void Game::generateNPCs() {

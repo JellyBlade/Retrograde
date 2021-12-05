@@ -25,9 +25,12 @@ void PasswordLock::interact() {
 }
 
 bool PasswordLock::playerInput(std::istream& input) {
-  if (isPuzzleSolved()) { return true; }
+  if (isPuzzleSolved()) {
+    cout << "This " << getName() << " is already solved." << endl;
+    return true;
+  }
   std::string item = "";
-  cout << "Enter the password. It's case sensitive." << endl;
+  cout << "Enter the password. It's case-sensitive." << endl;
   cout << "> ";
   std::getline(input, item);
 

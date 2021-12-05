@@ -101,7 +101,11 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     input >> response;
     response = trim(tolower(response));
     input.ignore(256, '\n');
-    return response[0] == 'y' ? false : true;
+    if (response[0] != 'y') {
+      std::cout << "[Exited Dialog]" << std::endl;
+      return true;
+    }
+    return false;
   } else if (cmd == "pause") {
     std::cout << "Press enter to continue...";
     input.ignore(256, '\n');

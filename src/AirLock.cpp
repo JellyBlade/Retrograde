@@ -21,7 +21,10 @@ void AirLock::interact() {
 }
 
 bool AirLock::playerInput(std::istream& input) {
-  if (isPuzzleSolved()) { return true; }
+  if (isPuzzleSolved()) {
+    std::cout << "This " << getName() << " is already solved." << std::endl;
+    return true;
+  }
   if (InteractHelper::getPlayerInventory()->hasSpaceSuit() &&
   InteractHelper::getPlayerHandler()->getPlayer()->getCurrentRoom()
   ->getRoomOxygen() >= oxygenTarget) {

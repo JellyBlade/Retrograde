@@ -41,7 +41,7 @@ void Box::interact() {
 }
 
 void Box::displayBoxObjects() {
-  cout << "You look into the box and find";
+  cout << "You look into the " << getName() << " and find";
   cout << TextHelper::listObjects(objects->getObjects()) << endl;
 }
 
@@ -60,7 +60,7 @@ bool Box::playerInput(std::istream& input) {
     return true;
 
   } else {
-    cout << "Could not find item." << endl;
+    cout << "You can't find that in this " << getName() << "." << endl;
     return false;
   }
 }

@@ -8,6 +8,7 @@
 
 #include "LockedBox.h"
 #include "GenerateHelper.h"
+#include "TextHelper.h"
 
 LockedBox::LockedBox(std::string n, std::string d, bool h, Puzzle* p)
 : puzzle{p} {
@@ -33,13 +34,28 @@ LockedBox::~LockedBox() {
 }
 
 void LockedBox::interact() {
+  playerInput(std::cin);
+}
+
+bool LockedBox::playerInput(std::istream& input) {
   if (puzzle->isPuzzleSolved()) {
-    Box::interact();
+    Box::displayBoxObjects();
+    Box::playerInput(input);
   } else {
-    std::cout << "This box is locked by a " << puzzle->getName() << std::endl;
+    std::cout << "This " << getName() << " is locked by a "
+    << puzzle->getName() << std::endl;
     puzzle->interact();
     if (puzzle->isPuzzleSolved()) {
-      Box::interact();
+      std::string choice;
+      std::cout << "Would you like to take a look inside of the " << getName()
+      << "? (y/n)" << std::endl << "> ";
+      std::getline(input, choice);
+      if (TextHelper::tolower(TextHelper::trimAll(choice))[0] == 'y') {
+        Box::displayBoxObjects();
+        if (getBoxObjects()->size() > 0) {
+          Box::playerInput(input);
+        }
+      }
     }
   }
 }

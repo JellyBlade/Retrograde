@@ -6,6 +6,7 @@
 #ifndef LOCKEDBOX_H
 #define LOCKEDBOX_H
 
+#include <iostream>
 #include <string>
 
 #include "Puzzle.h"
@@ -39,9 +40,17 @@ class LockedBox : public Box {
   ~LockedBox();
 
   /**
-  * Checks puzzle::isSolved() before displaying objects.
+  *
   */
   void interact();
+
+  /**
+  * Checks puzzle::isSolved() before displaying the box contents.
+  * Will ask the player if they want to look when solving for the first time.
+  * @param input istream to use for input. std::cin for player input,
+  * fstream for testing.
+  */
+  bool playerInput(std::istream& input);
 
   /**
   * returns the puzzle object
