@@ -204,7 +204,6 @@ std::istream& input) {
 bool TextHelper::cpMC(std::istream& file, std::istream& input) {
   std::string dialog;
   std::string choice = "";
-  int debug_emergency_exit = 0;
   int nestedCount = 0;
   int prevLine = TextHelper::line;
   bool skip = false;

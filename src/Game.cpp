@@ -37,8 +37,15 @@ void Game::play() {
   while (TextHelper::rgScriptGlobalFlags.count("win") != 1
   && TextHelper::rgScriptGlobalFlags.count("lose") != 1) {
     if (player->input(std::cin)) {
+      if (player->getPlayer()->getCurrentRoom()->getRoomOxygen() <= 600) {
+        TextHelper::rgScriptGlobalFlags["asphyxiated"];
+        TextHelper::rgScriptGlobalFlags["lose"] = true;
+        playerLose();
+        return;
+      }
       map->calculateMapOxygen();
       if (map->getMapOxygen() <= 600) {
+        TextHelper::rgScriptGlobalFlags["asphyxiated"];
         TextHelper::rgScriptGlobalFlags["lose"] = true;
         playerLose();
         return;
