@@ -1,6 +1,8 @@
 :if flag skip intro
 [Skipping Introduction]
 :give PDA
+[Unblocking East Door]
+:unblock east
 :quit
 :endif
 
