@@ -89,8 +89,8 @@ TEST(TestGenerateHelper, roomGenerationTest) {
 TEST(TestGenerateHelper, mapGenerationTest) {
   Map* map = generateMap("testMap");
   PlayerHandler* ph = new PlayerHandler();
-  EXPECT_EQ(map->getRooms().size(), 8);
-  EXPECT_EQ(map->getDoors().size(), 7);
+  EXPECT_EQ(map->getRooms().size(), 11);
+  EXPECT_EQ(map->getDoors().size(), 9);
   for (Door* d : map->getDoors()) {
     std::cout << "Door connected to: " << d->getRooms().first->getName();
     std::cout << " and " << d->getRooms().second->getName() << std::endl;

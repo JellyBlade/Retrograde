@@ -35,7 +35,6 @@ ObjectContainer* Box::getBoxObjects() {
 void Box::interact() {
   displayBoxObjects();
   if (getBoxObjects()->size() > 0) {
-    // This line is untestable.
     playerInput(std::cin);
   }
 }

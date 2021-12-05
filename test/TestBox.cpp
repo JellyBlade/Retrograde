@@ -42,6 +42,7 @@ TEST(TestBox, interactTest) {
   b->addObject(o1);
   b->addObject(o2);
   EXPECT_EQ(b->getBoxObjects()->size(), 2);
+  b->interact();
 
   b->displayBoxObjects();
   EXPECT_FALSE(b->playerInput(file));

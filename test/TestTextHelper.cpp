@@ -38,6 +38,8 @@ TEST(TestTextHelper, commandProcessorTest) {
   std::ifstream input("test/text/commandProcessorTest_quit_input.txt");
   std::string file = "test/text/commandProcessorTest_quit_dialog.txt";
   TextHelper::readFile(file, input);
+  file = "test/text/commandProcessorTest_quit_dialog_askquit.txt";
+  TextHelper::readFile(file, input);
   input.close();
 
   std::cout << "   === Move Test ===" << std::endl;
@@ -60,11 +62,15 @@ TEST(TestTextHelper, commandProcessorTest) {
   EXPECT_THROW(TextHelper::readFile(file, input), std::runtime_error);
   input.close();
 
+  EXPECT_FALSE(game->getPlayerHandler()->getPlayer()
+  ->getInventory()->hasSpaceSuit());
   std::cout << "   === Give Test ===" << std::endl;
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 0);
   input.open("test/text/commandProcessorTest_empty_input.txt");
   file = "test/text/commandProcessorTest_give_dialog.txt";
   TextHelper::readFile(file, input);
+  EXPECT_TRUE(game->getPlayerHandler()->getPlayer()
+  ->getInventory()->hasSpaceSuit());
   EXPECT_EQ(game->getPlayerHandler()->getPlayer()->getInventory()->size(), 2);
   file = "test/text/commandProcessorTest_give_invalid.txt";
   EXPECT_THROW(TextHelper::readFile(file, input), std::runtime_error);

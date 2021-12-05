@@ -288,8 +288,12 @@ bool TextHelper::cpGive(std::vector<std::string> params) {
     objectName += s;
   }
   objectName = tolower(trimAll(objectName));
-  InteractHelper::getPlayerInventory()
-  ->addObject(GenerateHelper::generateObject(objectName));
+  if (objectName == "spacesuit") {
+    InteractHelper::getPlayerInventory()->giveSpaceSuit();
+  } else {
+    InteractHelper::getPlayerInventory()
+    ->addObject(GenerateHelper::generateObject(objectName));
+  }
   return false;
 }
 

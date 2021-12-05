@@ -33,6 +33,7 @@ void GenerateHelper::setup() {
   if (jsonObjects.size() < 1) {
     std::ifstream file("text/json/objects.json");
     if (!file.is_open()) {
+      // Not testable
       throw std::runtime_error("objects.json not found!");
     }
     try {
@@ -40,6 +41,7 @@ void GenerateHelper::setup() {
       for (auto it = j.begin(); it != j.end(); ++it) {
         jsonObjects[it.key()] = it.value();
       }
+      // Not testable
     } catch (json::parse_error& e) {
       std::cout << "Error occurred while reading objects.json" << std::endl;
       throw(e);
@@ -49,6 +51,7 @@ void GenerateHelper::setup() {
   if (jsonRooms.size() < 1) {
     std::ifstream file("text/json/rooms.json");
     if (!file.is_open()) {
+      // Not testable
       throw std::runtime_error("rooms.json not found!");
     }
     try {
@@ -56,6 +59,7 @@ void GenerateHelper::setup() {
       for (auto it = j.begin(); it != j.end(); ++it) {
         jsonRooms[it.key()] = it.value();
       }
+      // Not testable
     } catch (json::parse_error& e) {
       std::cout << "Error occurred while reading rooms.json" << std::endl;
       throw(e);
@@ -65,6 +69,7 @@ void GenerateHelper::setup() {
   if (jsonNPCs.size() < 1) {
     std::ifstream file("text/json/npcs.json");
     if (!file.is_open()) {
+      // Not testable
       throw std::runtime_error("npcs.json not found!");
     }
     try {
@@ -72,6 +77,7 @@ void GenerateHelper::setup() {
       for (auto it = j.begin(); it != j.end(); ++it) {
         jsonNPCs[it.key()] = it.value();
       }
+      // Not testable
     } catch (json::parse_error& e) {
       std::cout << "Error occurred while reading npcs.json" << std::endl;
       throw(e);
@@ -83,6 +89,7 @@ void GenerateHelper::setup() {
 Object* GenerateHelper::generateObject(std::string objectName) {
   try {
     if (jsonObjects.size() < 1) { setup(); }
+    // Not testable
   } catch (std::runtime_error& e) {
     throw(e);
   }
@@ -131,6 +138,7 @@ Object* GenerateHelper::generateObject(std::string objectName) {
 NPC* GenerateHelper::generateNPC(std::string npcName) {
   try {
     if (jsonNPCs.size() < 1) { setup(); }
+  // Not testable
   } catch (std::runtime_error& e) {
     throw(e);
   } catch (json::parse_error& e) {
@@ -150,6 +158,7 @@ NPC* GenerateHelper::generateNPC(std::string npcName) {
 Room* GenerateHelper::generateRoom(std::string roomName) {
   try {
     if (jsonRooms.size() < 1) { setup(); }
+  // Not testable
   } catch (std::runtime_error& e) {
     throw(e);
   } catch (json::parse_error& e) {
@@ -175,6 +184,7 @@ Room* GenerateHelper::generateRoom(std::string roomName) {
 Map* GenerateHelper::generateMap(std::string mapName) {
   try {
     if (jsonObjects.size() < 1 || jsonRooms.size() < 1) { setup(); }
+  // Not testable
   } catch (std::runtime_error& e) {
     throw(e);
   } catch (json::parse_error& e) {
@@ -182,6 +192,7 @@ Map* GenerateHelper::generateMap(std::string mapName) {
   }
   std::ifstream file("text/json/" + mapName + ".json");
   if (!file.is_open()) {
+    // Not testable
     throw std::runtime_error(mapName + ".json not found!");
   }
   Map* map = new Map();

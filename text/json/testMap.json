@@ -35,5 +35,18 @@
     "south": {
       "link": "reactor room"
     }
+  },
+  "recreation_center": {
+    "name": "Recreation Center",
+    "north": {
+      "link": "storage",
+      "blocked": true,
+      "blockedReason": "Testing."
+    },
+    "west": {
+      "link": "locker room",
+      "blocked": true,
+      "blockedReason": "Some dude is in the way."
+    }
   }
 }

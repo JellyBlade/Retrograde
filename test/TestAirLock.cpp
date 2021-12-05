@@ -55,6 +55,7 @@ TEST(TestAirLock, solvedTextTest) {
   ->setRoomOxygen(10000);
   a->playerInput(file);
   EXPECT_EQ(a->isPuzzleSolved(), true);
+  a->playerInput(file);
 
   delete game;
   delete a;

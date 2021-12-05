@@ -39,6 +39,7 @@ TEST(TestItemLock, solvedTextTest) {
   InteractHelper::getPlayerInventory()->addObject(o);
   i->playerInput(file);
   EXPECT_EQ(i->isPuzzleSolved(), true);
+  i->playerInput(file);
 
   delete game;
   delete i;

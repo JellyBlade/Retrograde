@@ -14,6 +14,11 @@ Player is not holding an apple.
 There is a chicken burger in the room.
 :else
 There is not a chicken burger in the room.
+  :if inroom mayonnaise
+  There is mayonnaise in this room.
+  :else
+  There is no mayonnaise in this room, either.
+  :endif
 :endif
 
 :setflag cats are cute false
@@ -41,4 +46,5 @@ Cats are cute! :)
   :endif
 :else
   cats are not cute.
+  :setgflag angy true
 :endif
