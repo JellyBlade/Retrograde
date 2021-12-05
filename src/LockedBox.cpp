@@ -56,7 +56,7 @@ bool LockedBox::playerInput(std::istream& input) {
       if (TextHelper::tolower(TextHelper::trimAll(choice))[0] == 'y') {
         Box::displayBoxObjects();
         if (getBoxObjects()->size() > 0) {
-          Box::playerInput(input);
+          return Box::playerInput(input);
         }
         return true;
       }

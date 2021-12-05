@@ -59,7 +59,6 @@ TEST(LockedBoxTest, interactTest) {
   b->addObject(o2);
   EXPECT_EQ(b->getBoxObjects()->size(), 2);
 
-  b->displayBoxObjects();
   EXPECT_FALSE(b->playerInput(file1));
   EXPECT_TRUE(b->playerInput(file1));
   EXPECT_EQ(b->getBoxObjects()->size(), 1);
