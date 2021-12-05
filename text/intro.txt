@@ -1,3 +1,9 @@
+:if flag skip intro
+[Skipping Introduction]
+:give PDA
+:quit
+:endif
+
 A voice calls out from the darkness.
 It is too faint to understand.
 

@@ -17,11 +17,18 @@ int main() {
     TextHelper::rgScriptGlobalFlags.clear();
     delete game;
 
-    std::cout << "Would you like to play again?" << std::endl;
+    std::cout << "Would you like to play again? (y/n)" << std::endl;
     std::cout << "> ";
     std::getline(std::cin, choice);
     if (TextHelper::tolower(TextHelper::trimAll(choice))[0] != 'y') {
       break;
+    }
+    std::cout << "Would you like to skip the introduction? (y/n)" << std::endl;
+    std::cout << "> ";
+    std::getline(std::cin, choice);
+    std::cout << choice;
+    if (TextHelper::tolower(TextHelper::trimAll(choice))[0] == 'y') {
+      TextHelper::rgScriptGlobalFlags["skipintro"] = true;
     }
   }
 }

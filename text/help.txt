@@ -14,6 +14,7 @@ Voice: What do you need help with?
 [1]: What can I do?          [List Possible Actions]
 [2]: What do I need to do?   [View Current Objective]
 [3]: I'm stuck!              [Puzzle Assistance]
+[99]: I'm done with this.    [Beat the Game]
 [0]: I don't need help.      [Exit Help]
 :endmcdef
 :0
@@ -34,8 +35,9 @@ Voice: What do you need help with?
   [5]: examine [object name]
   [6]: examine [direction]
   [7]: examine [NPC name]
-  [8]: bag
-  [9]: status
+  [8]: look
+  [9]: bag
+  [10]: status
   [0]: [Back]
   :endmcdef
   :0
@@ -115,6 +117,17 @@ Voice: What do you need help with?
     :back
   :8
 
+    == Look ==
+    - Looks around in the room you are currently in.
+    - Gives a description of the room, and a list of usable objects.
+    - Lists possible directions you can move in this room.
+    - Lists NPCs in this room.
+
+    :pause
+
+    :back
+  :9
+
     == Bag ==
     - Shows you what items you are currently carrying.
     - Usage: 'bag'
@@ -123,7 +136,7 @@ Voice: What do you need help with?
     :pause
 
     :back
-  :9
+  :10
 
     == Status ==
     - Shows you information about your spacesuit's- and your current room's
@@ -183,9 +196,12 @@ Voice: What do you need help with?
 
     [More assistance is available]
     :askquit
-    
+
     [The passcode for Locker 7 is: '9823']
   :endif
   //Puzzle assistance goes above this line
+  :quit
+:99
+  :setgflag win true
   :quit
 :endmc

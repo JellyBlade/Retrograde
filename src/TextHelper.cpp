@@ -97,13 +97,14 @@ bool TextHelper::commandProcessor(std::string command, std::istream& file,
     return true;
   } else if (cmd == "askquit") {
     std::string response;
-    std::cout << "Would you like to continue?" << std::endl << "> ";
+    std::cout << "Would you like to continue? (y/n)" << std::endl << "> ";
     input >> response;
     response = trim(tolower(response));
+    input.ignore(256, '\n');
     return response[0] == 'y' ? false : true;
   } else if (cmd == "pause") {
     std::cout << "Press enter to continue...";
-    std::cin.ignore();
+    input.ignore(256, '\n');
     return false;
   } else {
     if (cmd == "back" || cmd == "endmc" || cmd == "endmcdef"

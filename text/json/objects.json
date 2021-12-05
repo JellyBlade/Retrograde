@@ -16,7 +16,7 @@
   },
   "energy_bar": {
     "name": "Snaxx Bar",
-    "desc": "A protein bar. The label reads:\\n\"For the athlete inside your soul. Feel your olympic energy with Astrax' Snaxx Bar.\"",
+    "desc": "A protein bar. The label reads:\n\"For the athlete inside your soul. Feel your olympic energy with Astrax' Snaxx Bar.\"",
     "holdable": true
   },
   "pda": {
@@ -76,6 +76,17 @@
   "blue_keycard": {
     "name": "Blue Keycard",
     "desc": "Used to access rooms and containers secured by a blue-coloured reader.",
+    "holdable": true
+  },
+  "black_keycard_reader": {
+    "name": "Black Keycard Reader",
+    "desc": "You probably need a black-coloured keycard.",
+    "holdable": false,
+    "reqItem": "blackkeycard"
+  },
+  "black_keycard": {
+    "name": "Black Keycard",
+    "desc": "Used to access rooms and containers secured by a black-coloured reader.",
     "holdable": true
   },
   "red_keycard_reader": {
