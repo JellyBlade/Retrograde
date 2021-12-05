@@ -40,7 +40,10 @@ void LockedBox::interact() {
 bool LockedBox::playerInput(std::istream& input) {
   if (puzzle->isPuzzleSolved()) {
     Box::displayBoxObjects();
-    Box::playerInput(input);
+    if (getBoxObjects()->size() > 0) {
+      Box::playerInput(input);
+    }
+    return true;
   } else {
     std::cout << "This " << getName() << " is locked by a "
     << puzzle->getName() << std::endl;
@@ -55,8 +58,10 @@ bool LockedBox::playerInput(std::istream& input) {
         if (getBoxObjects()->size() > 0) {
           Box::playerInput(input);
         }
+        return true;
       }
     }
+    return false;
   }
 }
 
