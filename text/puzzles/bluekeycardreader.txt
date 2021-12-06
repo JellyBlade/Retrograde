@@ -15,3 +15,5 @@
 
 Voice: Nice! Now, if you keep going north through the hallway, you'll reach this
 ship's Bridge.
+
+:chapter 1

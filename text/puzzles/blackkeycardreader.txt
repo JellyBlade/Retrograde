@@ -10,6 +10,31 @@
 
 :pause
 
+[You remember that you were the one sent here to destroy this ship...]
+
+:pause
+
+[You had spent weeks as a sleeper agent from within the SIRONA...]
+
+:pause
+
+[Your final mission was to destroy this ship and prevent its contents from reaching the colony station...]
+
+:pause
+
+[Due to a random occurrence of Retrograde amnesia]
+[You have successfully saved the remaining crew members and yourself.]
+[But....]
+
+:pause
+
+[You have betrayed your country and failed to destroy the ship as planned.]
+
+:pause
+
 [MAC-GFN speaks again from the PDA]
 
-MAC-GFN: And you almost got away with it too if it weren't for those meddling kids.
+MAC-GFN: Thanks for all the help! We would have never gotten back on track if it weren't for you!
+( ͡° ͜ʖ ͡°)
+==THE END==
+:setgflag win true

@@ -14,3 +14,5 @@
 [MAC-GFN speaks again from the PDA]
 
 MAC-GFN: Far out! Hallway C is now unlocked. This leads to the Engineering Bay.
+
+:chapter 3

@@ -154,31 +154,51 @@ Voice: What do you need help with?
   :if chapter 0
 
     Current Objective:
-    :if holding red key card
-      Use the Red Keycard to unlock the Recreation Center's north door.
+    :if holding blue key card
+      Use the Blue Keycard to unlock the Recreation Center's north door.
       :else
-      Find a Red Keycard to unlock the Recreation Center's north door.
+      Find a Blue Keycard to unlock the Recreation Center's north door.
     :endif
   :endif
   :if chapter 1
-
-    TBD
-
+    Current Objective:
+    :if holding red key card
+      Use the Red Keycard to unlock the Bridge's north door.
+      :else
+      Find a Red Keycard to unlock the Bridge's north door.
+    :endif
   :endif
   :if chapter 2
-
-    TBD
-
+    Current Objective:
+    :if holding green key card
+      Use the Green Keycard to unlock the Bridge's west door.
+      :else
+      Find a Green Keycard to unlock the Bridge's west door.
+    :endif
   :endif
   :if chapter 3
-
-    TBD
-
+    Current Objective:
+    :if holding storage key card
+      Use the Storage Keycard to unlock the Engineering Bay's north door.
+      :else
+      Find a Storage Keycard to unlock the Engineering Bay's north door.
+    :endif
   :endif
   :if chapter 4
-
-    TBD
-
+    Current Objective:
+    :if holding purple key
+      Use the Purple Key to unlock Locker 13 in the Locker Room.
+      :else
+      Find a Purple Key.
+    :endif
+  :endif
+  :if chapter 5
+    Current Objective:
+    :if holding black key card
+      Use the Black Key Card to unlock the terminal in the Bridge.
+      :else
+      Find a Black Key Card.
+    :endif
   :endif
   // End objective reminder area, put those above this line!
 
@@ -186,6 +206,20 @@ Voice: What do you need help with?
 :3
   // Puzzle assistance goes here!
   :if chapter 0
+
+    [You can find the Blue Keycard inside the Locker Room]
+
+    [More assistance is available]
+    :askquit
+
+    [Move to the Locker Room and use the look option]
+
+    [More assistance is available]
+    :askquit
+
+    [pickup blue key card when inside the Locker Room]
+  :endif
+  :if chapter 1
 
     [You can find the Red Keycard inside of Locker 7 in the Medical Bay]
 
@@ -198,6 +232,62 @@ Voice: What do you need help with?
     :askquit
 
     [The passcode for Locker 7 is: '9823']
+  :endif
+  :if chapter 2
+
+    [You can find the Green Keycard in of the Admiral's Quarters]
+
+    [More assistance is available]
+    :askquit
+
+    [The Admiral's Quarters is located north of the Dining Hall]
+
+    [More assistance is available]
+    :askquit
+
+    [pickup green key card when inside the Admiral's Quarters]
+  :endif
+  :if chapter 3
+
+    [You can find the Storage Keycard in the Dinning Hall]
+
+    [More assistance is available]
+    :askquit
+
+    [Interact with the fruit bowl]
+
+    [More assistance is available]
+    :askquit
+
+    [pickup storage key card after interacting with the fruit bowl]
+  :endif
+  :if chapter 4
+
+    [You can find the Purple Key in the Storage Room]
+
+    [More assistance is available]
+    :askquit
+
+    [Use the look option when inside of the Storage Room]
+
+    [More assistance is available]
+    :askquit
+
+    [Interact with the Purple Box and take the purple key]
+  :endif
+  :if chapter 5
+
+    [You can find the Black Keycard in the Locker Room]
+
+    [More assistance is available]
+    :askquit
+
+    [Open Locker 13 in the Locker Room]
+
+    [More assistance is available]
+    :askquit
+
+    [Interact with the Black Keycard Reader in the Bridge]
   :endif
   //Puzzle assistance goes above this line
   :quit
