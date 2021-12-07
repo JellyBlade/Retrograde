@@ -83,6 +83,9 @@ void Game::generateMap() {
 
 void Game::generateNPCs() {
   npcs.push_back(GenerateHelper::generateNPC("joe"));
+  npcs.push_back(GenerateHelper::generateNPC("lexiemayer"));
+  npcs.push_back(GenerateHelper::generateNPC("sarahforrest"));
+  npcs.push_back(GenerateHelper::generateNPC("tyancriploens"));
 }
 
 void Game::addNPC(NPC* npc) {
