@@ -12,7 +12,7 @@ Hold on.
 [Tyan hands it back to you]
 Tyan: All fixed! It should run so much faster now, and be less susceptible to
 random crashes and hacking attempts.
-:setgflag upgrade pda true
+:setgflag pda upgrade true
 :endif
 
 :pause
