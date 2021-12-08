@@ -127,8 +127,6 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
   cout << "You move " << Globals::directionToString(direction) << ", entering ";
   cout << "into the " << newRoom->getName() << "." << endl;
 
-  look();
-
   return true;
 }
 
