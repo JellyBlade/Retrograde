@@ -1,4 +1,5 @@
 :movenpc tyan hallway a
+:setgflag pda upgrade false
 :movenpc sarah admiral's quarters
 :movenpc lexie engineering bay
 :if flag skip intro

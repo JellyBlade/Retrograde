@@ -40,10 +40,21 @@ void Game::play() {
     if (player->input(std::cin)) {
       map->calculateMapOxygen();
       if (player->getPlayer()->getCurrentRoom()->getRoomOxygen() <= 600) {
-        TextHelper::rgScriptGlobalFlags["asphyxiated"];
-        TextHelper::rgScriptGlobalFlags["lose"] = true;
-        playerLose();
-        return;
+        if (player->getPlayer()->getInventory()->hasSpaceSuit()) {
+          int oxygen = player->getPlayer()->getInventory()->getOxygen();
+          if (oxygen <= 600) {
+            TextHelper::rgScriptGlobalFlags["asphyxiated"];
+            TextHelper::rgScriptGlobalFlags["lose"] = true;
+            playerLose();
+            return;
+          }
+          player->getPlayer()->getInventory()->setOxygen(oxygen - 600);
+        } else {
+          TextHelper::rgScriptGlobalFlags["asphyxiated"];
+          TextHelper::rgScriptGlobalFlags["lose"] = true;
+          playerLose();
+          return;
+        }
       }
       if (map->getMapOxygen() <= 600) {
         TextHelper::rgScriptGlobalFlags["asphyxiated"];

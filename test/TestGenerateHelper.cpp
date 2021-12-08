@@ -73,10 +73,7 @@ TEST(TestGenerateHelper, roomGenerationTest) {
   EXPECT_EQ(r2->getRoomOxygen(), 0);
 
   Room* r3 = generateRoom("bridge");
-  EXPECT_EQ(r3->getRoomObjects()->size(), 5);
-  EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral's log"));
-  EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("admiral'slog"));
-  EXPECT_TRUE(r3->getRoomObjects()->isObjectInContainer("Admiral's Log"));
+  EXPECT_EQ(r3->getRoomObjects()->size(), 4);
   EXPECT_EQ(r3->getRoomOxygen(), 10000);
 
   EXPECT_THROW(generateRoom("Totally real room"), std::runtime_error);
