@@ -1,0 +1,208 @@
+{
+  "apple": {
+    "name": "Apple",
+    "desc": "A polished red apple. Looks delicious!",
+    "holdable": true
+  },
+  "orange": {
+    "name": "Orange",
+    "desc": "An orange. The faint smell of citrus lingers in the air.",
+    "holdable": true
+  },
+  "banana": {
+    "name": "Banana",
+    "desc": "A banana. Excellent source of potassium!",
+    "holdable": true
+  },
+  "fruit_bowl": {
+    "name": "Fruit Bowl",
+    "desc": "A bowl containing an apple, an orange, a banana, and a keycard.",
+    "holdable": false,
+    "box": [ "apple", "orange", "banana", "storage keycard" ]
+  },
+  "storage_keycard_reader": {
+    "name": "Storage Keycard Reader",
+    "desc": "It requires the Storage Keycard to unlock.",
+    "holdable": false,
+    "reqItem": "storagekeycard"
+  },
+  "storage_keycard": {
+    "name": "Storage Keycard",
+    "desc": "A keycard labled \"STORAGE\".",
+    "holdable": true
+  },
+  "purple_box": {
+    "name": "Purple Box",
+    "desc": "A small purple box, it has a beautiful shine to it.",
+    "holdable": false,
+    "box": [ "purple key" ]
+  },
+  "sandwich": {
+    "name": "Sandwich",
+    "desc": "A tuna salad sandwich with chopped pickles. It's probably Valencia's.",
+    "holdable": true
+  },
+  "energy_bar": {
+    "name": "Snaxx Bar",
+    "desc": "A protein bar. The label reads:\n\"For the athlete inside your soul. Feel your olympic energy with Astrax' Snaxx Bar.\"",
+    "holdable": true
+  },
+  "pda": {
+    "name": "PDA",
+    "desc": "Used to communicate with MAC-GFN and access ship controls.",
+    "holdable": true,
+    "logFile": "text/logs/pda.txt"
+  },
+  "valencia_locker": {
+    "name": "Locker 7",
+    "desc": "A tag on the locker reads: \"Valencia's Locker! Stay out!\". It is covered in \nstickers of cute animals. \nA 4-digit keypad is attached to the front.",
+    "holdable": false,
+    "box" : [ "lunch bag", "stack of magazines", "redkeycard" ],
+    "reqPuzzle": "valencia_keypad"
+  },
+  "rec_locker": {
+    "name": "Locker 13",
+    "desc": "A generic looking grey locker with a purple lock securing it.",
+    "holdable": false,
+    "box" : [ "black keycard" ],
+    "reqPuzzle": "purple_keycard_reader"
+  },
+  "purple_keycard_reader": {
+    "name": "Purple Lock",
+    "desc": "A lock that has been poorly spraypainted purple with a \"V\" etched into the back. It looks like it takes a key.",
+    "holdable": false,
+    "reqItem": "Purple Key"
+  },
+  "purple_keycard": {
+    "name": "Purple Key",
+    "desc": "A metal key that has been poorly spraypainted purple. It looks like it is for a padlock somewhere.",
+    "holdable": true
+  },
+  "lunch_bag": {
+    "name": "Lunch Bag",
+    "desc": "A dark blue lunch bag with polka dots on it. Stylish.",
+    "holdable": true,
+    "box": [ "apple", "orange", "sandwich", "energy bar" ]
+  },
+  "stack_of_magazines": {
+    "name": "Stack of Magazines",
+    "desc": "A bunch of magazines in a stack. Or is it a heap?\\nEither way, there's a lot of magazines here, ranging from fashion magazines to home renovation catalogues.",
+    "holdable": true
+  },
+  "valencia_keypad": {
+    "name": "4-digit PIN Keypad",
+    "desc": "A simple 4-digit PIN keypad.",
+    "holdable": false,
+    "password": "9832"
+  },
+  "valencia_laptop": {
+    "name": "Laptop",
+    "desc": "A laptop. It is covered in stickers of cute animals.",
+    "holdable": false,
+    "logFile": "text/logs/valencia_laptop.txt"
+  },
+  "portable_oxygen_tank": {
+    "name": "Portable Oxygen Tank",
+    "desc": "Useful for resupplying spacesuits and medical equipment.",
+    "holdable": true,
+    "oxygenTankReuse": false
+  },
+  "oxygenator": {
+    "name": "Oxygenator",
+    "desc": "A powerful Oxygen generator. Capable of servicing the oxygen needs for over three hundred people!",
+    "holdable": false,
+    "oxygenTankReuse": true
+  },
+  "blue_keycard_reader": {
+    "name": "Blue Keycard Reader",
+    "desc": "You probably need a blue-coloured keycard.",
+    "holdable": false,
+    "reqItem": "bluekeycard"
+  },
+  "blue_keycard": {
+    "name": "Blue Keycard",
+    "desc": "Used to access rooms and containers secured by a blue-coloured reader.",
+    "holdable": true
+  },
+  "black_keycard_reader": {
+    "name": "Black Keycard Reader",
+    "desc": "You probably need a black-coloured keycard.",
+    "holdable": false,
+    "reqItem": "blackkeycard"
+  },
+  "black_keycard": {
+    "name": "Black Keycard",
+    "desc": "Used to access rooms and containers secured by a black-coloured reader.",
+    "holdable": true
+  },
+  "red_keycard_reader": {
+    "name": "Red Keycard Reader",
+    "desc": "The Red Keycard Reader is next to the door. The small display panel reads: 'Please insert your Red Keycard' in a large red font.",
+    "holdable": false,
+    "reqItem": "Red Keycard"
+  },
+  "red_keycard": {
+    "name": "Red Keycard",
+    "desc": "Used to access rooms and containers secured by a red-coloured reader.",
+    "holdable": true
+  },
+  "green_keycard_reader": {
+    "name": "Green Keycard Reader",
+    "desc": "You probably need a green-coloured keycard.",
+    "holdable": false,
+    "reqItem": "Green Key Card"
+  },
+  "green_keycard": {
+    "name": "Green Keycard",
+    "desc": "Used to access rooms and containers secured by a green-coloured reader.",
+    "holdable": true
+  },
+  "airlock_panel": {
+    "name": "Airlock Panel",
+    "desc": "It controls the airlock.",
+    "holdable": false,
+    "reqOxygen": 8000
+  },
+  "admirals_log": {
+    "name": "Admiral's Log",
+    "desc": "It is dated for three hours ago.",
+    "holdable": true,
+    "logFile": "text/logs/admiral.txt"
+  },
+  "wrench": {
+    "name": "Wrench",
+    "desc": "Standard-issue engineering wrench. Useful for tightening (or loosening) stubborn bolts.",
+    "holdable": true
+  },
+  "magazine": {
+    "name": "Magazine",
+    "desc": "A copy of Engineering Monthly, Issue #211. This month's articles include pointers on maintaining starliner engines, tips on how to impress non-Engineering colleagues without boring them, and 34 hacks on how to hack hack hackers hacking hackable hacksaws. Fascinating stuff.",
+    "holdable": true
+  },
+  "hull_debris": {
+    "name": "Hull Debris",
+    "desc": "A large chunk of the ship's hull. It probably shouldn't be there.",
+    "holdable": false
+  },
+  "twisted_metal": {
+    "name": "Twisted Metal",
+    "desc": "A huge twisted steel girder. While the flames didn't melt it, it appears that non-uniform thermally-induced stress upon the girder created a concentrated axial compressive load causing sudden structural deformation resulting in a loss of structural stability in the whole room, or something. You're not an engineer.",
+    "holdable": false
+  },
+  "melted_wiring": {
+    "name": "Melted Wiring",
+    "desc": "A bunch of plenum wiring that has melted and clumped together. Useless to all but the most desperate of scrapper.",
+    "holdable": true
+  },
+  "molten_slag": {
+    "name": "Molten Slag",
+    "desc": "Ouch! This stuff is still red hot!",
+    "holdable": false
+  },
+  "macgfn_control_panel": {
+    "name": "MACGFN Control Panel",
+    "desc": "This panel controls all of MAC-GFN's primary functionality. It has an insert slot for an AI Matrix.",
+    "holdable": false,
+    "reqItem": "ai repair matrix"
+  }
+}

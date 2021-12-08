@@ -1,0 +1,30 @@
+:if spacesuit
+
+  Lexie: Good luck in the storage room, eh?
+
+:else
+  :if holding storage keycard
+  Lexie: Oh hey, you got the storage keycard!
+
+  :pause
+
+  Lexie: Although, you probably won't survive long without a spacesuit, eh?
+
+  :pause
+
+  Lexie: Luckily for you, I managed to snag one from Sarah before she stormed off
+  to the Admiral's Quarters.
+
+  :pause
+
+  Lexie: She won't miss this!
+
+  :give spacesuit
+  :else
+
+  Lexie: I don't trust Sarah, so I hid the storage keycard from her.
+  She hates Tyan with a passion, so I put it somewhere she would never look for
+  it.
+  
+  :endif
+:endif

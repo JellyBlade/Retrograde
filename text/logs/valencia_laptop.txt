@@ -1,0 +1,26 @@
+:if flag valencia locker combination
+
+[You've already gotten the code '9832' from this laptop]
+[Since it is dead, you don't see a reason to keep it around]
+[You set the laptop back down]
+:endif
+
+[You open up and try to turn on the laptop, but it is dead]
+:mc
+[1]: Take a closer look at the laptop.
+[2]: Put the laptop back down.
+:endmcdef
+:1
+
+[You look all over the laptop]
+[You see a note attached to the screen with some clear tape]
+"Your locker combination is '9832'. Please try to not forget again, Val."
+:setgflag valencia locker combination true
+
+:pause
+
+:continue
+:2
+:continue
+:endmc
+[You set the laptop back down]

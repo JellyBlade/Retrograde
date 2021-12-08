@@ -1,0 +1,14 @@
+Lexie: Oh hey there bud, what's up?
+:mc
+[1]: Where are we?
+[2]: Who are you?
+[3]: What happened to the ship?
+:endmcdef
+:1
+Lexie: We're abroad the Retrograde space craft. You should know that.
+Is your head ok? Did you need me to check it out?
+:2
+Lexie: I'm Lexie, the SIRONA's nurse, filling in for Dr. Valencia at the moment.
+:3
+Lexie: I don't know, I'm just the nurse. You'll have to go ask the others.
+:endmc

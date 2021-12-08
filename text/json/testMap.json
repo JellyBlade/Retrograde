@@ -1,0 +1,52 @@
+{
+  "engineering_bay": {
+    "name": "engineering bay",
+    "north": {
+      "link": "ruined hallway"
+    },
+    "west": {
+      "link": "hallway a"
+    }
+  },
+  "med_bay": {
+    "name": "medical bay",
+    "south": {
+      "link": "ruined hallway",
+      "blocked": true,
+      "blockedReason": "The hallway's debris has covered the door."
+    }
+  },
+  "bridge": {
+    "name": "bridge",
+    "east": {
+      "link": "hallway a",
+      "blocked": true,
+      "blockedReason": "The door is locked by the nearby keypad."
+    },
+    "north": {
+      "link": "admiral's quarters"
+    }
+  },
+  "hallway_b": {
+    "name": "hallway b",
+    "north": {
+      "link": "hallway a"
+    },
+    "south": {
+      "link": "reactor room"
+    }
+  },
+  "recreation_center": {
+    "name": "Recreation Center",
+    "north": {
+      "link": "storage",
+      "blocked": true,
+      "blockedReason": "Testing."
+    },
+    "west": {
+      "link": "locker room",
+      "blocked": true,
+      "blockedReason": "Some dude is in the way."
+    }
+  }
+}

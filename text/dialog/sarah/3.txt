@@ -1,0 +1,7 @@
+[Sarah seems to be talking to herself]
+Lexie: I need something from the storage room...
+
+:pause
+[Sarah notices you]
+Lexie: Hey, stop eavesdropping!
+Ugh, don't you have somewhere to be?

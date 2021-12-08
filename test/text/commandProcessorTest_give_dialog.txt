@@ -1,0 +1,10 @@
+Here's an Apple.
+:give apple
+
+I shall now bestow upon you the gift of: A Magazine.
+:give magazine
+
+I will give you a spacesuit too, friend.
+:give spacesuit
+
+Take care, friend.

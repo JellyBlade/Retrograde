@@ -1,0 +1,8 @@
+This is Test NPC's dialogue for chapter 1!
+:if chapter 2
+And also for chapter 2, because Test NPC doesn't have any special dialogue
+for this chapter of the game.
+Test NPC does, however, have a check for chapter 2 that allows them
+to uniquely respond to certain chapters if we don't want to use multiple files
+for one-off characters.
+:endif

@@ -41,8 +41,6 @@ void Player::setPlayerName(std::string name) {
 }
 
 bool Player::useOxygen() {
-  // if (currentRoom == NULL) { throw exception; }
-  // TODO(hipt2720): Make this use a constant/difficulty value or something.
   if (hasSpaceSuit() && currentRoom->getRoomOxygen() == 0) {
     if (inventory->getOxygen() < 500) {
       return false;

@@ -1,0 +1,18 @@
+Tyan: Storage Keycard? I haven't seen it in a long time.
+Hey if you see any fruit anywhere I would love some.
+I'm starving!
+:if flagfalse pda upgrade
+Tyan: Your PDA... that's some seriously old hardware there!
+Hold on.
+
+:pause
+
+[Tyan takes your PDA from you and tinkers with it for a few moments]
+
+:pause
+
+[Tyan hands it back to you]
+Tyan: All fixed! It should run so much faster now, and be less susceptible to
+random crashes and hacking attempts.
+:setgflag pda upgrade true
+:endif

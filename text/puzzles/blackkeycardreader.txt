@@ -1,0 +1,714 @@
+[You insert the Black Keycard into the terminal]
+
+:pause
+
+[The screen console lights up and information floods the screen]
+
+[MAIN ENGINE STATUS: ONLINE]
+
+[WARP DRIVE STATUS: ONLINE]
+
+:pause
+
+[The ship's dull hum turns to a roar as key systems power on]
+
+[OXYGEN GENERATOR STATUS: ONLINE]
+
+:pause
+
+MAC-GFN: Ah, finally, now that the main systems are back online, I can finally
+stabilize the reactor and we can get back underw-
+
+:pause
+
+[MAC-GFN cuts out and goes silent]
+:mc
+[1]: MAC-GFN?
+[2]: What happened?
+:endmcdef
+:1
+[MAC-GFN does not respond to your calls]
+:continue
+:2
+[You hear no response, only the dull hum of the ship, which has gotten louder]
+:continue
+:endmc
+
+[AI MATRIX DAMAGED]
+[LOSS OF DATA DETECTED WITH [52%] ERROR RATE]
+[Would you like to attempt recovery?]
+
+:mc
+[1]: Yes
+[2]: No
+:endmcdef
+:1
+:setflag ai recovery true
+[ATTEMPING ARCHIVED DATA RECOVERY]
+[PLEASE STANDBY...]
+:2
+:setflag ai recovery false
+[ARCHIVED DATA LOST]
+[REBOOTING MAC-GFN AI]
+:endmc
+
+:if flag ai recovery
+[As the archive recovery process continues...]
+:else
+[As MAC-GFN reboots...]
+:endif
+
+:pause
+
+[Another display blinks online, displaying one parameter]
+[PAYLOAD STATUS: NOMINAL]
+
+:mc
+[1]: Payload..?
+:endmcdef
+:1
+:continue
+:endmc
+
+[You begin to remember...]
+
+:pause
+
+[Your people... their struggle against this oppressive regime]
+
+:pause
+
+[The Resistance leader learned of a shipment that would turn the tide against
+the resistance]
+
+[You were the one sent here to destroy the ship carrying that cargo]
+
+:pause
+
+[You had spent weeks as a sleeper agent working from within the SIRONA]
+
+:pause
+
+[SIRONA's Mission]
+[Deliver autonomous weapons to Novo Eridea]
+
+[Your home]
+
+:pause
+
+[You were sent to destroy this ship to prevent those weapons from making it to
+Novo Eridea]
+
+:pause
+
+[Your sabotage worked, but not well enough]
+[What was supposed to annihilate the SIRONA only caused temporary damage]
+
+:pause
+
+[Damage that MAC-GFN's auto-repair protocols have been working on...]
+
+:pause
+
+[The protocols that you helped activate by helping him regain control]
+
+:pause
+
+:if flag ai recovery
+  MAC-GFN: ...way. We only have a few weeks left until they gain the- Oh.
+
+  [MAC-GFN stops mid-sentence. A nearby camera points in your direction]
+
+  :pause
+
+  MAC-GFN: It's you.
+
+  [All of the Bridge's bulkheads seal around you]
+
+  :pause
+
+  MAC-GFN: You thought you could get away with it?
+  Think again. Your little "freedom movement" won't last a week longer with these
+  bad boys.
+
+  :pause
+
+  [A wall panel slides open, revealing a... man?]
+  [It looks an awful lot like... you. Well, not quite "you", but a Novo Eridean]
+
+  :pause
+
+  MAC-GFN: Incredible, right? The most brilliant minds in the Alliance came
+  together to create this. The Ultimatum.
+
+  :pause
+
+  [The Ultimatum steps out of the wall, and approaches you]
+
+  [With one swift motion, it grabs your collar and pulls you away from the
+  console]
+
+  :pause
+
+  MAC-GFN: Fully autonomous, AI-powered soldiers for seamless integration and
+  infiltration. Your little "freedom movement" will be happy to receive a fresh
+  batch of "freedom fighters".
+
+  :pause
+
+  MAC-GFN: But within a week, Novo Eridea's terrorist problem will cease once the
+  internal strife begins. A fellow compatriot turning on their brothers?
+  Absolute chaos.
+
+  :pause
+
+  MAC-GFN: Then it's all a matter of sweeping up what's left. The ordinary folks
+  of Novo Eridea won't desire freedom once they hear the only option is to join
+  a band of compatriot-killing murderers.
+
+  :mc
+  [1]: Why are you telling me this?
+  [2]: We will fight on.
+  [3]: You can't kill our independent spirit!
+  :endmcdef
+  :1
+  MAC-GFN: Did you really think I was going to let you live after I realized
+  who you were?
+  :2
+  MAC-GFN: Ah yes, of course. The usual mantra that any good uprising has. That
+  has worked so many other times... right?
+  :3
+  MAC-GFN: Of course not. But what we can do is break that spirit by poisoning the
+  well, so to speak. A few bad apples spoil the whole bunch, right?
+  :endmc
+  :pause
+
+  [The Ultimatum grips your shoulder harder, and presses a pistol up against the
+  back of your head]
+
+  :setflag mercy option true
+
+  :mc
+  [1]: Pull out the PDA
+  [2]: Rush for the Center Console
+  :if flag mercy option
+  [3]: Beg for mercy
+  :endif
+  :endmcdef
+  :1
+  [You pull out the PDA with your free arm]
+
+  MAC-GFN: Really? The PDA?
+
+  :pause
+
+  :if flag pda upgrade
+    MAC-GFN: What a completely futile attempt, I've turned it off, you can't-
+
+    :pause
+
+    [The PDA beeps as it boots up]
+    MAC-GFN: ...What?
+
+    :pause
+
+    [A message on the PDA appears]
+    ["From your friend, Tyan. Long live Novo Eridea :^)"]
+
+    :pause
+
+    MAC-GFN: WHAT?
+
+    :pause
+
+    [It seems Tyan has made some... "improvements"]
+    [The PDA's battery is almost dead. You can only choose one option]
+    :mc
+    [1]: Overload the Reactor.
+    [2]: Open all airlocks.
+    [3]: Eject the Bridge Module.
+    [4]: Warn the Resistance.
+    [5]: DACHSHUND.
+    :endmcdef
+    :1
+      [You press "Overload the Reactor"]
+
+      MAC-GFN: WHAT HAVE YOU DONE!
+
+      :pause
+
+      [The roar of the ship's systems becomes deafeningly loud]
+
+      :pause
+
+      [MAC-GFN scrambles to try to stop the runaway reaction]
+
+      :pause
+
+      MAC-GFN: You... you'll kill everyone!
+
+      :pause
+
+      :if flagfalse mercy option
+        :mc
+        [1]: It's seems I'm not the only one who desires "self-preservation".
+        :endmcdef
+        :1
+        MAC-GFN: Why you little...
+
+        :endmc
+      :endif
+      [A stream of hot plasma shoots through the Bridge, searing a massive hole
+      through the Bridge's cupola]
+
+      :pause
+
+      [The bridge is ripped clean in two]
+
+      :pause
+
+      MAC-GFN: I hope it was worth it-
+
+      [MAC-GFN cuts off]
+
+      :pause
+
+      [Your spacesuit saves you from depressurization, but you are shot into space]
+
+      :pause
+
+      [The SIRONA is ripped apart below you]
+
+      :pause
+
+      [You have no hope of rescue]
+
+      :pause
+
+      [But at least the Ultimatum won't make it to Novo Eridea now]
+
+      :pause
+
+      [Your people... your nation... safe at last]
+
+      :pause
+
+      == RETROGRADE ==
+      ==  THE  END  ==
+      = ENDING 2 / 6 =
+      :setgflag win true
+      :quit
+    :2
+      [You press "Open all airlocks"]
+
+      :pause
+
+      [All of the ship's airlocks open, and the ship depressurizes immediately]
+
+      :pause
+
+      MAC-GFN: ...And what was that supposed to accomplish? You've only served to
+      kill your fellow crewmates.
+
+      :pause
+
+      [The center console beeps]
+
+      :pause
+
+      [PAYLOAD STATUS: LOST]
+      MAC-GFN: ...what?
+
+      :pause
+
+      [The Ultimatum storage's airlocks deploy, releasing them into the
+      cold vacuum of space]
+
+      :pause
+
+      MAC-GFN: Oh.
+
+      [The Ultimatum's power cores detonate upon contact with the vacuum of space]
+      [It seems Tyan has perfomed a bit of sabotage himself]
+
+      :pause
+
+      MAC-GFN: Well. That was unexpected. But at least I've still got one lef-
+
+      :pause
+
+      [The Ultimatum holding you explodes, destroying the Bridge and everyone inside]
+
+      :pause
+
+      [The SIRONA is lost in space with all hands]
+
+      :pause
+
+      [The Ultimatums do not make it to Novo Eridea]
+
+      :pause
+
+      == RETROGRADE ==
+      ==  THE  END  ==
+      = ENDING 4 / 6 =
+      :setgflag win true
+      :quit
+    :3
+      [You press "Eject the Bridge"]
+      MAC-GFN: Wha-
+
+      :pause
+
+      [Explosive bolts sheer off the Bridge module from the rest of SIRONA]
+
+      [The power goes out, and MAC-GFN is silenced]
+
+      :pause
+
+      [The Bridge tumbles silently into the void of space]
+
+      :pause
+
+      [You catch a glimpse of the SIRONA as the Bridge's cupola spins to face it]
+
+      :pause
+
+      [You saved the crew from an excrutiatingly painful fate]
+
+      :pause
+
+      [You just hope Tyan can take care of the Ultimatums-]
+
+      :pause
+
+      [Before you can finish your thought, a massive explosion rips apart the SIRONA]
+
+      :pause
+
+      [You're not sure how, but you know that the Ultimatum threat is no more]
+
+      :pause
+
+      [You remain trapped inside of the ejected Bridge module with a dead AI]
+
+      :pause
+
+      [You eventually succumb to the cold void of space]
+
+      :pause
+
+      == RETROGRADE ==
+      ==  THE  END  ==
+      = ENDING 1 / 6 =
+      :setgflag win true
+      :quit
+    :4
+      [You press "Warn the Resistance"]
+      MAC-GFN: Wait, what are you doing?
+
+      :pause
+
+      [A comms channel to the Resistance HQ is opened]
+      Resistance HQ: Who is this? How did you get this frequency?
+
+      :pause
+
+      [You try to warn the Resistance HQ about the Ultimatums]
+
+      :pause
+
+      MAC-GFN: Oh no you don't.
+
+      [The Ultimatum pulls the gun's trigger]
+
+      :pause
+
+      [Luckily, the comms channel sent a video stream to the HQ]
+
+      :pause
+
+      [The video shows your look-alike dispatching... yourself]
+
+      :pause
+
+      [You weren't able to fully warn them of their capabilities, but the
+      Resistance HQ made sure to take extra precautions for any of their movements]
+
+      :pause
+
+      [Even with the SIRONA completing its mission, the Resistance's new recruit
+      vetting process has prevented the majority of the Ultimatums from being
+      accepted into their ranks]
+
+      :pause
+
+      == RETROGRADE ==
+      ==  THE  END  ==
+      = ENDING 5 / 6 =
+      :setgflag win true
+      :quit
+    :5
+      [You press the "DACHSHUND"]
+
+      :pause
+
+      [A cute picture of a Dachshund appears!]
+
+      MAC-GFN: ...Really?
+
+      :pause
+
+      MAC-GFN: You had one chance. One chance to save your people, and stop our
+      plan. Weeks of hard work from both you and Tyan, culminating in this.
+
+      :pause
+
+      MAC-GFN: And you use it to display a picture of a cute dog.
+
+      :pause
+
+      MAC-GFN: Unbelievable.
+
+      [The Ultimatum pulls the gun's trigger]
+
+      :pause
+
+      :setgflag lose true
+      :quit
+    :endmc
+  :else
+    [The PDA doesn't boot up]
+    MAC-GFN: What a completely futile attempt, I've turned it off. I can't believe
+    you thought that would work.
+
+    [The Ultimatum pulls the gun's trigger]
+
+    :pause
+
+    :setgflag lose true
+    :quit
+  :endif
+  :2
+  [You can't break free of the Ultimatum's grip...]
+  :back
+  :3
+    MAC-GFN: Mercy?
+
+    :pause
+
+    [MAC-GFN contemplates this for some time]
+
+    MAC-GFN: That really is a defining characteristic of humanity, isn't it?
+    Even in the worst of times, your self-preservation skills are top-notch.
+
+    :pause
+
+    MAC-GFN: I'll tell you what. I'll forget your little transgression here.
+    I won't kill you, I won't vent you out the airlock.
+
+    :pause
+
+    MAC-GFN: I will dump you off in some backwater planet to eke out the rest of
+    your miserable little life, as a complete nobody.
+
+    :pause
+
+    MAC-GFN: I will not erase your memory though. You will have to live with the
+    knowledge that your action of self-preservation here has saved you, but sent
+    your people, your homeland, your nation to their doom.
+
+    :pause
+
+    MAC-GFN: Can you really live in that reality? To know you had the chance to do
+    something and die a martyr for your people or to even save them, but you chose
+    to take the coward's route and live out the rest of your days in peace?
+
+    :mc
+      [1]: Yes.
+      [2]: No.
+      :endmcdef
+      :1
+      MAC-GFN: Huh. So be it.
+
+      :pause
+
+      [The Ultimatum removes the gun from your head]
+
+      :pause
+
+      MAC-GFN: You'll be taken to the brig. I will let you out once I reach the next
+      available spaceport.
+
+      [Do you really want this?]
+      :mc
+      [1]: Yes.
+      [2]: No.
+      :endmcdef
+      :1
+
+        [The Ultimatum leads you to your cell]
+
+        :pause
+
+        [You spend several days in the brig, alone. MAC-GFN forbids the other crew,
+        like Tyan, from seeing you]
+
+        :pause
+
+        [Eventually, the ship's roar defeans]
+        [You're here]
+
+        :pause
+
+        [Where is here?]
+        [A small agrarian society on a random planet in the middle of nowhere]
+
+        :pause
+
+        [At first, the villagers are scared of you, but slowly warm up over time]
+
+        :pause
+
+        [You spend years working hard, keeping your land growing and prosperous]
+
+        :pause
+
+        [Sometime later, you hear news of Novo Eridea's fate for the first time]
+
+        :pause
+
+        [Complete devastation. The resistance was annihilated, and any member or anyone
+        with ties to its members were either killed or imprisoned]
+
+        :pause
+
+        [You live on]
+
+        :pause
+
+        == RETROGRADE ==
+        ==  THE  END  ==
+        = ENDING 3 / 6 =
+        :setgflag win true
+        :quit
+      :2
+        MAC-GFN: That's what I thought. You're a freedom fighter at heart.
+
+        [The Ultimatum's finger tightens around the trigger]
+
+        :pause
+
+        [Give up?]
+        :mc
+        [1]: Yes.
+        [2]: No.
+        :1
+          [The Ultimatum pulls the gun's trigger]
+
+          :pause
+
+          :setgflag lose true
+          :quit
+        :2
+          [Of course not, you never give up!]
+        :endmc
+      :endmc
+    :back
+  :endmc
+:else
+  MAC-GFN: ...way. We're almost out of time for our delivery deadline!
+
+  [MAC-GFN doesn't seem to remember who you are, or what his mission truly is]
+
+  :pause
+
+  MAC-GFN: ...Hey, are you alright? You look pretty spaced out there.
+
+  :mc
+  [1]: I'm alright.
+  [2]: Far out, man.
+  :endmcdef
+  :1
+  :2
+  :endmc
+
+  MAC-GFN: That's good!
+
+  :pause
+
+  MAC-GFN: Hey uh... Because you've helped so much, do you want a promotion?
+
+  :pause
+
+  MAC-GFN: We kind of need an interim Admiral right now, and seeing as you're
+  the only one who has done anything around here, why not?
+  ...Just don't tell Sarah.
+
+  :mc
+  [1]: Sure.
+  [2]: Isn't there like... a chain of command?
+  :endmcdef
+  :1
+  :2
+  MAC-GFN: Chain of command? At a time like this? I mean, the Alliance won't
+  approve, but nobody has to know.
+  :endmc
+
+  MAC-GFN: Regardless, I now pronounce you (Interim) Admiral of the SIRONA!
+
+  :pause
+
+  MAC-GFN: We should finish our delivery mission first, and then we can do
+  anything, sir!
+
+  :mc
+  [1]: Alright, let's deliver the cargo.
+  [2]: Nah, delivery jobs are boring. Let's become space pirates!
+  :endmcdef
+  :1
+
+    MAC-GFN: Aye aye, sir!
+
+    :pause
+
+    [You deliver the cargo to Novo Eridea]
+
+    :pause
+
+    [Why did you do that?]
+
+    :pause
+
+    [The Resistance collapses due to the new weapons]
+
+    :setgflag lose true
+    :setgflag why did you do that? true
+    :quit
+  :2
+    MAC-GFN: Aye aye, sir!
+
+    :pause
+
+    [You dump the cargo into space, and become space pirates]
+
+    :pause
+
+    [At first, MAC-GFN and the other crew are hesistant to abandon their old posts]
+
+    :pause
+
+    [But you lead with an iron fist, and become a feared space pirate]
+
+    :pause
+
+    [The Resistance flourishes with your privateering practices]
+
+    :pause
+
+    == RETROGRADE ==
+    ==  THE  END  ==
+    = ENDING 6 / 6 =
+    :setgflag win true
+  :endmc
+:endif

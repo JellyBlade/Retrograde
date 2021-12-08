@@ -54,6 +54,14 @@ class PlayerHandler {
   bool movePlayer(Globals::Direction direction);
 
   /**
+  * Interacts with the given object in the room/inventory.
+  * @see Object::interact()
+  * @param interact the name of the object to interact with.
+  * @return true if the object was successfully interacted with, false otherwise
+  */
+  bool interact(std::string interact);
+
+  /**
   * Outputs the room's name and description to the screen, and lists off
   * the objects in the room, and possible directions to travel.
   */
@@ -65,7 +73,7 @@ class PlayerHandler {
   void status();
 
   /**
-  * Examines the given object in the room, giving a description of it.
+  * Examines the given object in the room/inventory, giving a description of it.
   * @param examine the name of the object to examine.
   * @return true if the object was successfully examined, false otherwise.
   */
@@ -76,6 +84,13 @@ class PlayerHandler {
   * and which room is in that direction, if possible.
   */
   bool examine(Globals::Direction direction);
+
+  /**
+  * Examines the given NPC, providing their description and name.
+  * @param examine the NPC to examine.
+  * @return true if the NPC was successfully examined, false otherwise.
+  */
+  bool examine(NPC* npc);
 
   /**
   * Displays all of the item's in the player's inventory in a bullet-point list.
@@ -96,14 +111,6 @@ class PlayerHandler {
   * @return true if the item was successfully dropped, false otherwise.
   */
   bool drop(std::string drop);
-
-  // TODO(hipt2720): Should this function be moved somewhere else?
-  /**
-  * Returns a list of the NPCs in the player's current room.
-  * @return a vector containing all of the NPCs in the player's current room.
-  * May be empty.
-  */
-  std::vector<NPC*> getNPCsInCurrentRoom();
 
  private:
   Player* player;

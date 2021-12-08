@@ -1,0 +1,5 @@
+The keypad chimes and turns green. A small animation of a padlock unlocking
+loops on the keypad's small digital display.
+
+The door to the south is unlocked!
+:unblock south

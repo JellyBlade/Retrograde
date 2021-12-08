@@ -1,0 +1,18 @@
+{
+  "joe": {
+    "name": "Joe",
+    "desc": "It's Joe!"
+  },
+  "lexiemayer": {
+    "name": "Lexie",
+    "desc": "Lexie Mayer. She is the station Nurse. She is kind, always wanting to help others. Always is saying sarcastic jokes to lighten the mood of others."
+  },
+  "sarahforrest": {
+    "name": "Sarah",
+    "desc": "Sarah Forrest. Jealous, condescending, inconsiderate towards others. Is always being fake towards everyone. Very selfish and believes she is the most important/intelligent one in the team. Is one of the Engineers present on the ship. "
+  },
+  "tyancriploens": {
+    "name": "Tyan",
+    "desc": "Tyan Criploens. He's an incredibly smart computer scientist, who really knows how \nto work around software. \nHe has been your best friend since stepped foot onto the space craft."
+  }
+}

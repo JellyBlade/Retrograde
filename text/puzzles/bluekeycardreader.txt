@@ -1,0 +1,19 @@
+[You slide the Blue Keycard through the reader]
+
+:pause
+
+[The reader beeps at you, and a green light shines briefly above the door]
+
+:pause
+:unblock north
+
+[The Recreation Center's north door is now unlocked!]
+
+:pause
+
+[The Voice speaks again from the PDA]
+
+Voice: Nice! Now, if you keep going north through the hallway, you'll reach
+this ship's Bridge.
+
+:chapter 1

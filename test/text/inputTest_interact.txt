@@ -1,0 +1,6 @@
+interact apple
+interact orange
+interact neutron star
+interact fake object 2.0
+pickup apple
+interact apple

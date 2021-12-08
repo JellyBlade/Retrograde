@@ -1,0 +1,26 @@
+:if chapter 0
+
+  Voice: Have you found that keycard yet?
+
+  :pause
+
+  :if holding blue keycard
+    Voice: Oh good! Now you can get through that door.
+    :if inroom blue keycard reader
+      Voice: If you swipe the keycard on that reader by the door, it should open
+      up for us.
+      Then we can get to work.
+    :else
+      Voice: Head back to the Recreation Center, and swipe the keycard on the
+      reader by the door.
+      Then we can get started.
+    :endif
+
+    [Interact with the Blue Keycard Reader in the Recreation Center]
+
+  :else
+    Voice: Can't find it yet, huh? Maybe there's one inside of the lockers?
+    Normally I wouldn't condone this behaviour, but we're kind of on a strict
+    schedule.
+  :endif
+:endif

@@ -1,0 +1,17 @@
+Tyan: The storage room? I think there's a purple box in there. No clue what was
+inside, but I always thought it was pretty!
+:if flagfalse pda upgrade
+Tyan: Your PDA... that's some seriously old hardware there!
+Hold on.
+
+:pause
+
+[Tyan takes your PDA from you and tinkers with it for a few moments]
+
+:pause
+
+[Tyan hands it back to you]
+Tyan: All fixed! It should run so much faster now, and be less susceptible to
+random crashes and hacking attempts.
+:setgflag pda upgrade true
+:endif

@@ -21,15 +21,22 @@ class ItemLock : public Puzzle {
   * @param d string that the description will be set to.
   * Default value is "This object does nothing".
   * @param h bool that holdable will be set to.  Default value is true.
-  * @param p string that the password will be set to. Default value is "1234".
+  * @param m string that the object will be set to. Default value is "Key".
   */
   ItemLock(std::string n = "Object", std::string d = "This object does nothing",
-  bool h = false, std::string m = "");
+  bool h = false, std::string m = "Key");
 
   /**
   * Checks if the player has the item in their inventory
   */
   void interact();
+
+  /**
+  * Handles any player input required, and provides an istream source for
+  * TextHelper::readFile() for setSolved()
+  * @return true if the puzzle was solved, false otherwise.
+  */
+  bool playerInput(std::istream& input);
 
  private:
   std::string matchingName;

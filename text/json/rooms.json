@@ -1,0 +1,118 @@
+{
+  "engineering_bay": {
+    "name": "Engineering Bay",
+    "desc": "This room houses all of the equipment the ship's engineers need to keep the place running. Usually abuzz with mechanical whirring, it is eerily silent.",
+    "oxygen": 10000,
+    "objects": [
+      "wrench",
+      "magazine",
+      "apple",
+      "storage key card reader"
+    ]
+  },
+  "dining_hall": {
+    "name": "Dining Hall",
+    "desc": "This is where the crew gather to enjoy their meals. There is a fruit bowl on top of the elongated dining table that has bench seating on each side.",
+    "oxygen": 10000,
+    "objects": [
+      "fruit_bowl",
+      "magazine",
+      "banana"
+    ]
+  },
+  "ruined_hallway": {
+    "name": "Ruined Hallway",
+    "desc": "Tons of wreckage and debris fill this hallway. There is evidence of a fire, but the vacuum environment now present has starved them of a fuel source.",
+    "oxygen": 0,
+    "objects": [
+      "hull debris",
+      "twisted metal",
+      "melted wiring",
+      "molten slag"
+    ]
+  },
+  "bridge": {
+    "name": "Bridge",
+    "desc": "This is where an Admiral will command his vessel. The ship's AI MAC-GFN's central processing unit is located here.",
+    "oxygen": 10000,
+    "objects": [
+      "MACGFN control panel",
+      "Black Keycard Reader",
+      "Red Keycard Reader",
+      "Green Keycard Reader"
+    ]
+  },
+  "admirals_quarters": {
+    "name": "Admiral's Quarters",
+    "desc": "This is where the Admiral rests and relaxes when he is off-duty.",
+    "oxygen": 10000,
+    "objects": [
+      "magazine",
+      "green keycard",
+      "Admiral's Log",
+      "orange"
+    ]
+  },
+  "med_bay": {
+    "name": "Medical Bay",
+    "desc": "The cupboards are packed with all sorts of medical supplies. Numerous \nhospital beds hidden by plastic divider curtains fill the room.",
+    "oxygen": 10000,
+    "objects": [
+      "valencia locker",
+      "apple",
+      "portable oxygen tank",
+      "valencia_laptop"
+    ]
+  },
+  "hallway_a": {
+    "name": "Hallway A",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'A' adorns one side in stylish blue highlights.",
+    "oxygen": 10000,
+    "objects": []
+  },
+  "hallway_b": {
+    "name": "Hallway B",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'B' adorns one side in stylish red highlights.",
+    "oxygen": 10000,
+    "objects": []
+  },
+  "hallway_c": {
+    "name": "Hallway C",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'C' adorns one side in stylish green highlights.",
+    "oxygen": 10000,
+    "objects": []
+  },
+  "hallway_d": {
+    "name": "Hallway D",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'D' adorns one side in stylish purple highlights.",
+    "oxygen": 10000,
+    "objects": []
+  },
+  "reactor": {
+    "name": "Reactor Room",
+    "desc": "The room hums with power from the ship's antimatter reactor. You probably shouldn't touch anything in here...",
+    "oxygen": 5000,
+    "objects": []
+  },
+  "storage": {
+    "name": "Storage",
+    "desc": "This desolate room is cluttered with miscellaneous mechanical parts and extra supplies. There is also a purple box in the corner of the room.",
+    "oxygen": 0,
+    "objects": [ "purple box" ]
+  },
+  "recreation_center": {
+    "name": "Recreation Center",
+    "desc": "This room is filled with different types of exercise equipment. It is currently in disarray though. Most of the equipment has been knocked over, and the east \nhalf of the room's roof has collapsed over top of what used to be a yoga studio.",
+    "oxygen": 10000,
+    "objects": ["blue keycard reader"]
+  },
+  "locker_room": {
+    "name": "Locker Room",
+    "desc": "The room contains a few open lockers, and one closed locker with a lock securing it. There is also a blue keycard on the ground.",
+    "oxygen": 10000,
+    "objects": [
+      "Locker 13",
+      "blue keycard"
+    ]
+  }
+}

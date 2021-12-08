@@ -1,0 +1,29 @@
+Tyan: Oh man, you're alive! Are you alright? That was some blast, huh?
+:if flagfalse pda upgrade
+Tyan: Your PDA... that's some seriously old hardware there!
+Hold on.
+
+:pause
+
+[Tyan takes your PDA from you and tinkers with it for a few moments]
+
+:pause
+
+[Tyan hands it back to you]
+Tyan: All fixed! It should run so much faster now, and be less susceptible to
+random crashes and hacking attempts.
+:setgflag pda upgrade true
+:endif
+
+:pause
+
+Tyan: It seems the ship is in lockdown right now. If you need the red keycard,
+it should be in Val's locker in the Medical Bay.
+
+:pause
+
+Tyan: She was always forgetting the combination for it.
+She might have written it down somewhere.
+
+:pause
+Tyan: Good luck, man!

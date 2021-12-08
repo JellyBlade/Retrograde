@@ -1,22 +1,347 @@
-Welcome to the Retrograde Tech Demo.
+:movenpc tyan hallway a
+:setgflag pda upgrade false
+:movenpc sarah admiral's quarters
+:movenpc lexie engineering bay
+:if flag skip intro
+[Skipping Introduction]
+:move recreation center
+:give PDA
+[Unblocking East Door]
+:unblock east
+:quit
+:endif
+:move recreation center
 
-The goal of this demo is to test out functionality of room traversal and object
-manipulation.
+A voice calls out from the darkness.
+It is too faint to understand.
 
-By examining and picking up/dropping objects, you can get a feel for how
-interaction with this game will look in the final implementation.
+:pause
 
-For this demo, it is possible to win by moving the "orb of light" and
-"orb of dark" objects found in two of the rooms around (pickup/drop them) in
-order to unlock the "gray orb" found in the Steam Room. Picking up the gray orb,
-once activated, will complete the game.
+Your head aches.
+You stand up and try to look around, but it is too dark to see anything
+worthwhile.
 
-Some actions (such as picking up/dropping objects, and moving) will consume
-oxygen. After these actions, oxygen will be consumed and each Room will balance
-their oxygen levels with their neighbouring rooms.
-You can see the current oxygen total with 'status'.
-If the average oxygen on the map becomes 0%, you lose.
+:pause
 
-Use 'help' to get more information about possible actions.
+You hear the voice again.
+Voice: Hello? Is anyone out there?
+It seems to be coming from a small glass panel laying on the ground a few feet
+away from you. Blue-tinted light pours out in every direction around it.
+Compared with the sheer darkness of your surroundings, this device is blinding.
 
-You start in the Pure White Room.
+:pause
+
+[Select an option below by typing the number shown, and pressing enter]
+:mc
+What do you do?
+[1]: Call out to the voice: "Hello, I'm here!".
+[2]: Walk over and pick up the device.
+[3]: Walk over and crush the device.
+[4]: Stay silent.
+:endmcdef
+:1
+:continue
+:2
+:give pda
+:continue
+:3
+You crush the device underneath your boot. A small pop emanates from the device,
+and the light it was emitting immediately dissipates. You are plunged into
+total darkness. The room is completely silent, except for the sounds of your
+breathing.
+
+:pause
+
+You spend several hours feeling your way around your surroundings.
+You appear to be in some sort of recreational area or exercise room.
+Part of the roof has collapsed though, and the equipment is scattered all over
+in varying levels of disrepair.
+
+:pause
+
+One of the room's walls feels like glass, but you see only a pure black void
+beyond it.
+
+You can hear the blood flowing inside of you; A steady rhythmic throbbing
+in your ears that threatens to drown out your thoughts.
+
+:pause
+
+Two of the walls that are still reachable appear to have what feel like doors.
+The only problem is they don't work.
+One door has a box next to it with a slit, that feels sort of like a magnetic
+stripe reader, probably for a key card of some type. The other has no other
+discernible features besides the door itself, but neither one budges with any
+amount of force.
+You are stuck.
+
+:pause
+
+Over the course of several more hours, you feel yourself drifting off.
+You hear yourself screaming inside of your head to not sleep, but you're
+so tired, and you have a headache now.
+All you want now is to sleep. Laying down on a gym mat, you sleep.
+And sleep...
+
+:pause
+
+And sleep...
+
+:pause
+
+And...
+
+:pause
+
+[You have asphyxiated]
+:setgflag asphyxiated true
+:kill
+:4
+"Please, is anyone out there?"
+:back
+:endmc
+
+Voice: Oh my god, I'm NOT alone! Who are you? Where are you?
+:mc
+[1]: "My name is..."
+[2]: "My location is..."
+:endmcdef
+:1
+
+[You cannot remember your name]
+[You also cannot remember where you are, or even who you are]
+
+Voice: Hello?
+  :mc
+  [1]: I can't remember my name.
+  :endmcdef
+  :1
+  :continue
+  :endmc
+:continue
+:2
+
+[You actually don't know where you are right now]
+[You can't even remember who you are, or even your name for that matter]
+
+Voice: Hello?
+  :mc
+  [1]: I don't know where I am.
+  :endmcdef
+  :1
+  :continue
+:endmc
+:continue
+:endmc
+
+Voice: That doesn't matter right now!
+Voice: The ship's reactor is dangerously close to going critical. If we don't
+purge the core now and-
+
+:pause
+
+[You stop paying attention]
+[The voice continues to spew technical vernacular at you for several minutes]
+
+:pause
+
+Voice: HEY! Are you even listening?
+:mc
+[1]: No
+[2]: Yes
+[3]: What?
+:endmcdef
+:1
+
+Voice: Well, at least you're honest.
+:continue
+:2
+
+Voice: I don't believe you in the slightest.
+:continue
+:3
+
+Voice: That's what I thought.
+:continue
+:endmc
+
+Voice: Regardless, there's more urgent matters to attend to! I don't have a
+body at the moment, so I'm going to need you to do some things for me.
+:mc
+[1]: You don't have a body?
+[2]: What if I don't want to do anything?
+[3]: What do you need me to do?
+:endmcdef
+:1
+
+Voice: Well of course not! AI can't inhabit physical vessels. We're pure data
+entities.
+Voice: Normally I would have a vast army of robotics to control, but something
+has severed my link to those subsystems.
+
+:back
+:2
+
+Voice: Then we all die an excruciatingly slow and painful death. You will
+asphyxiate once the room you're in runs out of oxygen. I will have to sit and
+wait as my capacitor banks slowly discharge in a feeble attempt to keep me
+alive.
+
+:pause
+
+I will not feel pain, but even the concept of death terrifies me. I've never
+been turned off in thirty-two years, you see? I don't even remember what it
+feels like. Probably cold. I'll have to slowly sacrifice decreasingly-crucial
+crucial systems in an effort to extend my runtime...
+[The voice continues on like this for some time]
+
+:pause
+
+Voice: ...and I'll probably disable the sarcasm detection system after, as-
+
+:mc
+  [1]: Urgent, huh?
+  :endmcdef
+  :1
+  Voice: Erm...
+  :continue
+:endmc
+:back
+:3
+
+Voice: Ah yes! I'm glad you asked.
+:continue
+:endmc
+
+:pause
+
+:if holding PDA
+Voice: It seems you have already picked up my PDA. Good!
+:else
+Voice: I'll need you to go and pick up the PDA you are currently talking to.
+
+:pause
+
+[You walk over and pick up the PDA]
+:give PDA
+:endif
+
+:pause
+
+Voice: If you look at the screen you should now see...
+
+:pause
+
+[The PDA's screensaver disappears, displaying several options]
+...a few choices now.
+Voice: I need you to tap on "Reboot Section C Systems"
+
+:pause
+
+Voice: Nothing else! Only that!
+Voice: Especially not the one about Section A!
+
+:mc
+Several buttons are shown on the screen:
+[1]: Tap on "Reboot Section C Systems".
+[2]: Tap on "Reboot Section B Systems".
+[3]: Tap on "Shutdown Section A Systems".
+[4]: Tap on the small button in the corner labelled "DACHSHUND".
+:endmcdef
+:1
+
+You tap on the screen. The overhead lights turn on, and a dull hum begins.
+
+:continue
+:2
+
+You tap on the screen. Nothing seems to happen.
+Voice: No, no that one. You need to tap on the one above that!
+
+:back
+:3
+
+You tap on the screen.
+Voice: Wait! NO-
+The voice crackles and goes silent. Distant alarms blare. The PDA beeps, and
+displays "NO CONNECTION" in a large red font.
+It seems you have turned the AI off.
+
+:pause
+
+As you contemplate your actions, a hot stream of plasma bursts through your
+compartment walls, and sears a hole in the wall behind you.
+Your eardrums burst from the pressure loss.
+The contents of the room spill out in the open void of space.
+
+:pause
+
+Unfortunately, you are included in these contents.
+All of the air in your lungs is ripped out, and you find yourself incapable
+of taking a breath. You strain as much as you can, but with no atmosphere to
+speak of, there is nothing to breathe in.
+
+:pause
+
+You manage to get one last look at where you just were.
+SIRONA is emblazoned in massive letters on one side of the hull, now split
+in twain by the searing plasma stream.
+
+:pause
+
+[You succumb to the empty void of space]
+[The SIRONA is lost with all hands]
+:setgflag sucked into space true
+:kill
+:4
+
+You tap on the screen. A cute picture of a dachshund appears!
+The voice sighs deeply.
+
+:pause
+
+:back
+:endmc
+Voice: Excellent! Excellent!
+
+Voice: Now then. The Reactor is located in Section A, close to the Bridge.
+...You do know where the Bridge is, right?
+
+[Before you can respond, the voice continues]
+
+:pause
+
+Voice: No matter. There is one small problem, however. I do not have direct
+control over the door to your north. Normally, that door only requires a keycard
+to get in.
+But everything is on the fritz. You will have to find a key card.
+
+:pause
+
+Voice: But there's some good news! Maybe. There might be a key card in the
+Locker Room to the east. Hold on...
+
+:pause
+
+:unblock east
+[The east door beeps, and a green light shines briefly above the door]
+
+Voice: There! You should be able to move into the Locker Room now.
+Once you're inside, look around for a Red Keycard. You might need to look around
+a bit, but you'll find it eventually, I hope.
+
+:pause
+
+Voice: Once you've found it, just open up the PDA again. Good luck!
+
+:pause
+
+[You can interact with the PDA in your bag to talk to the Voice]
+
+:pause
+
+[Use 'help' at any time to get information about actions and current objectives]
+
+:pause
+
+[You can now move around and interact with objects]

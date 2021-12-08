@@ -43,14 +43,16 @@ TEST(TestMap, getDoorsTest) {
   m->addDoor(d2);
   m->addDoor(d3);
 
+  EXPECT_TRUE(m->doesDoorExistBetween(r1, r2));
+  EXPECT_TRUE(m->doesDoorExistBetween(r1, r3));
+  EXPECT_TRUE(m->doesDoorExistBetween(r2, r3));
+
   EXPECT_EQ(m->getDoors().size(), 3);
   EXPECT_EQ(m->getDoors()[0], d1);
   EXPECT_EQ(m->getDoors()[2], d3);
 
   delete m;
 }
-
-//TODO(mart2720): Exceptions could maybe thrown in the next two sets of tests
 
 TEST(TestMap, setAllRoomOxygenTest) {
   Map* m = new Map();

@@ -1,0 +1,18 @@
+[You slide the Green Keycard through the reader]
+
+:pause
+
+[The reader beeps at you, and a green light shines briefly above the door]
+
+:pause
+:unblock west
+
+[The Bridge's west door is now unlocked!]
+
+:pause
+
+[MAC-GFN speaks again from the PDA]
+
+MAC-GFN: Far out! Hallway C is now unlocked. This leads to the Engineering Bay.
+
+:chapter 3

@@ -34,9 +34,10 @@ class Game {
   std::vector<NPC*> getNPCs();
 
   /**
-  * Prompt the user for actions they want to perform.
+  * The core gameplay loop. Checks for win/lose conditions, prompts player
+  * to perform actions, and calls for oxygen calculation when needed.
   */
-  void playerTurn();
+  void play();
 
   /**
   * Displays several endings based on the actions performed, puzzles solved,
@@ -58,6 +59,11 @@ class Game {
   * Create the NPCs and sets their positions to specific rooms.
   */
   void generateNPCs();
+
+  /**
+  * Adds the given NPC to the game's list of NPCs.
+  */
+  void addNPC(NPC* npc);
 
   /**
   * Returns a pointer to the game environment.

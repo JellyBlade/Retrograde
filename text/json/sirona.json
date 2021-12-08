@@ -1,0 +1,75 @@
+{
+  "recreation_center": {
+    "name": "recreation center",
+    "north": {
+      "link": "hallway d",
+      "blocked": true,
+      "blockedReason": "The door seems to require a keycard to gain entry."
+    },
+    "east": {
+      "link": "locker room",
+      "blocked": true,
+      "blockedReason": "The door has no power; Its deadman switch has engaged."
+    }
+  },
+  "hallway_d": {
+    "name": "hallway d",
+    "north": {
+      "link": "bridge"
+    }
+  },
+  "bridge": {
+    "name": "bridge",
+    "east": {
+      "link": "hallway a"
+    },
+    "north": {
+      "link": "hallway b",
+      "blocked": true,
+      "blockedReason": "The door seems to require a keycard to gain entry."
+    },
+    "west": {
+      "link": "hallway c",
+      "blocked": true,
+      "blockedReason": "The door seems to require a keycard to gain entry."
+    }
+  },
+  "hallway_a": {
+    "name": "hallway a",
+    "east": {
+      "link": "medical bay"
+    }
+  },
+  "hallway_b": {
+    "name": "hallway b",
+    "north": {
+      "link": "dining hall"
+    }
+  },
+  "hallway_c": {
+    "name": "hallway c",
+    "west": {
+      "link": "engineering bay"
+    }
+  },
+  "dining_hall": {
+    "name": "dining hall",
+    "north": {
+      "link": "admiral's quarters"
+    }
+  },
+  "engineering_bay": {
+    "name": "engineering bay",
+    "north": {
+      "link": "ruined_hallway",
+      "blocked": true,
+      "blockedReason": "The door is locked due to lack of atmosphere in the room beyond."
+    }
+  },
+  "ruined_hallway": {
+    "name": "ruined hallway",
+    "north": {
+      "link": "storage"
+    }
+  }
+}

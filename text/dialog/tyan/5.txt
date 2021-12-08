@@ -1,0 +1,17 @@
+Tyan: Wow, no way man! You found the black key card.
+You'll need to go to the main control panel in the bridge to use that.
+:if flagfalse pda upgrade
+Tyan: Your PDA... that's some seriously old hardware there!
+Hold on.
+
+:pause
+
+[Tyan takes your PDA from you and tinkers with it for a few moments]
+
+:pause
+
+[Tyan hands it back to you]
+Tyan: All fixed! It should run so much faster now, and be less susceptible to
+random crashes and hacking attempts.
+:setgflag pda upgrade true
+:endif

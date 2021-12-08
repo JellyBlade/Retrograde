@@ -1,0 +1,23 @@
+Setting flag to true
+:setflag bunnies are cute true
+
+Checking if flag is true
+:if flag bunniesarecute
+Bunnies are cute!
+:else
+Bunnies are not cute :(
+:endif
+
+:if flag bunniesarecute
+Bunnies are still cute!
+:endif
+
+Setting flag to false.
+:setflag bunniesarecute false
+
+Checking if flag is false.
+:if flag bunnies are cute
+Bunnies are cute!
+:else
+Bunnies are not cute :(
+:endif

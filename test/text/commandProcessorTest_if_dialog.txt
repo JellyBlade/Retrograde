@@ -1,0 +1,50 @@
+:if spacesuit
+Player has spacesuit.
+:else
+Player does not have spacesuit.
+:endif
+
+:if holding apple
+Player is holding an apple.
+:else
+Player is not holding an apple.
+:endif
+
+:if inroom chicken burger
+There is a chicken burger in the room.
+:else
+There is not a chicken burger in the room.
+  :if inroom mayonnaise
+  There is mayonnaise in this room.
+  :else
+  There is no mayonnaise in this room, either.
+  :endif
+:endif
+
+:setflag cats are cute false
+
+:if flag cats are cute
+Cats are cute! :)
+:else
+Cats are not cute :(
+:endif
+
+:if flagfalse cats are cute
+Cats are not cute :(
+:else
+Cats are cute! :)
+:endif
+
+// alternate way to handle nesting statements.
+:if flag cats are cute
+  cats are cute!
+  :setflag bunnies are also cute true
+  :if flag bunnies are also cute
+    bunnies are cute too!
+  :else
+    bunnies are not also cute.
+  :endif
+:else
+  cats are not cute.
+  :setgflag angy true
+:endif

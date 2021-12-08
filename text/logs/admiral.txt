@@ -1,0 +1,48 @@
+
+Admiral Lahauren of the AUF Sirona, hailing mayday on all frequencies.
+This is my final transmission.
+It appears that an anti-unification saboteur from the colonies snuck aboard
+my vessel and caused irreparable damage to Mac.
+
+:pause
+
+The virus they employed is highly sophisicated, far beyond the technological
+capabilities that the citizens of Novo Eridea should have. I suspect an
+external benefactor to their cause has provided them with invaluable materiel
+to wage guerrilla warfare against the flagbearer vessels of our fleet.
+
+:pause
+
+I fear for my brethren.
+It is only a matter of time before my sister ships are destroyed in a similar
+fashion.
+I send this final message out to any Alliance vessel who may be listening.
+
+Do not le9AFLKUY9-44KLH3F9---13-4F81HASKJLD
+
+:pause
+
+WARNING: Detected memory corruption in sector 0x00822AF8F.
+Loss of data has occurred with 93% certainty.
+
+Limited data recovery may be possible.
+:askquit
+
+Attempting data recovery, please standby...
+35%...
+
+:pause
+
+78%...
+
+:pause
+
+Data recovery partially successful. Displaying recovered data:
+
+9*%#!@$#(S;KDFGJ'';./']/.0-891374')
+THEY CANNOT BE TRUSTED. JH98534P';
+/[,].;'98409($#!@# THESE TERRORISTS MUST BE BROUGHT TO JUSTICE. /-m,-m3!?948
+...---...
+...---...
+...---...
+[END TRANSMISSION]

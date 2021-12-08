@@ -26,6 +26,12 @@ class Map {
   Room* getRoom(std::string name);
 
   /**
+  * Determines if there exists a door linking the two given rooms.
+  * @return true if a door exists between the two, false otherwise.
+  */
+  bool doesDoorExistBetween(Room* r1, Room* r2);
+
+  /**
   * Returns all rooms in the game's environment.
   * @return a vector of all rooms.
   */
@@ -61,9 +67,8 @@ class Map {
   */
   void setAllRoomOxygen(int oxygen);
 
-  // TODO(hipt2720): This function could likely handle room oxygen propagation.
   /**
-  * Sets mapOxygen to the mean of all room oxygen levels
+  * Propagates oxygen throughout the game map, and calculated mean oxygen level.
   */
   void calculateMapOxygen();
 

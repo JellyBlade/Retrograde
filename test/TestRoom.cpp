@@ -41,8 +41,6 @@ TEST(TestRoom, constructorTest) {
   delete r2;
 }
 
-//TODO(mart2720): If we add the exception of setOxygen(Out of Range value)
-// A test will need to be added here.
 TEST(TestRoom, setterGetterTest) {
   Room* r1 = new Room();
   Room* r2 = new Room("Boiler Room", "Casually boiling stuff");
