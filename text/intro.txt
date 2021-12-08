@@ -1,3 +1,6 @@
+:movenpc tyancriploens room recreation center
+:movenpc sarahforrest room admirals quarters
+:movenpc lexiemayer room engineering bay
 :if flag skip intro
 [Skipping Introduction]
 :move recreation center
