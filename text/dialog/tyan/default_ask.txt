@@ -1,0 +1,20 @@
+Tyan: What's up?
+:mc
+[1]: How did we get here?
+[2]: Who are you?
+[3]: Where's the food?
+:endmcdef
+:1
+Tyan: Uh, we walked on the ship and it took off... You ok man?
+:2
+Tyan: Really? Did you hit your head or something? We stayed up pretty much
+every night playing video games together on our off-shifts. You might need to
+visit the Medical Bay or something.
+:3
+There's food in the Dining Hall. Go west, then north from the Bridge.
+You can't miss it!
+
+:pause
+
+Oh, and save the fruit for me, that's my favourite!
+:endmc

@@ -74,6 +74,10 @@ void Game::playerLose() {
   if (TextHelper::rgScriptGlobalFlags.count("sucked into space") == 1) {
     std::cout << "You were pulled into the void of space." << std::endl;
   }
+  if (TextHelper::rgScriptGlobalFlags.count("why did you do that?") == 1) {
+    std::cout << "You delivered the weapons to Novo Eridea, dooming the"
+    << " resistance. Why did you do that?" << std::endl;
+  }
 }
 
 void Game::generateMap() {

@@ -130,6 +130,9 @@ bool PlayerHandler::movePlayer(Globals::Direction direction) {
   player->setCurrentRoom(newRoom);
   cout << "You move " << Globals::directionToString(direction) << ", entering ";
   cout << "into the " << newRoom->getName() << "." << endl;
+
+  look();
+
   return true;
 }
 
@@ -153,8 +156,6 @@ bool PlayerHandler::interact(std::string interact) {
 
 void PlayerHandler::look() {
   Room* currentRoom = player->getCurrentRoom();
-  cout << "You are in the " << currentRoom->getName() << "." << endl;
-  cout << currentRoom->getDescription() << endl << endl;
 
   cout << "Looking around the room, you see";
   cout << TextHelper::listObjects(currentRoom->getRoomObjects()->getObjects());

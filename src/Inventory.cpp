@@ -17,8 +17,10 @@ Inventory::~Inventory() {
 }
 
 void Inventory::giveSpaceSuit() {
+  std::cout << "Spacesuit acquired!" << std::endl;
   spaceSuitAcquired = true;
   oxygen = 10000;
+  std::cout << "You can now survive in a vacuum!" << std::endl;
 }
 
 bool Inventory::hasSpaceSuit() {

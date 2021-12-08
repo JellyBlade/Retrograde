@@ -1,5 +1,6 @@
 [You slide the Storage Keycard through the reader]
 
+:if spacesuit
 :pause
 
 [The reader beeps at you, and a green light shines briefly above the door]
@@ -16,3 +17,8 @@
 MAC-GFN: Oh boy! This will lead you through this hallway to the ship's Storage room.
 
 :chapter 4
+:else
+[The reader beeps at you, and a red light flashes above the door]
+
+[A voice calls you: WARNING. SPACESUIT REQUIRED]
+:endif

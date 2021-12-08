@@ -1,6 +1,6 @@
-:movenpc tyancriploens recreation center
-:movenpc sarahforrest admiral's quarters
-:movenpc lexiemayer engineering bay
+:movenpc tyan hallway a
+:movenpc sarah admiral's quarters
+:movenpc lexie engineering bay
 :if flag skip intro
 [Skipping Introduction]
 :move recreation center

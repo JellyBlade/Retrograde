@@ -1,0 +1,13 @@
+Sarah Forrest: Ugh, what do you want?
+:mc
+[1]: How did we get here?
+[2]: Who are you?
+[3]: What happened to the ship?
+:endmcdef
+:1
+What are you, stupid? We're on a space ship, how do you think we got here?
+:2
+I'm Sarah. The most intelligent engineer on this ship by far.
+:3
+I don't know, that's what I'm trying to figure out!
+:endmc

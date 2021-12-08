@@ -13,7 +13,7 @@
 
 [The Voice speaks again from the PDA]
 
-Voice: Nice! Now, if you keep going north through the hallway, you'll reach this
-ship's Bridge.
+Voice: Nice! Now, if you keep going north through the hallway, you'll reach
+this ship's Bridge.
 
 :chapter 1

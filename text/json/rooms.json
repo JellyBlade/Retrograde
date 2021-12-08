@@ -37,7 +37,6 @@
     "oxygen": 10000,
     "objects": [
       "MACGFN control panel",
-      "Admiral's Log",
       "Black Keycard Reader",
       "Red Keycard Reader",
       "Green Keycard Reader"
@@ -50,12 +49,13 @@
     "objects": [
       "magazine",
       "green keycard",
+      "Admiral's Log",
       "orange"
     ]
   },
   "med_bay": {
     "name": "Medical Bay",
-    "desc": "The cupboards are packed with all sorts of medical supplies. Numerous hospital beds hidden by plastic divider curtains fill the room.",
+    "desc": "The cupboards are packed with all sorts of medical supplies. Numerous \nhospital beds hidden by plastic divider curtains fill the room.",
     "oxygen": 10000,
     "objects": [
       "valencia locker",
@@ -66,25 +66,25 @@
   },
   "hallway_a": {
     "name": "Hallway A",
-    "desc": "The futuristic hallway covered in shiny white panels. A large letter 'A' adorns one side in stylish yellow highlights.",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'A' adorns one side in stylish blue highlights.",
     "oxygen": 10000,
     "objects": []
   },
   "hallway_b": {
     "name": "Hallway B",
-    "desc": "The futuristic hallway covered in shiny white panels. A large letter 'B' adorns one side in stylish green highlights.",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'B' adorns one side in stylish red highlights.",
     "oxygen": 10000,
     "objects": []
   },
   "hallway_c": {
     "name": "Hallway C",
-    "desc": "The futuristic hallway covered in shiny white panels. A large letter 'C' adorns one side in stylish yellow highlights.",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'C' adorns one side in stylish green highlights.",
     "oxygen": 10000,
     "objects": []
   },
   "hallway_d": {
     "name": "Hallway D",
-    "desc": "The futuristic hallway covered in shiny white panels. A large letter 'D' adorns one side in stylish green highlights.",
+    "desc": "The futuristic hallway covered in shiny white panels. A large \nletter 'D' adorns one side in stylish purple highlights.",
     "oxygen": 10000,
     "objects": []
   },

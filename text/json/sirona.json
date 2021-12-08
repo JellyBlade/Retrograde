@@ -63,7 +63,7 @@
     "north": {
       "link": "ruined_hallway",
       "blocked": true,
-      "blockedReason": "Theres no oxygen in there lol get a spacesuit dummy."
+      "blockedReason": "The door is locked due to lack of atmosphere in the room beyond."
     }
   },
   "ruined_hallway": {
