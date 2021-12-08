@@ -6,6 +6,8 @@
 #include <string>
 
 #include "GenerateHelper.h"
+#include "InteractHelper.h"
+#include "Game.h"
 #include "PlayerHandler.h"
 #include "Object.h"
 #include "AirLock.h"
@@ -84,9 +86,11 @@ TEST(TestGenerateHelper, roomGenerationTest) {
 }
 
 TEST(TestGenerateHelper, mapGenerationTest) {
+  Game* game = new Game();
+  InteractHelper::game = game;
   EXPECT_THROW(generateMap("nonExistentMap"), std::runtime_error);
   Map* map = generateMap("testMap");
-  PlayerHandler* ph = new PlayerHandler();
+  PlayerHandler* ph = InteractHelper::getPlayerHandler();
   EXPECT_EQ(map->getRooms().size(), 11);
   EXPECT_EQ(map->getDoors().size(), 9);
   for (Door* d : map->getDoors()) {
@@ -105,6 +109,6 @@ TEST(TestGenerateHelper, mapGenerationTest) {
   EXPECT_TRUE(ph->movePlayer(Globals::Direction::SOUTH));
   EXPECT_EQ(ph->getPlayer()->getCurrentRoom(), map->getRoom("reactor room"));
 
-  delete ph;
+  delete game;
   delete map;
 }
