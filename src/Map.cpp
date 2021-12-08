@@ -21,10 +21,7 @@ Map::~Map() {
   doors.clear();
 }
 
-//TODO(mart2720): Should this funciton and setAllRoomOxygen throw
-// exceptions if there are no elements in the vectors?
 Room* Map::getRoom(std::string n) {
-  // if (this->rooms.size() == 0) { throw exception; }
   for (int i = 0; i < rooms.size(); i++) {
     if (TextHelper::tolower(TextHelper::trimAll(rooms.at(i)->getName())) ==
     TextHelper::tolower(TextHelper::trimAll(n))) {
@@ -56,7 +53,6 @@ int Map::getMapOxygen() {
 }
 
 void Map::setAllRoomOxygen(int oxygen) {
-  // if(rooms.size() == 0) { throw exception; }
   for (Room* r : rooms) {
     r->setRoomOxygen(oxygen);
   }
@@ -64,8 +60,6 @@ void Map::setAllRoomOxygen(int oxygen) {
 }
 
 void Map::calculateMapOxygen() {
-  // if (room.size() == 0) { throw exception; }
-  // if (doors.size() == 0) { throw exception; }
   int temp = 0;
   for (Door* d : doors) {
     d->propagateOxygen();

@@ -32,16 +32,10 @@ void ObjectContainer::addObject(Object* object) {
 }
 
 void ObjectContainer::removeObject(Object* object) {
-  /*
-  TODO:(mart2720) This should be here however we do not have a exceptions.h yet
-  if(object == nullptr)
-    throw invalid_parameter_error("Null pointer passed");
-  */
   objects.erase(std::remove(objects.begin(), objects.end(),
    object), objects.end());
 }
 
-// TODO(hipt2720): Make this trim whitespace/tolower everything.
 Object* ObjectContainer::getObject(std::string objectName) {
   for (int i = 0; i < objects.size(); i++) {
     if (TextHelper::tolower(TextHelper::trimAll(objects.at(i)->getName())) ==

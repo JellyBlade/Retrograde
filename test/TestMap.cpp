@@ -54,8 +54,6 @@ TEST(TestMap, getDoorsTest) {
   delete m;
 }
 
-//TODO(mart2720): Exceptions could maybe thrown in the next two sets of tests
-
 TEST(TestMap, setAllRoomOxygenTest) {
   Map* m = new Map();
   Room* r1 = new Room();

@@ -39,8 +39,6 @@ bool PlayerHandler::input(std::istream& input) {
   action = TextHelper::tolower(TextHelper::trimAll(action));
   param = TextHelper::tolower(TextHelper::trimAll(param));
 
-  // TODO(hipt2720): Replace these string comps with a cast to an enum of
-  // options in the future.
   if (action == "pickup") {
     return pickUp(param);
   } else if (action == "move") {
@@ -111,8 +109,6 @@ bool PlayerHandler::input(std::istream& input) {
 }
 
 bool PlayerHandler::movePlayer(Globals::Direction direction) {
-  // TODO(hipt2720): Handle if the player's currentRoom doesn't exist.
-  // No door, just a wall.
   Room* currentRoom = player->getCurrentRoom();
   if (currentRoom->getDoor(direction) == nullptr) {
     cout << "You cannot go that way." << endl;
@@ -249,8 +245,6 @@ bool PlayerHandler::pickUp(std::string pickUp) {
     cout << "You cannot find that here." << endl;
     return false;
   }
-  // TODO(hipt2720): Refactor Inventory::addObject(), move the isHoldable check
-  // here so that we don't need to do this inventory size hack.
   Object* object = room->getRoomObjects()->getObject(pickUp);
   int size = player->getInventory()->size();
   player->getInventory()->addObject(object);
@@ -262,7 +256,6 @@ bool PlayerHandler::pickUp(std::string pickUp) {
 }
 
 bool PlayerHandler::drop(std::string drop) {
-  // TODO(hipt2720): Check for the player's room existing
   if (!player->getInventory()->isObjectInContainer(drop)) {
     cout << "You are not carrying that item." << endl;
     return false;

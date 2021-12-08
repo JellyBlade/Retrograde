@@ -37,7 +37,6 @@ int Room::getRoomOxygen() {
 }
 
 void Room::setRoomOxygen(int oxygen) {
-  //TODO(mart2720): Throw exception if oxygen is out of range?
   if (oxygen <= 0)
     roomOxygen = 0;
   else if (oxygen >= 10000)

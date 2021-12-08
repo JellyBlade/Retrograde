@@ -55,8 +55,6 @@ TEST(TestPlayer, roomTest) {
   Room* r1 = new Room("Blank Room", "It's completely empty.");
   Room* r2 = new Room("Testing Room", "It's a room for testing stuff. Cool.");
 
-  // TODO(hipt2720): Test exceptions when passing or getting null room.
-
   p->setCurrentRoom(r1);
   EXPECT_NE(p->getCurrentRoom(), nullptr);
   EXPECT_EQ(p->getCurrentRoom(), r1);
@@ -76,9 +74,6 @@ TEST(TestPlayer, oxygenTest) {
   Room* r1 = new Room("Blank Room", "It's completely empty.");
   Room* r2 = new Room("Testing Room", "It's a room for testing stuff. Cool.");
   Door* d1 = new Door(r1, r2);
-
-  // TODO(hipt2720): Add an exception to useOxygen when currentRoom is NULL;
-  // EXPECT_THROW(p->useOxygen(), some_exception);
 
   p->setCurrentRoom(r1);
   EXPECT_TRUE(p->useOxygen());

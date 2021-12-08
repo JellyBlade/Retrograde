@@ -14,9 +14,6 @@ TEST(TestObjectContainer, addRemoveTest) {
   Object* o2 = new Object();
   ObjectContainer* ob = new ObjectContainer();
 
-  // TODO(hipt2720): Expections.h is needed here
-  //EXPECT_THROW(ob->addObject(NULL), invalid_parameter_error);
-
   EXPECT_EQ(ob->size(), 0);
   ob->addObject(o1);
   EXPECT_EQ(ob->size(), 1);
