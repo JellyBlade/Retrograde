@@ -343,10 +343,8 @@
 	<pre><code>
 	:setgflag you killed joe true
 	:setflagg bunnies are really cute but global this time true
-	
 	// ... 
 	// In some other file, or the same file:
-	
 	:if flag you killed joe
 		I can't believe you killed Joe! D:
 	:else
