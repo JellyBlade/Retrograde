@@ -13,6 +13,8 @@ Features a custom interpreted scripting language (RGScript), written in C++ for 
 
 The game world, items, and NPCs are all read from JSON files using [nlohmann's C++ json library](https://github.com/nlohmann/json).
 
+Using JSON and RGScript allows for all aspects of the game to change without needing to recompile any code.
+
 ## Story
 Retrograde takes place aboard the AUF SIRONA, a doomed spaceship that went missing. You find yourself alone, and without any recollection of what happened aboard the SIRONA.
 
