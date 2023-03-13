@@ -5,6 +5,9 @@
   - The Command Processor is called whenever TextHelper::readFile() encounters a line that starts with `:`. From there, the rest of the line may be used to specify parameters for the different commands.
 - What are the commands?
   - Read the next section :)
+- What can I do with this?
+  - Surprisingly, quite a lot. RGScript could technically be used to build an entire text adventure game itself, keeping track of everything through flags, and "moving" via `:mc` commands. The only downside to this approach is the current version of RGScript lacks a command for opening new files, so your entire game would have to be in one text file. Yikes.
+  - For a good example of some of RGScript's capabilities, see the [help.txt file](help.txt) that is used for an interactive in-game help/tutorial/hints feature.
 # Command Processor Commands
 ### Comments
 - Not really a command per se, but any line that starts with `/` or `//` will not be output or processed.
