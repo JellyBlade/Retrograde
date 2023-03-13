@@ -70,6 +70,24 @@
 			Joe: You said you've get me that apple, man!
 			:endif
 			</pre></code>
+	- `chapter`
+		- `:if chapter [#]`
+		- Only true if the game's current chapter matches the criterion
+		- Useful for adapting NPC dialogue to game progress
+		-	<details>
+			<summary<b>Example Usage:</b></summary>
+			<pre><code>
+			Joe: Oh hey there, man.
+			:if chapter 1
+			Joe: We still need to work on restoring power...
+			:endif
+			:if chapter 2
+			Joe: Can't believe we lost Bill to those aliens :(
+			:endif
+			:if chapter 8
+			Joe: Thanks for saving us all, man.
+			:endif
+			</pre></code>
 	- `inroom`
 		- `:if inroom [name of object]`
 		- Only true if the room the player is located has that object in it.
@@ -88,6 +106,7 @@
 		- `:if flagtrue [name of flag]`
 		- Only true if the given flag is true.
 			- Flags are global or per-file bools that allow for remembering player choices in branching dialogue.
+			- Per-file (local) flags take precedence over global flags if the same key exists in both.
 		- 	<details>
 			<summary><b>Example Usage:</b></summary>
 			<pre><code>
@@ -250,13 +269,52 @@
 	:unblock e
 	</code></pre>
 	</details>
-
-## File Commands
-Commands that allow interaction with the file being read, or other files.
+### :kill
+- `:kill` "kills" the player, by setting the global "lose" flag to true, triggering a game over.
+- Essentially just shorthand.
+- <details>
+	<summary<b>Example Usage:</b></summary>
+	<pre><code>
+	You blew up the spaceship.
+	:kill
+	...
+	You asphyxiated.
+	:kill
+	...
+	The killer robot fired its laser.
+	:kill
+	</pre></code>
+	</details>
+### :killnpc
+- `:killnpc` kills the NPC with the given name, preventing all future interaction with them.
+- <details>
+	<summary<b>Example Usage:</b></summary>
+	<pre><code>
+	The dropship carrying Joe, Tom, and Jerry explodes violently due to the computer worm.
+	:kill joe
+	:kill TOM
+	:kill j e r r y
+	</pre></code>
+	</details>
+## Story Commands
+### :chapter
+- `:chapter` increments, decrements, or sets the game's chapter to the specified int value.
+- <details>
+	<summary><b>Example Usage:</b></summary>
+	<pre><code>
+	You completed the required puzzle to progress.
+	:chapter +
+	...
+	You failed this series of events and need to restart from the beginning of the sequence.
+	:chapter -
+	...
+	You did it! You saved the ship, despite only being on chapter 1 or something.
+	:chapter 8
+	</code></pre>
 ### :setflag
 - `:setflag` lets you store certain boolean values on a per-file basis.
-	- If a flag is set earlier on in the file, it can be read as an `:if` criteria.
-- **The last word of the statement has to be `true` or `false`**
+	- If a flag is set earlier on in the file, it can be read as an `:if` criterion.
+- **The last word of the statement must be `true` or `false`**
 - <details>
 	<summary><b>Example Usage:</b></summary>
 	<pre><code>
@@ -276,6 +334,33 @@ Commands that allow interaction with the file being read, or other files.
 	:endif
 	</code></pre>
 	</details>
+### :setgflag || :setflagg
+- `:setgflag` (alias: :setflagg) lets you store certain boolean values on a global basis.
+	- If a flag is set previously, in any file, it can be read as an `:if` criterion.
+- **The last word of the statement must be `true` or `false`**
+- <details
+	<summary><b>Example Usage:</b></summary>
+	<pre><code>
+	:setgflag you killed joe true
+	:setflagg bunnies are really cute but global this time true
+	
+	// ... 
+	// In some other file, or the same file:
+	
+	:if flag you killed joe
+		I can't believe you killed Joe! D:
+	:else
+		You haven't killed Joe :)
+	:endif
+	:if flag bunnies are really cute but global this time
+		They are very cute :)
+	:else
+		disappointing :(
+	:endif
+	</code></pre>
+	</details>
+## File Commands
+Commands that allow interaction with the file being read, or other files.
 ### :quit
 - `:quit` stops the reading of the current file.
 - <details>
